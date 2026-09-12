@@ -229,6 +229,10 @@ if(mq.addEventListener){mq.addEventListener("change",label)}else if(mq.addListen
 const btn=document.getElementById("refreshBtn"),status=document.getElementById("refreshStatus");
 const setStatus=text=>{status.textContent=text};
 const SEEN_KEY="llmDashboardRefreshSeenAt";
+// Base URL of the status/refresh endpoints: dashboard/serve.py locally (its
+// routes live under /api), the Cloudflare Worker in public. The Worker holds
+// the GitHub token server-side so it is never readable by page visitors.
+const REFRESH_API=(location.hostname==="localhost"||location.hostname==="127.0.0.1")?"/api":"https://llm-refresh-proxy.gelson-a26.workers.dev";
 if(location.protocol==="file:"){
   btn.disabled=true;
   btn.textContent="Refresh unavailable";
@@ -240,7 +244,7 @@ let timer=null;
 function stopPolling(){if(timer){clearInterval(timer);timer=null}}
 function schedule(ms){stopPolling();timer=setInterval(poll,ms)}
 function poll(){
-  fetch("/api/status",{cache:"no-store"}).then(r=>r.json()).then(data=>{
+  fetch(REFRESH_API+"/status",{cache:"no-store"}).then(r=>r.json()).then(data=>{
     const job=data.job||{},retry=job.retry_after_seconds||0;
     if(job.state==="running"){setStatus("Refreshing…");schedule(1500);return}
     const stamp=job.finished_at||"",seen=sessionStorage.getItem(SEEN_KEY)||"",isNew=Boolean(stamp)&&stamp!==seen;
@@ -248,11 +252,11 @@ function poll(){
     if(job.state==="failed"&&isNew){stopPolling();sessionStorage.setItem(SEEN_KEY,stamp);const result=job.result||{};btn.disabled=false;setStatus(result.message||result.error||"Refresh failed.");return}
     if(retry>0){btn.disabled=true;setStatus(`Data is up to date — next refresh available in ${retry}s.`);schedule(1000);return}
     stopPolling();btn.disabled=false;setStatus("");
-  }).catch(()=>{stopPolling();btn.disabled=false;setStatus("Cannot reach the refresh service — is dashboard/serve.py still running?")});
+  }).catch(()=>{stopPolling();btn.disabled=false;setStatus("Cannot reach the refresh service. Please try again shortly.")});
 }
 btn.addEventListener("click",()=>{
   btn.disabled=true;setStatus("Starting…");
-  fetch("/api/refresh",{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"})
+  fetch(REFRESH_API+"/refresh",{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"})
     .then(async response=>{
       const data=await response.json().catch(()=>({}));
       if(response.status===202||response.status===409){setStatus("Refreshing…");schedule(1500);return}
@@ -262,7 +266,7 @@ btn.addEventListener("click",()=>{
       if(response.status===403){setStatus("Blocked: the request did not come from this dashboard.");return}
       setStatus(data.message||data.error||"Refresh failed.");
     })
-    .catch(()=>{stopPolling();btn.disabled=false;setStatus("Cannot reach the refresh service — is dashboard/serve.py still running?")});
+    .catch(()=>{stopPolling();btn.disabled=false;setStatus("Cannot reach the refresh service. Please try again shortly.")});
 });
 poll();
 })();
