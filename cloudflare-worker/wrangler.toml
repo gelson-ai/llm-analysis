@@ -1,0 +1,19 @@
+# Cloudflare Worker configuration.
+#
+# Only needed if you deploy with the `wrangler` CLI. The Cloudflare dashboard
+# editor (Workers & Pages -> Create -> Worker -> Edit code) works equally well
+# and needs no Node.js install.
+
+name = "llm-refresh-proxy"
+main = "worker.js"
+compatibility_date = "2025-09-01"
+
+# The GITHUB_TOKEN secret is deliberately NOT stored in this file (it would be
+# committed to the repository). Set it once, out of band:
+#
+#   npx wrangler secret put GITHUB_TOKEN
+#
+# The Worker refuses to serve /status or /refresh until that secret exists.
+
+# Serve on the free *.workers.dev hostname.
+workers_dev = true
