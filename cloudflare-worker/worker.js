@@ -49,6 +49,12 @@ const STATUS_CACHE_SECONDS = 5;
 // Weekly cadence is 168h; allow headroom before calling the data stale.
 const STALE_AFTER_HOURS = 192;
 
+// Only these triggers represent an actual DATA refresh. A `push` run
+// republishes the site but fetches nothing, so counting it would disable the
+// refresh button for the cooldown after every commit and make each new visitor
+// auto-reload once (a push run looks like a just-finished refresh).
+const REFRESH_EVENTS = new Set(["workflow_dispatch", "schedule"]);
+
 const API = "https://api.github.com";
 const CONTENT_TYPE = "application/json; charset=utf-8";
 
@@ -96,15 +102,19 @@ function secondsSince(iso) {
 
 /** Latest workflow run, shaped into the job block template.html expects. */
 async function readJob(token) {
+  // Ask for several runs, not one: the most recent run may be a push (which
+  // republishes without refreshing data), so we filter down to refresh events.
   const res = await github(
-    `/actions/workflows/${WORKFLOW_FILE}/runs?per_page=1`,
+    `/actions/workflows/${WORKFLOW_FILE}/runs?per_page=10`,
     token,
   );
   if (!res.ok) {
     throw new Error(`GitHub run lookup failed with HTTP ${res.status}`);
   }
   const body = await res.json();
-  const run = (body.workflow_runs || [])[0];
+  const run = (body.workflow_runs || []).find((r) =>
+    REFRESH_EVENTS.has(r.event),
+  );
 
   const idle = {
     state: "idle",
