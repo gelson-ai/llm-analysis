@@ -1,2 +1,10 @@
-requests>=2.31
-pytest>=7.4
+# Pinned exactly, deliberately. With ranges like ">=2.31", a Monday CI run
+# would install whatever PyPI released most recently - not what was verified
+# locally - so the test suite could fail for a reason unrelated to this repo
+# and block that week's data refresh. Bump these on purpose, then re-run
+# `python -m pytest tests/ -q` before committing.
+requests==2.34.2
+
+# Test-only dependency. The suite runs fully offline (requests is
+# monkeypatched against a local fixture), so CI needs no secrets.
+pytest==9.1.1
