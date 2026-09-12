@@ -39,6 +39,11 @@ COVERAGE_PATH = PROJECT_ROOT / "data" / "analysis" / "coverage_report.json"
 QUALITY_PATH = PROJECT_ROOT / "data" / "analysis" / "data_quality_report.json"
 TEMPLATE_PATH = Path(__file__).resolve().parent / "template.html"
 OUTPUT_PATH = Path(__file__).resolve().parent / "price_performance_final.html"
+# Small sidecar describing the build. The deployed dashboard is static, so
+# nothing on the server can answer "how old is this data?" - the refresh
+# button's proxy reads this file instead of parsing the payload back out of
+# the HTML. It is deliberately committed, not ignored.
+STATUS_PATH = Path(__file__).resolve().parent / "status.json"
 
 INPUT_WEIGHT = 3
 OUTPUT_WEIGHT = 1
@@ -203,8 +208,24 @@ def main() -> int:
         f.write(html)
     os.replace(tmp_path, OUTPUT_PATH)
 
+    # Written from the SAME payload object as the HTML above, so the two can
+    # never disagree about which snapshot was published. model_count is the
+    # row count the dashboard actually renders - not the coverage report's
+    # fetched-inventory count, which is a different number in principle.
+    status = {
+        "version": 1,
+        "retrieved_at": payload.get("data_retrieved_at"),
+        "generated_at": payload.get("generated_at"),
+        "model_count": len(payload["rows"]),
+    }
+    tmp_status_path = STATUS_PATH.with_name(STATUS_PATH.name + ".tmp")
+    with open(tmp_status_path, "w", encoding="utf-8") as f:
+        json.dump(status, f, indent=2)
+    os.replace(tmp_status_path, STATUS_PATH)
+
     priced_count = sum(1 for row in payload["rows"] if row[10])
     print(f"Rebuilt {OUTPUT_PATH} with {len(payload['rows'])} models ({priced_count} priced).")
+    print(f"Wrote {STATUS_PATH} (retrieved_at={status['retrieved_at']}).")
     return 0
 
 
