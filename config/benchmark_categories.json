@@ -1,0 +1,22 @@
+{
+  "_readme": "Maps a benchmark name (as OpenRouter actually returns it) to a product-relevant category. CONFIRMED against a live run on 2026-09-08: OpenRouter's public /api/v1/models response does NOT expose GPQA Diamond, IFBench, or AA-Omniscience individually - it embeds three Artificial Analysis composite indices (intelligence/coding/agentic) plus separately-provenanced 'Design Arena' per-category Elo/win-rate rows. None of these map cleanly onto 'reasoning' / 'general_knowledge' / 'instruction_following' in isolation, so they are marked 'uncategorized' rather than force-fit into a category we can't actually justify. See README 'The benchmark question' for the full writeup and what would need to change (a different data source, or AA's own API) to get real per-capability breakdowns.",
+  "categories": {
+    "coding": {
+      "AA Coding Index": "Artificial Analysis' coding-specific composite index. Explicitly out of scope for this product's performance score per the original spec.",
+      "HumanEval": "Coding benchmark - would be out of scope if it ever appears in a future OpenRouter response.",
+      "SWE-Bench": "Coding benchmark - out of scope.",
+      "LiveCodeBench": "Coding benchmark - out of scope.",
+      "MBPP": "Coding benchmark - out of scope."
+    },
+    "uncategorized": {
+      "AA Intelligence Index": "Artificial Analysis' blended overall capability composite. Mixes reasoning, knowledge, coding, and other evals under one number per AA's own methodology - NOT equivalent to a pure reasoning or general-knowledge score. Do not use as a stand-in for GPQA Diamond or AA-Omniscience without checking AA's current composition of this index (it changes over time).",
+      "AA Agentic Index": "Artificial Analysis' agentic tool-use composite. Not one of this product's three target categories (reasoning / general_knowledge / instruction_following) - closest to a distinct 'agentic capability' dimension.",
+      "Design Arena": "Elo/win-rate rankings per UI, code, game-dev, and similar generation categories from the Design Arena benchmark (bundled in OpenRouter's response but NOT an Artificial Analysis benchmark - different provider, kept separate per the 'no mixing providers' rule). Relevant to visual/code generation tasks, not to this product's chat / article / email use cases."
+    }
+  },
+  "_not_found_in_live_data": {
+    "GPQA Diamond": "Requested in the original spec as a reasoning benchmark. Not present anywhere in the 2026-09-08 live /api/v1/models response - 0 of 428 models. If this is a hard requirement, the data would need to come from a different source (Artificial Analysis's own API/site, or another provider) rather than OpenRouter.",
+    "IFBench": "Requested as an instruction-following benchmark. Not present in the live response - 0 of 428 models.",
+    "AA-Omniscience": "Requested as a general-knowledge benchmark. Not present in the live response - 0 of 428 models."
+  }
+}

@@ -1,0 +1,21 @@
+# --- Python environment & caches ---
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# --- Local run logs (run_weekly.bat output) ---
+logs/
+
+# --- Machine-local runtime lock (must never be committed) ---
+data/analysis/.refresh.lock
+
+# --- Secrets, editors, OS cruft ---
+.env
+.env.*
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini

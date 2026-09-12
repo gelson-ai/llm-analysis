@@ -1,0 +1,110 @@
+{
+  "data": [
+    {
+      "id": "qwen/qwen3-8b",
+      "canonical_slug": "qwen/qwen3-8b",
+      "name": "Qwen: Qwen3 8B",
+      "created": 1747699200,
+      "context_length": 40960,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": ["text"],
+        "output_modalities": ["text"],
+        "tokenizer": "Qwen3"
+      },
+      "pricing": {
+        "prompt": "0.00000006",
+        "completion": "0.00000012",
+        "image": "0",
+        "request": "0"
+      },
+      "top_provider": {
+        "context_length": 40960,
+        "max_completion_tokens": null,
+        "is_moderated": false
+      },
+      "benchmarks": {
+        "artificial_analysis": {
+          "intelligence_index": 46.9,
+          "coding_index": 71.8,
+          "agentic_index": 49.9
+        },
+        "design_arena": [
+          {"arena": "models", "category": "3d", "elo": 1150, "rank": 60, "win_rate": 41.2}
+        ]
+      }
+    },
+    {
+      "id": "anthropic/claude-3.5-sonnet",
+      "canonical_slug": "anthropic/claude-3.5-sonnet-20241022",
+      "name": "Anthropic: Claude 3.5 Sonnet",
+      "created": 1729555200,
+      "context_length": 200000,
+      "architecture": {
+        "modality": "text+image->text",
+        "input_modalities": ["text", "image"],
+        "output_modalities": ["text"],
+        "tokenizer": "Claude"
+      },
+      "pricing": {
+        "prompt": "0.000003",
+        "completion": "0.000015",
+        "input_cache_read": "0.0000003",
+        "input_cache_write": "0.00000375"
+      },
+      "top_provider": {
+        "context_length": 200000,
+        "max_completion_tokens": 8192,
+        "is_moderated": true
+      }
+    },
+    {
+      "id": "upstage/solar-pro-4",
+      "canonical_slug": "upstage/solar-pro-4",
+      "name": "Upstage: Solar Pro 4",
+      "created": 1750000000,
+      "context_length": 65536,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": ["text"],
+        "output_modalities": ["text"],
+        "tokenizer": "Other"
+      },
+      "pricing": {
+        "prompt": "0.0000002",
+        "completion": "0.0000006"
+      },
+      "top_provider": {
+        "context_length": 65536,
+        "max_completion_tokens": null,
+        "is_moderated": false
+      }
+    },
+    {
+      "id": "some-vendor/no-pricing-model",
+      "name": "Vendor: No Pricing Model",
+      "created": 1750000001,
+      "context_length": 8192,
+      "architecture": {"modality": "text->text", "input_modalities": ["text"], "output_modalities": ["text"], "tokenizer": "Other"},
+      "pricing": {"prompt": "not-a-number", "completion": null},
+      "top_provider": {"context_length": 8192, "max_completion_tokens": null, "is_moderated": false}
+    },
+    {
+      "id": "some-vendor/missing-context-length",
+      "name": "Vendor: Missing Context Length",
+      "created": 1750000002,
+      "architecture": {"modality": "text->text", "input_modalities": ["text"], "output_modalities": ["text"], "tokenizer": "Other"},
+      "pricing": {"prompt": "0.000001", "completion": "0.000002"},
+      "top_provider": {"is_moderated": false}
+    },
+    {
+      "id": "openrouter/auto",
+      "name": "OpenRouter: Auto Router",
+      "created": 1750000003,
+      "context_length": 2000000,
+      "architecture": {"modality": "text->text", "input_modalities": ["text"], "output_modalities": ["text"], "tokenizer": "Router"},
+      "pricing": {"prompt": "-1", "completion": "-1"},
+      "top_provider": {"is_moderated": false}
+    }
+  ]
+}

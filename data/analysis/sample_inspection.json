@@ -1,0 +1,12 @@
+[
+  {
+    "model_id": "qwen/qwen3-8b",
+    "status": "present",
+    "note": "found in raw inventory"
+  },
+  {
+    "model_id": "name-contains:solar pro 4",
+    "status": "present",
+    "note": "matched: ['upstage/solar-pro4']"
+  }
+]
