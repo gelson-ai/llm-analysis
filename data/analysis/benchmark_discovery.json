@@ -15,13 +15,13 @@
       "endpoint": "https://openrouter.ai/api/frontend/models",
       "status_code": 404,
       "ok": false,
-      "error": "HTTP 404: <!DOCTYPE html><html data-dpl-id=\"dpl_HeygpSYM8wYnfMZufR818VypEVGo\" id=\"__next_error__\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" href=\"/_next/static/immutable/chunks/3c80id0ikyaa2.js\"/><script src=\"/_next/static/immutable/chunks/1ffpic1yhvxs6.js\" async=\"\"></script><script src=\"/_next/static/immutable/chunks/0_8aen5a3v0xm.js\" async=\"\"></script><script src=\"/_next/static/im"
+      "error": "HTTP 404: <!DOCTYPE html><html data-dpl-id=\"dpl_8qBDx83NSofDrJ11Ys4XyQn3PfZT\" id=\"__next_error__\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, minimum-scale=1\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" href=\"/_next/static/immutable/chunks/3c80id0ikyaa2.js\"/><script src=\"/_next/static/immutable/chunks/058tzm9yxfr46.js\" async=\"\"></script><script src=\"/_next/static/immutable/chunks/0_8aen5a3v0xm.js\" async=\"\"></script><script src=\"/_next/static/im"
     },
     {
       "endpoint": "https://openrouter.ai/api/frontend/models/find",
       "status_code": 404,
       "ok": false,
-      "error": "HTTP 404: <!DOCTYPE html><html data-dpl-id=\"dpl_HeygpSYM8wYnfMZufR818VypEVGo\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"preload\" as=\"image\" href=\"/brand/v2/openrouter-dark.svg\"/><link rel=\"preload\" as=\"image\" href=\"/brand/v2/openrouter-light.svg\"/><link rel=\"stylesheet\" href=\"/_next/static/immutable/chunks/30-g6q_vv60i2.css\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"/_next/static/immutable/chunks/29kavw8-ui81k.css\" data-preceden"
+      "error": "HTTP 404: <!DOCTYPE html><html data-dpl-id=\"dpl_8Cr9tt4jW9vWbgi6Ly6Yr3HCgzUG\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"preload\" as=\"image\" href=\"/brand/v2/openrouter-dark.svg\"/><link rel=\"preload\" as=\"image\" href=\"/brand/v2/openrouter-light.svg\"/><link rel=\"stylesheet\" href=\"/_next/static/immutable/chunks/32mart7epp18q.css\" data-precedence=\"next\"/><link rel=\"stylesheet\" href=\"/_next/static/immutable/chunks/29kavw8-ui81k.css\" data-preceden"
     },
     {
       "endpoint": "https://openrouter.ai/api/v1/benchmarks",
