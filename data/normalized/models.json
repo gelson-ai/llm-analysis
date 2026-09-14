@@ -36,7 +36,7 @@
     "reasoning": null,
     "created": 1789176949,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "inference-net/schematron-v2-turbo",
       "canonical_slug": "inference-net/schematron-v2-turbo-20260902",
@@ -127,7 +127,7 @@
     "reasoning": null,
     "created": 1789176933,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "inference-net/schematron-v2-small",
       "canonical_slug": "inference-net/schematron-v2-small-20260902",
@@ -243,7 +243,7 @@
     },
     "created": 1789130932,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "~openai/gpt-astra-latest",
       "canonical_slug": "~openai/gpt-astra-latest",
@@ -387,7 +387,7 @@
     },
     "created": 1789130928,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "~openai/gpt-sol-latest",
       "canonical_slug": "~openai/gpt-sol-latest",
@@ -539,7 +539,7 @@
     },
     "created": 1789130925,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "~openai/gpt-terra-latest",
       "canonical_slug": "~openai/gpt-terra-latest",
@@ -691,7 +691,7 @@
     },
     "created": 1789130922,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "~openai/gpt-luna-latest",
       "canonical_slug": "~openai/gpt-luna-latest",
@@ -837,7 +837,7 @@
     },
     "created": 1789105383,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "sakana/fugu-ultra-v2",
       "canonical_slug": "sakana/fugu-ultra-v2-20260911",
@@ -963,7 +963,7 @@
     },
     "created": 1789104771,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "sakana/fugu-max",
       "canonical_slug": "sakana/fugu-max-20260911",
@@ -1074,7 +1074,7 @@
     },
     "created": 1789056114,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "inclusionai/ling-3.0-flash-vl",
       "canonical_slug": "inclusionai/ling-3.0-flash-vl-20260910",
@@ -1185,7 +1185,7 @@
     },
     "created": 1789056114,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "inclusionai/ling-3.0-flash-vl:free",
       "canonical_slug": "inclusionai/ling-3.0-flash-vl-20260910",
@@ -1260,17 +1260,17 @@
     "canonical_slug": "deepseek/deepseek-v4.1-flash-20260910",
     "model_name": "DeepSeek: DeepSeek V4.1 Flash",
     "provider": "deepseek",
-    "input_price_per_token": 1.5e-07,
-    "output_price_per_token": 6e-07,
-    "input_price_per_mtok": 0.15,
-    "output_price_per_mtok": 0.6,
+    "input_price_per_token": 3e-07,
+    "output_price_per_token": 1.2e-06,
+    "input_price_per_mtok": 0.3,
+    "output_price_per_mtok": 1.2,
     "has_valid_pricing": true,
     "is_dynamic_pricing": false,
     "cache_related_pricing_fields": {
-      "input_cache_read": "0.000000003"
+      "input_cache_read": "0.000000006"
     },
     "other_pricing_fields": {
-      "input_cache_read": "0.000000003",
+      "input_cache_read": "0.000000006",
       "overrides": [
         {
           "utc_days": [
@@ -1383,7 +1383,7 @@
     },
     "created": 1789021285,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-v4.1-flash",
       "canonical_slug": "deepseek/deepseek-v4.1-flash-20260910",
@@ -1405,9 +1405,9 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000015",
-        "completion": "0.0000006",
-        "input_cache_read": "0.000000003",
+        "prompt": "0.0000003",
+        "completion": "0.0000012",
+        "input_cache_read": "0.000000006",
         "overrides": [
           {
             "utc_days": [
@@ -1592,7 +1592,7 @@
     },
     "created": 1788892137,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "inception/mercury-2.5",
       "canonical_slug": "inception/mercury-2.5-20260908",
@@ -1697,7 +1697,7 @@
     },
     "created": 1788890061,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "nex-agi/nex-n2.5-mini:free",
       "canonical_slug": "nex-agi/nex-n2.5-mini-20260908",
@@ -1807,7 +1807,7 @@
     },
     "created": 1788890050,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "nex-agi/nex-n2.5-pro:free",
       "canonical_slug": "nex-agi/nex-n2.5-pro-20260907",
@@ -1937,7 +1937,7 @@
     },
     "created": 1788552838,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-6-astra",
       "canonical_slug": "openai/gpt-6-astra-20260903",
@@ -2084,7 +2084,7 @@
     },
     "created": 1788552838,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-6-astra:batch",
       "canonical_slug": "openai/gpt-6-astra-20260903",
@@ -2230,7 +2230,7 @@
     },
     "created": 1788552835,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-6-astra-pro",
       "canonical_slug": "openai/gpt-6-astra-pro-20260903",
@@ -2369,7 +2369,7 @@
     },
     "created": 1788552835,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-6-astra-pro:batch",
       "canonical_slug": "openai/gpt-6-astra-pro-20260903",
@@ -2481,7 +2481,7 @@
     },
     "created": 1788545946,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "inclusionai/ling-3.0-flash-sante:free",
       "canonical_slug": "inclusionai/ling-3.0-flash-sante-20260904",
@@ -2593,7 +2593,7 @@
     },
     "created": 1788469704,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.8-max-0902",
       "canonical_slug": "qwen/qwen3.8-max-20260902",
@@ -2728,7 +2728,7 @@
     },
     "created": 1788381519,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "meta/muse-spark-1.3-contributor",
       "canonical_slug": "meta/muse-spark-1.3-contributor-20260902",
@@ -2852,7 +2852,7 @@
     },
     "created": 1788378359,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "meta/muse-spark-1.3",
       "canonical_slug": "meta/muse-spark-1.3-20260902",
@@ -3048,7 +3048,7 @@
     },
     "created": 1788362056,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.8-flash",
       "canonical_slug": "google/gemini-3.8-flash-20260902",
@@ -3259,7 +3259,7 @@
     },
     "created": 1788362056,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.8-flash:batch",
       "canonical_slug": "google/gemini-3.8-flash-20260902",
@@ -3464,7 +3464,7 @@
     },
     "created": 1788285838,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-fable-5.1",
       "canonical_slug": "anthropic/claude-fable-5.1-20260831",
@@ -3665,7 +3665,7 @@
     },
     "created": 1788285838,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-fable-5.1:batch",
       "canonical_slug": "anthropic/claude-fable-5.1-20260831",
@@ -3858,7 +3858,7 @@
     },
     "created": 1788206780,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "ibm-granite/granite-4.2-8b",
       "canonical_slug": "ibm-granite/granite-4.2-8b-20260831",
@@ -3987,7 +3987,7 @@
     },
     "created": 1787897375,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "tencent/hy4-preview",
       "canonical_slug": "tencent/hy4-preview-20260827",
@@ -4090,7 +4090,7 @@
     },
     "created": 1787846290,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "inclusionai/ling-3.0-flash-fin",
       "canonical_slug": "inclusionai/ling-3.0-flash-fin-20260827",
@@ -4189,7 +4189,7 @@
     },
     "created": 1787846290,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "inclusionai/ling-3.0-flash-fin:free",
       "canonical_slug": "inclusionai/ling-3.0-flash-fin-20260827",
@@ -4297,7 +4297,7 @@
     },
     "created": 1787817633,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "~z-ai/glm-flash-latest",
       "canonical_slug": "~z-ai/glm-flash-latest",
@@ -4423,7 +4423,7 @@
     },
     "created": 1787773060,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.8-flash",
       "canonical_slug": "qwen/qwen3.8-flash-20260826",
@@ -4540,7 +4540,7 @@
     },
     "created": 1787752741,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-5.3-flash",
       "canonical_slug": "z-ai/glm-5.3-flash-20260826",
@@ -4730,7 +4730,7 @@
     },
     "created": 1787752741,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-5.3-flash:batch",
       "canonical_slug": "z-ai/glm-5.3-flash-20260826",
@@ -4923,7 +4923,7 @@
     },
     "created": 1787336476,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "meta/muse-spark-1.2-contributor",
       "canonical_slug": "meta/muse-spark-1.2-contributor-20260805",
@@ -5040,7 +5040,7 @@
     },
     "created": 1787311563,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-v4-flash-vision-exp",
       "canonical_slug": "deepseek/deepseek-v4-flash-vision-exp-20260821",
@@ -5160,7 +5160,7 @@
     },
     "created": 1787311563,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-v4-flash-vision-exp:batch",
       "canonical_slug": "deepseek/deepseek-v4-flash-vision-exp-20260821",
@@ -5264,7 +5264,7 @@
     "reasoning": null,
     "created": 1787231581,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "tencent/hy-mt2-1.8b",
       "canonical_slug": "tencent/hy-mt2-1.8b-20260521",
@@ -5342,7 +5342,7 @@
     "reasoning": null,
     "created": 1787231561,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "tencent/hy-mt2-30b-a3b",
       "canonical_slug": "tencent/hy-mt2-30b-a3b-20260521",
@@ -5435,7 +5435,7 @@
     },
     "created": 1787151053,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "~z-ai/glm-latest",
       "canonical_slug": "~z-ai/glm-latest",
@@ -5548,7 +5548,7 @@
     "reasoning": null,
     "created": 1787148797,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "tencent/hy-mt2-7b",
       "canonical_slug": "tencent/hy-mt2-7b-20260521",
@@ -5641,7 +5641,7 @@
     },
     "created": 1787086655,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-5.3",
       "canonical_slug": "z-ai/glm-5.3-20260816",
@@ -5842,7 +5842,7 @@
     },
     "created": 1787086655,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-5.3:batch",
       "canonical_slug": "z-ai/glm-5.3-20260816",
@@ -6042,7 +6042,7 @@
     },
     "created": 1786722910,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.8-27b",
       "canonical_slug": "qwen/qwen3.8-27b-20260814",
@@ -6165,7 +6165,7 @@
     },
     "created": 1786680361,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "dots-studio/dots-3-note-preview:free",
       "canonical_slug": "dots-studio/dots-3-note-preview-20260813",
@@ -6277,7 +6277,7 @@
     },
     "created": 1786640581,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.7-flash",
       "canonical_slug": "google/gemini-3.7-flash-20260813",
@@ -6502,7 +6502,7 @@
     },
     "created": 1786640581,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.7-flash:batch",
       "canonical_slug": "google/gemini-3.7-flash-20260813",
@@ -6704,7 +6704,7 @@
     },
     "created": 1786552176,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "bytedance-seed/seed-2-1-turbo",
       "canonical_slug": "bytedance-seed/seed-2-1-turbo-20260810",
@@ -6807,7 +6807,7 @@
     },
     "created": 1786551702,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.8-2.4t-a95b",
       "canonical_slug": "qwen/qwen3.8-2.4t-a95b-20260812",
@@ -6937,7 +6937,7 @@
     },
     "created": 1786551702,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.8-2.4t-a95b:batch",
       "canonical_slug": "qwen/qwen3.8-2.4t-a95b-20260812",
@@ -7071,7 +7071,7 @@
     },
     "created": 1786550701,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "bytedance-seed/seed-2.0-code",
       "canonical_slug": "bytedance-seed/seed-2.0-code-20260730",
@@ -7187,7 +7187,7 @@
     },
     "created": 1786549364,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-v4-pro-0813",
       "canonical_slug": "deepseek/deepseek-v4-pro-20260813",
@@ -7314,7 +7314,7 @@
     },
     "created": 1786549364,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-v4-pro-0813:batch",
       "canonical_slug": "deepseek/deepseek-v4-pro-20260813",
@@ -7453,7 +7453,7 @@
     },
     "created": 1786548957,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "x-ai/grok-4.6",
       "canonical_slug": "x-ai/grok-4.6-20260810",
@@ -7681,7 +7681,7 @@
     },
     "created": 1786470519,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "liquid/lfm-2.5-2.6b:free",
       "canonical_slug": "liquid/lfm-2.5-2.6b-20260811",
@@ -7786,7 +7786,7 @@
     },
     "created": 1786452751,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "nvidia/nemotron-3.5-lightning",
       "canonical_slug": "nvidia/nemotron-3.5-lightning-20260807",
@@ -7893,7 +7893,7 @@
     },
     "created": 1786452751,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "nvidia/nemotron-3.5-lightning:free",
       "canonical_slug": "nvidia/nemotron-3.5-lightning-20260807",
@@ -8001,7 +8001,7 @@
     },
     "created": 1786410129,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "sakana/sakana-namazu",
       "canonical_slug": "sakana/namazu-20260811",
@@ -8101,7 +8101,7 @@
     },
     "created": 1786371636,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "upstage/solar-pro4",
       "canonical_slug": "upstage/solar-pro4-20260810",
@@ -8263,7 +8263,7 @@
     },
     "created": 1786302394,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "meta/muse-glimmer-30b",
       "canonical_slug": "meta/muse-glimmer-30b-20260810",
@@ -8387,7 +8387,7 @@
     },
     "created": 1786302394,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "meta/muse-glimmer-30b:batch",
       "canonical_slug": "meta/muse-glimmer-30b-20260810",
@@ -8515,7 +8515,7 @@
     },
     "created": 1785959287,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "meta/muse-spark-1.2",
       "canonical_slug": "meta/muse-spark-1.2-20260805",
@@ -8745,7 +8745,7 @@
     },
     "created": 1785606009,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "~deepseek/deepseek-v4-flash-latest",
       "canonical_slug": "~deepseek/deepseek-v4-flash-latest",
@@ -8828,17 +8828,17 @@
     "canonical_slug": "deepseek/deepseek-v4-flash-20260731",
     "model_name": "DeepSeek: DeepSeek V4 Flash 0731",
     "provider": "deepseek",
-    "input_price_per_token": 6.5e-08,
-    "output_price_per_token": 1.8e-07,
-    "input_price_per_mtok": 0.065,
-    "output_price_per_mtok": 0.18,
+    "input_price_per_token": 6e-08,
+    "output_price_per_token": 1.2e-07,
+    "input_price_per_mtok": 0.06,
+    "output_price_per_mtok": 0.12,
     "has_valid_pricing": true,
     "is_dynamic_pricing": false,
     "cache_related_pricing_fields": {
-      "input_cache_read": "0.000000016"
+      "input_cache_read": "0.000000012"
     },
     "other_pricing_fields": {
-      "input_cache_read": "0.000000016"
+      "input_cache_read": "0.000000012"
     },
     "context_length": 1310720,
     "architecture": {
@@ -8869,7 +8869,7 @@
     },
     "created": 1785478908,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-v4-flash-0731",
       "canonical_slug": "deepseek/deepseek-v4-flash-20260731",
@@ -8890,9 +8890,9 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.000000065",
-        "completion": "0.00000018",
-        "input_cache_read": "0.000000016"
+        "prompt": "0.00000006",
+        "completion": "0.00000012",
+        "input_cache_read": "0.000000012"
       },
       "top_provider": {
         "context_length": 1048576,
@@ -9054,7 +9054,7 @@
     },
     "created": 1785478908,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-v4-flash-0731:batch",
       "canonical_slug": "deepseek/deepseek-v4-flash-20260731",
@@ -9241,7 +9241,7 @@
     },
     "created": 1785443117,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "thinkingmachines/inkling-small",
       "canonical_slug": "thinkingmachines/inkling-small-20260730",
@@ -9382,7 +9382,7 @@
     },
     "created": 1785443117,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "thinkingmachines/inkling-small:batch",
       "canonical_slug": "thinkingmachines/inkling-small-20260730",
@@ -9518,7 +9518,7 @@
     },
     "created": 1785443117,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "thinkingmachines/inkling-small:free",
       "canonical_slug": "thinkingmachines/inkling-small-20260730",
@@ -9661,7 +9661,7 @@
     },
     "created": 1785190561,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.7-flash",
       "canonical_slug": "qwen/qwen3.7-flash-20260727",
@@ -9801,7 +9801,7 @@
     },
     "created": 1784912544,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-opus-5",
       "canonical_slug": "anthropic/claude-opus-5-20260723",
@@ -10034,7 +10034,7 @@
     },
     "created": 1784912544,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-opus-5:batch",
       "canonical_slug": "anthropic/claude-opus-5-20260723",
@@ -10250,7 +10250,7 @@
     },
     "created": 1784818580,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "inclusionai/ling-3.0-flash",
       "canonical_slug": "inclusionai/ling-3.0-flash-20260723",
@@ -10362,7 +10362,7 @@
     },
     "created": 1784652683,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "poolside/laguna-s-2.1",
       "canonical_slug": "poolside/laguna-s-2.1-20260720",
@@ -10450,7 +10450,7 @@
     },
     "created": 1784652683,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "poolside/laguna-s-2.1:free",
       "canonical_slug": "poolside/laguna-s-2.1-20260720",
@@ -10560,7 +10560,7 @@
     },
     "created": 1784646733,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.6-flash",
       "canonical_slug": "google/gemini-3.6-flash-20260721",
@@ -10808,7 +10808,7 @@
     },
     "created": 1784646733,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.6-flash:batch",
       "canonical_slug": "google/gemini-3.6-flash-20260721",
@@ -11054,7 +11054,7 @@
     },
     "created": 1784646726,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.5-flash-lite",
       "canonical_slug": "google/gemini-3.5-flash-lite-20260721",
@@ -11201,7 +11201,7 @@
     },
     "created": 1784646726,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.5-flash-lite:batch",
       "canonical_slug": "google/gemini-3.5-flash-lite-20260721",
@@ -11329,7 +11329,7 @@
     },
     "created": 1784554658,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "meituan/longcat-2.0",
       "canonical_slug": "meituan/longcat-2.0-20260720",
@@ -11450,7 +11450,7 @@
     },
     "created": 1784325956,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "thinkingmachines/inkling",
       "canonical_slug": "thinkingmachines/inkling-20260715",
@@ -11647,7 +11647,7 @@
     },
     "created": 1784325956,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "thinkingmachines/inkling:batch",
       "canonical_slug": "thinkingmachines/inkling-20260715",
@@ -11838,7 +11838,7 @@
     },
     "created": 1784325956,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "thinkingmachines/inkling:free",
       "canonical_slug": "thinkingmachines/inkling-20260715",
@@ -12015,7 +12015,7 @@
     "reasoning": null,
     "created": 1784311165,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openrouter/auto-beta",
       "canonical_slug": "openrouter/auto-beta",
@@ -12139,7 +12139,7 @@
     },
     "created": 1784215858,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "moonshotai/kimi-k3",
       "canonical_slug": "moonshotai/kimi-k3-20260715",
@@ -12382,7 +12382,7 @@
     },
     "created": 1784215858,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "moonshotai/kimi-k3:batch",
       "canonical_slug": "moonshotai/kimi-k3-20260715",
@@ -12626,7 +12626,7 @@
     },
     "created": 1784215741,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "meta/muse-spark-1.1",
       "canonical_slug": "meta/muse-spark-1.1-20260709",
@@ -12854,7 +12854,7 @@
     "reasoning": null,
     "created": 1783714589,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "kwaipilot/kat-coder-pro-v2.5",
       "canonical_slug": "kwaipilot/kat-coder-pro-v2.5-20260710",
@@ -12981,7 +12981,7 @@
     },
     "created": 1783590867,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.6-luna-pro",
       "canonical_slug": "openai/gpt-5.6-luna-pro-20260709",
@@ -13126,7 +13126,7 @@
     },
     "created": 1783590867,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.6-luna-pro:batch",
       "canonical_slug": "openai/gpt-5.6-luna-pro-20260709",
@@ -13271,7 +13271,7 @@
     },
     "created": 1783590864,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.6-luna",
       "canonical_slug": "openai/gpt-5.6-luna-20260709",
@@ -13424,7 +13424,7 @@
     },
     "created": 1783590864,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.6-luna:batch",
       "canonical_slug": "openai/gpt-5.6-luna-20260709",
@@ -13577,7 +13577,7 @@
     },
     "created": 1783590861,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.6-terra-pro",
       "canonical_slug": "openai/gpt-5.6-terra-pro-20260709",
@@ -13722,7 +13722,7 @@
     },
     "created": 1783590861,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.6-terra-pro:batch",
       "canonical_slug": "openai/gpt-5.6-terra-pro-20260709",
@@ -13867,7 +13867,7 @@
     },
     "created": 1783590857,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.6-terra",
       "canonical_slug": "openai/gpt-5.6-terra-20260709",
@@ -14020,7 +14020,7 @@
     },
     "created": 1783590857,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.6-terra:batch",
       "canonical_slug": "openai/gpt-5.6-terra-20260709",
@@ -14173,7 +14173,7 @@
     },
     "created": 1783590854,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.6-sol-pro",
       "canonical_slug": "openai/gpt-5.6-sol-pro-20260709",
@@ -14321,7 +14321,7 @@
     },
     "created": 1783590854,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.6-sol-pro:batch",
       "canonical_slug": "openai/gpt-5.6-sol-pro-20260709",
@@ -14468,7 +14468,7 @@
     },
     "created": 1783590850,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.6-sol",
       "canonical_slug": "openai/gpt-5.6-sol-20260709",
@@ -14624,7 +14624,7 @@
     },
     "created": 1783590850,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.6-sol:batch",
       "canonical_slug": "openai/gpt-5.6-sol-20260709",
@@ -14773,7 +14773,7 @@
     },
     "created": 1783523154,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "x-ai/grok-4.5",
       "canonical_slug": "x-ai/grok-4.5-20260708",
@@ -15028,7 +15028,7 @@
     },
     "created": 1783519360,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "~x-ai/grok-latest",
       "canonical_slug": "~x-ai/grok-latest",
@@ -15150,7 +15150,7 @@
     },
     "created": 1783443096,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "aion-labs/aion-3.0-mini",
       "canonical_slug": "aion-labs/aion-3.0-mini-20260707",
@@ -15242,7 +15242,7 @@
     },
     "created": 1783443095,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "aion-labs/aion-3.0",
       "canonical_slug": "aion-labs/aion-3.0-20260707",
@@ -15357,7 +15357,7 @@
     },
     "created": 1783344048,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "tencent/hy3",
       "canonical_slug": "tencent/hy3-20260706",
@@ -15537,7 +15537,7 @@
     },
     "created": 1783002429,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "poolside/laguna-xs-2.1",
       "canonical_slug": "poolside/laguna-xs-2.1-20260625",
@@ -15625,7 +15625,7 @@
     },
     "created": 1783002429,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "poolside/laguna-xs-2.1:free",
       "canonical_slug": "poolside/laguna-xs-2.1-20260625",
@@ -15731,7 +15731,7 @@
     },
     "created": 1782843083,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-sonnet-5",
       "canonical_slug": "anthropic/claude-sonnet-5-20260630",
@@ -15977,7 +15977,7 @@
     },
     "created": 1782843083,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-sonnet-5:batch",
       "canonical_slug": "anthropic/claude-sonnet-5-20260630",
@@ -16213,7 +16213,7 @@
     },
     "created": 1782837225,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.1-flash-lite-image",
       "canonical_slug": "google/gemini-3.1-flash-lite-image-20260630",
@@ -16331,7 +16331,7 @@
     },
     "created": 1782276303,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "sakana/fugu-ultra",
       "canonical_slug": "sakana/fugu-ultra-20260615",
@@ -16453,7 +16453,7 @@
     },
     "created": 1781754065,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.1-flash-image",
       "canonical_slug": "google/gemini-3.1-flash-image-20260528",
@@ -16566,7 +16566,7 @@
     },
     "created": 1781754054,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3-pro-image",
       "canonical_slug": "google/gemini-3-pro-image-20260528",
@@ -16666,7 +16666,7 @@
     },
     "created": 1781723748,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "cohere/north-mini-code:free",
       "canonical_slug": "cohere/north-mini-code-20260617",
@@ -16782,7 +16782,7 @@
     },
     "created": 1781631930,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-5.2",
       "canonical_slug": "z-ai/glm-5.2-20260616",
@@ -17027,7 +17027,7 @@
     },
     "created": 1781631930,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-5.2:batch",
       "canonical_slug": "z-ai/glm-5.2-20260616",
@@ -17257,7 +17257,7 @@
     "reasoning": null,
     "created": 1781371647,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openrouter/fusion",
       "canonical_slug": "openrouter/fusion",
@@ -17345,7 +17345,7 @@
     },
     "created": 1781266361,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "moonshotai/kimi-k2.7-code",
       "canonical_slug": "moonshotai/kimi-k2.7-code-20260612",
@@ -17594,7 +17594,7 @@
     },
     "created": 1781029944,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "~anthropic/claude-fable-latest",
       "canonical_slug": "~anthropic/claude-fable-latest",
@@ -17720,7 +17720,7 @@
     },
     "created": 1781007515,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-fable-5",
       "canonical_slug": "anthropic/claude-5-fable-20260609",
@@ -17985,7 +17985,7 @@
     },
     "created": 1781007515,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-fable-5:batch",
       "canonical_slug": "anthropic/claude-5-fable-20260609",
@@ -18232,7 +18232,7 @@
     },
     "created": 1780581864,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "nvidia/nemotron-3.5-content-safety",
       "canonical_slug": "nvidia/nemotron-3.5-content-safety-20260604",
@@ -18336,7 +18336,7 @@
     },
     "created": 1780581864,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "nvidia/nemotron-3.5-content-safety:free",
       "canonical_slug": "nvidia/nemotron-3.5-content-safety-20260604",
@@ -18441,7 +18441,7 @@
     },
     "created": 1780551208,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "nvidia/nemotron-3-ultra-550b-a55b",
       "canonical_slug": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
@@ -18625,7 +18625,7 @@
     },
     "created": 1780551208,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
       "canonical_slug": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
@@ -18809,7 +18809,7 @@
     },
     "created": 1780491783,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.7-plus",
       "canonical_slug": "qwen/qwen3.7-plus-20260602",
@@ -18988,7 +18988,7 @@
     },
     "created": 1780245374,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "minimax/minimax-m3",
       "canonical_slug": "minimax/minimax-m3-20260531",
@@ -19216,7 +19216,7 @@
     },
     "created": 1780245374,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "minimax/minimax-m3:batch",
       "canonical_slug": "minimax/minimax-m3-20260531",
@@ -19447,7 +19447,7 @@
     },
     "created": 1779985069,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "stepfun/step-3.7-flash",
       "canonical_slug": "stepfun/step-3.7-flash-20260528",
@@ -19647,7 +19647,7 @@
     },
     "created": 1779905091,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-opus-4.8",
       "canonical_slug": "anthropic/claude-4.8-opus-20260528",
@@ -19929,7 +19929,7 @@
     },
     "created": 1779905091,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-opus-4.8:batch",
       "canonical_slug": "anthropic/claude-4.8-opus-20260528",
@@ -20196,7 +20196,7 @@
     },
     "created": 1779376861,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.7-max",
       "canonical_slug": "qwen/qwen3.7-max-20260520",
@@ -20437,7 +20437,7 @@
     },
     "created": 1779298123,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "x-ai/grok-build-0.1",
       "canonical_slug": "x-ai/grok-build-0.1-20260520",
@@ -20579,7 +20579,7 @@
     },
     "created": 1779193800,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.5-flash",
       "canonical_slug": "google/gemini-3.5-flash-20260519",
@@ -20874,7 +20874,7 @@
     },
     "created": 1779193800,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.5-flash:batch",
       "canonical_slug": "google/gemini-3.5-flash-20260519",
@@ -21148,7 +21148,7 @@
     },
     "created": 1778597029,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "perceptron/perceptron-mk1",
       "canonical_slug": "perceptron/perceptron-mk1-20260512",
@@ -21269,7 +21269,7 @@
     },
     "created": 1778168828,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.1-flash-lite",
       "canonical_slug": "google/gemini-3.1-flash-lite-20260507",
@@ -21408,7 +21408,7 @@
     },
     "created": 1778168828,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.1-flash-lite:batch",
       "canonical_slug": "google/gemini-3.1-flash-lite-20260507",
@@ -21529,7 +21529,7 @@
     "reasoning": null,
     "created": 1778000212,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-chat-latest",
       "canonical_slug": "openai/gpt-chat-latest-20260505",
@@ -21645,7 +21645,7 @@
     },
     "created": 1777591821,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "x-ai/grok-4.3",
       "canonical_slug": "x-ai/grok-4.3-20260430",
@@ -21943,7 +21943,7 @@
     },
     "created": 1777591821,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "x-ai/grok-4.3:batch",
       "canonical_slug": "x-ai/grok-4.3-20260430",
@@ -22225,7 +22225,7 @@
     },
     "created": 1777570439,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mistral-medium-3-5",
       "canonical_slug": "mistralai/mistral-medium-3.5-20260430",
@@ -22347,7 +22347,7 @@
     },
     "created": 1777570439,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mistral-medium-3-5:batch",
       "canonical_slug": "mistralai/mistral-medium-3.5-20260430",
@@ -22467,7 +22467,7 @@
     },
     "created": 1777393095,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
       "canonical_slug": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning-20260428",
@@ -22585,7 +22585,7 @@
     },
     "created": 1777318492,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "~anthropic/claude-haiku-latest",
       "canonical_slug": "~anthropic/claude-haiku-latest",
@@ -22709,7 +22709,7 @@
     },
     "created": 1777318471,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "~openai/gpt-mini-latest",
       "canonical_slug": "~openai/gpt-mini-latest",
@@ -22854,7 +22854,7 @@
     },
     "created": 1777318451,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "~google/gemini-pro-latest",
       "canonical_slug": "~google/gemini-pro-latest",
@@ -22996,7 +22996,7 @@
     },
     "created": 1777318428,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "~moonshotai/kimi-latest",
       "canonical_slug": "~moonshotai/kimi-latest",
@@ -23139,7 +23139,7 @@
     },
     "created": 1777318398,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "~google/gemini-flash-latest",
       "canonical_slug": "~google/gemini-flash-latest",
@@ -23272,7 +23272,7 @@
     },
     "created": 1777318368,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "~anthropic/claude-sonnet-latest",
       "canonical_slug": "~anthropic/claude-sonnet-latest",
@@ -23395,7 +23395,7 @@
     },
     "created": 1777261368,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.5-plus-20260420",
       "canonical_slug": "qwen/qwen3.5-plus-20260420",
@@ -23515,7 +23515,7 @@
     },
     "created": 1777261362,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.6-flash",
       "canonical_slug": "qwen/qwen3.6-flash",
@@ -23628,7 +23628,7 @@
     },
     "created": 1777260255,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.6-35b-a3b",
       "canonical_slug": "qwen/qwen3.6-35b-a3b-20260415",
@@ -23755,7 +23755,7 @@
     },
     "created": 1777260242,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.6-max-preview",
       "canonical_slug": "qwen/qwen3.6-max-preview-20260420",
@@ -23867,7 +23867,7 @@
     },
     "created": 1777255064,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.6-27b",
       "canonical_slug": "qwen/qwen3.6-27b-20260422",
@@ -24001,7 +24001,7 @@
     },
     "created": 1777051896,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.5-pro",
       "canonical_slug": "openai/gpt-5.5-pro-20260423",
@@ -24129,7 +24129,7 @@
     },
     "created": 1777051896,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.5-pro:batch",
       "canonical_slug": "openai/gpt-5.5-pro-20260423",
@@ -24264,7 +24264,7 @@
     },
     "created": 1777051893,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.5",
       "canonical_slug": "openai/gpt-5.5-20260423",
@@ -24561,7 +24561,7 @@
     },
     "created": 1777051893,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.5:batch",
       "canonical_slug": "openai/gpt-5.5-20260423",
@@ -24842,7 +24842,7 @@
     },
     "created": 1777000679,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-v4-pro",
       "canonical_slug": "deepseek/deepseek-v4-pro-20260423",
@@ -25046,7 +25046,7 @@
     },
     "created": 1777000666,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-v4-flash",
       "canonical_slug": "deepseek/deepseek-v4-flash-20260423",
@@ -25229,7 +25229,7 @@
     },
     "created": 1776878150,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "tencent/hy3-preview",
       "canonical_slug": "tencent/hy3-preview-20260421",
@@ -25344,7 +25344,7 @@
     },
     "created": 1776874273,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "xiaomi/mimo-v2.5-pro",
       "canonical_slug": "xiaomi/mimo-v2.5-pro-20260422",
@@ -25522,7 +25522,7 @@
     },
     "created": 1776874269,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "xiaomi/mimo-v2.5",
       "canonical_slug": "xiaomi/mimo-v2.5-20260422",
@@ -25712,7 +25712,7 @@
     },
     "created": 1776797528,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.4-image-2",
       "canonical_slug": "openai/gpt-5.4-image-2-20260421",
@@ -25846,7 +25846,7 @@
     },
     "created": 1776795361,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "~anthropic/claude-opus-latest",
       "canonical_slug": "~anthropic/claude-opus-latest",
@@ -25954,7 +25954,7 @@
     "reasoning": null,
     "created": 1776747900,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openrouter/pareto-code",
       "canonical_slug": "openrouter/pareto-code",
@@ -26042,7 +26042,7 @@
     },
     "created": 1776699402,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "moonshotai/kimi-k2.6",
       "canonical_slug": "moonshotai/kimi-k2.6-20260420",
@@ -26327,7 +26327,7 @@
     },
     "created": 1776351100,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-opus-4.7",
       "canonical_slug": "anthropic/claude-4.7-opus-20260416",
@@ -26460,7 +26460,7 @@
     },
     "created": 1776351100,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-opus-4.7:batch",
       "canonical_slug": "anthropic/claude-4.7-opus-20260416",
@@ -26577,7 +26577,7 @@
     },
     "created": 1775578025,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-5.1",
       "canonical_slug": "z-ai/glm-5.1-20260406",
@@ -26847,7 +26847,7 @@
     },
     "created": 1775227989,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemma-4-26b-a4b-it",
       "canonical_slug": "google/gemma-4-26b-a4b-it-20260403",
@@ -26964,7 +26964,7 @@
     },
     "created": 1775227989,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemma-4-26b-a4b-it:free",
       "canonical_slug": "google/gemma-4-26b-a4b-it-20260403",
@@ -27074,7 +27074,7 @@
     },
     "created": 1775148486,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemma-4-31b-it",
       "canonical_slug": "google/gemma-4-31b-it-20260402",
@@ -27194,7 +27194,7 @@
     },
     "created": 1775148486,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemma-4-31b-it:batch",
       "canonical_slug": "google/gemma-4-31b-it-20260402",
@@ -27310,7 +27310,7 @@
     },
     "created": 1775148486,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemma-4-31b-it:free",
       "canonical_slug": "google/gemma-4-31b-it-20260402",
@@ -27430,7 +27430,7 @@
     },
     "created": 1775133557,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.6-plus",
       "canonical_slug": "qwen/qwen3.6-plus-04-02",
@@ -27615,7 +27615,7 @@
     },
     "created": 1775061458,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-5v-turbo",
       "canonical_slug": "z-ai/glm-5v-turbo-20260401",
@@ -27869,7 +27869,7 @@
     },
     "created": 1775058318,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "arcee-ai/trinity-large-thinking",
       "canonical_slug": "arcee-ai/trinity-large-thinking",
@@ -28052,7 +28052,7 @@
     },
     "created": 1774979158,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "x-ai/grok-4.20-multi-agent",
       "canonical_slug": "x-ai/grok-4.20-multi-agent-20260309",
@@ -28185,7 +28185,7 @@
     },
     "created": 1774979019,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "x-ai/grok-4.20",
       "canonical_slug": "x-ai/grok-4.20-20260309",
@@ -28398,7 +28398,7 @@
     "reasoning": null,
     "created": 1774907286,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/lyria-3-pro-preview",
       "canonical_slug": "google/lyria-3-pro-preview-20260330",
@@ -28488,7 +28488,7 @@
     "reasoning": null,
     "created": 1774907255,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/lyria-3-clip-preview",
       "canonical_slug": "google/lyria-3-clip-preview-20260330",
@@ -28580,7 +28580,7 @@
     "reasoning": null,
     "created": 1774649310,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "kwaipilot/kat-coder-pro-v2",
       "canonical_slug": "kwaipilot/kat-coder-pro-v2-20260327",
@@ -28689,7 +28689,7 @@
     },
     "created": 1774026965,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "rekaai/reka-edge",
       "canonical_slug": "rekaai/reka-edge-2603",
@@ -28794,7 +28794,7 @@
     },
     "created": 1773836697,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "minimax/minimax-m2.7",
       "canonical_slug": "minimax/minimax-m2.7-20260318",
@@ -28981,7 +28981,7 @@
     },
     "created": 1773748187,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.4-nano",
       "canonical_slug": "openai/gpt-5.4-nano-20260317",
@@ -29114,7 +29114,7 @@
     },
     "created": 1773748187,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.4-nano:batch",
       "canonical_slug": "openai/gpt-5.4-nano-20260317",
@@ -29246,7 +29246,7 @@
     },
     "created": 1773748178,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.4-mini",
       "canonical_slug": "openai/gpt-5.4-mini-20260317",
@@ -29379,7 +29379,7 @@
     },
     "created": 1773748178,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.4-mini:batch",
       "canonical_slug": "openai/gpt-5.4-mini-20260317",
@@ -29506,7 +29506,7 @@
     },
     "created": 1773695685,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mistral-small-2603",
       "canonical_slug": "mistralai/mistral-small-2603",
@@ -29634,7 +29634,7 @@
     },
     "created": 1773695685,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mistral-small-2603:batch",
       "canonical_slug": "mistralai/mistral-small-2603",
@@ -29755,7 +29755,7 @@
     },
     "created": 1773583573,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-5-turbo",
       "canonical_slug": "z-ai/glm-5-turbo-20260315",
@@ -29919,7 +29919,7 @@
     },
     "created": 1773245239,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "nvidia/nemotron-3-super-120b-a12b",
       "canonical_slug": "nvidia/nemotron-3-super-120b-a12b-20230311",
@@ -30047,7 +30047,7 @@
     },
     "created": 1773245239,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
       "canonical_slug": "nvidia/nemotron-3-super-120b-a12b-20230311",
@@ -30176,7 +30176,7 @@
     },
     "created": 1773157231,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "bytedance-seed/seed-2.0-lite",
       "canonical_slug": "bytedance-seed/seed-2.0-lite-20260309",
@@ -30292,7 +30292,7 @@
     },
     "created": 1773152396,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.5-9b",
       "canonical_slug": "qwen/qwen3.5-9b-20260310",
@@ -30409,7 +30409,7 @@
     },
     "created": 1773152396,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.5-9b:batch",
       "canonical_slug": "qwen/qwen3.5-9b-20260310",
@@ -30538,7 +30538,7 @@
     },
     "created": 1772734366,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.4-pro",
       "canonical_slug": "openai/gpt-5.4-pro-20260305",
@@ -30667,7 +30667,7 @@
     },
     "created": 1772734366,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.4-pro:batch",
       "canonical_slug": "openai/gpt-5.4-pro-20260305",
@@ -30802,7 +30802,7 @@
     },
     "created": 1772734352,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.4",
       "canonical_slug": "openai/gpt-5.4-20260305",
@@ -31043,7 +31043,7 @@
     },
     "created": 1772734352,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.4:batch",
       "canonical_slug": "openai/gpt-5.4-20260305",
@@ -31271,7 +31271,7 @@
     },
     "created": 1772636275,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "inception/mercury-2",
       "canonical_slug": "inception/mercury-2-20260304",
@@ -31465,7 +31465,7 @@
     },
     "created": 1772512673,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.1-flash-lite-preview",
       "canonical_slug": "google/gemini-3.1-flash-lite-preview-20260303",
@@ -31663,7 +31663,7 @@
     },
     "created": 1772131107,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "bytedance-seed/seed-2.0-mini",
       "canonical_slug": "bytedance-seed/seed-2.0-mini-20260224",
@@ -31785,7 +31785,7 @@
     },
     "created": 1772119558,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.1-flash-image-preview",
       "canonical_slug": "google/gemini-3.1-flash-image-preview-20260226",
@@ -31921,7 +31921,7 @@
     },
     "created": 1772053822,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.5-35b-a3b",
       "canonical_slug": "qwen/qwen3.5-35b-a3b-20260224",
@@ -32039,7 +32039,7 @@
     },
     "created": 1772053810,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.5-27b",
       "canonical_slug": "qwen/qwen3.5-27b-20260224",
@@ -32148,7 +32148,7 @@
     },
     "created": 1772053789,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.5-122b-a10b",
       "canonical_slug": "qwen/qwen3.5-122b-a10b-20260224",
@@ -32265,7 +32265,7 @@
     },
     "created": 1772053776,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.5-flash-02-23",
       "canonical_slug": "qwen/qwen3.5-flash-20260224",
@@ -32396,7 +32396,7 @@
     },
     "created": 1772045923,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.1-pro-preview-customtools",
       "canonical_slug": "google/gemini-3.1-pro-preview-customtools-20260219",
@@ -32532,7 +32532,7 @@
     },
     "created": 1771959164,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.3-codex",
       "canonical_slug": "openai/gpt-5.3-codex-20260224",
@@ -32739,7 +32739,7 @@
     },
     "created": 1771881306,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "aion-labs/aion-2.0",
       "canonical_slug": "aion-labs/aion-2.0-20260223",
@@ -32863,7 +32863,7 @@
     },
     "created": 1771509627,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.1-pro-preview",
       "canonical_slug": "google/gemini-3.1-pro-preview-20260219",
@@ -33167,7 +33167,7 @@
     },
     "created": 1771509627,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3.1-pro-preview:batch",
       "canonical_slug": "google/gemini-3.1-pro-preview-20260219",
@@ -33461,7 +33461,7 @@
     },
     "created": 1771342990,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-sonnet-4.6",
       "canonical_slug": "anthropic/claude-4.6-sonnet-20260217",
@@ -33692,7 +33692,7 @@
     },
     "created": 1771342990,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-sonnet-4.6:batch",
       "canonical_slug": "anthropic/claude-4.6-sonnet-20260217",
@@ -33913,7 +33913,7 @@
     },
     "created": 1771229416,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.5-plus-02-15",
       "canonical_slug": "qwen/qwen3.5-plus-20260216",
@@ -34087,7 +34087,7 @@
     },
     "created": 1771223018,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3.5-397b-a17b",
       "canonical_slug": "qwen/qwen3.5-397b-a17b-20260216",
@@ -34257,7 +34257,7 @@
     },
     "created": 1770908502,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "minimax/minimax-m2.5",
       "canonical_slug": "minimax/minimax-m2.5-20260211",
@@ -34421,7 +34421,7 @@
     },
     "created": 1770829182,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-5",
       "canonical_slug": "z-ai/glm-5-20260211",
@@ -34631,7 +34631,7 @@
     },
     "created": 1770671901,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-max-thinking",
       "canonical_slug": "qwen/qwen3-max-thinking-20260123",
@@ -34762,7 +34762,7 @@
     },
     "created": 1770219050,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-opus-4.6",
       "canonical_slug": "anthropic/claude-4.6-opus-20260205",
@@ -34985,7 +34985,7 @@
     },
     "created": 1770219050,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-opus-4.6:batch",
       "canonical_slug": "anthropic/claude-4.6-opus-20260205",
@@ -35188,7 +35188,7 @@
     "reasoning": null,
     "created": 1770164101,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-coder-next",
       "canonical_slug": "qwen/qwen3-coder-next-2025-02-03",
@@ -35292,7 +35292,7 @@
     "reasoning": null,
     "created": 1769917427,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openrouter/free",
       "canonical_slug": "openrouter/free",
@@ -35393,7 +35393,7 @@
     },
     "created": 1769728337,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "stepfun/step-3.5-flash",
       "canonical_slug": "stepfun/step-3.5-flash",
@@ -35494,7 +35494,7 @@
     },
     "created": 1769487076,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "moonshotai/kimi-k2.5",
       "canonical_slug": "moonshotai/kimi-k2.5-0127",
@@ -35706,7 +35706,7 @@
     },
     "created": 1769481200,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "upstage/solar-pro-3",
       "canonical_slug": "upstage/solar-pro-3",
@@ -35815,7 +35815,7 @@
     "reasoning": null,
     "created": 1769177239,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "minimax/minimax-m2-her",
       "canonical_slug": "minimax/minimax-m2-her-20260123",
@@ -35897,7 +35897,7 @@
     "reasoning": null,
     "created": 1769003823,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "writer/palmyra-x5",
       "canonical_slug": "writer/palmyra-x5-20250428",
@@ -35985,7 +35985,7 @@
     "reasoning": null,
     "created": 1768862569,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-audio",
       "canonical_slug": "openai/gpt-audio",
@@ -36089,7 +36089,7 @@
     "reasoning": null,
     "created": 1768859419,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-audio-mini",
       "canonical_slug": "openai/gpt-audio-mini",
@@ -36188,7 +36188,7 @@
     },
     "created": 1768833913,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-4.7-flash",
       "canonical_slug": "z-ai/glm-4.7-flash-20260119",
@@ -36357,7 +36357,7 @@
     },
     "created": 1768409315,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.2-codex",
       "canonical_slug": "openai/gpt-5.2-codex-20260114",
@@ -36508,7 +36508,7 @@
     },
     "created": 1766505011,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "bytedance-seed/seed-1.6-flash",
       "canonical_slug": "bytedance-seed/seed-1.6-flash-20250625",
@@ -36621,7 +36621,7 @@
     },
     "created": 1766504997,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "bytedance-seed/seed-1.6",
       "canonical_slug": "bytedance-seed/seed-1.6-20250625",
@@ -36728,7 +36728,7 @@
     },
     "created": 1766454997,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "minimax/minimax-m2.1",
       "canonical_slug": "minimax/minimax-m2.1",
@@ -36884,7 +36884,7 @@
     },
     "created": 1766378014,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-4.7",
       "canonical_slug": "z-ai/glm-4.7-20251222",
@@ -37106,7 +37106,7 @@
     },
     "created": 1765987078,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3-flash-preview",
       "canonical_slug": "google/gemini-3-flash-preview-20251217",
@@ -37326,7 +37326,7 @@
     },
     "created": 1765987078,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3-flash-preview:batch",
       "canonical_slug": "google/gemini-3-flash-preview-20251217",
@@ -37531,7 +37531,7 @@
     },
     "created": 1765731275,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "nvidia/nemotron-3-nano-30b-a3b",
       "canonical_slug": "nvidia/nemotron-3-nano-30b-a3b",
@@ -37647,7 +37647,7 @@
     "reasoning": null,
     "created": 1765389783,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.2-chat",
       "canonical_slug": "openai/gpt-5.2-chat-20251211",
@@ -37747,7 +37747,7 @@
     },
     "created": 1765389780,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.2-pro",
       "canonical_slug": "openai/gpt-5.2-pro-20251211",
@@ -37858,7 +37858,7 @@
     },
     "created": 1765389780,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.2-pro:batch",
       "canonical_slug": "openai/gpt-5.2-pro-20251211",
@@ -37974,7 +37974,7 @@
     },
     "created": 1765389775,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.2",
       "canonical_slug": "openai/gpt-5.2-20251211",
@@ -38192,7 +38192,7 @@
     },
     "created": 1765389775,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.2:batch",
       "canonical_slug": "openai/gpt-5.2-20251211",
@@ -38397,7 +38397,7 @@
     "reasoning": null,
     "created": 1765285419,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/devstral-2512",
       "canonical_slug": "mistralai/devstral-2512",
@@ -38496,7 +38496,7 @@
     "reasoning": null,
     "created": 1765213560,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "relace/relace-search",
       "canonical_slug": "relace/relace-search-20251208",
@@ -38590,7 +38590,7 @@
     },
     "created": 1765207462,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-4.6v",
       "canonical_slug": "z-ai/glm-4.6-20251208",
@@ -38688,7 +38688,7 @@
     "reasoning": null,
     "created": 1764903653,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openrouter/bodybuilder",
       "canonical_slug": "openrouter/bodybuilder",
@@ -38780,7 +38780,7 @@
     },
     "created": 1764878934,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.1-codex-max",
       "canonical_slug": "openai/gpt-5.1-codex-max-20251204",
@@ -38888,7 +38888,7 @@
     },
     "created": 1764696672,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "amazon/nova-2-lite-v1",
       "canonical_slug": "amazon/nova-2-lite-v1",
@@ -38994,7 +38994,7 @@
     "reasoning": null,
     "created": 1764681735,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/ministral-14b-2512",
       "canonical_slug": "mistralai/ministral-14b-2512",
@@ -39127,7 +39127,7 @@
     "reasoning": null,
     "created": 1764681654,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/ministral-8b-2512",
       "canonical_slug": "mistralai/ministral-8b-2512",
@@ -39260,7 +39260,7 @@
     "reasoning": null,
     "created": 1764681654,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/ministral-8b-2512:batch",
       "canonical_slug": "mistralai/ministral-8b-2512",
@@ -39393,7 +39393,7 @@
     "reasoning": null,
     "created": 1764681560,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/ministral-3b-2512",
       "canonical_slug": "mistralai/ministral-3b-2512",
@@ -39527,7 +39527,7 @@
     "reasoning": null,
     "created": 1764624472,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mistral-large-2512",
       "canonical_slug": "mistralai/mistral-large-2512",
@@ -39690,7 +39690,7 @@
     "reasoning": null,
     "created": 1764624472,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mistral-large-2512:batch",
       "canonical_slug": "mistralai/mistral-large-2512",
@@ -39854,7 +39854,7 @@
     },
     "created": 1764594642,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-v3.2",
       "canonical_slug": "deepseek/deepseek-v3.2-20251201",
@@ -40037,7 +40037,7 @@
     },
     "created": 1764010580,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-opus-4.5",
       "canonical_slug": "anthropic/claude-4.5-opus-20251124",
@@ -40233,7 +40233,7 @@
     },
     "created": 1764010580,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-opus-4.5:batch",
       "canonical_slug": "anthropic/claude-4.5-opus-20251124",
@@ -40431,7 +40431,7 @@
     },
     "created": 1763653797,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-3-pro-image-preview",
       "canonical_slug": "google/gemini-3-pro-image-preview-20251120",
@@ -40580,7 +40580,7 @@
     },
     "created": 1763060305,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.1",
       "canonical_slug": "openai/gpt-5.1-20251113",
@@ -40768,7 +40768,7 @@
     },
     "created": 1763060305,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.1:batch",
       "canonical_slug": "openai/gpt-5.1-20251113",
@@ -40952,7 +40952,7 @@
     },
     "created": 1763060298,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.1-codex",
       "canonical_slug": "openai/gpt-5.1-codex-20251113",
@@ -41128,7 +41128,7 @@
     },
     "created": 1763057820,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5.1-codex-mini",
       "canonical_slug": "openai/gpt-5.1-codex-mini-20251113",
@@ -41297,7 +41297,7 @@
     },
     "created": 1762440622,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "moonshotai/kimi-k2-thinking",
       "canonical_slug": "moonshotai/kimi-k2-thinking-20251106",
@@ -41421,7 +41421,7 @@
     "reasoning": null,
     "created": 1761950332,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "amazon/nova-premier-v1",
       "canonical_slug": "amazon/nova-premier-v1",
@@ -41523,7 +41523,7 @@
     },
     "created": 1761854366,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "perplexity/sonar-pro-search",
       "canonical_slug": "perplexity/sonar-pro-search",
@@ -41623,7 +41623,7 @@
     "reasoning": null,
     "created": 1761835144,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/voxtral-small-24b-2507",
       "canonical_slug": "mistralai/voxtral-small-24b-2507",
@@ -41722,7 +41722,7 @@
     },
     "created": 1761752836,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-oss-safeguard-20b",
       "canonical_slug": "openai/gpt-oss-safeguard-20b",
@@ -41813,7 +41813,7 @@
     },
     "created": 1761252093,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "minimax/minimax-m2",
       "canonical_slug": "minimax/minimax-m2",
@@ -41965,7 +41965,7 @@
     "reasoning": null,
     "created": 1761231332,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-vl-32b-instruct",
       "canonical_slug": "qwen/qwen3-vl-32b-instruct",
@@ -42061,7 +42061,7 @@
     "reasoning": null,
     "created": 1760927695,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "ibm-granite/granite-4.0-h-micro",
       "canonical_slug": "ibm-granite/granite-4.0-h-micro",
@@ -42164,7 +42164,7 @@
     },
     "created": 1760624583,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5-image-mini",
       "canonical_slug": "openai/gpt-5-image-mini",
@@ -42303,7 +42303,7 @@
     },
     "created": 1760547638,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-haiku-4.5",
       "canonical_slug": "anthropic/claude-4.5-haiku-20251001",
@@ -42483,7 +42483,7 @@
     },
     "created": 1760547638,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-haiku-4.5:batch",
       "canonical_slug": "anthropic/claude-4.5-haiku-20251001",
@@ -42652,7 +42652,7 @@
     },
     "created": 1760463746,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-vl-8b-thinking",
       "canonical_slug": "qwen/qwen3-vl-8b-thinking",
@@ -42750,7 +42750,7 @@
     "reasoning": null,
     "created": 1760463308,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-vl-8b-instruct",
       "canonical_slug": "qwen/qwen3-vl-8b-instruct",
@@ -42856,7 +42856,7 @@
     },
     "created": 1760447986,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5-image",
       "canonical_slug": "openai/gpt-5-image",
@@ -42997,7 +42997,7 @@
     "reasoning": null,
     "created": 1759870431,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-2.5-flash-image",
       "canonical_slug": "google/gemini-2.5-flash-image",
@@ -43120,7 +43120,7 @@
     },
     "created": 1759794479,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-vl-30b-a3b-thinking",
       "canonical_slug": "qwen/qwen3-vl-30b-a3b-thinking",
@@ -43222,7 +43222,7 @@
     "reasoning": null,
     "created": 1759794476,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-vl-30b-a3b-instruct",
       "canonical_slug": "qwen/qwen3-vl-30b-a3b-instruct",
@@ -43331,7 +43331,7 @@
     },
     "created": 1759776663,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5-pro",
       "canonical_slug": "openai/gpt-5-pro-2025-10-06",
@@ -43438,7 +43438,7 @@
     },
     "created": 1759776663,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5-pro:batch",
       "canonical_slug": "openai/gpt-5-pro-2025-10-06",
@@ -43541,7 +43541,7 @@
     },
     "created": 1759235576,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-4.6",
       "canonical_slug": "z-ai/glm-4.6",
@@ -43752,7 +43752,7 @@
     },
     "created": 1759161676,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-sonnet-4.5",
       "canonical_slug": "anthropic/claude-4.5-sonnet-20250929",
@@ -43973,7 +43973,7 @@
     },
     "created": 1759161676,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-sonnet-4.5:batch",
       "canonical_slug": "anthropic/claude-4.5-sonnet-20250929",
@@ -44172,7 +44172,7 @@
     },
     "created": 1759150481,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-v3.2-exp",
       "canonical_slug": "deepseek/deepseek-v3.2-exp",
@@ -44329,7 +44329,7 @@
     "reasoning": null,
     "created": 1758931878,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "thedrummer/cydonia-24b-v4.1",
       "canonical_slug": "thedrummer/cydonia-24b-v4.1",
@@ -44422,7 +44422,7 @@
     "reasoning": null,
     "created": 1758891572,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "relace/relace-apply-3",
       "canonical_slug": "relace/relace-apply-3",
@@ -44506,7 +44506,7 @@
     },
     "created": 1758668690,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-vl-235b-a22b-thinking",
       "canonical_slug": "qwen/qwen3-vl-235b-a22b-thinking",
@@ -44613,7 +44613,7 @@
     "reasoning": null,
     "created": 1758668687,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-vl-235b-a22b-instruct",
       "canonical_slug": "qwen/qwen3-vl-235b-a22b-instruct",
@@ -44734,7 +44734,7 @@
     },
     "created": 1758662808,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-max",
       "canonical_slug": "qwen/qwen3-max",
@@ -44929,7 +44929,7 @@
     "reasoning": null,
     "created": 1758662707,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-coder-plus",
       "canonical_slug": "qwen/qwen3-coder-plus",
@@ -45045,7 +45045,7 @@
     },
     "created": 1758548275,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-v3.1-terminus",
       "canonical_slug": "deepseek/deepseek-v3.1-terminus",
@@ -45224,7 +45224,7 @@
     "reasoning": null,
     "created": 1758115536,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-coder-flash",
       "canonical_slug": "qwen/qwen3-coder-flash",
@@ -45335,7 +45335,7 @@
     },
     "created": 1757612284,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-next-80b-a3b-thinking",
       "canonical_slug": "qwen/qwen3-next-80b-a3b-thinking-2509",
@@ -45441,7 +45441,7 @@
     "reasoning": null,
     "created": 1757612213,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-next-80b-a3b-instruct",
       "canonical_slug": "qwen/qwen3-next-80b-a3b-instruct-2509",
@@ -45542,7 +45542,7 @@
     },
     "created": 1757347599,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen-plus-2025-07-28",
       "canonical_slug": "qwen/qwen-plus-2025-07-28",
@@ -45644,7 +45644,7 @@
     "reasoning": null,
     "created": 1757021147,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "moonshotai/kimi-k2-0905",
       "canonical_slug": "moonshotai/kimi-k2-0905",
@@ -45751,7 +45751,7 @@
     },
     "created": 1756399192,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-30b-a3b-thinking-2507",
       "canonical_slug": "qwen/qwen3-30b-a3b-thinking-2507",
@@ -45866,7 +45866,7 @@
     },
     "created": 1756235463,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "nousresearch/hermes-4-405b",
       "canonical_slug": "nousresearch/hermes-4-405b",
@@ -45959,7 +45959,7 @@
     },
     "created": 1755779628,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-chat-v3.1",
       "canonical_slug": "deepseek/deepseek-chat-v3.1",
@@ -46115,7 +46115,7 @@
     "reasoning": null,
     "created": 1755095639,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mistral-medium-3.1",
       "canonical_slug": "mistralai/mistral-medium-3.1",
@@ -46276,7 +46276,7 @@
     "reasoning": null,
     "created": 1755095639,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mistral-medium-3.1:batch",
       "canonical_slug": "mistralai/mistral-medium-3.1",
@@ -46438,7 +46438,7 @@
     },
     "created": 1754922288,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-4.5v",
       "canonical_slug": "z-ai/glm-4.5v",
@@ -46551,7 +46551,7 @@
     },
     "created": 1754587413,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5",
       "canonical_slug": "openai/gpt-5-2025-08-07",
@@ -46737,7 +46737,7 @@
     },
     "created": 1754587413,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5:batch",
       "canonical_slug": "openai/gpt-5-2025-08-07",
@@ -46922,7 +46922,7 @@
     },
     "created": 1754587407,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5-mini",
       "canonical_slug": "openai/gpt-5-mini-2025-08-07",
@@ -47108,7 +47108,7 @@
     },
     "created": 1754587407,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5-mini:batch",
       "canonical_slug": "openai/gpt-5-mini-2025-08-07",
@@ -47293,7 +47293,7 @@
     },
     "created": 1754587402,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5-nano",
       "canonical_slug": "openai/gpt-5-nano-2025-08-07",
@@ -47460,7 +47460,7 @@
     },
     "created": 1754587402,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-5-nano:batch",
       "canonical_slug": "openai/gpt-5-nano-2025-08-07",
@@ -47618,7 +47618,7 @@
     },
     "created": 1754414231,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-oss-120b",
       "canonical_slug": "openai/gpt-oss-120b",
@@ -47785,7 +47785,7 @@
     },
     "created": 1754414231,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-oss-120b:batch",
       "canonical_slug": "openai/gpt-oss-120b",
@@ -47952,7 +47952,7 @@
     },
     "created": 1754414229,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-oss-20b",
       "canonical_slug": "openai/gpt-oss-20b",
@@ -48091,7 +48091,7 @@
     },
     "created": 1754414229,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-oss-20b:batch",
       "canonical_slug": "openai/gpt-oss-20b",
@@ -48229,7 +48229,7 @@
     },
     "created": 1754411591,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-opus-4.1",
       "canonical_slug": "anthropic/claude-4.1-opus-20250805",
@@ -48401,7 +48401,7 @@
     },
     "created": 1754411591,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-opus-4.1:batch",
       "canonical_slug": "anthropic/claude-4.1-opus-20250805",
@@ -48565,7 +48565,7 @@
     "reasoning": null,
     "created": 1754079630,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/codestral-2508",
       "canonical_slug": "mistralai/codestral-2508",
@@ -48706,7 +48706,7 @@
     "reasoning": null,
     "created": 1754079630,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/codestral-2508:batch",
       "canonical_slug": "mistralai/codestral-2508",
@@ -48842,7 +48842,7 @@
     "reasoning": null,
     "created": 1753972379,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-coder-30b-a3b-instruct",
       "canonical_slug": "qwen/qwen3-coder-30b-a3b-instruct",
@@ -48956,7 +48956,7 @@
     "reasoning": null,
     "created": 1753806965,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-30b-a3b-instruct-2507",
       "canonical_slug": "qwen/qwen3-30b-a3b-instruct-2507",
@@ -49052,7 +49052,7 @@
     },
     "created": 1753471347,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-4.5",
       "canonical_slug": "z-ai/glm-4.5",
@@ -49202,7 +49202,7 @@
     },
     "created": 1753471258,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "z-ai/glm-4.5-air",
       "canonical_slug": "z-ai/glm-4.5-air",
@@ -49352,7 +49352,7 @@
     },
     "created": 1753449557,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-235b-a22b-thinking-2507",
       "canonical_slug": "qwen/qwen3-235b-a22b-thinking-2507",
@@ -49504,7 +49504,7 @@
     "reasoning": null,
     "created": 1753230546,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-coder",
       "canonical_slug": "qwen/qwen3-coder-480b-a35b-07-25",
@@ -49640,7 +49640,7 @@
     "reasoning": null,
     "created": 1753205056,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "bytedance/ui-tars-1.5-7b",
       "canonical_slug": "bytedance/ui-tars-1.5-7b",
@@ -49747,7 +49747,7 @@
     },
     "created": 1753200276,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-2.5-flash-lite",
       "canonical_slug": "google/gemini-2.5-flash-lite",
@@ -49866,7 +49866,7 @@
     },
     "created": 1753200276,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-2.5-flash-lite:batch",
       "canonical_slug": "google/gemini-2.5-flash-lite",
@@ -49972,7 +49972,7 @@
     "reasoning": null,
     "created": 1753119555,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-235b-a22b-2507",
       "canonical_slug": "qwen/qwen3-235b-a22b-07-25",
@@ -50110,7 +50110,7 @@
     "reasoning": null,
     "created": 1752263252,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "moonshotai/kimi-k2",
       "canonical_slug": "moonshotai/kimi-k2",
@@ -50234,7 +50234,7 @@
     "reasoning": null,
     "created": 1752094966,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "cognitivecomputations/dolphin-mistral-24b-venice-edition",
       "canonical_slug": "venice/uncensored",
@@ -50318,7 +50318,7 @@
     },
     "created": 1751987664,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "tencent/hunyuan-a13b-instruct",
       "canonical_slug": "tencent/hunyuan-a13b-instruct",
@@ -50404,7 +50404,7 @@
     "reasoning": null,
     "created": 1751910858,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "morph/morph-v3-large",
       "canonical_slug": "morph/morph-v3-large",
@@ -50489,7 +50489,7 @@
     "reasoning": null,
     "created": 1751910002,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "morph/morph-v3-fast",
       "canonical_slug": "morph/morph-v3-fast",
@@ -50573,7 +50573,7 @@
     },
     "created": 1751300903,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "baidu/ernie-4.5-vl-424b-a47b",
       "canonical_slug": "baidu/ernie-4.5-vl-424b-a47b",
@@ -50663,7 +50663,7 @@
     "reasoning": null,
     "created": 1750443016,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mistral-small-3.2-24b-instruct",
       "canonical_slug": "mistralai/mistral-small-3.2-24b-instruct-2506",
@@ -50798,7 +50798,7 @@
     },
     "created": 1750200414,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "minimax/minimax-m1",
       "canonical_slug": "minimax/minimax-m1",
@@ -50910,7 +50910,7 @@
     },
     "created": 1750172488,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-2.5-flash",
       "canonical_slug": "google/gemini-2.5-flash",
@@ -51085,7 +51085,7 @@
     },
     "created": 1750172488,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-2.5-flash:batch",
       "canonical_slug": "google/gemini-2.5-flash",
@@ -51271,7 +51271,7 @@
     },
     "created": 1750169544,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-2.5-pro",
       "canonical_slug": "google/gemini-2.5-pro",
@@ -51461,7 +51461,7 @@
     },
     "created": 1750169544,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-2.5-pro:batch",
       "canonical_slug": "google/gemini-2.5-pro",
@@ -51630,7 +51630,7 @@
     },
     "created": 1749598352,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/o3-pro",
       "canonical_slug": "openai/o3-pro-2025-06-10",
@@ -51749,7 +51749,7 @@
     },
     "created": 1749137257,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-2.5-pro-preview",
       "canonical_slug": "google/gemini-2.5-pro-preview-06-05",
@@ -51863,7 +51863,7 @@
     },
     "created": 1748455170,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-r1-0528",
       "canonical_slug": "deepseek/deepseek-r1-0528",
@@ -52030,7 +52030,7 @@
     },
     "created": 1747931245,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-opus-4",
       "canonical_slug": "anthropic/claude-4-opus-20250522",
@@ -52204,7 +52204,7 @@
     },
     "created": 1747930371,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-sonnet-4",
       "canonical_slug": "anthropic/claude-4-sonnet-20250522",
@@ -52377,7 +52377,7 @@
     "reasoning": null,
     "created": 1746627341,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mistral-medium-3",
       "canonical_slug": "mistralai/mistral-medium-3",
@@ -52541,7 +52541,7 @@
     },
     "created": 1746578513,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemini-2.5-pro-preview-05-06",
       "canonical_slug": "google/gemini-2.5-pro-preview-03-25",
@@ -52655,7 +52655,7 @@
     "reasoning": null,
     "created": 1745975193,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "meta-llama/llama-guard-4-12b",
       "canonical_slug": "meta-llama/llama-guard-4-12b",
@@ -52745,7 +52745,7 @@
     },
     "created": 1745878604,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-30b-a3b",
       "canonical_slug": "qwen/qwen3-30b-a3b-04-28",
@@ -52886,7 +52886,7 @@
     },
     "created": 1745876632,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-8b",
       "canonical_slug": "qwen/qwen3-8b-04-28",
@@ -52994,7 +52994,7 @@
     },
     "created": 1745876478,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-14b",
       "canonical_slug": "qwen/qwen3-14b-04-28",
@@ -53100,7 +53100,7 @@
     },
     "created": 1745875945,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-32b",
       "canonical_slug": "qwen/qwen3-32b-04-28",
@@ -53204,7 +53204,7 @@
     },
     "created": 1745875757,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen3-235b-a22b",
       "canonical_slug": "qwen/qwen3-235b-a22b-04-28",
@@ -53353,7 +53353,7 @@
     },
     "created": 1744824212,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/o4-mini-high",
       "canonical_slug": "openai/o4-mini-high-2025-04-16",
@@ -53460,7 +53460,7 @@
     },
     "created": 1744823457,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/o3",
       "canonical_slug": "openai/o3-2025-04-16",
@@ -53597,7 +53597,7 @@
     },
     "created": 1744823457,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/o3:batch",
       "canonical_slug": "openai/o3-2025-04-16",
@@ -53734,7 +53734,7 @@
     },
     "created": 1744820942,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/o4-mini",
       "canonical_slug": "openai/o4-mini-2025-04-16",
@@ -53878,7 +53878,7 @@
     },
     "created": 1744820942,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/o4-mini:batch",
       "canonical_slug": "openai/o4-mini-2025-04-16",
@@ -54020,7 +54020,7 @@
     "reasoning": null,
     "created": 1744651385,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4.1",
       "canonical_slug": "openai/gpt-4.1-2025-04-14",
@@ -54160,7 +54160,7 @@
     "reasoning": null,
     "created": 1744651385,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4.1:batch",
       "canonical_slug": "openai/gpt-4.1-2025-04-14",
@@ -54299,7 +54299,7 @@
     "reasoning": null,
     "created": 1744651381,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4.1-mini",
       "canonical_slug": "openai/gpt-4.1-mini-2025-04-14",
@@ -54444,7 +54444,7 @@
     "reasoning": null,
     "created": 1744651381,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4.1-mini:batch",
       "canonical_slug": "openai/gpt-4.1-mini-2025-04-14",
@@ -54588,7 +54588,7 @@
     "reasoning": null,
     "created": 1744651369,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4.1-nano",
       "canonical_slug": "openai/gpt-4.1-nano-2025-04-14",
@@ -54733,7 +54733,7 @@
     "reasoning": null,
     "created": 1744651369,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4.1-nano:batch",
       "canonical_slug": "openai/gpt-4.1-nano-2025-04-14",
@@ -54871,7 +54871,7 @@
     "reasoning": null,
     "created": 1743881822,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "meta-llama/llama-4-maverick",
       "canonical_slug": "meta-llama/llama-4-maverick-17b-128e-instruct",
@@ -55015,7 +55015,7 @@
     "reasoning": null,
     "created": 1743881519,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "meta-llama/llama-4-scout",
       "canonical_slug": "meta-llama/llama-4-scout-17b-16e-instruct",
@@ -55149,7 +55149,7 @@
     "reasoning": null,
     "created": 1742824755,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-chat-v3-0324",
       "canonical_slug": "deepseek/deepseek-chat-v3-0324",
@@ -55254,7 +55254,7 @@
     },
     "created": 1742423211,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/o1-pro",
       "canonical_slug": "openai/o1-pro",
@@ -55341,7 +55341,7 @@
     "reasoning": null,
     "created": 1742238937,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mistral-small-3.1-24b-instruct",
       "canonical_slug": "mistralai/mistral-small-3.1-24b-instruct-2503",
@@ -55432,7 +55432,7 @@
     "reasoning": null,
     "created": 1741905510,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemma-3-4b-it",
       "canonical_slug": "google/gemma-3-4b-it",
@@ -55529,7 +55529,7 @@
     "reasoning": null,
     "created": 1741902625,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemma-3-12b-it",
       "canonical_slug": "google/gemma-3-12b-it",
@@ -55627,7 +55627,7 @@
     "reasoning": null,
     "created": 1741894342,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "cohere/command-a",
       "canonical_slug": "cohere/command-a-03-2025",
@@ -55721,7 +55721,7 @@
     },
     "created": 1741812813,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "rekaai/reka-flash-3",
       "canonical_slug": "rekaai/reka-flash-3",
@@ -55823,7 +55823,7 @@
     "reasoning": null,
     "created": 1741756359,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemma-3-27b-it",
       "canonical_slug": "google/gemma-3-27b-it",
@@ -55932,7 +55932,7 @@
     "reasoning": null,
     "created": 1741636566,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "thedrummer/skyfall-36b-v2",
       "canonical_slug": "thedrummer/skyfall-36b-v2",
@@ -56026,7 +56026,7 @@
     },
     "created": 1741313308,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "perplexity/sonar-reasoning-pro",
       "canonical_slug": "perplexity/sonar-reasoning-pro",
@@ -56117,7 +56117,7 @@
     "reasoning": null,
     "created": 1741312423,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "perplexity/sonar-pro",
       "canonical_slug": "perplexity/sonar-pro",
@@ -56205,7 +56205,7 @@
     },
     "created": 1741311246,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "perplexity/sonar-deep-research",
       "canonical_slug": "perplexity/sonar-deep-research",
@@ -56298,7 +56298,7 @@
     "reasoning": null,
     "created": 1739803239,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mistral-saba",
       "canonical_slug": "mistralai/mistral-saba-2502",
@@ -56399,7 +56399,7 @@
     },
     "created": 1739372611,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/o3-mini-high",
       "canonical_slug": "openai/o3-mini-high-2025-01-31",
@@ -56504,7 +56504,7 @@
     "reasoning": null,
     "created": 1738696718,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "aion-labs/aion-rp-llama-3.1-8b",
       "canonical_slug": "aion-labs/aion-rp-llama-3.1-8b",
@@ -56586,7 +56586,7 @@
     "reasoning": null,
     "created": 1738410311,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen2.5-vl-72b-instruct",
       "canonical_slug": "qwen/qwen2.5-vl-72b-instruct",
@@ -56691,7 +56691,7 @@
     "reasoning": null,
     "created": 1738409840,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen-plus",
       "canonical_slug": "qwen/qwen-plus-2025-01-25",
@@ -56798,7 +56798,7 @@
     },
     "created": 1738351721,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/o3-mini",
       "canonical_slug": "openai/o3-mini-2025-01-31",
@@ -56901,7 +56901,7 @@
     },
     "created": 1738351721,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/o3-mini:batch",
       "canonical_slug": "openai/o3-mini-2025-01-31",
@@ -56996,7 +56996,7 @@
     "reasoning": null,
     "created": 1738255409,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mistral-small-24b-instruct-2501",
       "canonical_slug": "mistralai/mistral-small-24b-instruct-2501",
@@ -57090,7 +57090,7 @@
     "reasoning": null,
     "created": 1738013808,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "perplexity/sonar",
       "canonical_slug": "perplexity/sonar",
@@ -57175,7 +57175,7 @@
     },
     "created": 1737663169,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-r1-distill-llama-70b",
       "canonical_slug": "deepseek/deepseek-r1-distill-llama-70b",
@@ -57265,7 +57265,7 @@
     },
     "created": 1737381095,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-r1",
       "canonical_slug": "deepseek/deepseek-r1",
@@ -57372,7 +57372,7 @@
     "reasoning": null,
     "created": 1736915462,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "minimax/minimax-01",
       "canonical_slug": "minimax/minimax-01",
@@ -57454,7 +57454,7 @@
     "reasoning": null,
     "created": 1736489872,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "microsoft/phi-4",
       "canonical_slug": "microsoft/phi-4",
@@ -57541,7 +57541,7 @@
     "reasoning": null,
     "created": 1735241320,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "deepseek/deepseek-chat",
       "canonical_slug": "deepseek/deepseek-chat-v3",
@@ -57683,7 +57683,7 @@
     "reasoning": null,
     "created": 1734535928,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "sao10k/l3.3-euryale-70b",
       "canonical_slug": "sao10k/l3.3-euryale-70b-v2.3",
@@ -57778,7 +57778,7 @@
     },
     "created": 1734459999,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/o1",
       "canonical_slug": "openai/o1-2024-12-17",
@@ -57882,7 +57882,7 @@
     "reasoning": null,
     "created": 1734158152,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "cohere/command-r7b-12-2024",
       "canonical_slug": "cohere/command-r7b-12-2024",
@@ -57966,7 +57966,7 @@
     "reasoning": null,
     "created": 1733506137,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "meta-llama/llama-3.3-70b-instruct",
       "canonical_slug": "meta-llama/llama-3.3-70b-instruct",
@@ -58066,7 +58066,7 @@
     "reasoning": null,
     "created": 1733437363,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "amazon/nova-lite-v1",
       "canonical_slug": "amazon/nova-lite-v1",
@@ -58147,7 +58147,7 @@
     "reasoning": null,
     "created": 1733437237,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "amazon/nova-micro-v1",
       "canonical_slug": "amazon/nova-micro-v1",
@@ -58228,7 +58228,7 @@
     "reasoning": null,
     "created": 1733436303,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "amazon/nova-pro-v1",
       "canonical_slug": "amazon/nova-pro-v1",
@@ -58326,7 +58326,7 @@
     "reasoning": null,
     "created": 1732127594,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4o-2024-11-20",
       "canonical_slug": "openai/gpt-4o-2024-11-20",
@@ -58424,7 +58424,7 @@
     "reasoning": null,
     "created": 1731978415,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mistral-large-2407",
       "canonical_slug": "mistralai/mistral-large-2407",
@@ -58513,7 +58513,7 @@
     "reasoning": null,
     "created": 1731368400,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen-2.5-coder-32b-instruct",
       "canonical_slug": "qwen/qwen-2.5-coder-32b-instruct",
@@ -58598,7 +58598,7 @@
     "reasoning": null,
     "created": 1731103448,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "thedrummer/unslopnemo-12b",
       "canonical_slug": "thedrummer/unslopnemo-12b",
@@ -58688,7 +58688,7 @@
     "reasoning": null,
     "created": 1729555200,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthracite-org/magnum-v4-72b",
       "canonical_slug": "anthracite-org/magnum-v4-72b",
@@ -58778,7 +58778,7 @@
     "reasoning": null,
     "created": 1729036800,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen-2.5-7b-instruct",
       "canonical_slug": "qwen/qwen-2.5-7b-instruct",
@@ -58870,7 +58870,7 @@
     "reasoning": null,
     "created": 1727222400,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "meta-llama/llama-3.2-1b-instruct",
       "canonical_slug": "meta-llama/llama-3.2-1b-instruct",
@@ -58955,7 +58955,7 @@
     "reasoning": null,
     "created": 1727222400,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "meta-llama/llama-3.2-3b-instruct",
       "canonical_slug": "meta-llama/llama-3.2-3b-instruct",
@@ -59043,7 +59043,7 @@
     "reasoning": null,
     "created": 1726704000,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "qwen/qwen-2.5-72b-instruct",
       "canonical_slug": "qwen/qwen-2.5-72b-instruct",
@@ -59132,7 +59132,7 @@
     "reasoning": null,
     "created": 1724976000,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "cohere/command-r-08-2024",
       "canonical_slug": "cohere/command-r-08-2024",
@@ -59218,7 +59218,7 @@
     "reasoning": null,
     "created": 1724976000,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "cohere/command-r-plus-08-2024",
       "canonical_slug": "cohere/command-r-plus-08-2024",
@@ -59304,7 +59304,7 @@
     "reasoning": null,
     "created": 1724803200,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "sao10k/l3.1-euryale-70b",
       "canonical_slug": "sao10k/l3.1-euryale-70b",
@@ -59393,7 +59393,7 @@
     "reasoning": null,
     "created": 1723939200,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "nousresearch/hermes-3-llama-3.1-70b",
       "canonical_slug": "nousresearch/hermes-3-llama-3.1-70b",
@@ -59480,7 +59480,7 @@
     "reasoning": null,
     "created": 1723766400,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "nousresearch/hermes-3-llama-3.1-405b",
       "canonical_slug": "nousresearch/hermes-3-llama-3.1-405b",
@@ -59567,7 +59567,7 @@
     "reasoning": null,
     "created": 1723507200,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "sao10k/l3-lunaris-8b",
       "canonical_slug": "sao10k/l3-lunaris-8b",
@@ -59662,7 +59662,7 @@
     "reasoning": null,
     "created": 1722902400,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4o-2024-08-06",
       "canonical_slug": "openai/gpt-4o-2024-08-06",
@@ -59756,7 +59756,7 @@
     "reasoning": null,
     "created": 1721692800,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "meta-llama/llama-3.1-70b-instruct",
       "canonical_slug": "meta-llama/llama-3.1-70b-instruct",
@@ -59849,7 +59849,7 @@
     "reasoning": null,
     "created": 1721692800,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "meta-llama/llama-3.1-8b-instruct",
       "canonical_slug": "meta-llama/llama-3.1-8b-instruct",
@@ -59949,7 +59949,7 @@
     "reasoning": null,
     "created": 1721347200,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mistral-nemo",
       "canonical_slug": "mistralai/mistral-nemo",
@@ -60048,7 +60048,7 @@
     "reasoning": null,
     "created": 1721260800,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4o-mini",
       "canonical_slug": "openai/gpt-4o-mini",
@@ -60156,7 +60156,7 @@
     "reasoning": null,
     "created": 1721260800,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4o-mini-2024-07-18",
       "canonical_slug": "openai/gpt-4o-mini-2024-07-18",
@@ -60256,7 +60256,7 @@
     "reasoning": null,
     "created": 1721260800,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4o-mini:batch",
       "canonical_slug": "openai/gpt-4o-mini",
@@ -60358,7 +60358,7 @@
     "reasoning": null,
     "created": 1720828800,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "google/gemma-2-27b-it",
       "canonical_slug": "google/gemma-2-27b-it",
@@ -60448,7 +60448,7 @@
     "reasoning": null,
     "created": 1715558400,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4o",
       "canonical_slug": "openai/gpt-4o",
@@ -60590,7 +60590,7 @@
     "reasoning": null,
     "created": 1715558400,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4o-2024-05-13",
       "canonical_slug": "openai/gpt-4o-2024-05-13",
@@ -60698,7 +60698,7 @@
     "reasoning": null,
     "created": 1715558400,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4o:batch",
       "canonical_slug": "openai/gpt-4o",
@@ -60843,7 +60843,7 @@
     "reasoning": null,
     "created": 1713312000,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mixtral-8x22b-instruct",
       "canonical_slug": "mistralai/mixtral-8x22b-instruct",
@@ -60932,7 +60932,7 @@
     "reasoning": null,
     "created": 1713225600,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "microsoft/wizardlm-2-8x22b",
       "canonical_slug": "microsoft/wizardlm-2-8x22b",
@@ -61017,7 +61017,7 @@
     "reasoning": null,
     "created": 1712620800,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4-turbo",
       "canonical_slug": "openai/gpt-4-turbo",
@@ -61117,7 +61117,7 @@
     "reasoning": null,
     "created": 1712620800,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4-turbo:batch",
       "canonical_slug": "openai/gpt-4-turbo",
@@ -61225,7 +61225,7 @@
     "reasoning": null,
     "created": 1710288000,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "anthropic/claude-3-haiku",
       "canonical_slug": "anthropic/claude-3-haiku",
@@ -61316,7 +61316,7 @@
     "reasoning": null,
     "created": 1708905600,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mistralai/mistral-large",
       "canonical_slug": "mistralai/mistral-large",
@@ -61405,7 +61405,7 @@
     "reasoning": null,
     "created": 1706140800,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-3.5-turbo-0613",
       "canonical_slug": "openai/gpt-3.5-turbo-0613",
@@ -61493,7 +61493,7 @@
     "reasoning": null,
     "created": 1706140800,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4-turbo-preview",
       "canonical_slug": "openai/gpt-4-turbo-preview",
@@ -61586,7 +61586,7 @@
     "reasoning": null,
     "created": 1699401600,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openrouter/auto",
       "canonical_slug": "openrouter/auto",
@@ -61688,7 +61688,7 @@
     "reasoning": null,
     "created": 1695859200,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-3.5-turbo-instruct",
       "canonical_slug": "openai/gpt-3.5-turbo-instruct",
@@ -61774,7 +61774,7 @@
     "reasoning": null,
     "created": 1693180800,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-3.5-turbo-16k",
       "canonical_slug": "openai/gpt-3.5-turbo-16k",
@@ -61863,7 +61863,7 @@
     "reasoning": null,
     "created": 1690934400,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "mancer/weaver",
       "canonical_slug": "mancer/weaver",
@@ -61952,7 +61952,7 @@
     "reasoning": null,
     "created": 1689984000,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "undi95/remm-slerp-l2-13b",
       "canonical_slug": "undi95/remm-slerp-l2-13b",
@@ -62042,7 +62042,7 @@
     "reasoning": null,
     "created": 1688256000,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "gryphe/mythomax-l2-13b",
       "canonical_slug": "gryphe/mythomax-l2-13b",
@@ -62132,7 +62132,7 @@
     "reasoning": null,
     "created": 1685232000,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-3.5-turbo",
       "canonical_slug": "openai/gpt-3.5-turbo",
@@ -62230,7 +62230,7 @@
     "reasoning": null,
     "created": 1685232000,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-3.5-turbo:batch",
       "canonical_slug": "openai/gpt-3.5-turbo",
@@ -62327,7 +62327,7 @@
     "reasoning": null,
     "created": 1685232000,
     "raw_source": "openrouter:/api/v1/models",
-    "retrieved_at": "2026-09-14T01:01:59.569606+00:00",
+    "retrieved_at": "2026-09-14T02:38:22.763354+00:00",
     "raw": {
       "id": "openai/gpt-4",
       "canonical_slug": "openai/gpt-4",

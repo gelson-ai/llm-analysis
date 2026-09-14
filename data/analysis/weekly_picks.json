@@ -1,7 +1,7 @@
 {
   "version": 1,
   "timezone": "Asia/Manila",
-  "updated_at": "2026-09-14T01:02:00.339238+00:00",
+  "updated_at": "2026-09-14T02:38:23.585804+00:00",
   "weeks": {
     "2026-09-07_2026-09-13": {
       "week_start": "2026-09-07",
@@ -245,8 +245,8 @@
             "model_name": "DeepSeek: DeepSeek V4 Flash 0731",
             "provider": "deepseek",
             "score": 34.5,
-            "blended_price": 0.09375,
-            "value": 368.0
+            "blended_price": 0.075,
+            "value": 460.0
           },
           "current_leader_differs": false,
           "revision_count": 0
