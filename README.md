@@ -265,3 +265,167 @@ tests/                          - pytest suite using synthetic fixtures (no netw
   `input_cache_write`, seen preserved under each model's
   `cache_related_pricing_fields`) need to be folded into the cost model —
   inspect real data before deciding.
+
+## Image & Video Generation Models
+
+Everything above this section describes the **chat/LLM** catalog. Image- and
+video-generation models are collected by a second, deliberately independent
+pipeline that reads two different, dedicated endpoints:
+
+```bash
+python run_media_pipeline.py                       # full run
+python run_media_pipeline.py --no-snapshot         # don't write a snapshot
+python run_media_pipeline.py --skip-image-pricing  # 2 requests instead of ~54
+```
+
+### Why it is a separate pipeline, not a mode of the existing one
+
+Three reasons, all confirmed against the live API:
+
+1. **Different endpoints.** `GET /api/v1/images/models` and
+   `GET /api/v1/videos/models` are dedicated, documented catalogs. The generic
+   catalog can also be filtered with
+   `/api/v1/models?output_modalities=image|video`, but that returns the same
+   models with pricing mostly zeroed out and no `pricing_skus`, so the dedicated
+   endpoints are the primary source.
+2. **Different pricing model.** Chat models are priced per token
+   (`pricing.prompt` / `pricing.completion`). Media models are priced per
+   *unit*: per image, per second of video, per video token, per
+   megapixel-second, or as a per-generation minimum. Real cost for these models
+   cannot be expressed as token pricing at all, so forcing them through
+   `src/normalize.py`'s token path would produce nonsense. They get their own
+   normalizer, `src/normalize_media.py`, which reuses `normalize.py`'s
+   *principles* (never drop a model, never fabricate a price, preserve the raw
+   object) without touching its code.
+3. **Much smaller catalog.** The chat inventory is several hundred models; the
+   media catalogs were 52 image and 29 video models on 2026-09-17. They
+   therefore have their own floors (`MIN_EXPECTED_IMAGE_MODEL_COUNT` /
+   `MIN_EXPECTED_VIDEO_MODEL_COUNT`, both 10), because reusing the chat
+   pipeline's `MIN_EXPECTED_MODEL_COUNT` of 100 would falsely fail every run.
+
+`run_media_pipeline.py` writes **only new files** - it never overwrites,
+merges into, or reshapes anything the chat pipeline produces - and it is
+deliberately **not** wired into `dashboard/refresh.py` or `run_weekly.bat`.
+Hooking it into the weekly refresh is a separate decision.
+
+### Where media pricing actually lives
+
+- **Video models** publish a `pricing_skus` map inline on the list endpoint.
+  The values are strings in *mixed units and vocabularies* - for example
+  `"duration_seconds_720p": "0.08"` (USD per second) sitting next to
+  `"cents_per_second_output": "3"` (cents per second), plus
+  `"video_tokens"`, `"cents_per_megapixel_second_precise"`, `"reference_images"`
+  and `"minimum_cents_per_generation"`. The published docs example
+  (`per-video-second`) does not occur in live data, so the parser never assumes
+  a fixed key list; an unrecognised key is reported as an unknown unit with no
+  USD figure rather than guessed at.
+- **Image models publish no pricing on the list endpoint at all.** Their cost
+  is only in the per-model record
+  `GET /api/v1/images/models/{id}/endpoints`, so the pipeline makes one extra
+  request per image model to read it (~52 requests, ~40 s serialised with a
+  small politeness delay). `--skip-image-pricing` skips that fan-out; image
+  models are then written with no price at all.
+
+Two unit assumptions are made, and both are recorded explicitly rather than
+applied silently - see `pricing_unit_assumptions` in the coverage report and
+the matching entries in the data-quality report:
+
+- keys prefixed `cents_` are converted to USD (divided by 100);
+- keys with no explicit currency marker are treated as USD (every bare key
+  observed live is USD).
+
+Each model also distinguishes `has_any_price` (there is some price) from
+`has_valid_pricing` (there is a price in a unit comparable across models - USD
+per second for video, USD per image for image). A model priced only per video
+token is in the first bucket but not the second, and that stays visible rather
+than being flattened into a single flag.
+
+### Benchmarks
+
+There are two media benchmark sources, and they are kept separate because they
+measure different things:
+
+**1. Design Arena** (`data/normalized/media_benchmarks.json`) — per-category Elo
+and win rates, extracted when present, reusing the exact extraction logic the
+chat pipeline already uses. It is **not** on the dedicated media endpoints: the
+dedicated image endpoint publishes no `benchmarks` block at all, so these rows
+come from the generic catalog filtered by output modality
+(`/api/v1/models?output_modalities=image`), which exposes `design_arena` for a
+subset of image models. Video models publish no Design Arena data on any
+endpoint. Artificial Analysis composite indices — chat-model scores — are
+explicitly filtered out and never mixed into the media benchmark output. Each
+record carries `source_endpoint` so its origin is never ambiguous.
+
+**2. Prompt benchmarks** (`data/normalized/media_prompt_benchmarks.json`) —
+OpenRouter's own per-prompt evaluations at
+[`/benchmarks/media/images`](https://openrouter.ai/benchmarks/media/images)
+(15 prompts) and
+[`/benchmarks/media/videos`](https://openrouter.ai/benchmarks/media/videos)
+(12 prompts). Each page publishes, per model: a judged pass count
+(*"5 of 5 checks passed"*), the actual cost of that generation in USD, and the
+generation time in seconds — ~867 rows across 27 pages.
+
+> **This one is scraped HTML, and that is a deliberate trade-off.** There is no
+> public JSON API: the pages are server-rendered markup, and the obvious routes
+> (`/api/v1/benchmarks`, `/api/v1/videos/benchmarks`) return
+> `401 "No cookie auth credentials found"` — they exist but are session-gated.
+> The data is public; only the transport is awkward. So the extraction is
+> written defensively and the guards are load-bearing:
+>
+> - it anchors on the accessibility contract (`aria-label="N of M checks
+>   passed"`) and falls back to the visible `N/M` text, recording **which** was
+>   used on every row so a silent markup change shows up in the data-quality
+>   report as `prompt_benchmark_aria_label_fallback`;
+> - a page that parses to **zero** rows is a hard error, and the total across all
+>   pages must clear `MIN_EXPECTED_TOTAL_PROMPT_BENCHMARK_ROWS` — because an
+>   empty parse is indistinguishable from "these models have no benchmarks",
+>   which is exactly the lie this pipeline must not tell;
+> - each row is rendered twice by the page, so rows are de-duplicated, and if
+>   the two copies ever disagree that is reported rather than silently resolved;
+> - the parsed rows are preserved verbatim in
+>   `data/raw/openrouter_media_prompt_benchmark_rows.json` together with a
+>   sha256 + byte size per page. The full page HTML is deliberately **not**
+>   committed: 27 pages is several MB per run, and this repo tracks `data/**`,
+>   which would add hundreds of MB a year to history for markup we can re-fetch
+>   at any time. The fingerprints are what actually matter for spotting drift.
+>
+> **Correctness is not a global score.** A pass count is the judged result for
+> *one* prompt — 5/5 on `traffic-light` says nothing about `mirror-walk`. Pass
+> rates are only comparable within the same `prompt_slug`, so rows are stored
+> raw as (model, prompt) and any cross-prompt aggregate would be an
+> interpretation, not a fact from the source. Prompt difficulty also genuinely
+> varies how many models a page covers: 14 of the 15 image prompts cover 42
+> models, but `composite-refs` (the multi-reference prompt) covers only 3, and
+> video `walk-out` covers 14 against 24 for the rest. That is why there is no
+> per-page row floor — only a zero-row error and a global total floor.
+
+### What one media run produces
+
+```text
+data/raw/openrouter_image_models.json            - complete, unmodified response
+data/raw/openrouter_video_models.json            - complete, unmodified response
+data/raw/openrouter_image_model_endpoints.json   - raw per-model endpoint records + errors
+data/normalized/image_models.json / .csv         - one record per image model
+data/normalized/video_models.json / .csv         - one record per video model
+data/normalized/media_benchmarks.json / .csv     - Design Arena rows
+data/normalized/media_prompt_benchmarks.json/.csv- per-prompt correctness/cost/time rows
+data/raw/openrouter_media_prompt_benchmark_rows.json - verbatim parsed rows + per-page sha256
+data/analysis/media_coverage_report.json         - counts, price resolution rate, unit assumptions
+data/analysis/media_data_quality_report.json     - errors/warnings/info
+data/snapshots/YYYY-MM-DD/media/                 - timestamped copy of the above
+```
+
+Run the media tests on their own (offline, no network needed):
+
+```bash
+python -m pytest tests/test_media_fetch.py tests/test_media_normalize.py \
+                 tests/test_media_benchmark_scraper.py -v
+```
+
+> **Snapshot note:** media snapshots live in a `media/` subfolder of the
+> existing per-day snapshot directory, so they never collide with the chat
+> pipeline's snapshot files. Be aware of one interaction: creating that day's
+> folder means `dashboard/refresh.py` - which only checks whether today's folder
+> exists - will pass `--no-snapshot` to the chat pipeline. So a media run that
+> happens before the day's first chat refresh causes that day's chat snapshot
+> to be skipped. The run logs a warning when it creates the folder.
