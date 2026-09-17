@@ -1,0 +1,222 @@
+{
+  "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
+  "model_inventory": {
+    "image": {
+      "total_models": 52,
+      "models_with_resolved_price": 48,
+      "models_without_resolved_price": 4,
+      "price_resolution_rate": 92.31,
+      "models_with_any_price_data": 48,
+      "models_with_price_data_but_no_comparable_rate": 0,
+      "models_with_design_arena": 13,
+      "models_without_design_arena": 39,
+      "unit_families_present": [],
+      "comparable_price_units_used": [
+        "usd_per_image",
+        "usd_per_megapixel",
+        "usd_per_token"
+      ],
+      "comparable_price_basis_used": [
+        "cheapest_variant_tier",
+        "plain_output_image_rate",
+        "plain_output_megapixel_rate",
+        "plain_output_token_rate"
+      ],
+      "comparable_price_range": {
+        "min": 8e-06,
+        "max": 0.3,
+        "count": 48
+      },
+      "provider_count": 11
+    },
+    "video": {
+      "total_models": 29,
+      "models_with_resolved_price": 23,
+      "models_without_resolved_price": 6,
+      "price_resolution_rate": 79.31,
+      "models_with_any_price_data": 29,
+      "models_with_price_data_but_no_comparable_rate": 6,
+      "models_with_design_arena": 0,
+      "models_without_design_arena": 29,
+      "unit_families_present": [
+        "cents_per_generation",
+        "cents_per_image",
+        "cents_per_megapixel_second",
+        "cents_per_second",
+        "usd_per_image",
+        "usd_per_second",
+        "usd_per_video_token"
+      ],
+      "comparable_price_units_used": [
+        "usd_per_second"
+      ],
+      "comparable_price_basis_used": [
+        "720p_tier",
+        "720p_tier_with_operation",
+        "audio_qualified_rate",
+        "plain_rate"
+      ],
+      "comparable_price_range": {
+        "min": 0.03,
+        "max": 0.3,
+        "count": 23
+      },
+      "provider_count": 10
+    },
+    "total_models": 81,
+    "total_with_resolved_price": 71,
+    "total_with_design_arena": 13
+  },
+  "image_endpoint_pricing": {
+    "enabled": true,
+    "requested": 52,
+    "succeeded": 52,
+    "failed": 0,
+    "failed_model_ids": [],
+    "models_with_any_price_from_endpoints": 48,
+    "models_with_no_price_from_endpoints": [
+      "krea/krea-2-large",
+      "krea/krea-2-medium",
+      "krea/krea-2-medium-turbo",
+      "meta/muse-image"
+    ],
+    "delay_seconds_between_requests": 0.25
+  },
+  "image_inventory_cross_check": {
+    "dedicated_image_catalog": 52,
+    "filtered_generic_catalog": 54,
+    "in_both": 52,
+    "only_in_dedicated_catalog": [],
+    "only_in_filtered_catalog": [
+      "openrouter/auto",
+      "openrouter/auto-beta"
+    ]
+  },
+  "benchmark_coverage": [
+    {
+      "benchmark_name": "Design Arena: models/graphicdesign",
+      "benchmark_source": "Design Arena",
+      "source_endpoint": "/api/v1/models?output_modalities=image",
+      "number_of_models": 12,
+      "percentage_of_media_inventory": 14.81
+    },
+    {
+      "benchmark_name": "Design Arena: models/image",
+      "benchmark_source": "Design Arena",
+      "source_endpoint": "/api/v1/models?output_modalities=image",
+      "number_of_models": 12,
+      "percentage_of_media_inventory": 14.81
+    },
+    {
+      "benchmark_name": "Design Arena: models/logo",
+      "benchmark_source": "Design Arena",
+      "source_endpoint": "/api/v1/models?output_modalities=image",
+      "number_of_models": 12,
+      "percentage_of_media_inventory": 14.81
+    },
+    {
+      "benchmark_name": "Design Arena: models/imageediting",
+      "benchmark_source": "Design Arena",
+      "source_endpoint": "/api/v1/models?output_modalities=image",
+      "number_of_models": 8,
+      "percentage_of_media_inventory": 9.88
+    }
+  ],
+  "prompt_benchmark_coverage": {
+    "enabled": true,
+    "source": "https://openrouter.ai/benchmarks/media/{images,videos}",
+    "benchmark_source": "OpenRouter Media Benchmarks",
+    "pages_fetched": 27,
+    "prompt_page_count": 27,
+    "rows": 867,
+    "rows_per_prompt": {
+      "full-glass": 42,
+      "closed-umbrellas": 42,
+      "three-fingers": 42,
+      "cards-dice": 42,
+      "long-exact-string": 42,
+      "multiple-languages": 42,
+      "occlusion": 42,
+      "mirror": 42,
+      "plain-zebra": 42,
+      "times-square": 42,
+      "minimal-diff": 42,
+      "object-removal": 42,
+      "person-removal": 42,
+      "product-placement": 42,
+      "composite-refs": 3,
+      "traffic-light": 24,
+      "five-candles": 23,
+      "wrong-way-escalator": 24,
+      "frozen-crowd": 24,
+      "sign-stays-readable": 24,
+      "glass-of-water": 24,
+      "domino-run": 24,
+      "mirror-walk": 24,
+      "behind-the-pillar": 24,
+      "steaming-mug": 23,
+      "walk-out": 14,
+      "continuous-shot": 24
+    },
+    "distinct_models_in_benchmarks": 66,
+    "models_matched_to_inventory": 66,
+    "models_unmatched": 0,
+    "unmatched_model_slugs": [],
+    "rows_missing_cost": 0,
+    "rows_missing_generation_time": 0,
+    "correctness_extraction_sources": {
+      "aria-label": 867
+    },
+    "conflicting_row_values": 0,
+    "note": "Correctness is the count of judged checks passed for ONE prompt, not a global score - pass rates are only comparable within the same prompt_slug. Cost and generation_seconds are the observed values for that single generation."
+  },
+  "benchmark_records_by_source_endpoint": {
+    "/api/v1/models?output_modalities=image": 44
+  },
+  "benchmark_duplicates_suppressed": 0,
+  "pricing_unit_assumptions": {
+    "cents_converted_to_usd_sku_keys": [
+      "cents_per_image_input",
+      "cents_per_megapixel_second_creative",
+      "cents_per_megapixel_second_precise",
+      "cents_per_second_output",
+      "cents_per_second_output_1080p",
+      "cents_per_second_output_720p",
+      "cents_per_second_video_continuation_1080p",
+      "cents_per_second_video_continuation_720p",
+      "cents_per_video_output_second_1080p",
+      "cents_per_video_output_second_480p",
+      "cents_per_video_output_second_720p",
+      "minimum_cents_per_generation"
+    ],
+    "bare_keys_assumed_usd_sku_keys": [
+      "duration_seconds",
+      "duration_seconds_1024p",
+      "duration_seconds_1080p",
+      "duration_seconds_480p",
+      "duration_seconds_720p",
+      "duration_seconds_768p",
+      "duration_seconds_with_audio",
+      "duration_seconds_with_audio_4k",
+      "duration_seconds_with_audio_720p",
+      "duration_seconds_without_audio",
+      "duration_seconds_without_audio_4k",
+      "duration_seconds_without_audio_720p",
+      "image_to_video_duration_seconds_1080p",
+      "image_to_video_duration_seconds_720p",
+      "reference_images",
+      "text_to_video_duration_seconds_1080p",
+      "text_to_video_duration_seconds_480p",
+      "text_to_video_duration_seconds_720p",
+      "video_tokens",
+      "video_tokens_1080p",
+      "video_tokens_1080p_with_video_input",
+      "video_tokens_4k",
+      "video_tokens_4k_with_video_input",
+      "video_tokens_with_video_input",
+      "video_tokens_without_audio"
+    ],
+    "note": "OpenRouter mixes denominations inside a single pricing_skus object (e.g. 'cents_per_second_output': '3' next to 'duration_seconds_720p': '0.08'). Keys starting with 'cents_' are divided by 100; keys with no explicit currency marker are treated as USD. Both lists above name exactly which keys each rule was applied to, so no converted figure is ever silently mixed with a USD one."
+  },
+  "benchmark_note": "Design Arena scores are read from the generic catalog filtered by output modality (/api/v1/models?output_modalities=image), because the dedicated /api/v1/images/models endpoint publishes no `benchmarks` block at all. Video models publish no Design Arena scores on any endpoint. `source_endpoint` on each benchmark record says where its row came from."
+}
