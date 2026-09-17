@@ -87,7 +87,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "black-forest-labs/flux-video-edit",
       "canonical_slug": "black-forest-labs/flux-video-edit-20260910",
@@ -265,7 +265,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "minimax/hailuo-3-max",
       "canonical_slug": "minimax/hailuo-3-max-20260901",
@@ -485,7 +485,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "alibaba/wan-3.0-prime",
       "canonical_slug": "alibaba/wan-3.0-prime-20260827",
@@ -720,7 +720,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "alibaba/wan-3.0",
       "canonical_slug": "alibaba/wan-3.0-20260824",
@@ -890,7 +890,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "heygen/avatar-iv",
       "canonical_slug": "heygen/avatar-iv-20260625",
@@ -1041,7 +1041,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "black-forest-labs/flux-video-upscale",
       "canonical_slug": "black-forest-labs/flux-video-upscale-20260819",
@@ -1240,7 +1240,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "bytedance/seedance-2.0-mini",
       "canonical_slug": "bytedance/seedance-2.0-mini-20260811",
@@ -1490,7 +1490,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "bytedance/seedance-2.5",
       "canonical_slug": "bytedance/seedance-2.5-20260807",
@@ -1770,7 +1770,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "black-forest-labs/flux-3-video",
       "canonical_slug": "black-forest-labs/flux-3-video-20260804",
@@ -1962,7 +1962,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "minimax/hailuo-3",
       "canonical_slug": "minimax/hailuo-03-20260730",
@@ -2130,7 +2130,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "runway/aleph-2",
       "canonical_slug": "runway/aleph-2-20260729",
@@ -2274,7 +2274,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "runway/gen-4.5",
       "canonical_slug": "runway/gen-4.5-20260729",
@@ -2495,7 +2495,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "x-ai/grok-imagine-video-1.5",
       "canonical_slug": "x-ai/grok-imagine-video-1.5-20260719",
@@ -2699,7 +2699,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "alibaba/happyhorse-1.1",
       "canonical_slug": "alibaba/happyhorse-1.1-20260624",
@@ -2913,7 +2913,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "alibaba/happyhorse-1.0",
       "canonical_slug": "alibaba/happyhorse-1.0-20260624",
@@ -3149,7 +3149,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "x-ai/grok-imagine-video",
       "canonical_slug": "x-ai/grok-imagine-video-20260512",
@@ -3449,7 +3449,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "kwaivgi/kling-v3.0-pro",
       "canonical_slug": "kwaivgi/kling-v3.0-pro-20260429",
@@ -3739,7 +3739,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "kwaivgi/kling-v3.0-std",
       "canonical_slug": "kwaivgi/kling-v3.0-std-20260429",
@@ -4004,7 +4004,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "google/veo-3.1-fast",
       "canonical_slug": "google/veo-3.1-fast-20260320",
@@ -4224,7 +4224,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "google/veo-3.1-lite",
       "canonical_slug": "google/veo-3.1-lite-20260331",
@@ -4378,7 +4378,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "kwaivgi/kling-video-o1",
       "canonical_slug": "kwaivgi/kling-video-o1-20260420",
@@ -4519,7 +4519,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "minimax/hailuo-2.3",
       "canonical_slug": "minimax/hailuo-2.3-20260420",
@@ -4722,7 +4722,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "bytedance/seedance-2.0-fast",
       "canonical_slug": "bytedance/seedance-2.0-fast-20260414",
@@ -4919,7 +4919,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "alibaba/wan-2.7",
       "canonical_slug": "alibaba/wan-2.7-20260414",
@@ -5240,7 +5240,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "bytedance/seedance-2.0",
       "canonical_slug": "bytedance/seedance-2.0-20260414",
@@ -5510,7 +5510,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "alibaba/wan-2.6",
       "canonical_slug": "alibaba/wan-2.6-20260327",
@@ -5712,7 +5712,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "bytedance/seedance-1-5-pro",
       "canonical_slug": "bytedance/seedance-1-5-pro-20260320",
@@ -5932,7 +5932,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "openai/sora-2-pro",
       "canonical_slug": "openai/sora-2-pro-20260320",
@@ -6145,7 +6145,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-09-17T03:21:30.314489+00:00",
+    "retrieved_at": "2026-09-17T04:43:46.193738+00:00",
     "raw": {
       "id": "google/veo-3.1",
       "canonical_slug": "google/veo-3.1-20260320",

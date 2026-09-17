@@ -508,37 +508,28 @@ def _write_media_snapshot(
     prompt_benchmarks: list[dict],
     prompt_raw_rows: list[dict],
 ) -> None:
-    """Write a media snapshot under <SNAPSHOTS_DIR>/<date>/media[/-N]/.
+    """Write a media snapshot to <MEDIA_SNAPSHOTS_DIR>/<date>[/-N]/.
 
-    Its own subfolder and its own suffix loop, so it can never collide with the
-    chat pipeline's snapshot files.
+    Media snapshots deliberately live in their OWN top-level directory rather
+    than under data/snapshots/<date>/media/. dashboard/refresh.py's
+    snapshot_exists_for() decides whether today's chat snapshot already exists
+    purely by looking for a directory under data/snapshots/ named `<date>` or
+    `<date>-N`, so a media snapshot written under that folder made refresh.py
+    believe the day's chat snapshot had already run, and it passed
+    --no-snapshot to the chat pipeline - silently losing the day's real chat
+    snapshot.
 
-    Note: creating the <date> folder here is visible to
-    dashboard/refresh.py's snapshot_exists_for(), which only inspects top-level
-    directories and uses "does today's folder exist?" to decide whether to pass
-    --no-snapshot to the chat pipeline. So a media run that lands before the
-    day's first chat run will make that day's chat refresh skip its snapshot.
-    That is logged explicitly below rather than left to be discovered.
+    data/media_snapshots/ cannot match that pattern, so the two pipelines can
+    never interfere. dashboard/refresh.py, snapshot_exists_for() and
+    SNAPSHOTS_DIR are deliberately untouched.
     """
-    day_dir = settings.SNAPSHOTS_DIR / run_date
-    day_dir_existed = day_dir.exists()
-
-    media_dir = day_dir / settings.MEDIA_SNAPSHOT_SUBDIR
+    media_dir = settings.MEDIA_SNAPSHOTS_DIR / run_date
     suffix = 1
     original = media_dir
     while media_dir.exists():
         suffix += 1
         media_dir = Path(f"{original}-{suffix}")
     media_dir.mkdir(parents=True, exist_ok=True)
-
-    if not day_dir_existed:
-        logger.warning(
-            "Created today's snapshot folder %s for media data. dashboard/refresh.py treats the "
-            "existence of this folder as 'a snapshot already exists for today' and will pass "
-            "--no-snapshot to the chat pipeline, so the chat snapshot for %s may be skipped if the "
-            "weekly refresh has not run yet today.",
-            day_dir, run_date,
-        )
 
     _write_json(media_dir / "openrouter_image_models.json", raw_image_payload)
     _write_json(media_dir / "openrouter_video_models.json", raw_video_payload)

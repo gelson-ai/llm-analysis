@@ -3067,7 +3067,7 @@
     "status_code": 200,
     "ok": true,
     "error": null,
-    "attempts": 1,
+    "attempts": 2,
     "payload": {
       "id": "black-forest-labs/flux.2-klein-4b",
       "endpoints": [
@@ -3210,7 +3210,7 @@
     "status_code": 200,
     "ok": true,
     "error": null,
-    "attempts": 1,
+    "attempts": 2,
     "payload": {
       "id": "black-forest-labs/flux.2-max",
       "endpoints": [
@@ -3276,7 +3276,7 @@
     "status_code": 200,
     "ok": true,
     "error": null,
-    "attempts": 1,
+    "attempts": 2,
     "payload": {
       "id": "black-forest-labs/flux.2-flex",
       "endpoints": [

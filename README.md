@@ -412,20 +412,30 @@ data/normalized/media_prompt_benchmarks.json/.csv- per-prompt correctness/cost/t
 data/raw/openrouter_media_prompt_benchmark_rows.json - verbatim parsed rows + per-page sha256
 data/analysis/media_coverage_report.json         - counts, price resolution rate, unit assumptions
 data/analysis/media_data_quality_report.json     - errors/warnings/info
-data/snapshots/YYYY-MM-DD/media/                 - timestamped copy of the above
+data/media_snapshots/YYYY-MM-DD/                 - timestamped copy of the above
 ```
 
 Run the media tests on their own (offline, no network needed):
 
 ```bash
 python -m pytest tests/test_media_fetch.py tests/test_media_normalize.py \
-                 tests/test_media_benchmark_scraper.py -v
+                 tests/test_media_benchmark_scraper.py \
+                 tests/test_media_snapshot_paths.py -v
 ```
 
-> **Snapshot note:** media snapshots live in a `media/` subfolder of the
-> existing per-day snapshot directory, so they never collide with the chat
-> pipeline's snapshot files. Be aware of one interaction: creating that day's
-> folder means `dashboard/refresh.py` - which only checks whether today's folder
-> exists - will pass `--no-snapshot` to the chat pipeline. So a media run that
-> happens before the day's first chat refresh causes that day's chat snapshot
-> to be skipped. The run logs a warning when it creates the folder.
+> **Why media snapshots live in `data/media_snapshots/`, not `data/snapshots/`.**
+> This is load-bearing, not tidiness. `dashboard/refresh.py` decides whether
+> today's chat snapshot already exists using `snapshot_exists_for()`, which does
+> nothing more than look for a directory directly under `data/snapshots/` named
+> `<date>` or `<date>-N`. Writing media snapshots to
+> `data/snapshots/<date>/media/` therefore created a directory literally named
+> `<date>`, so if the media pipeline ran on a UTC day before that day's chat
+> refresh, `refresh.py` passed `--no-snapshot` to the chat pipeline and **that
+> day's real chat snapshot was silently never written**.
+>
+> `data/media_snapshots/` cannot match that pattern, so the two pipelines are
+> now fully independent — a media run never affects whether the chat pipeline
+> snapshots. `dashboard/refresh.py`, `snapshot_exists_for()` and `SNAPSHOTS_DIR`
+> were left untouched; the fix is entirely on the media side, and
+> `tests/test_media_snapshot_paths.py` locks it in by calling the real
+> `snapshot_exists_for()` rather than a copy of its logic.

@@ -164,11 +164,20 @@ MEDIA_BENCHMARKS_CSV_PATH = NORMALIZED_DIR / "media_benchmarks.csv"
 MEDIA_COVERAGE_REPORT_PATH = ANALYSIS_DIR / "media_coverage_report.json"
 MEDIA_DATA_QUALITY_REPORT_PATH = ANALYSIS_DIR / "media_data_quality_report.json"
 
-# Media snapshots live in their own subfolder of the existing per-day snapshot
-# directory, so they can never collide with the chat pipeline's snapshot files
-# or with dashboard/refresh.py's "is there already a snapshot for today?" check
-# (which only ever inspects the top level of SNAPSHOTS_DIR).
-MEDIA_SNAPSHOT_SUBDIR = "media"
+# Media snapshots live in their OWN top-level directory, NOT under
+# SNAPSHOTS_DIR.
+#
+# This is load-bearing, not tidiness. dashboard/refresh.py decides whether
+# today's chat snapshot already exists with snapshot_exists_for(), which does
+# nothing more than look for a directory directly under SNAPSHOTS_DIR named
+# `<date>` or `<date>-N`. Writing media snapshots to data/snapshots/<date>/media/
+# therefore created a directory literally named `<date>`, so a media run on a
+# given UTC day before that day's chat refresh made refresh.py pass
+# --no-snapshot to the chat pipeline - silently losing the day's real chat
+# snapshot. data/media_snapshots/ cannot match that pattern, so the two
+# pipelines cannot interfere. dashboard/refresh.py, snapshot_exists_for() and
+# SNAPSHOTS_DIR are deliberately left untouched.
+MEDIA_SNAPSHOTS_DIR = DATA_DIR / "media_snapshots"
 
 # Which keys in a `pricing_skus` map are denominated in cents rather than USD.
 # OpenRouter mixes both in the same object (e.g. "cents_per_second_output":
