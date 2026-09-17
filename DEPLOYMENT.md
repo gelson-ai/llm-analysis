@@ -420,14 +420,39 @@ dashboard/serve.py                Local-only dev server (loopback)
 dashboard/price_performance_final.html   GENERATED — never hand-edit
 dashboard/status.json             GENERATED — data freshness sidecar
 
-data/normalized/*.json|csv        Pipeline output (tracked; drives the dashboard)
+data/normalized/*.json|csv        CHAT pipeline output (tracked; drives the dashboard).
+                                  The media pipeline writes into this same directory
+                                  (image_models, video_models, media_benchmarks,
+                                  media_prompt_benchmarks) but those files are NOT read
+                                  by the dashboard - never assume *.json here is chat data.
 data/analysis/weekly_picks.json   Weekly pick history (tracked)
-data/snapshots/<date>/            One snapshot per day (tracked)
+data/analysis/media_*_report.json Media coverage + data-quality reports (tracked)
+data/snapshots/<date>/            CHAT snapshots: one per day (tracked)
+data/media_snapshots/<date>/      MEDIA snapshots: deliberately a SEPARATE top-level
+                                  directory - see the note below
 data/analysis/.refresh.lock       Machine-local runtime lock (IGNORED)
 
 DEPLOYMENT.md                     This document
 requirements.txt                  Pinned runtime + test dependencies
 ```
+
+> **The media pipeline is not part of this deployment.** `run_media_pipeline.py`
+> (image/video generation catalogs, pricing and benchmarks) is a second, manually
+> run pipeline. It is deliberately absent from `dashboard/refresh.py`,
+> `run_weekly.bat` and the CI workflow above, so nothing here fetches it on a
+> schedule and no deployment component can fail because of it.
+>
+> Two consequences worth knowing:
+>
+> - Its snapshots live in **`data/media_snapshots/`**, not `data/snapshots/`.
+>   That separation is load-bearing: `snapshot_exists_for()` in
+>   `dashboard/refresh.py` infers "today's chat snapshot already ran" from
+>   nothing more than a directory named `<date>` (or `<date>-N`) under
+>   `data/snapshots/`, so a media snapshot written there would silently suppress
+>   that day's real chat snapshot. Locked in by
+>   `tests/test_media_snapshot_paths.py`.
+> - The CI step `git add -A data dashboard` will pick up media outputs **if** a
+>   media run has been committed, but it never generates them itself.
 
 ---
 
