@@ -1,0 +1,60 @@
+{
+  "data": [
+    {
+      "id": "bytedance-seed/seedream-4.5",
+      "name": "ByteDance Seed: Seedream 4.5",
+      "description": "Synthetic fixture model carrying a Design Arena block.",
+      "created": 1766519506,
+      "architecture": {
+        "input_modalities": ["image", "text"],
+        "output_modalities": ["image"]
+      },
+      "supported_parameters": {
+        "resolution": { "type": "enum", "values": ["1K", "2K", "4K"] }
+      },
+      "supports_streaming": false,
+      "endpoints": "/api/v1/images/models/bytedance-seed/seedream-4.5/endpoints",
+      "benchmarks": {
+        "design_arena": [
+          {"arena": "models", "category": "image", "elo": 1180, "rank": 12, "win_rate": 58.4},
+          {"arena": "models", "category": "imageediting", "elo": 1142, "rank": 19, "win_rate": 52.1},
+          {"arena": "models", "category": "logo", "elo": 1090, "rank": 31, "win_rate": 44.7}
+        ]
+      }
+    },
+    {
+      "id": "example-vendor/chat-indexed-media-model",
+      "name": "Example: Media Model That Also Carries AA Indices",
+      "description": "Synthetic fixture model carrying BOTH blocks, used to prove the media pipeline never mixes Artificial Analysis scores into its Design Arena output.",
+      "created": 1766519507,
+      "architecture": {
+        "input_modalities": ["text"],
+        "output_modalities": ["image"]
+      },
+      "supports_streaming": false,
+      "endpoints": "/api/v1/images/models/example-vendor/chat-indexed-media-model/endpoints",
+      "benchmarks": {
+        "artificial_analysis": {
+          "intelligence_index": 46.9,
+          "coding_index": 71.8,
+          "agentic_index": 49.9
+        },
+        "design_arena": [
+          {"arena": "models", "category": "graphicdesign", "elo": 1201, "rank": 7, "win_rate": 61.2}
+        ]
+      }
+    },
+    {
+      "id": "example-vendor/no-benchmarks-media-model",
+      "name": "Example: Media Model With No Benchmarks",
+      "description": "Synthetic fixture model with no benchmarks block at all.",
+      "created": 1766519508,
+      "architecture": {
+        "input_modalities": ["text"],
+        "output_modalities": ["image"]
+      },
+      "supports_streaming": false,
+      "endpoints": "/api/v1/images/models/example-vendor/no-benchmarks-media-model/endpoints"
+    }
+  ]
+}
