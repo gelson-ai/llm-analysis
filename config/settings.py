@@ -104,3 +104,153 @@ WATCHLIST_MODEL_IDS = [
 WATCHLIST_MODEL_NAME_SUBSTRINGS = [
     "solar pro 4",
 ]
+
+# ---------------------------------------------------------------------------
+# Image & video generation catalogs (separate pipeline)
+#
+# These are DIFFERENT, dedicated, documented OpenRouter endpoints:
+#   GET /api/v1/images/models
+#   GET /api/v1/videos/models
+#
+# They are deliberately NOT fetched by the chat pipeline. Two reasons,
+# confirmed against a live response (2026-09-17):
+#   1. Their pricing is SKU/unit based, not token based - real cost for these
+#      models cannot be expressed as pricing.prompt / pricing.completion at
+#      all. See src/normalize_media.py.
+#   2. Their catalogs are far smaller than the chat one, so the chat
+#      pipeline's MIN_EXPECTED_MODEL_COUNT floor does not apply (below).
+#
+# The generic catalog can also be filtered with
+# /api/v1/models?output_modalities=image|video, but that returns these same
+# models with pricing mostly zeroed out and no pricing_skus, so the dedicated
+# endpoints above are the primary source.
+# ---------------------------------------------------------------------------
+IMAGES_MODELS_ENDPOINT = "/api/v1/images/models"
+VIDEOS_MODELS_ENDPOINT = "/api/v1/videos/models"
+
+# Per-model record for image models. Live image models carry NO pricing on the
+# list endpoint - cost lives only in the per-model endpoints record:
+#   GET /api/v1/images/models/{id}/endpoints
+#     -> endpoints[].pricing[] = {billable, unit, cost_usd, variant?}
+IMAGE_MODEL_ENDPOINTS_PATH_TEMPLATE = "/api/v1/images/models/{model_id}/endpoints"
+
+# Distinct from MIN_EXPECTED_MODEL_COUNT above on purpose: that floor (100) is
+# for the chat catalog. The image and video catalogs are an order of magnitude
+# smaller - observed live counts on 2026-09-17 were ~54 image models and ~29
+# video models - so reusing 100 would falsely fail every run. These floors are
+# set conservatively low to still catch a truly broken/empty/truncated
+# response. Raise them only after confirming a new floor is genuinely correct
+# for the live catalog.
+MIN_EXPECTED_IMAGE_MODEL_COUNT = 10
+MIN_EXPECTED_VIDEO_MODEL_COUNT = 10
+
+# ---------------------------------------------------------------------------
+# Media pipeline output paths
+#
+# Every one of these is a NEW file. Nothing here overlaps with a path the chat
+# pipeline writes, so run_pipeline.py's outputs are never touched or reshaped.
+# ---------------------------------------------------------------------------
+MEDIA_RAW_IMAGE_MODELS_PATH = RAW_DIR / "openrouter_image_models.json"
+MEDIA_RAW_VIDEO_MODELS_PATH = RAW_DIR / "openrouter_video_models.json"
+MEDIA_RAW_IMAGE_ENDPOINTS_PATH = RAW_DIR / "openrouter_image_model_endpoints.json"
+
+MEDIA_IMAGE_MODELS_JSON_PATH = NORMALIZED_DIR / "image_models.json"
+MEDIA_IMAGE_MODELS_CSV_PATH = NORMALIZED_DIR / "image_models.csv"
+MEDIA_VIDEO_MODELS_JSON_PATH = NORMALIZED_DIR / "video_models.json"
+MEDIA_VIDEO_MODELS_CSV_PATH = NORMALIZED_DIR / "video_models.csv"
+MEDIA_BENCHMARKS_JSON_PATH = NORMALIZED_DIR / "media_benchmarks.json"
+MEDIA_BENCHMARKS_CSV_PATH = NORMALIZED_DIR / "media_benchmarks.csv"
+
+MEDIA_COVERAGE_REPORT_PATH = ANALYSIS_DIR / "media_coverage_report.json"
+MEDIA_DATA_QUALITY_REPORT_PATH = ANALYSIS_DIR / "media_data_quality_report.json"
+
+# Media snapshots live in their own subfolder of the existing per-day snapshot
+# directory, so they can never collide with the chat pipeline's snapshot files
+# or with dashboard/refresh.py's "is there already a snapshot for today?" check
+# (which only ever inspects the top level of SNAPSHOTS_DIR).
+MEDIA_SNAPSHOT_SUBDIR = "media"
+
+# Which keys in a `pricing_skus` map are denominated in cents rather than USD.
+# OpenRouter mixes both in the same object (e.g. "cents_per_second_output":
+# "3" alongside "duration_seconds_720p": "0.08"), so this conversion is an
+# explicit, documented assumption - every conversion is recorded on the parsed
+# SKU and listed in the media data-quality report, never applied silently.
+CENTS_PER_DOLLAR = 100
+CENT_DENOMINATED_SKU_PREFIX = "cents_"
+
+# Politeness delay between the per-model image endpoints requests. The image
+# pricing fan-out is one request per image model (dozens per run), so it is
+# serialised with a small gap rather than fired off at once.
+MEDIA_IMAGE_ENDPOINTS_DELAY_SECONDS = 0.25
+
+# The generic catalog, filtered by output modality.
+#
+# This IS fetched by the media pipeline - not for inventory or pricing, but as
+# the only source of Design Arena scores for image models. Confirmed live
+# (2026-09-17): the dedicated /api/v1/images/models endpoint publishes no
+# `benchmarks` field at all, while 13 of the 54 records here carry a full
+# `benchmarks.design_arena` block. The dedicated endpoints stay the source of
+# truth for inventory and pricing.
+#
+# The video variant is kept for documentation only: it is NOT fetched, because
+# it publishes neither design_arena nor usable pricing (every pricing value in
+# it is zeroed).
+IMAGE_MODELS_FILTER_ENDPOINT = "/api/v1/models?output_modalities=image"
+VIDEO_MODELS_FILTER_ENDPOINT = "/api/v1/models?output_modalities=video"
+
+# ---------------------------------------------------------------------------
+# OpenRouter media prompt benchmarks (HTML, not an API)
+#
+# These are OpenRouter's own prompt-by-prompt evaluations:
+#   https://openrouter.ai/benchmarks/media/images   (15 prompt pages)
+#   https://openrouter.ai/benchmarks/media/videos   (12 prompt pages)
+#
+# Each prompt page publishes, per model: a judged pass count ("N of M checks
+# passed"), the actual cost in USD, and the generation time in seconds. There is
+# NO public JSON API for this: the pages are server-rendered HTML, and the
+# obvious JSON routes (/api/v1/benchmarks, /api/v1/videos/benchmarks) return
+# 401 "No cookie auth credentials found" - they exist but are session-gated.
+# So the data is public but only reachable by parsing rendered markup.
+#
+# That makes the extraction markup-dependent, which is why:
+#   - parsing prefers the accessibility contract (aria-label="N of M checks
+#     passed"), falling back to the visible "N/M" text;
+#   - a page that yields zero rows is a HARD ERROR, not an empty result, and
+#     each prompt count has a floor below which the run fails loudly;
+#   - the extracted rows are preserved verbatim under data/raw/ together with a
+#     sha256 + byte size per page, so markup drift is detectable.
+# ---------------------------------------------------------------------------
+MEDIA_BENCHMARK_INDEX_ENDPOINTS = {
+    "image": "/benchmarks/media/images",
+    "video": "/benchmarks/media/videos",
+}
+MEDIA_BENCHMARK_BASE_URL = OPENROUTER_BASE_URL
+
+# Observed live 2026-09-17: 15 image prompts, 12 video prompts. Floors are set
+# below that on purpose - they exist to catch a broken index parse, not to pin
+# the exact current count (OpenRouter adds prompts over time). Raise only after
+# confirming a new floor is genuinely right.
+MIN_EXPECTED_IMAGE_PROMPT_COUNT = 5
+MIN_EXPECTED_VIDEO_PROMPT_COUNT = 5
+
+# Politeness delay between prompt-page requests (27 pages per run).
+MEDIA_BENCHMARK_PAGE_DELAY_SECONDS = 0.25
+
+# Row-level sanity.
+#
+# A per-page floor is deliberately NOT used. Prompt difficulty genuinely varies
+# how many models a page covers: measured live 2026-09-17, 14 of the 15 image
+# prompts had 42 rows each but `composite-refs` (the multi-reference prompt) had
+# just 3, and video `walk-out` had 14 against 24 for the rest. A per-page floor
+# would fail on that legitimate variance.
+#
+# Instead:
+#   - a page parsing to ZERO rows is a hard error (markup break or empty page);
+#   - the TOTAL across all pages must clear this floor, which catches a partial
+#     break that a zero-row check would miss.
+# Observed total: 867 rows. This floor is a crash detector, not a target.
+MIN_EXPECTED_TOTAL_PROMPT_BENCHMARK_ROWS = 200
+
+MEDIA_RAW_PROMPT_BENCHMARK_ROWS_PATH = RAW_DIR / "openrouter_media_prompt_benchmark_rows.json"
+MEDIA_PROMPT_BENCHMARKS_JSON_PATH = NORMALIZED_DIR / "media_prompt_benchmarks.json"
+MEDIA_PROMPT_BENCHMARKS_CSV_PATH = NORMALIZED_DIR / "media_prompt_benchmarks.csv"
