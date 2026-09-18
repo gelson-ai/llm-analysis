@@ -52,10 +52,12 @@ DASHBOARD_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(DASHBOARD_DIR))
 
 import build_dashboard  # noqa: E402
+import build_image_dashboard  # noqa: E402
 import weekly_picks  # noqa: E402
 
 PROJECT_ROOT = build_dashboard.PROJECT_ROOT
 DASHBOARD_PATH = build_dashboard.OUTPUT_PATH
+IMAGE_DASHBOARD_PATH = build_image_dashboard.OUTPUT_PATH
 REFRESH_SCRIPT = DASHBOARD_DIR / "refresh.py"
 
 # Exactly what may be served, by filename.
@@ -63,6 +65,7 @@ SERVABLE = {
     "/": DASHBOARD_PATH,
     "/index.html": DASHBOARD_PATH,
     "/dashboard.html": DASHBOARD_PATH,
+    "/image_model_analysis.html": IMAGE_DASHBOARD_PATH,
 }
 
 # Refresh requests carry an empty JSON object; anything larger is not ours.

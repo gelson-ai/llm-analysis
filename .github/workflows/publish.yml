@@ -89,6 +89,7 @@ jobs:
           mkdir -p _site
           cp dashboard/price_performance_final.html _site/index.html
           cp dashboard/status.json _site/status.json
+          cp dashboard/image_model_analysis.html _site/image_model_analysis.html
 
       # configure-pages reads this repo's Pages config and fails fast with a
       # clear message if Pages is not switched on yet, so enabling it is a
