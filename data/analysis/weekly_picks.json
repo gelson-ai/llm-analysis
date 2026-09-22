@@ -1,7 +1,7 @@
 {
   "version": 1,
   "timezone": "Asia/Manila",
-  "updated_at": "2026-09-14T14:33:02.369527+00:00",
+  "updated_at": "2026-09-21T02:35:31.765790+00:00",
   "weeks": {
     "2026-09-07_2026-09-13": {
       "week_start": "2026-09-07",
@@ -359,6 +359,182 @@
             "score": 21.0,
             "blended_price": 0.0315,
             "value": 666.6667
+          },
+          "current_leader_differs": false,
+          "revision_count": 0
+        }
+      }
+    },
+    "2026-09-21_2026-09-27": {
+      "week_start": "2026-09-21",
+      "week_end": "2026-09-27",
+      "week_label": "Mon 21 Sep - Sun 27 Sep 2026",
+      "iso_week": "2026-W39",
+      "picks": {
+        "intelligence": {
+          "metric": "intelligence",
+          "metric_label": "AA Intelligence Index",
+          "model_id": "deepseek/deepseek-v4-flash-0731",
+          "model_name": "DeepSeek: DeepSeek V4 Flash 0731",
+          "provider": "deepseek",
+          "score": 34.3,
+          "blended_price": 0.07,
+          "value": 490.0,
+          "context_length": 1310720,
+          "recorded_at": "2026-09-21T02:35:31.765790+00:00",
+          "recorded_local": "2026-09-21T10:35:31.765790+08:00",
+          "recorded_label": "Mon 21 Sep 2026, 10:35 PHT",
+          "data_retrieved_at": "2026-09-21T02:35:30.775013+00:00",
+          "locked_by": "refresh",
+          "contenders": [
+            {
+              "rank": 1,
+              "model_id": "deepseek/deepseek-v4-flash-0731",
+              "model_name": "DeepSeek: DeepSeek V4 Flash 0731",
+              "provider": "deepseek",
+              "score": 34.3,
+              "blended_price": 0.07,
+              "value": 490.0
+            },
+            {
+              "rank": 2,
+              "model_id": "z-ai/glm-5.3-flash:batch",
+              "model_name": "Z.ai: GLM 5.3 Flash (batch)",
+              "provider": "z-ai",
+              "score": 41.8,
+              "blended_price": 0.11875,
+              "value": 352.0
+            },
+            {
+              "rank": 3,
+              "model_id": "z-ai/glm-5.3-flash",
+              "model_name": "Z.ai: GLM 5.3 Flash",
+              "provider": "z-ai",
+              "score": 41.8,
+              "blended_price": 0.1425,
+              "value": 293.3333
+            }
+          ],
+          "revisions": [],
+          "current_leader": {
+            "model_id": "deepseek/deepseek-v4-flash-0731",
+            "model_name": "DeepSeek: DeepSeek V4 Flash 0731",
+            "provider": "deepseek",
+            "score": 34.3,
+            "blended_price": 0.07,
+            "value": 490.0
+          },
+          "current_leader_differs": false,
+          "revision_count": 0
+        },
+        "coding": {
+          "metric": "coding",
+          "metric_label": "AA Coding Index",
+          "model_id": "inclusionai/ling-3.0-flash",
+          "model_name": "inclusionAI: Ling 3.0 Flash",
+          "provider": "inclusionai",
+          "score": 50.6,
+          "blended_price": 0.0315,
+          "value": 1606.3492,
+          "context_length": 262144,
+          "recorded_at": "2026-09-21T02:35:31.765790+00:00",
+          "recorded_local": "2026-09-21T10:35:31.765790+08:00",
+          "recorded_label": "Mon 21 Sep 2026, 10:35 PHT",
+          "data_retrieved_at": "2026-09-21T02:35:30.775013+00:00",
+          "locked_by": "refresh",
+          "contenders": [
+            {
+              "rank": 1,
+              "model_id": "inclusionai/ling-3.0-flash",
+              "model_name": "inclusionAI: Ling 3.0 Flash",
+              "provider": "inclusionai",
+              "score": 50.6,
+              "blended_price": 0.0315,
+              "value": 1606.3492
+            },
+            {
+              "rank": 2,
+              "model_id": "deepseek/deepseek-v4-flash-0731",
+              "model_name": "DeepSeek: DeepSeek V4 Flash 0731",
+              "provider": "deepseek",
+              "score": 69.1,
+              "blended_price": 0.07,
+              "value": 987.1429
+            },
+            {
+              "rank": 3,
+              "model_id": "inclusionai/ling-3.0-flash-vl",
+              "model_name": "inclusionAI: Ling 3.0 Flash VL",
+              "provider": "inclusionai",
+              "score": 57.0,
+              "blended_price": 0.09,
+              "value": 633.3333
+            }
+          ],
+          "revisions": [],
+          "current_leader": {
+            "model_id": "inclusionai/ling-3.0-flash",
+            "model_name": "inclusionAI: Ling 3.0 Flash",
+            "provider": "inclusionai",
+            "score": 50.6,
+            "blended_price": 0.0315,
+            "value": 1606.3492
+          },
+          "current_leader_differs": false,
+          "revision_count": 0
+        },
+        "agentic": {
+          "metric": "agentic",
+          "metric_label": "AA Agentic Index",
+          "model_id": "deepseek/deepseek-v4-flash-0731",
+          "model_name": "DeepSeek: DeepSeek V4 Flash 0731",
+          "provider": "deepseek",
+          "score": 41.0,
+          "blended_price": 0.07,
+          "value": 585.7143,
+          "context_length": 1310720,
+          "recorded_at": "2026-09-21T02:35:31.765790+00:00",
+          "recorded_local": "2026-09-21T10:35:31.765790+08:00",
+          "recorded_label": "Mon 21 Sep 2026, 10:35 PHT",
+          "data_retrieved_at": "2026-09-21T02:35:30.775013+00:00",
+          "locked_by": "refresh",
+          "contenders": [
+            {
+              "rank": 1,
+              "model_id": "deepseek/deepseek-v4-flash-0731",
+              "model_name": "DeepSeek: DeepSeek V4 Flash 0731",
+              "provider": "deepseek",
+              "score": 41.0,
+              "blended_price": 0.07,
+              "value": 585.7143
+            },
+            {
+              "rank": 2,
+              "model_id": "z-ai/glm-5.3-flash:batch",
+              "model_name": "Z.ai: GLM 5.3 Flash (batch)",
+              "provider": "z-ai",
+              "score": 50.9,
+              "blended_price": 0.11875,
+              "value": 428.6316
+            },
+            {
+              "rank": 3,
+              "model_id": "z-ai/glm-5.3-flash",
+              "model_name": "Z.ai: GLM 5.3 Flash",
+              "provider": "z-ai",
+              "score": 50.9,
+              "blended_price": 0.1425,
+              "value": 357.193
+            }
+          ],
+          "revisions": [],
+          "current_leader": {
+            "model_id": "deepseek/deepseek-v4-flash-0731",
+            "model_name": "DeepSeek: DeepSeek V4 Flash 0731",
+            "provider": "deepseek",
+            "score": 41.0,
+            "blended_price": 0.07,
+            "value": 585.7143
           },
           "current_leader_differs": false,
           "revision_count": 0
