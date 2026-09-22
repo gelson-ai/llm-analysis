@@ -33,6 +33,9 @@ import build_image_dashboard  # noqa: E402
 import nav_tabs  # noqa: E402  (the shared tab list - single source of truth)
 import page_shell  # noqa: E402
 import serve  # noqa: E402
+import weekly_picks  # noqa: E402  (chat side - referenced ONLY to prove the split)
+
+from config import settings  # noqa: E402
 
 CHAT_TEMPLATE_PATH = DASHBOARD_DIR / "template.html"
 IMAGE_TEMPLATE_PATH = DASHBOARD_DIR / "image_template.html"
@@ -360,7 +363,16 @@ def test_image_build_writes_only_its_one_output_file():
     assert module_paths == {
         "IMAGE_MODELS_PATH", "PROMPT_BENCHMARKS_PATH", "DESIGN_ARENA_PATH",
         "COVERAGE_PATH", "QUALITY_PATH", "TEMPLATE_PATH", "OUTPUT_PATH",
+        # Read-only. refresh_media.py writes it, locking the week's pick BEFORE
+        # it invokes this builder, so the page always renders the pick that
+        # belongs to its own snapshot. Listed here rather than exempted so that
+        # adding a path stays a deliberate act - and the media-settings check
+        # below is what proves it is not a chat-pipeline file.
+        "WEEKLY_PICKS_PATH",
     }
+    # Still exactly one thing written, and it is this page's own HTML.
+    assert build_image_dashboard.WEEKLY_PICKS_PATH == settings.MEDIA_WEEKLY_PICKS_PATH
+    assert build_image_dashboard.WEEKLY_PICKS_PATH != weekly_picks.HISTORY_PATH
 
 
 def test_image_build_reads_only_media_pipeline_inputs():

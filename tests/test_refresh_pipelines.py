@@ -35,6 +35,8 @@ import refresh_lock  # noqa: E402
 import refresh_media  # noqa: E402
 import serve  # noqa: E402
 
+from config import settings  # noqa: E402
+
 WORKER_PATH = PROJECT_ROOT / "cloudflare-worker" / "worker.js"
 
 
@@ -130,13 +132,41 @@ def _install_media(tmp_path, monkeypatch, run_impl):
     monkeypatch.setattr(refresh_media, "STATUS_PATH", status_path)
     monkeypatch.setattr(refresh_media, "subprocess", SimpleNamespace(run=run_impl))
     monkeypatch.setattr(refresh_media, "media_snapshot_exists_for", lambda _date: False)
+    # The refresh LOCKS the week's pick before building, so it writes the media
+    # picks history. Point it at tmp_path: without this it would write the real
+    # data/analysis/media_weekly_picks.json and could lock a fake pick for the
+    # live week, which the design then refuses to overwrite.
+    monkeypatch.setattr(settings, "MEDIA_WEEKLY_PICKS_PATH", tmp_path / "media_weekly_picks.json")
     monkeypatch.setattr(
         refresh_media.build_image_dashboard, "build_payload",
         lambda: {"data_retrieved_at": "2026-09-17T00:00:00+00:00",
                  "generated_at": "2026-09-22T00:00:00+00:00",
-                 "rows": [{"model_id": "a"}, {"model_id": "b"}]},
+                 "rows": [{"model_id": "a", "model_name": "A", "provider": "a",
+                           "value": 4.0, "pass_rate": 0.8, "avg_cost_usd": 0.2, "prompts": 2},
+                          {"model_id": "b", "model_name": "B", "provider": "b",
+                           "value": 2.0, "pass_rate": 0.5, "avg_cost_usd": 0.25, "prompts": 2}]},
     )
     return status_path
+
+
+def test_the_week_is_locked_before_the_dashboard_is_built(tmp_path, monkeypatch):
+    """Ordering matters: recording the pick AFTER the build would leave the new
+    model of the week off the page until the following week's refresh."""
+    at_build = []
+    history_path = tmp_path / "media_weekly_picks.json"
+
+    def fake_run(cmd, **kwargs):
+        if cmd[1].endswith("build_image_dashboard.py"):
+            at_build.append(history_path.exists())
+        return completed(0, stdout="ok\n")
+
+    _install_media(tmp_path, monkeypatch, fake_run)
+    assert refresh_media.run_refresh()["ok"] is True
+
+    assert at_build == [True], "the pick must already be recorded when the build starts"
+    locked = json.loads(history_path.read_text(encoding="utf-8"))
+    week = next(iter(locked["weeks"].values()))
+    assert week["picks"]["value"]["model_id"] == "a"
 
 
 def test_media_refresh_publishes_a_status_file_for_its_own_pipeline(tmp_path, monkeypatch):

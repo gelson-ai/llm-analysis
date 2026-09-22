@@ -85,9 +85,10 @@ leaves the other updated - and the run still reports which dashboard succeeded.
 | **Dashboard build** | Renders `data/**` into one self-contained HTML file | `dashboard/build_dashboard.py`, `dashboard/template.html` |
 | **Image dashboard build** | Same, for the image-generation page | `dashboard/build_image_dashboard.py`, `dashboard/image_template.html` |
 | **Refresh orchestrator (chat)** | Fetch → lock weekly picks → rebuild, as one command | `dashboard/refresh.py` |
-| **Refresh orchestrator (media)** | Fetch media data → rebuild the image page, as one command | `dashboard/refresh_media.py` |
+| **Refresh orchestrator (media)** | Fetch media data → lock the image Model of the Week → rebuild the image page, as one command | `dashboard/refresh_media.py` |
 | **Unified refresh** | Runs BOTH pipelines as separate processes, per-target outcomes | `dashboard/refresh_all.py` |
-| **Weekly picks** | Locks one "Model of the Week" per metric, Monday–Sunday | `dashboard/weekly_picks.py`, `data/analysis/weekly_picks.json` |
+| **Weekly picks (chat)** | Locks one "Model of the Week" per AA metric, Monday–Sunday | `dashboard/weekly_picks.py`, `data/analysis/weekly_picks.json` |
+| **Weekly picks (image)** | Locks one "Model of the Week" by value, Monday–Sunday | `dashboard/media_picks.py`, `data/analysis/media_weekly_picks.json` |
 | **CI workflow** | Runs the refresh, commits results, publishes Pages | `.github/workflows/publish.yml` |
 | **Static host** | Serves the built HTML publicly over HTTPS | GitHub Pages |
 | **Refresh proxy** | Holds the GitHub token; exposes `/status` + `/refresh` | `cloudflare-worker/worker.js` |
@@ -512,10 +513,11 @@ dashboard/image_template.html     Image page source; byte-identical <style> bloc
 dashboard/build_dashboard.py      Chat: renders template + data → HTML and status.json
 dashboard/build_image_dashboard.py Image: renders image_template → image_model_analysis.html
 dashboard/refresh.py              CHAT: fetch → lock picks → rebuild (frozen surface)
-dashboard/refresh_media.py        MEDIA: fetch → rebuild the image page
+dashboard/refresh_media.py        MEDIA: fetch → lock the image pick → rebuild the image page
 dashboard/refresh_all.py          Runs both, reports per-dashboard outcomes
 dashboard/refresh_lock.py         Shared lock implementation (refresh.py keeps its own copy)
-dashboard/weekly_picks.py         Monday–Sunday pick locking (UTC+8)
+dashboard/weekly_picks.py         Monday–Sunday pick locking (UTC+8), chat metrics
+dashboard/media_picks.py          Monday–Sunday pick locking (UTC+8), image value metric
 dashboard/serve.py                Local-only dev server (loopback)
 dashboard/price_performance_final.html   GENERATED — never hand-edit
 dashboard/image_model_analysis.html      GENERATED — never hand-edit

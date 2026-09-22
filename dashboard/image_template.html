@@ -229,9 +229,10 @@ footer code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fon
   <div class="card weekly-pick">
     <div class="pick-grid">
       <div>
-        <div class="pick-eyebrow">Best value in this snapshot</div>
+        <div class="pick-eyebrow">Model of the week</div>
         <h2 class="pick-name"><span id="heroTitle"></span><span class="arena-flag" id="heroArenaFlag" hidden></span></h2>
         <div class="pick-provider" id="heroProvider"></div>
+        <p class="pick-week" id="heroWeek"></p>
         <p class="pick-week" id="heroRank"></p>
       </div>
       <div class="pick-stat"><div class="label">Pass rate</div><div class="value" id="heroPass"></div><div class="detail" id="heroPassDetail"></div></div>
@@ -240,6 +241,29 @@ footer code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fon
       <div class="pick-stat"><div class="label">Evidence</div><div class="value" id="heroEvidence"></div><div class="detail">checks attempted</div></div>
     </div>
     <p class="card-sub" id="heroNote" style="margin-top:14px;"></p>
+    <p class="pick-live" id="heroLocked" hidden></p>
+  </div>
+</section>
+
+<!-- 01b — head to head --------------------------------------------------------->
+<!-- The same control the chat dashboard offers, over this page's metrics. The
+     baseline is the Model of the Week above (the locked pick when there is one),
+     so the comparison cannot quietly answer a different question than the card
+     it sits under. -->
+<section aria-labelledby="comparisonTitle">
+  <div class="card model-comparison">
+    <div class="card-head">
+      <div>
+        <h2 id="comparisonTitle">Compare the model of the week</h2>
+        <p class="card-sub">Choose any model in the embedded snapshot to compare against the week's pick.</p>
+      </div>
+    </div>
+    <div class="comparison-picker">
+      <label for="comparisonSearch">Choose another model</label>
+      <input type="search" id="comparisonSearch" role="combobox" aria-autocomplete="list" aria-controls="comparisonResults" aria-expanded="false" autocomplete="off" placeholder="Search model or provider">
+      <div class="comparison-results" id="comparisonResults" role="listbox" aria-label="Matching models"></div>
+    </div>
+    <div id="comparisonContent" class="comparison-empty" aria-live="polite">Choose a model to compare.</div>
   </div>
 </section>
 
@@ -411,6 +435,8 @@ const money=v=>(v==null||!isFinite(v))?"—":"$"+(v<0.01?v.toFixed(4):v.toFixed(
 const pct=v=>(v==null||!isFinite(v))?"—":(v*100).toFixed(1)+"%";
 const value=(v)=>(v==null||!isFinite(v))?"—":(v>=100?v.toFixed(0):v.toFixed(1));
 const num=v=>(v==null||!isFinite(v))?"—":v.toLocaleString();
+const seconds=v=>(v==null||!isFinite(v))?"—":(v/1000).toFixed(1)+"s";
+const list=(items)=>items&&items.length?items.join(", "):"—";
 const truncate=(text,max)=>{text=String(text==null?"":text);return text.length>max?text.slice(0,max-1)+"…":text};
 const setText=(id,text)=>{const node=byId(id);if(node){node.textContent=text}};
 const setHtml=(id,html)=>{const node=byId(id);if(node){node.innerHTML=html}};
@@ -418,6 +444,12 @@ const svgEl=(name,attrs)=>{const node=document.createElementNS("http://www.w3.or
 const ranked=ROWS.filter(r=>r.value!=null).slice().sort((a,b)=>a.value_rank-b.value_rank);
 const plotted=ROWS.filter(r=>r.pass_rate!=null&&r.avg_cost_usd!=null);
 const dateOnly=v=>v?String(v).slice(0,10):"unknown";
+// The week's locked Model of the Week (recorded by refresh_media.py BEFORE this
+// page was built - see dashboard/media_picks.py) and the display helpers it
+// needs. WEEKPICK is null until the first refresh of a week has locked one, and
+// in that case the page falls back to today's live leader rather than showing
+// nothing.
+const WEEKLY=PAYLOAD.weekly||{},WEEKPICK=(WEEKLY.picks||{}).value||null;
 
 // ------------------------------------------------------------ snapshot line --
 (()=>{
@@ -433,8 +465,14 @@ const dateOnly=v=>v?String(v).slice(0,10):"unknown";
 })();
 
 // -------------------------------------------------------------------- hero --
+// The card is the week's pick. When refresh_media.py has locked one, the
+// HEADLINE NUMBERS ARE THE LOCKED ONES: a pick that changed every time the data
+// refreshed would not be a weekly pick. Rank and evidence are still recomputed
+// from today's snapshot, and the line says "today" so the two cannot be confused.
 (()=>{
-  const leader=ranked[0];
+  const record=WEEKPICK;
+  const row=record?ROWS.find(item=>item.model_id===record.model_id):null;
+  const leader=record||ranked[0];
   if(!leader){setText("heroTitle","No rankable model in this snapshot");setText("heroProvider","—");return}
   setText("heroTitle",leader.model_name||leader.model_id);
   // Item 3: never let a cost-efficiency win read as a human-preference win. The
@@ -443,13 +481,19 @@ const dateOnly=v=>v?String(v).slice(0,10):"unknown";
   const arenaFlag=byId("heroArenaFlag");
   if(arenaFlag){arenaFlag.hidden=Boolean(leader.design_arena);arenaFlag.textContent="No preference data"}
   setText("heroProvider",leader.provider||leader.model_id);
-  setText("heroRank",`Rank ${leader.value_rank} of ${ranked.length} rankable models · ${leader.prompts} prompts benchmarked`);
+  setText("heroWeek",WEEKLY.week_label?`Week of ${WEEKLY.week_label} · ${WEEKLY.timezone}`:"");
+  setText("heroRank",row?`Rank ${row.value_rank} of ${ranked.length} rankable models today · ${num(leader.prompts)} prompts benchmarked`:`${num(leader.prompts)} prompts benchmarked; no rank today, so it is not in the current value ranking`);
   setText("heroPass",pct(leader.pass_rate));
-  setText("heroPassDetail",`${num(leader.checks_passed)} of ${num(leader.checks_total)} checks`);
+  setText("heroPassDetail",row?`${num(row.checks_passed)} of ${num(row.checks_total)} checks`:"checks not in this snapshot");
   setText("heroCost",money(leader.avg_cost_usd));
   setText("heroValue",value(leader.value));
-  setText("heroEvidence",num(leader.evidence_checks));
-  const notes=[`Value ${value(leader.value)} = pass rate ${pct(leader.pass_rate)} ÷ mean benchmark cost ${money(leader.avg_cost_usd)} across ${leader.prompts} benchmark prompts.`];
+  setText("heroEvidence",row?num(row.evidence_checks):"—");
+  const notes=[`Value ${value(leader.value)} = pass rate ${pct(leader.pass_rate)} ÷ mean benchmark cost ${money(leader.avg_cost_usd)} across ${num(leader.prompts)} benchmark prompts.`];
+  if(record){
+    notes.push(`Locked as this week's pick on ${record.recorded_label||"the first refresh of the week"}: it ranked #1 of ${ranked.length} rankable models by that value. Refreshing again this week updates the data but not this pick.`);
+  }else{
+    notes.push(`Recommended from this snapshot: it ranks #1 of ${ranked.length} rankable models by value. The pick is locked on the first refresh of the week.`);
+  }
   if(!leader.design_arena){
     notes.push("This model has no Design Arena row, so this is a cost-efficiency result only: it is not evidence of stronger human preference. Design Arena is a separate survey and is never blended into the value score.");
   }
@@ -457,6 +501,166 @@ const dateOnly=v=>v?String(v).slice(0,10):"unknown";
     notes.push("Note: this model publishes no resolvable catalogue rate, so its price comes from its own benchmark generations and cannot be cross-checked against a list price (see the full table below).");
   }
   setText("heroNote",notes.join(" "));
+  // The locked pick standing; today's leader may have moved on since. Said out
+  // loud rather than silently swapping the headline.
+  const liveLine=byId("heroLocked");
+  const current=record?record.current_leader:null;
+  const moved=Boolean(record&&record.current_leader_differs&&current);
+  if(liveLine){
+    liveLine.hidden=!moved;
+    liveLine.textContent=moved?`Current leader today: ${current.model_name||current.model_id}${current.value==null?"":` (value ${value(current.value)})`}.${record.revision_count?` The leader has moved ${record.revision_count}× since this pick was locked; if it holds, it becomes next week's pick.`:""}`:"";
+  }
+})();
+
+// ---------------------------------------------------------------- head to head --
+// The chat dashboard's comparison, over this page's metrics. Same DOM contract
+// and same behaviour so the two pages feel like one product.
+//
+// Both columns come from THIS snapshot - the baseline is the week's pick looked
+// up among today's rows. Only the hero card above shows the locked figures, and
+// it says so; keeping the comparison on a single snapshot is what stops the two
+// columns from silently mixing vintages.
+(()=>{
+  const search=byId("comparisonSearch"),results=byId("comparisonResults"),content=byId("comparisonContent");
+  if(!search||!results||!content)return;
+  let selectedId=null,matches=[],activeIndex=-1;
+
+  const nameOf=row=>esc(row.model_name||row.model_id);
+  const pickRow=()=>{
+    if(WEEKPICK&&WEEKPICK.model_id){
+      const found=ROWS.find(item=>item.model_id===WEEKPICK.model_id);
+      if(found)return found;
+    }
+    return ranked[0]||null;
+  };
+  const arenaEntry=modelId=>(ARENA.models||[]).find(item=>item.model_id===modelId)||null;
+  const arenaCell=row=>{
+    const entry=arenaEntry(row.model_id);
+    if(!entry)return '<span class="num-dim">No Design Arena row</span>';
+    const keys=Object.keys(entry.categories||{}).sort();
+    if(!keys.length)return "Has a Design Arena row";
+    return keys.map(key=>{
+      const cell=entry.categories[key]||{},label=(ARENA.categories||[]).find(item=>item.key===key);
+      return `${esc(label?label.label:key)} Elo ${num(cell.elo)}`;
+    }).join(" · ");
+  };
+  const rankCell=row=>row.value_rank==null?'<span class="num-dim">not rankable</span>':`#${num(row.value_rank)} of ${num(ranked.length)}`;
+  const rateCell=row=>row.has_catalog_rate?`Yes (${esc(row.comparable_price_basis||"catalogue rate")})`:'<span class="num-dim">none published</span>';
+
+  function matchesFor(term){
+    const baseline=pickRow(),query=term.trim().toLowerCase();
+    if(!query)return [];
+    return ROWS.filter(row=>row.model_id!==(baseline?baseline.model_id:"")&&(
+      String(row.model_name||"").toLowerCase().includes(query)
+      ||String(row.provider||"").toLowerCase().includes(query)
+      ||row.model_id.toLowerCase().includes(query))).slice(0,12);
+  }
+
+  function renderResults(){
+    matches=matchesFor(search.value);activeIndex=-1;
+    results.innerHTML=matches.map((row,index)=>`<button type="button" class="comparison-option" role="option" aria-selected="false" data-model-id="${esc(row.model_id)}" data-index="${index}"><span class="comparison-option-name">${esc(row.model_name||row.model_id)}</span><span class="comparison-option-meta">${esc(row.provider||"")} | ${esc(row.model_id)}</span></button>`).join("");
+    search.setAttribute("aria-expanded",String(matches.length>0));
+  }
+
+  function selectModel(row){
+    selectedId=row.model_id;search.value=row.model_name||row.model_id;matches=[];activeIndex=-1;
+    results.innerHTML="";search.setAttribute("aria-expanded","false");renderComparison();
+  }
+
+  // Every sentence below is a comparison the page can actually support. Where
+  // the two sides are not commensurable the sentence is omitted rather than
+  // guessed at - in particular, a cost difference is never phrased as a quality
+  // difference, and a resolution difference is always disclosed next to cost.
+  function describeCost(baseline,other){
+    const left=baseline.avg_cost_usd,right=other.avg_cost_usd;
+    if(left==null||right==null||left===right)return null;
+    const percent=Math.round(Math.abs(left-right)/right*100);
+    return `<strong>${left<right?nameOf(baseline):nameOf(other)}</strong> is ${percent}% cheaper per benchmark generation (${money(left)} vs ${money(right)}).`;
+  }
+  function describeRatio(label,left,right,baseline,other){
+    if(left==null||right==null||left===right)return null;
+    if(left>0&&right>0){
+      const factor=Number((Math.max(left,right)/Math.min(left,right)).toFixed(1));
+      return `<strong>${left>right?nameOf(baseline):nameOf(other)}</strong> has a ${label} ${factor}x higher.`;
+    }
+    return null;
+  }
+  function describePoints(label,left,right,baseline,other){
+    if(left==null||right==null||left===right)return null;
+    const points=Math.abs((left-right)*100).toFixed(1);
+    return `<strong>${left>right?nameOf(baseline):nameOf(other)}</strong> is ${points} percentage points higher on ${label}.`;
+  }
+  // Item 3, restated in the comparison: the whole point of the Design Arena
+  // cross-check is that a cheaper model is not thereby a better-liked one.
+  function describeArena(baseline,other){
+    const left=arenaEntry(baseline.model_id),right=arenaEntry(other.model_id);
+    if(Boolean(left)===Boolean(right))return null;
+    const withArena=left?baseline:other,without=left?other:baseline;
+    return `<strong>${nameOf(withArena)}</strong> has Design Arena (human-preference) rows and <strong>${nameOf(without)}</strong> has none, so the figures above are cost-efficiency and judged-check results only: they say nothing about which model people prefer.`;
+  }
+  function describeResolution(baseline,other){
+    const left=list(baseline.output_resolutions),right=list(other.output_resolutions);
+    if(left==="—"||right==="—"||left===right)return null;
+    return `These two generated at different output sizes in this snapshot (${esc(left)} vs ${esc(right)}), and benchmark cost is not normalised for resolution, so read the cost difference with that in mind.`;
+  }
+
+  function renderComparison(){
+    const baseline=pickRow(),other=ROWS.find(row=>row.model_id===selectedId);
+    if(!baseline){
+      content.className="comparison-empty";
+      content.textContent="No rankable model in this snapshot, so there is nothing to compare against.";
+      return;
+    }
+    if(!other||baseline.model_id===other.model_id){
+      if(other&&baseline.model_id===other.model_id){selectedId=null;search.value=""}
+      content.className="comparison-empty";
+      content.textContent="Choose a model to compare.";
+      return;
+    }
+    const measures=[
+      ["Value (pass rate ÷ cost)",value(baseline.value),value(other.value)],
+      ["Pass rate",pct(baseline.pass_rate),pct(other.pass_rate)],
+      ["Benchmark cost per generation",money(baseline.avg_cost_usd),money(other.avg_cost_usd)],
+      ["Checks passed",`${num(baseline.checks_passed)} of ${num(baseline.checks_total)}`,`${num(other.checks_passed)} of ${num(other.checks_total)}`],
+      ["Evidence checks attempted",num(baseline.evidence_checks),num(other.evidence_checks)],
+      ["Prompts benchmarked",num(baseline.prompts),num(other.prompts)],
+      ["Generated at",list(baseline.output_resolutions),list(other.output_resolutions)],
+      ["Mean generation time",seconds(baseline.duration_ms_mean),seconds(other.duration_ms_mean)],
+      ["Design Arena (human preference)",arenaCell(baseline),arenaCell(other)],
+      ["Value rank in this snapshot",rankCell(baseline),rankCell(other)],
+      ["Catalogue rate",rateCell(baseline),rateCell(other)],
+    ];
+    const summary=[
+      describeCost(baseline,other),
+      describePoints("pass rate",baseline.pass_rate,other.pass_rate,baseline,other),
+      describeRatio("value ratio",baseline.value,other.value,baseline,other),
+      describeArena(baseline,other),
+      describeResolution(baseline,other),
+    ].filter(Boolean);
+    content.className="";
+    content.innerHTML=`<div class="comparison-title">Comparison: <strong>${nameOf(baseline)}</strong> <span>vs.</span> <strong>${nameOf(other)}</strong></div>`
+      +`<div class="table-scroll comparison-table-wrap"><table class="comparison-table"><thead><tr><th>Measure</th><th>${nameOf(baseline)}${WEEKPICK&&WEEKPICK.model_id===baseline.model_id?" (pick)":""}</th><th>${nameOf(other)}</th></tr></thead><tbody>`
+      +measures.map(([label,left,right])=>`<tr><td>${label}</td><td>${left}</td><td>${right}</td></tr>`).join("")
+      +"</tbody></table></div>"
+      +`<div class="comparison-summary"><p>${nameOf(baseline)} is approximately:</p>${summary.length?`<ul>${summary.map(item=>`<li>${item}</li>`).join("")}</ul>`:"<p>These two models are comparable on every measure this page can check, or the values needed are not recorded for one of them.</p>"}</div>`;
+  }
+
+  search.addEventListener("input",()=>{selectedId=null;renderComparison();renderResults()});
+  search.addEventListener("keydown",event=>{
+    if(event.key==="ArrowDown"&&matches.length){event.preventDefault();activeIndex=(activeIndex+1)%matches.length}
+    else if(event.key==="ArrowUp"&&matches.length){event.preventDefault();activeIndex=(activeIndex-1+matches.length)%matches.length}
+    else if(event.key==="Enter"&&activeIndex>=0){event.preventDefault();selectModel(matches[activeIndex])}
+    else if(event.key==="Escape"){matches=[];activeIndex=-1;results.innerHTML="";search.setAttribute("aria-expanded","false")}
+    results.querySelectorAll(".comparison-option").forEach((option,index)=>option.classList.toggle("active",index===activeIndex));
+  });
+  results.addEventListener("click",event=>{
+    const option=event.target.closest("[data-model-id]");
+    if(!option)return;
+    const row=ROWS.find(item=>item.model_id===option.dataset.modelId);
+    if(row)selectModel(row);
+  });
+
+  renderComparison();
 })();
 
 // -------------------------------------------------------------------- kpis --
@@ -698,7 +902,7 @@ const dateOnly=v=>v?String(v).slice(0,10):"unknown";
       // shown per model so the cost can be read against it. A model whose rows
       // span several sizes is marked rather than silently averaged.
       +`<td>${(row.output_resolutions||[]).length?esc(row.output_resolutions.join(", "))+(row.resolution_mixed?' <span class="num-dim">(mixed)</span>':''):'<span class="num-dim">not recorded</span>'}</td>`
-      +`<td>${row.duration_ms_mean==null?'<span class="num-dim">—</span>':esc((row.duration_ms_mean/1000).toFixed(1)+"s")}</td>`
+      +`<td>${row.duration_ms_mean==null?'<span class="num-dim">—</span>':esc(seconds(row.duration_ms_mean))}</td>`
       +`<td>${row.comparable_price==null?'<span class="num-dim">not published</span>':esc(money(row.comparable_price))}</td>`
       +`<td>${row.comparable_price_basis?esc(row.comparable_price_basis):'<span class="num-dim">—</span>'}</td>`
       +`<td class="name-cell num-dim">${lines||"—"}</td></tr>`;

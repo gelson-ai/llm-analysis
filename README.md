@@ -125,6 +125,16 @@ week's recorded pick stands. History lives in
 top-3 contenders and any revisions. Ties break deterministically on value
 ratio, then score, then price, then model id.
 
+The **image dashboard** has its own Model of the Week with the same week
+semantics over a single metric (pass rate ÷ benchmark cost), and its own history
+file at `data/analysis/media_weekly_picks.json`. The two are deliberately
+separate files: they lock different picks over different model sets, so a shared
+record would let one pipeline's lock overwrite the other's. Its tie-break is the
+one the page's own value ranking already uses - value, then model id - so the
+locked pick can never disagree with the rank printed beside it. On both pages the
+card is labelled "Model of the week", shows the week range, and sits directly
+above a head-to-head comparison against any other model in the snapshot.
+
 **Snapshot note:** an on-demand refresh deliberately writes at most one
 snapshot per day (`--no-snapshot` is passed when today's snapshot already
 exists). This relaxes design principle 8 below, which otherwise said *every*

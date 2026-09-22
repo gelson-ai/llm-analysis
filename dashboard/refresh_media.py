@@ -48,6 +48,7 @@ if str(DASHBOARD_DIR) not in sys.path:
 
 from config import settings  # noqa: E402  (needs the path insert above)
 import build_image_dashboard  # noqa: E402
+import media_picks  # noqa: E402  (the media side's OWN weekly picks - see its docstring)
 from refresh_lock import RefreshLock  # noqa: E402
 
 MEDIA_PIPELINE_SCRIPT = PROJECT_ROOT / "run_media_pipeline.py"
@@ -149,7 +150,23 @@ def run_refresh(
                 result["detail"] = (proc.stderr or proc.stdout or "").strip()[-1500:]
                 return result
 
-        # ---- 2. Rebuild ----------------------------------------------------
+        # ---- 2. Lock this week's Model of the Week --------------------------
+        # BEFORE the rebuild, deliberately, and in the same order refresh.py
+        # uses: fetch, lock, then publish. Recording the pick after the build
+        # would mean this week's pick did not appear on the page until the NEXT
+        # refresh - the page would render last week's state for a whole week.
+        #
+        # This is also why the payload is built here and reused below, rather
+        # than twice: one object decides what gets locked AND what the status
+        # sidecar reports, so they cannot describe different snapshots.
+        payload = build_image_dashboard.build_payload()
+
+        history = media_picks.load_history()
+        history, pick_summary = media_picks.record_pick(history, payload)
+        media_picks.save_history(history)
+        step("weekly_pick", state=pick_summary.get("state"), week=pick_summary.get("week_key"))
+
+        # ---- 3. Rebuild ----------------------------------------------------
         build_cmd = [
             sys.executable,
             str(BUILD_SCRIPT),
@@ -165,10 +182,10 @@ def run_refresh(
             result["detail"] = (build.stderr or build.stdout or "").strip()[-1500:]
             return result
 
-        # ---- 3. Stamp this pipeline's own status sidecar -------------------
-        # Read back the payload the build just used, so the status can never
-        # disagree with the published HTML about which snapshot it describes.
-        payload = build_image_dashboard.build_payload()
+        # ---- 4. Stamp this pipeline's own status sidecar -------------------
+        # From the SAME payload object the pick was locked from, so the status
+        # can never disagree with the published HTML about which snapshot it
+        # describes.
         status = {
             "version": 1,
             "pipeline": "media",

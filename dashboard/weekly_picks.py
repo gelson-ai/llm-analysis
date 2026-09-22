@@ -92,11 +92,30 @@ def _fmt_local_moment(moment: datetime) -> str:
     return f"{_fmt_day(local.date())} {local.year}, {local.strftime('%H:%M')} PHT"
 
 
+def format_local_moment(moment: datetime) -> str:
+    """Public form of the timestamp label, e.g. 'Fri 11 Sep 2026, 03:09 PHT'.
+
+    Exists so the MEDIA dashboard's picks module can produce the identical label
+    without importing a private helper or duplicating the month/weekday tables -
+    which are hand-written precisely so the output is locale-independent.
+    """
+    return _fmt_local_moment(moment)
+
+
 def _as_utc(moment: Optional[datetime]) -> datetime:
     moment = moment or datetime.now(timezone.utc)
     if moment.tzinfo is None:
         return moment.replace(tzinfo=timezone.utc)
     return moment
+
+
+def as_utc(moment: Optional[datetime]) -> datetime:
+    """Public form of the naive/aware normalisation above.
+
+    Same reason as format_local_moment(): shared with the media picks module so
+    only one place decides how a missing or naive timestamp is interpreted.
+    """
+    return _as_utc(moment)
 
 
 # ---------------------------------------------------------------------------

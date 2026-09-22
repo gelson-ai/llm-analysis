@@ -57,6 +57,7 @@ if str(DASHBOARD_DIR) not in sys.path:
     sys.path.insert(0, str(DASHBOARD_DIR))
 
 from config import settings  # noqa: E402  (needs the path insert above)
+import media_picks  # noqa: E402  (the media side's OWN weekly picks - see its docstring)
 import page_shell  # noqa: E402  (sibling module - shared with the chat builder)
 
 # --- inputs: media-pipeline outputs only -----------------------------------
@@ -66,6 +67,10 @@ DESIGN_ARENA_PATH = settings.MEDIA_BENCHMARKS_JSON_PATH
 COVERAGE_PATH = settings.MEDIA_COVERAGE_REPORT_PATH
 QUALITY_PATH = settings.MEDIA_DATA_QUALITY_REPORT_PATH
 SNAPSHOTS_DIR = settings.MEDIA_SNAPSHOTS_DIR
+# Read-only: this dashboard's weekly "Model of the week" history, which
+# refresh_media.py writes. Named for the media side on purpose - the chat
+# pipeline's weekly_picks.json is a different file with different semantics.
+WEEKLY_PICKS_PATH = settings.MEDIA_WEEKLY_PICKS_PATH
 
 # --- outputs ---------------------------------------------------------------
 TEMPLATE_PATH = DASHBOARD_DIR / "image_template.html"
@@ -609,6 +614,10 @@ def build_payload() -> dict:
             "model_ids": [row["model_id"] for row in budget],
         },
         "trend": trend_state(),
+        # The current week's locked "Model of the week". refresh_media.py locks it
+        # BEFORE this build runs, so the page always shows the pick that belongs to
+        # the snapshot it is rendering.
+        "weekly": media_picks.embed_view(media_picks.load_history(WEEKLY_PICKS_PATH)),
         "constants": {
             "top_n_bars": TOP_N_BARS,
             "point_radius_min": POINT_RADIUS_MIN,

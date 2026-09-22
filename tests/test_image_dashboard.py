@@ -13,6 +13,7 @@ against hand-computed numbers rather than "whatever the code does today":
     value     = pass rate / price
 """
 import json
+import re
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -25,6 +26,8 @@ if str(DASHBOARD_DIR) not in sys.path:
     sys.path.insert(0, str(DASHBOARD_DIR))
 
 import build_image_dashboard as builder  # noqa: E402  (needs the path insert above)
+import media_picks  # noqa: E402  (its OWN weekly picks module - not the chat one)
+import weekly_picks  # noqa: E402  (read-only here, to prove the two weeks agree)
 
 # Anchored relative to the real clock on purpose. check_freshness() compares the
 # fixture timestamp against datetime.now(), so a frozen calendar date silently
@@ -188,6 +191,11 @@ def install(tmp_path, monkeypatch, models=None, prompt_rows=None, arena_rows=Non
             quality if quality is not None else {"issue_count": 0, "error_count": 0, "issues": []},
         ),
         "SNAPSHOTS_DIR": snapshots if snapshots is not None else (data_dir / "media_snapshots"),
+        # Deliberately absent unless a test writes it: the payload's "weekly"
+        # block must degrade to an empty week rather than fail the build, and
+        # pointing this at tmp_path keeps the suite independent of whatever
+        # history happens to exist on the machine running it.
+        "WEEKLY_PICKS_PATH": data_dir / "media_weekly_picks.json",
     }
     for key, value in paths.items():
         monkeypatch.setattr(builder, key, value)
@@ -647,6 +655,96 @@ def test_payload_reports_the_timestamps_of_each_input(tmp_path, monkeypatch):
     assert payload["benchmarks_retrieved_at"] == iso(RETRIEVED_AT)
     assert payload["design_arena_retrieved_at"] == iso(RETRIEVED_AT)
     assert payload["generated_at"] is not None
+
+
+# ---------------------------------------------------------------------------
+# weekly "Model of the week"
+#
+# The pick is LOCKED by refresh_media.py before the build, so these tests are
+# about the builder *carrying* the locked record (and degrading safely when
+# there is none) - not about choosing it. The choice itself is tested in
+# tests/test_media_picks.py.
+# ---------------------------------------------------------------------------
+def test_a_week_with_no_history_still_renders_its_date_range(tmp_path, monkeypatch):
+    """The hero shows the week range from the first refresh of the week, before
+    any pick has been locked. An empty range would leave the card looking
+    broken for the whole first week."""
+    install(tmp_path, monkeypatch)  # WEEKLY_PICKS_PATH is absent inside tmp_path
+    weekly = builder.build_payload()["weekly"]
+
+    assert weekly["picks"] == {}
+    assert weekly["week_key"]
+    assert weekly["iso_week"]
+    assert re.fullmatch(r"Mon \d{1,2} \w{3} - Sun \d{1,2} \w{3} \d{4}", weekly["week_label"])
+
+
+def test_the_week_range_is_the_monday_to_sunday_manila_week_being_rendered(tmp_path, monkeypatch):
+    install(tmp_path, monkeypatch)
+    weekly = builder.build_payload()["weekly"]
+
+    monday, sunday = weekly_picks.week_bounds(datetime.now(timezone.utc))
+    assert weekly["week_key"] == weekly_picks.week_key(monday, sunday)
+    assert weekly["timezone"] == "Asia/Manila"
+    # Monday 21 Sep - Sunday 27 Sep 2026: the two day numbers are 6 days apart.
+    day_numbers = [int(part) for part in re.findall(r"\d{1,2}(?= \w{3})", weekly["week_label"])]
+    assert len(day_numbers) == 2
+    assert (sunday - monday).days == 6
+
+
+def test_payload_carries_the_locked_pick_from_the_media_history_file(tmp_path, monkeypatch):
+    paths = install(tmp_path, monkeypatch)
+    history, summary = media_picks.record_pick(
+        media_picks.empty_history(), builder.build_payload(), source="test"
+    )
+    media_picks.save_history(history, paths["WEEKLY_PICKS_PATH"])
+
+    weekly = builder.build_payload()["weekly"]
+    pick = weekly["picks"]["value"]
+    assert summary["state"] == "locked"
+    assert pick["model_id"] == summary["pick"]["model_id"]
+    assert pick["locked_by"] == "test"
+    assert pick["recorded_label"]
+    assert weekly["history_weeks"] == 1
+
+
+def test_the_locked_pick_is_the_rank_one_model_the_page_prints(tmp_path, monkeypatch):
+    """The two rankings are computed in different modules. If they ever
+    disagreed, the page would print a #1 and label a different model as the
+    week's winner."""
+    install(tmp_path, monkeypatch)
+    payload = builder.build_payload()
+    _, summary = media_picks.record_pick(media_picks.empty_history(), payload, source="test")
+
+    rank_one = next(row for row in payload["rows"] if row["value_rank"] == 1)
+    assert summary["pick"]["model_id"] == rank_one["model_id"]
+
+
+def test_a_tie_is_broken_the_same_way_by_both_rankings(tmp_path, monkeypatch):
+    """Equal value is broken by model id ascending. Two models at exactly the
+    same pass rate and cost is the case where a divergent tie-break would show
+    up as a pick that is not the page's #1."""
+    models = [model("zeta/tie", name="Zeta Tie"), model("alpha/tie", name="Alpha Tie")]
+    prompts = [prompt_row("zeta/tie", 5, 5, 0.10), prompt_row("alpha/tie", 5, 5, 0.10)]
+    install(tmp_path, monkeypatch, models=models, prompt_rows=prompts, arena_rows=[])
+
+    payload = builder.build_payload()
+    rows = {row["model_id"]: row for row in payload["rows"]}
+    assert rows["zeta/tie"]["value"] == rows["alpha/tie"]["value"]  # a real tie
+    assert rows["alpha/tie"]["value_rank"] == 1
+
+    _, summary = media_picks.record_pick(media_picks.empty_history(), payload, source="test")
+    assert summary["pick"]["model_id"] == "alpha/tie"
+
+
+def test_a_corrupt_history_is_ignored_rather_than_failing_the_build(tmp_path, monkeypatch):
+    """Losing the history must not stop the dashboard being rebuilt - the same
+    promise load_history() makes for the chat side."""
+    paths = install(tmp_path, monkeypatch)
+    paths["WEEKLY_PICKS_PATH"].write_text("{not json", encoding="utf-8")
+
+    weekly = builder.build_payload()["weekly"]
+    assert weekly["picks"] == {}
+    assert weekly["history_weeks"] == 0
 
 
 # ---------------------------------------------------------------------------
