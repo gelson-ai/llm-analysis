@@ -214,9 +214,12 @@ footer code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fon
   divided by every check it attempted, pooled flat across its benchmark prompts. Price is the mean
   <code>cost_usd</code> of those same generations — <em>not</em> the catalogue's per-image,
   per-megapixel or per-token rate — so performance and price come from identical rows and are
-  directly comparable to each other. Cost comparability caveat: no benchmark row records the
-  resolution or settings it was generated at, so these costs are comparable across models only if the
-  benchmark harness held resolution fixed; this dataset cannot verify that. Design Arena scores are
+  directly comparable to each other. Cost comparability caveat, measured rather than assumed: each
+  row now records the resolution it was generated at, and resolutions are <em>not</em> held fixed
+  across models — the catalogue spans roughly 768 to 2560 pixels on the long edge and cost tracks
+  it — so a cheaper model is not necessarily cheaper at the same fidelity. The reference table
+  below carries a resolution column for exactly that reason. Generation time is captured per row
+  too and is shown separately from cost and quality. Design Arena scores are
   shown separately and never affect the value score, and no Artificial Analysis data exists for image
   models at all.
 </aside>
@@ -357,7 +360,7 @@ footer code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fon
   </div>
   <div class="table-scroll">
     <table id="pricingTable">
-      <thead><tr><th>Model</th><th>Value</th><th>Benchmark cost</th><th>Catalogue rate</th><th>Rate basis</th><th>Endpoint pricing lines</th></tr></thead>
+      <thead><tr><th>Model</th><th>Value</th><th>Benchmark cost</th><th>Generated at</th><th>Gen. time</th><th>Catalogue rate</th><th>Rate basis</th><th>Endpoint pricing lines</th></tr></thead>
       <tbody id="pricingBody"></tbody>
     </table>
   </div>
@@ -691,6 +694,11 @@ const dateOnly=v=>v?String(v).slice(0,10):"unknown";
     return `<tr><td class="name-cell"><span class="model-name">${esc(row.model_name||row.model_id)}</span><div class="model-provider">${esc(row.provider||"")}</div></td>`
       +`<td>${row.value==null?'<span class="num-dim">Unrated</span>':esc(value(row.value))}</td>`
       +`<td>${row.avg_cost_usd==null?'<span class="num-dim">—</span>':esc(money(row.avg_cost_usd))}</td>`
+      // The resolution the benchmark generation ran at - the caveat's subject,
+      // shown per model so the cost can be read against it. A model whose rows
+      // span several sizes is marked rather than silently averaged.
+      +`<td>${(row.output_resolutions||[]).length?esc(row.output_resolutions.join(", "))+(row.resolution_mixed?' <span class="num-dim">(mixed)</span>':''):'<span class="num-dim">not recorded</span>'}</td>`
+      +`<td>${row.duration_ms_mean==null?'<span class="num-dim">—</span>':esc((row.duration_ms_mean/1000).toFixed(1)+"s")}</td>`
       +`<td>${row.comparable_price==null?'<span class="num-dim">not published</span>':esc(money(row.comparable_price))}</td>`
       +`<td>${row.comparable_price_basis?esc(row.comparable_price_basis):'<span class="num-dim">—</span>'}</td>`
       +`<td class="name-cell num-dim">${lines||"—"}</td></tr>`;
@@ -715,6 +723,9 @@ const dateOnly=v=>v?String(v).slice(0,10):"unknown";
     CONST.methodology_note,
     `Coverage in this snapshot: ${COVERAGE.catalog_models} catalogue models, ${COVERAGE.priced_models} with a resolvable catalogue rate, ${COVERAGE.benchmarked_models} benchmarked over ${COVERAGE.prompt_count_min}–${COVERAGE.prompt_count_max} prompts each, ${COVERAGE.unrated_models} unrated, ${COVERAGE.design_arena_models} with Design Arena scores.`,
     "Prompt counts per model are not uniform, so a point or bar backed by more attempted checks rests on more evidence than one backed by fewer.",
+    (CONST.resolution_values||[]).length
+      ? `Generated output sizes in this snapshot: ${CONST.resolution_values.join(", ")}, and ${CONST.resolution_mixed_models||0} benchmarked model(s) generated at more than one of them. Cost is not resolution-normalised, so read it against the resolution column.`
+      : null,
   ];
   setHtml("qualityList",items.filter(Boolean).map(text=>`<li>${esc(text)}</li>`).join(""));
   setText("footerProvenance",`Generated ${dateOnly(PAYLOAD.generated_at)} from data retrieved ${dateOnly(PAYLOAD.data_retrieved_at)}. Value = pass rate ÷ mean benchmark cost (${CONST.value_definition||""}).`);

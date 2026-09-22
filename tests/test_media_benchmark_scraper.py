@@ -23,6 +23,13 @@ def traffic_light_html():
     return (FIXTURES_DIR / "media_benchmark_page_videos_traffic_light.html").read_text(encoding="utf-8")
 
 
+@pytest.fixture
+def full_glass_html():
+    """Real IMAGE benchmark page markup, captured 2026-09-22, including a
+    trimmed excerpt of the page's embedded per-asset payload."""
+    return (FIXTURES_DIR / "media_benchmark_page_images_full_glass.html").read_text(encoding="utf-8")
+
+
 def _rows_by_slug(rows):
     return {row["raw_model_slug"]: row for row in rows}
 
@@ -146,6 +153,136 @@ def test_discover_prompt_slugs_deduplicates_and_preserves_order():
 
 def test_discover_prompt_slugs_returns_empty_for_unknown_media_type():
     assert scraper.discover_prompt_slugs("<html></html>", "audio") == []
+
+
+# ---------------------------------------------------------------------------
+# Additive enrichment from the embedded per-asset payload
+# ---------------------------------------------------------------------------
+def test_asset_payload_yields_resolution_and_duration(full_glass_html):
+    """The rendered markup carries NO output resolution, and its generation time
+    is a rounded badge. Both come from the page's embedded payload, which is
+    located BY KEY rather than by position - the RSC envelope around the objects
+    is not a contract."""
+    assets = scraper.parse_asset_payload(full_glass_html)
+
+    assert assets, "the fixture's payload excerpt must parse"
+    entry = assets["black-forest-labs/flux.2-flex"]
+    assert entry["output_width"] == 1024
+    assert entry["output_height"] == 1024
+    assert entry["duration_ms"] == 10624
+    assert entry["asset_media_type"] == "image/jpeg"
+    assert entry["thumbnail_url"].endswith("thumb-0.webp")
+    assert entry["asset_count"] == 1
+
+
+def test_payload_keys_are_date_stripped_so_markup_and_payload_agree(full_glass_html):
+    """The markup always links the DATED slug while an image payload uses the
+    undated one; comparing stripped forms is what lets the two join at all. This
+    joins on a model whose markup slug really does carry a date."""
+    assets = scraper.parse_asset_payload(full_glass_html)
+    rows = _rows_by_slug(scraper.parse_prompt_page(full_glass_html))
+    row = rows["black-forest-labs/flux.2-flex"]
+
+    assert row["raw_model_slug"] == "black-forest-labs/flux.2-flex"
+    assert scraper.strip_release_date_suffix(row["raw_model_slug"]) in assets
+
+
+def test_rows_gain_the_payload_fields_without_losing_the_markup_values(full_glass_html):
+    """The two sources are JOINED, not substituted: the judged pass counts stay
+    authoritative from the markup (score.checks is empty on some pages, so a
+    payload-only parser would lose them), and the markup's own cost and time are
+    untouched."""
+    row = _rows_by_slug(scraper.parse_prompt_page(full_glass_html))["black-forest-labs/flux.2-max"]
+
+    assert row["checks_source"] == "aria-label"
+    assert row["checks_passed"] == 3 and row["checks_total"] == 4
+    assert row["cost_usd"] == pytest.approx(0.07)
+    assert row["generation_seconds"] == pytest.approx(16.5)
+    # ... and the payload fields on top.
+    assert (row["output_width"], row["output_height"]) == (1024, 1024)
+    assert row["duration_ms"] == 16462
+    assert row["asset_media_type"] == "image/jpeg"
+    assert row["asset_count"] == 1
+
+
+def test_the_two_time_sources_agree_within_the_badge_rounding(full_glass_html):
+    """The visible badge and the payload measure the same thing, so they are a
+    free cross-check on each other. Worth keeping: if they ever diverge by more
+    than the badge's rounding, one of the two parsers has started reading a
+    different number."""
+    for row in scraper.parse_prompt_page(full_glass_html):
+        assert row["duration_ms"] is not None and row["generation_seconds"] is not None
+        assert row["duration_ms"] / 1000 == pytest.approx(row["generation_seconds"], abs=0.1)
+
+
+def test_payload_enrichment_is_optional_not_required(traffic_light_html):
+    """The saved video fixture has no RSC payload (it was trimmed to markup), so
+    this asserts the documented contract: markup-only pages still parse, and the
+    payload fields are simply absent rather than fabricated."""
+    rows = scraper.parse_prompt_page(traffic_light_html)
+
+    assert len(rows) == 3
+    assert "output_width" not in rows[0]
+    assert rows[0]["checks_passed"] == 5
+
+
+def test_a_payload_with_rows_but_no_parseable_asset_raises():
+    """Loud, not silent. If the payload lists costUsd but nothing can be read
+    out of it, that can only mean the payload shape changed - and continuing
+    would quietly drop resolution and generation time from every page."""
+    broken = ('<script>self.__next_f.push([1,"{&quot;costUsd&quot;:1}"])</script>'
+              .replace("&quot;", '\\"'))
+    with pytest.raises(scraper.MediaBenchmarkParseError):
+        scraper.parse_asset_payload(broken)
+
+
+def test_a_page_with_no_payload_at_all_returns_nothing_quietly():
+    """Absent is legitimate (an older page, or a trimmed fixture); broken is not."""
+    assert scraper.parse_asset_payload("<html><body><li>x</li></body></html>") == {}
+
+
+# ---------------------------------------------------------------------------
+# Telling an unjudged page apart from a markup change
+# ---------------------------------------------------------------------------
+def test_page_publishes_judged_checks_distinguishes_the_two_empty_results(full_glass_html):
+    """Both cases yield zero parsed rows, and the caller's correct reaction to
+    each is opposite: skip an unjudged page, but raise on a page that publishes
+    checks we failed to read."""
+    assert scraper.page_publishes_judged_checks(full_glass_html) is True
+
+    # Real shape of /benchmarks/media/images/portraits (live 2026-09-22): result
+    # rows and assets, but the string "checks" nowhere in a 1.6 MB document.
+    unjudged = ('<html><body>' + '<li href="/a/one"><img src="/x.webp"></li>' * 3 + '</body></html>')
+    assert scraper.page_publishes_judged_checks(unjudged) is False
+    assert scraper.parse_prompt_page(unjudged) == []
+
+    # The fallback contract counts too - a page using the visible badge is still
+    # publishing judgements, so an empty parse there IS a defect.
+    assert scraper.page_publishes_judged_checks('<li><span>2/5</span></li>') is True
+
+
+def test_a_skipped_page_is_reported_not_just_logged():
+    """The pipeline skips an unjudged page rather than failing, which is only
+    acceptable because the omission is recorded in both reports."""
+    from src import media_coverage
+
+    stats = {
+        "rows": 867,
+        "pages_fetched": 28,
+        "models_matched_to_inventory": 66,
+        "pages_skipped": [{"page": "/benchmarks/media/images/portraits",
+                           "reason": "no_judged_checks", "row_blocks": 192}],
+    }
+
+    coverage = media_coverage._prompt_benchmark_coverage(stats)
+    assert coverage["pages_skipped_count"] == 1
+    assert coverage["pages_skipped"][0]["page"].endswith("portraits")
+
+    report = media_coverage.build_media_data_quality_report({}, {}, [], prompt_benchmark_stats=stats)
+    issues = [i for i in report["issues"] if i["issue"] == "prompt_benchmark_page_skipped"]
+    assert len(issues) == 1
+    assert issues[0]["severity"] == "info"
+    assert "no judged pass count" in issues[0]["detail"]
 
 
 # ---------------------------------------------------------------------------

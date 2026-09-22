@@ -114,17 +114,22 @@ METHODOLOGY_NOTE = (
     "pooled flat across its benchmark prompts - no per-category grouping or weighting. Price is the "
     "mean cost_usd of those same generations, not the catalogue's per-image/per-megapixel/per-token "
     "rate, so price and performance come from the identical rows and are directly comparable. "
-    "Cost comparability caveat: no benchmark row records the resolution or settings it was generated "
-    "at, so these costs are only comparable if the benchmark harness held resolution fixed across "
-    "models - an assumption this dataset cannot verify."
+    "Cost comparability caveat, now measured rather than assumed: each benchmark row DOES record the "
+    "resolution it was generated at, and resolutions are not held fixed across models - the "
+    "catalogue spans roughly 768 to 2560 pixels on the long edge, and cost tracks resolution "
+    "(a 2048x2048 generation costs several times a 1024x1024 one). A cheaper model is therefore "
+    "not necessarily cheaper at the same fidelity, which is why the reference table carries a "
+    "resolution column: read the comparison per model rather than averaging over it. Generation "
+    "time is captured per row too and is reported separately from the cost and quality figures."
 )
 
 PROVENANCE_NOTE = (
     "Benchmarks are OpenRouter's media prompt benchmark pages plus the Design Arena preference scores "
     "published on OpenRouter's catalogue. Artificial Analysis publishes no image-generation data and "
     "nothing on this page implies otherwise. Design Arena is never folded into the value score. "
-    "Latency, uptime and provider-level effective pricing are not captured by this pipeline and are "
-    "not shown."
+    "Output resolution, generation time and a thumbnail URL are read per row from the page's own "
+    "embedded data, because the rendered markup carries none of the three. Uptime and "
+    "provider-level effective pricing are not captured by this pipeline and are not shown."
 )
 
 
@@ -210,7 +215,8 @@ def aggregate_performance(rows: list[dict]) -> dict[str, dict]:
     while a mean of rates weights each *prompt* equally.
     """
     pools: dict[str, dict] = defaultdict(
-        lambda: {"checks_passed": 0, "checks_total": 0, "prompts": 0, "costs": [], "names": []}
+        lambda: {"checks_passed": 0, "checks_total": 0, "prompts": 0, "costs": [], "names": [],
+                 "durations_ms": [], "resolutions": []}
     )
     for row in rows:
         model_id = row.get("model_id")
@@ -229,6 +235,15 @@ def aggregate_performance(rows: list[dict]) -> dict[str, dict]:
         if isinstance(cost, (int, float)) and not isinstance(cost, bool):
             pool["costs"].append(float(cost))
 
+        duration = row.get("duration_ms")
+        if isinstance(duration, (int, float)) and not isinstance(duration, bool):
+            pool["durations_ms"].append(float(duration))
+
+        width = row.get("output_width")
+        height = row.get("output_height")
+        if isinstance(width, int) and isinstance(height, int) and not isinstance(width, bool):
+            pool["resolutions"].append(f"{width}x{height}")
+
         name = row.get("model_name")
         if name:
             pool["names"].append(name)
@@ -239,6 +254,8 @@ def aggregate_performance(rows: list[dict]) -> dict[str, dict]:
         costs = pool["costs"]
         names = pool["names"]
         pass_rate = (pool["checks_passed"] / total) if total else None
+        durations = pool["durations_ms"]
+        resolutions = sorted(set(pool["resolutions"]))
         aggregated[model_id] = {
             "checks_passed": pool["checks_passed"],
             "checks_total": total,
@@ -248,6 +265,14 @@ def aggregate_performance(rows: list[dict]) -> dict[str, dict]:
             "cost_rows": len(costs),
             "evidence_checks": total,
             "benchmark_name": names[0] if names else None,
+            # Output fidelity, per model. `resolution_mixed` is the honest flag:
+            # a model whose rows were generated at more than one size has an
+            # average cost that mixes them, and the page says so rather than
+            # presenting a single figure as if it were one configuration.
+            "output_resolutions": resolutions,
+            "resolution_mixed": len(resolutions) > 1,
+            "duration_ms_mean": round(sum(durations) / len(durations), 1) if durations else None,
+            "duration_rows": len(durations),
         }
     return aggregated
 
@@ -451,6 +476,14 @@ def build_model_rows(models: list[dict], performance: dict[str, dict], arena: di
             "pass_rate": pass_rate,
             "avg_cost_usd": avg_cost,
             "cost_rows": agg.get("cost_rows"),
+            # Output fidelity from the benchmark rows themselves. Distinct from
+            # the `resolutions` field below, which is what the CATALOGUE claims to
+            # support (null for every image model today) rather than what was
+            # actually generated.
+            "output_resolutions": agg.get("output_resolutions") or [],
+            "resolution_mixed": bool(agg.get("resolution_mixed")),
+            "duration_ms_mean": agg.get("duration_ms_mean"),
+            "duration_rows": agg.get("duration_rows"),
             "evidence_checks": agg.get("evidence_checks"),
             "value": value_score(pass_rate, avg_cost),
             "value_rank": None,
@@ -580,6 +613,13 @@ def build_payload() -> dict:
             "top_n_bars": TOP_N_BARS,
             "point_radius_min": POINT_RADIUS_MIN,
             "point_radius_max": POINT_RADIUS_MAX,
+            # The distinct output sizes actually generated across the benchmark
+            # rows, and how many models mix more than one. Computed rather than
+            # written down, so the caveat cannot drift from the data it describes.
+            "resolution_values": sorted(
+                {res for row in rows for res in (row.get("output_resolutions") or [])}
+            ),
+            "resolution_mixed_models": sum(1 for row in rows if row.get("resolution_mixed")),
             "value_definition": "pass rate (checks passed / checks attempted) divided by mean benchmark cost in USD",
             "methodology_note": METHODOLOGY_NOTE,
             "provenance_note": PROVENANCE_NOTE,

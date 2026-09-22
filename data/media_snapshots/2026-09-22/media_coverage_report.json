@@ -1,5 +1,5 @@
 {
-  "retrieved_at": "2026-09-22T06:54:39.005862+00:00",
+  "retrieved_at": "2026-09-22T06:52:28.992727+00:00",
   "model_inventory": {
     "image": {
       "total_models": 52,
@@ -127,14 +127,6 @@
     "source": "https://openrouter.ai/benchmarks/media/{images,videos}",
     "benchmark_source": "OpenRouter Media Benchmarks",
     "pages_fetched": 28,
-    "pages_skipped": [
-      {
-        "page": "/benchmarks/media/images/portraits",
-        "reason": "no_judged_checks",
-        "row_blocks": 192
-      }
-    ],
-    "pages_skipped_count": 1,
     "prompt_page_count": 27,
     "rows": 867,
     "rows_per_prompt": {

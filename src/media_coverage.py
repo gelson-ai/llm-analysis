@@ -206,11 +206,17 @@ def _prompt_benchmark_coverage(stats: Optional[dict]) -> dict:
         return {"enabled": False}
 
     checks_sources = stats.get("checks_source_counts") or {}
+    skipped_pages = stats.get("pages_skipped") or []
     return {
         "enabled": True,
         "source": "https://openrouter.ai/benchmarks/media/{images,videos}",
         "benchmark_source": "OpenRouter Media Benchmarks",
         "pages_fetched": stats.get("pages_fetched"),
+        # Fetched but NOT usable: a page publishing generated assets with no
+        # judged checks anywhere. Kept separate from prompt_page_count so the
+        # dataset size is never overstated.
+        "pages_skipped": skipped_pages,
+        "pages_skipped_count": len(skipped_pages),
         "prompt_page_count": len(stats.get("rows_per_prompt") or {}),
         "rows": stats.get("rows"),
         "rows_per_prompt": stats.get("rows_per_prompt"),
@@ -414,6 +420,20 @@ def build_media_data_quality_report(
                       f"{prompt_benchmark_stats.get('models_matched_to_inventory')} distinct model(s) matched "
                       f"to the catalog. Correctness values are per-prompt judged pass counts, not a global score.",
         })
+
+        # A skipped page is a real gap in the dataset, so it is reported rather
+        # than only logged: its models contributed no scores AND no costs.
+        skipped_pages = prompt_benchmark_stats.get("pages_skipped") or []
+        for skipped in skipped_pages:
+            issues.append({
+                "severity": "info", "issue": "prompt_benchmark_page_skipped",
+                "count": 1,
+                "detail": f"{skipped.get('page')} was skipped: {skipped.get('reason')}. "
+                          f"The page publishes {skipped.get('row_blocks')} result-row block(s) of generated "
+                          f"assets but no judged pass count anywhere, so there is nothing to score. Its rows "
+                          f"are excluded from both the pass-rate and the cost averages, which keeps this "
+                          f"dataset's rule that price and performance come from the same rows.",
+            })
 
         unmatched_slugs = prompt_benchmark_stats.get("unmatched_model_slugs") or []
         if unmatched_slugs:

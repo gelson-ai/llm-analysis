@@ -1,8 +1,8 @@
 {
-  "issue_count": 9,
+  "issue_count": 8,
   "error_count": 0,
   "warning_count": 0,
-  "info_count": 9,
+  "info_count": 8,
   "issues": [
     {
       "severity": "info",
@@ -27,12 +27,6 @@
       "issue": "prompt_benchmarks_collected",
       "count": 867,
       "detail": "867 prompt-benchmark row(s) parsed from 28 page(s); 66 distinct model(s) matched to the catalog. Correctness values are per-prompt judged pass counts, not a global score."
-    },
-    {
-      "severity": "info",
-      "issue": "prompt_benchmark_page_skipped",
-      "count": 1,
-      "detail": "/benchmarks/media/images/portraits was skipped: no_judged_checks. The page publishes 192 result-row block(s) of generated assets but no judged pass count anywhere, so there is nothing to score. Its rows are excluded from both the pass-rate and the cost averages, which keeps this dataset's rule that price and performance come from the same rows."
     },
     {
       "severity": "info",

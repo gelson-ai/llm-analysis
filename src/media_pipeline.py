@@ -40,6 +40,7 @@ from src.media_benchmark_scraper import (
     MediaBenchmarkParseError,
     discover_prompt_slugs,
     normalize_prompt_benchmark_row,
+    page_publishes_judged_checks,
     parse_prompt_page,
     prompt_name_from_slug,
     strip_release_date_suffix,
@@ -72,6 +73,11 @@ MEDIA_PROMPT_BENCHMARK_CSV_FIELDS = [
     "prompt_slug", "prompt_name", "benchmark_name", "benchmark_source",
     "source_platform", "source_url", "checks_passed", "checks_total",
     "pass_rate", "correctness_label", "cost_usd", "generation_seconds",
+    # Additive, from the page's embedded per-asset payload: the rendered markup
+    # carries no output resolution at all, and its generation time is a rounded
+    # badge. Empty (not absent) when a page publishes no payload.
+    "asset_count", "asset_url", "thumbnail_url", "asset_media_type",
+    "output_width", "output_height", "duration_ms",
     "retrieved_at",
 ]
 
@@ -372,6 +378,7 @@ def _fetch_prompt_benchmarks(retrieved_at: str, model_index: dict) -> tuple[list
     normalized: list[dict] = []
     fingerprints: dict[str, dict] = {}
     prompt_counts: dict[str, int] = {}
+    skipped_pages: list[dict] = []
     conflicts = 0
 
     floors = {
@@ -413,6 +420,28 @@ def _fetch_prompt_benchmarks(retrieved_at: str, model_index: dict) -> tuple[list
             }
 
             rows = parse_prompt_page(page_html)
+            if not rows and not page_publishes_judged_checks(page_html):
+                # A page that publishes generated assets but no judged checks at
+                # all. Observed live on /benchmarks/media/images/portraits
+                # (2026-09-22): 192 result-row blocks, 144 assets, and no
+                # "N of M checks passed" marker anywhere in the document.
+                #
+                # Skipped rather than failed, and recorded rather than ignored.
+                # Its rows deliberately do NOT enter the dataset: this pipeline's
+                # stated invariant is that a model's pass rate and price come from
+                # the SAME rows, so a page with costs but no checks would push
+                # prices into the averages with nothing to pair them with.
+                logger.warning(
+                    "%s publishes no judged checks (no 'N of M checks passed' marker anywhere) - "
+                    "skipping its %d result-row block(s). It contributes no scores AND no costs.",
+                    page_path, page_html.count("<li "),
+                )
+                skipped_pages.append({
+                    "page": page_path,
+                    "reason": "no_judged_checks",
+                    "row_blocks": page_html.count("<li "),
+                })
+                continue
             if not rows:
                 raise MediaBenchmarkParseError(
                     f"{page_path} parsed to zero model rows. Results ARE published for every prompt, so "
@@ -439,6 +468,7 @@ def _fetch_prompt_benchmarks(retrieved_at: str, model_index: dict) -> tuple[list
 
     pages["page_fingerprints"] = fingerprints
     pages["rows_per_prompt"] = prompt_counts
+    pages["pages_skipped"] = skipped_pages
 
     unmatched = sorted({r["raw_model_slug"] for r in normalized if not r["matched"]})
 
@@ -458,6 +488,7 @@ def _fetch_prompt_benchmarks(retrieved_at: str, model_index: dict) -> tuple[list
 
     stats = {
         "pages_fetched": len(fingerprints),
+        "pages_skipped": skipped_pages,
         "rows": len(normalized),
         "rows_per_prompt": prompt_counts,
         "distinct_models_in_benchmarks": len({r["raw_model_slug"] for r in normalized}),
