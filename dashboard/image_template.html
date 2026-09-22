@@ -144,6 +144,7 @@ tbody tr:hover td{background:var(--accent-wash)}
 .model-name{font-family:var(--font-display);font-weight:400;font-size:15px;line-height:1.25;color:var(--ink)}
 .model-provider{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint);margin-top:3px}
 .num-dim{color:var(--ink-faint)}
+.arena-flag{display:inline-block;margin-left:8px;padding:2px 7px;border:1px solid var(--rule-strong);font-family:var(--font-text);font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;vertical-align:middle}
 footer{max-width:var(--measure);margin:0;padding:26px 0 0;border-top:3px double var(--rule-strong);text-align:left;font-size:11px;line-height:1.75;color:var(--ink-faint)}
 footer p{margin:0 0 10px}
 footer p:last-child{margin-bottom:0}
@@ -226,7 +227,7 @@ footer code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fon
     <div class="pick-grid">
       <div>
         <div class="pick-eyebrow">Best value in this snapshot</div>
-        <h2 class="pick-name" id="heroTitle"></h2>
+        <h2 class="pick-name"><span id="heroTitle"></span><span class="arena-flag" id="heroArenaFlag" hidden></span></h2>
         <div class="pick-provider" id="heroProvider"></div>
         <p class="pick-week" id="heroRank"></p>
       </div>
@@ -319,6 +320,7 @@ footer code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fon
       <tbody id="unratedBody"></tbody>
     </table>
   </div>
+  <p class="card-sub" id="unratedNote" style="margin-top:14px;"></p>
   <p class="card-sub" id="coverageNote" style="margin-top:14px;"></p>
 </section>
 
@@ -426,6 +428,11 @@ const dateOnly=v=>v?String(v).slice(0,10):"unknown";
   const leader=ranked[0];
   if(!leader){setText("heroTitle","No rankable model in this snapshot");setText("heroProvider","—");return}
   setText("heroTitle",leader.model_name||leader.model_id);
+  // Item 3: never let a cost-efficiency win read as a human-preference win. The
+  // Design Arena score is a separate source and is never blended into value, so
+  // a leader without one is flagged rather than quietly presented as a winner.
+  const arenaFlag=byId("heroArenaFlag");
+  if(arenaFlag){arenaFlag.hidden=Boolean(leader.design_arena);arenaFlag.textContent="No preference data"}
   setText("heroProvider",leader.provider||leader.model_id);
   setText("heroRank",`Rank ${leader.value_rank} of ${ranked.length} rankable models · ${leader.prompts} prompts benchmarked`);
   setText("heroPass",pct(leader.pass_rate));
@@ -434,6 +441,9 @@ const dateOnly=v=>v?String(v).slice(0,10):"unknown";
   setText("heroValue",value(leader.value));
   setText("heroEvidence",num(leader.evidence_checks));
   const notes=[`Value ${value(leader.value)} = pass rate ${pct(leader.pass_rate)} ÷ mean benchmark cost ${money(leader.avg_cost_usd)} across ${leader.prompts} benchmark prompts.`];
+  if(!leader.design_arena){
+    notes.push("This model has no Design Arena row, so this is a cost-efficiency result only: it is not evidence of stronger human preference. Design Arena is a separate survey and is never blended into the value score.");
+  }
   if(!leader.has_catalog_rate){
     notes.push("Note: this model publishes no resolvable catalogue rate, so its price comes from its own benchmark generations and cannot be cross-checked against a list price (see the full table below).");
   }
@@ -455,9 +465,14 @@ const dateOnly=v=>v?String(v).slice(0,10):"unknown";
 
 // ------------------------------------------------------------ value leaders --
 (()=>{
-  setText("leaderCaption",`Top ${Math.min(CONST.top_n_bars||12,ranked.length)} of ${ranked.length} rankable models by value, each bar scaled to the leader.`);
   const svg=byId("valueBars");if(!svg||!ranked.length)return;
   const top=ranked.slice(0,CONST.top_n_bars||12),leader=top[0].value;
+  // Item 3, applied to the chart: mark any bar whose model has no Design Arena
+  // (human-preference) row, and explain the mark in the caption whenever such a
+  // model is actually in view - otherwise the marker would be unexplained.
+  const withoutArena=top.filter(row=>!row.design_arena).length;
+  setText("leaderCaption",`Top ${top.length} of ${ranked.length} rankable models by value, each bar scaled to the leader.`
+    +(withoutArena?` † marks ${withoutArena} of them with no Design Arena (human-preference) score, so their position reflects cost-efficiency only.`:""));
   // RESERVE is space for the value label that sits after the longest bar
   // ("87.5 · 87.5% @ $0.010"); without it the leader's own label overflows the
   // chart panel, which has overflow-x:auto.
@@ -472,7 +487,7 @@ const dateOnly=v=>v?String(v).slice(0,10):"unknown";
     svg.appendChild(svgEl("rect",{x:LABEL,y:center-6,width:2,height:12,class:"gridline"}));
     svg.appendChild(svgEl("rect",{x:LABEL,y:center-6,width:barW,height:12,class:"bar"}));
     const label=svgEl("text",{x:LABEL+barW+8,y:center+4,class:"value-bar-label"});
-    label.textContent=`${value(row.value)} · ${pct(row.pass_rate)} @ ${money(row.avg_cost_usd)}`;
+    label.textContent=`${value(row.value)} · ${pct(row.pass_rate)} @ ${money(row.avg_cost_usd)}${row.design_arena?"":" †"}`;
     svg.appendChild(label);
   });
 })();
@@ -588,6 +603,19 @@ const dateOnly=v=>v?String(v).slice(0,10):"unknown";
     notes.push(`${COVERAGE.benchmarked_unrankable_ids.length} benchmarked models have no usable benchmark cost and are therefore unranked: ${COVERAGE.benchmarked_unrankable_ids.join(", ")}.`);
   }
   setText("coverageNote",notes.join(" "));
+
+  // Item 5: state the ceiling explicitly. These models are not merely unmeasured
+  // yet - there is no source to measure them from, which is a different and more
+  // permanent situation than a model that simply has not been benchmarked. The
+  // chat dashboard can cascade through OpenRouter -> Artificial Analysis -> a
+  // manual override; nothing equivalent exists for image generation.
+  if(unrated.length){
+    const providers=[...new Set(unrated.map(r=>r.provider).filter(Boolean))].sort();
+    const composition=providers.length?` In this snapshot they are ${providers.map(p=>`${unrated.filter(r=>r.provider===p).length} ${p}`).join(" and ")} models.`:'';
+    setText("unratedNote",`Coverage ceiling: these ${unrated.length} models have no benchmark rows at all, and no fallback source can supply one.${composition} `
+      +`The chat dashboard can fall back through OpenRouter → Artificial Analysis → a manual override; image generation has no equivalent, because Artificial Analysis publishes no image-generation benchmark at all and the OpenRouter media endpoints publish no judging data. `
+      +`This is a structural gap in the available evidence, not a temporary one, and it cannot be closed by refreshing.`);
+  }
 })();
 
 // ------------------------------------------------------------------- budget --

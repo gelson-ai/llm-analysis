@@ -42,11 +42,10 @@ IMAGE_PAGE = "image_model_analysis.html"
 
 # Fingerprint of the chat template's four <style> blocks, concatenated. This is
 # a deliberate tripwire: the design system lives entirely in those blocks.
-# Updated once so far - the shared nav-tab rules (.tabs/.tab) were added when
-# navigation moved off the per-template link and onto the shared shell. That was
-# an intentional design-system change, and the image template's copy moved with
-# it (see test_image_template_styles_are_a_verbatim_copy_of_the_chat_template).
-CHAT_STYLE_BLOCK_SHA256 = "a5efa541dac6ea5fbe2ae69db5d1a262eb94a30a465358c98e9230c555f1c412"
+# Updated twice: shared nav-tab rules (.tabs/.tab), then .arena-flag. Both were
+# intentional design-system changes and the image template's copy moved with
+# them (see test_image_template_styles_are_a_verbatim_copy_of_the_chat_template).
+CHAT_STYLE_BLOCK_SHA256 = "d028af0ea25b3e60ebfc1b2c9fa22b26d7be75e5d93d8c2547c669303c50810d"
 
 # The DOM ids the chat dashboard's minified script owns. They are the contract
 # between that template's markup and its JavaScript; an edit that drops one
@@ -245,6 +244,32 @@ def test_image_page_keeps_its_theme_toggle():
     image = read(IMAGE_TEMPLATE_PATH)
     assert 'id="themeToggle"' in image, "the theme toggle is self-contained and must stay"
     assert image.count("__DATA__") == 1
+
+
+def test_the_image_page_keeps_its_design_arena_cross_check():
+    """Item 3, locked in. A cost-efficiency win must never be presented as if it
+    were also a human-preference win, so a leader with no Design Arena row is
+    flagged in the hero card AND on the value-leaders chart, with the mark
+    explained in the caption whenever such a model is in view."""
+    image = read(IMAGE_TEMPLATE_PATH)
+    assert 'id="heroArenaFlag"' in image, "the hero card lost its preference-data flag"
+    assert 'heroArenaFlag' in image.split("// -------------------------------------------------------------------- hero --")[1]
+    assert "row.design_arena" in image, (
+        "the value-leaders chart no longer distinguishes arena-backed leaders"
+    )
+    assert "Design Arena (human-preference)" in image, (
+        "the chart caption no longer explains the marker"
+    )
+
+
+def test_the_image_page_states_the_coverage_ceiling():
+    """Item 5, locked in. The unrated models have no available fallback source,
+    which is a structural gap rather than a temporary one - the page must say so
+    instead of implying a refresh could fill it."""
+    image = read(IMAGE_TEMPLATE_PATH)
+    assert 'id="unratedNote"' in image, "the coverage-ceiling note is gone"
+    assert "Artificial Analysis publishes no image-generation benchmark" in image
+    assert "structural gap" in image
 
 
 def test_every_nav_tab_is_both_served_and_staged():
