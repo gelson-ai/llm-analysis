@@ -498,6 +498,61 @@ def test_metadata_the_image_catalogue_does_not_publish_is_carried_as_null(tmp_pa
     assert row["durations"] is None
 
 
+def test_design_arena_summary_picks_one_winner_per_category_and_reports_its_margin():
+    panel = builder.build_design_arena_panel([
+        arena_row("alpha/one", "logo", elo=1200, win_rate=55.0),
+        arena_row("beta/two", "logo", elo=1250, win_rate=58.0),
+        # Same Elo as beta/two, higher win rate - the documented tie-break.
+        arena_row("gamma/three", "logo", elo=1250, win_rate=61.0),
+        arena_row("alpha/one", "image", elo=1100, win_rate=50.0),
+    ])
+    summary = {entry["category"]: entry for entry in builder.build_design_arena_summary(panel)}
+
+    assert set(summary) == {"image", "logo"}
+
+    logo = summary["logo"]
+    assert logo["model_id"] == "gamma/three", "higher win rate must break an Elo tie"
+    assert logo["elo"] == 1250
+    assert logo["win_rate"] == 61.0
+    assert logo["models_with_a_score"] == 3
+    assert logo["elo_spread"] == 50
+    assert logo["lead_over_second"] == 0, "a tie is a 0-Elo lead, not a missing value"
+
+    # A category with a single scored model has no second place to lead.
+    assert summary["image"]["lead_over_second"] is None
+    assert summary["image"]["models_with_a_score"] == 1
+
+
+def test_design_arena_summary_skips_categories_nobody_was_scored_in():
+    """A category with no scores must produce no row, rather than a row of
+    blanks that reads like a result somebody achieved."""
+    panel = builder.build_design_arena_panel([arena_row("alpha/one", "logo", elo=1200, win_rate=55.0)])
+    panel["categories"].append({"key": "graphicdesign", "label": "Graphic design"})
+
+    summary = builder.build_design_arena_summary(panel)
+    assert [entry["category"] for entry in summary] == ["logo"]
+
+
+def test_design_arena_summary_is_deterministic_for_identical_scores():
+    """Two models with identical Elo, win rate and rank must resolve the same way
+    every run, or the published leader could flip without any data changing."""
+    rows = [arena_row("zeta/last", "logo", elo=1300, win_rate=60.0),
+            arena_row("alpha/first", "logo", elo=1300, win_rate=60.0)]
+    first = builder.build_design_arena_summary(builder.build_design_arena_panel(rows))
+    second = builder.build_design_arena_summary(builder.build_design_arena_panel(list(reversed(rows))))
+    assert first[0]["model_id"] == second[0]["model_id"] == "alpha/first"
+
+
+def test_design_arena_summary_ignores_other_benchmark_sources():
+    panel = builder.build_design_arena_panel([
+        arena_row("alpha/one", "logo", elo=1200, win_rate=55.0),
+        arena_row("beta/two", "logo", elo=1900, win_rate=90.0, source="Some Other Arena"),
+    ])
+    summary = builder.build_design_arena_summary(panel)
+    assert summary[0]["model_id"] == "alpha/one"
+    assert summary[0]["models_with_a_score"] == 1
+
+
 # ---------------------------------------------------------------------------
 # freshness gate + build path
 # ---------------------------------------------------------------------------

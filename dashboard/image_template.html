@@ -289,6 +289,12 @@ footer code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fon
       <p class="card-sub">Elo and win rate per Design Arena category, for the models that have them. This is a preference survey, not a capability score, and it is deliberately kept out of the value ranking above.</p>
     </div>
   </div>
+  <figure class="chart-panel">
+    <h3>Category leaders</h3>
+    <p>Strongest model per Design Arena category, from the same survey as the table below. Bar length is the leader's win rate on a fixed 0–100 scale — the share of pairwise comparisons it won — so the categories can be read against each other, with its Elo beside it.</p>
+    <div class="chart-wrap"><svg id="arenaLeaders" role="img" aria-label="Strongest model in each Design Arena category by win rate"></svg></div>
+    <p class="card-sub" id="arenaLeadersCaption"></p>
+  </figure>
   <div class="table-scroll">
     <table id="arenaTable">
       <thead><tr id="arenaHead"><th rowspan="2">Model</th></tr><tr id="arenaSubhead"></tr></thead>
@@ -572,6 +578,50 @@ const dateOnly=v=>v?String(v).slice(0,10):"unknown";
     const tr=document.createElement("tr");tr.innerHTML=cells;body.appendChild(tr);
   });
   setText("arenaNote",`${ARENA.model_count} of ${COVERAGE.catalog_models} catalogue models carry Design Arena scores (${ARENA.row_count} category rows). Missing categories are shown as — rather than filled in. Elo and win rate come from human preference voting and are not capability measurements; the win rate column is the share of pairwise comparisons won.`);
+
+  // Item 4: one synthesised row per category, so the preference data does not
+  // require scanning an 9-column table by hand. Bar length uses a FIXED 0-100
+  // win-rate axis rather than being scaled to the leader: Elo values cluster
+  // tightly (roughly 1300-1500), so leader-scaled bars would all look identical
+  // and say nothing. Elo still rides along in the label.
+  const leaders=PAYLOAD.design_arena_summary||[];
+  const caption=byId("arenaLeadersCaption");
+  const chart=byId("arenaLeaders");
+  if(chart&&leaders.length){
+    const W=900,ROW=30,PAD=14,LABEL=300,RESERVE=150,BAR_MAX=W-LABEL-RESERVE,H=leaders.length*ROW+PAD*2;
+    chart.setAttribute("viewBox",`0 0 ${W} ${H}`);
+    leaders.forEach((leader,index)=>{
+      const y=PAD+index*ROW,center=y+ROW/2-3;
+      const row=ROWS.find(r=>r.model_id===leader.model_id);
+      const label=svgEl("text",{x:0,y:center+4,class:"value-model-label"});
+      label.textContent=`${leader.label}: ${truncate((row&&row.model_name)||leader.model_name||leader.model_id,26)}`;
+      chart.appendChild(label);
+      chart.appendChild(svgEl("rect",{x:LABEL,y:center-6,width:2,height:12,class:"gridline"}));
+      const pctWidth=leader.win_rate==null?2:Math.max(2,BAR_MAX*(leader.win_rate/100));
+      chart.appendChild(svgEl("rect",{x:LABEL,y:center-6,width:pctWidth,height:12,class:"bar"}));
+      const value=svgEl("text",{x:LABEL+pctWidth+8,y:center+4,class:"value-bar-label"});
+      value.textContent=`Elo ${leader.elo} · ${leader.win_rate==null?"—":leader.win_rate.toFixed(1)+"%"}`;
+      chart.appendChild(value);
+    });
+  }
+  if(caption&&leaders.length){
+    const parts=[`${leaders.length} categories, each won by the highest Elo among the models scored in it.`];
+    // How firm each result is matters as much as who won: a 3-Elo lead is
+    // effectively a tie, and saying so is the difference between a ranking and
+    // a claim.
+    const withMargin=leaders.filter(l=>l.lead_over_second!=null);
+    if(withMargin.length){
+      const closest=withMargin.slice().sort((a,b)=>a.lead_over_second-b.lead_over_second)[0];
+      const widest=withMargin.slice().sort((a,b)=>b.lead_over_second-a.lead_over_second)[0];
+      parts.push(`Closest call: ${closest.label}, where the leader is ${closest.lead_over_second} Elo ahead of second place.`);
+      parts.push(`Clearest: ${widest.label} (${widest.lead_over_second} Elo).`);
+    }
+    const thin=leaders.filter(l=>l.models_with_a_score<3);
+    if(thin.length){
+      parts.push(`Thin field: ${thin.map(l=>`${l.label} (${l.models_with_a_score})`).join(", ")} — a winner from a field this small is not a general result.`);
+    }
+    setText("arenaLeadersCaption",parts.join(" "));
+  }
 })();
 
 // ----------------------------------------------------------------- coverage --

@@ -326,6 +326,71 @@ def build_design_arena_panel(arena_rows: list[dict]) -> dict:
     }
 
 
+def build_design_arena_summary(arena: dict) -> list[dict]:
+    """The strongest model in each Design Arena category, one row per category.
+
+    A synthesised view so the preference data does not require scanning the wide
+    per-model table cell by cell. Elo decides the winner - it is the survey's own
+    ordering - with a deterministic tie-break: win rate descending, then the
+    survey's own rank ascending, then model id ascending, so two runs of the
+    same snapshot can never disagree.
+
+    Each entry carries the SUPPORTING numbers, not just a name, because a
+    "leader" is only meaningful next to how firm the result is: how many models
+    were scored in that category, how wide the spread is, and how far ahead of
+    second place the winner actually is. A 3-Elo lead and a 200-Elo lead are not
+    the same claim, and the page must be able to say so.
+    """
+    summary: list[dict] = []
+
+    for category in arena.get("categories") or []:
+        key = category.get("key")
+        if not key:
+            continue
+
+        scored: list[tuple[dict, dict]] = []
+        for model in arena.get("models") or []:
+            entry = (model.get("categories") or {}).get(key) or {}
+            if entry.get("elo") is None:
+                continue
+            scored.append((model, entry))
+        if not scored:
+            # A category nobody was scored in produces no row at all, rather
+            # than a row with empty values that reads like a result.
+            continue
+
+        def ordering(pair: tuple[dict, dict]):
+            model, entry = pair
+            win_rate = entry.get("win_rate")
+            rank = entry.get("rank")
+            return (
+                -entry["elo"],
+                -(win_rate if win_rate is not None else float("-inf")),
+                rank if rank is not None else float("inf"),
+                model.get("model_id") or "",
+            )
+
+        scored.sort(key=ordering)
+        winner, winning_entry = scored[0]
+        elos = [entry["elo"] for _, entry in scored]
+        runner_up = scored[1][1]["elo"] if len(scored) > 1 else None
+
+        summary.append({
+            "category": key,
+            "label": category.get("label") or key,
+            "model_id": winner.get("model_id"),
+            "model_name": winner.get("model_name"),
+            "elo": winning_entry["elo"],
+            "win_rate": winning_entry.get("win_rate"),
+            "rank": winning_entry.get("rank"),
+            "models_with_a_score": len(scored),
+            "elo_spread": max(elos) - min(elos),
+            "lead_over_second": None if runner_up is None else winning_entry["elo"] - runner_up,
+        })
+
+    return summary
+
+
 def build_model_rows(models: list[dict], performance: dict[str, dict], arena: dict) -> list[dict]:
     """One row per catalogue model - never filtered. A priced model with no
     benchmark rows stays in the dataset with value=None so the page can label
@@ -503,6 +568,7 @@ def build_payload() -> dict:
     return {
         "rows": rows,
         "design_arena": arena,
+        "design_arena_summary": build_design_arena_summary(arena),
         "coverage": build_coverage(coverage_report, quality_report, rows),
         "budget": {
             "min_pass_rate": BUDGET_MIN_PASS_RATE,
