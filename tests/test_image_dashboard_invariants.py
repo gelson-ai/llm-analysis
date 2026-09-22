@@ -211,20 +211,40 @@ def test_the_committed_pages_are_not_stale_relative_to_their_templates():
 def test_chat_page_still_has_the_structure_its_script_depends_on():
     chat = read(CHAT_TEMPLATE_PATH)
     assert chat.count("__DATA__") == 1, "the payload placeholder must appear exactly once"
-    assert chat.count("<script>") == 3, "the chat page's three script blocks must be intact"
+    # One payload script + one shared shell script. The chat page used to carry
+    # a third, page-local refresh script; that logic moved into the shell, which
+    # is what lets the image page offer the same control without a copy.
+    assert chat.count("<script>") == 2, "the chat page's two script blocks must be intact"
     for dom_id in CHAT_JS_OWNED_IDS:
         assert f'id="{dom_id}"' in chat, f"the chat dashboard's script expects #{dom_id} to exist"
 
 
-def test_image_page_does_not_offer_a_refresh_button_it_cannot_honour():
-    """Refreshing runs dashboard/refresh.py, which rebuilds only the chat page.
-    A refresh button here would silently do nothing for this page."""
+def test_both_pages_offer_the_same_unified_refresh_control():
+    """The button refreshes BOTH dashboards in one click, so the image page is
+    entitled to offer it. What must never happen is a page-local COPY of the
+    refresh logic: the control lives in the shared shell, so the two pages
+    cannot disagree about what a refresh does or how it reports."""
+    chat = read(CHAT_TEMPLATE_PATH)
     image = read(IMAGE_TEMPLATE_PATH)
-    assert "refreshBtn" not in image
-    assert "refreshStatus" not in image
+    for name, html in (("chat", chat), ("image", image)):
+        assert 'id="refreshBtn"' in html, f"the {name} page lost the shared refresh button"
+        assert 'id="refreshStatus"' in html, f"the {name} page lost the shared refresh status"
+        assert "Update All Latest AI Data" in html, (
+            f"the {name} page's button must say it updates everything"
+        )
+        assert html.count("<script>") == 2, (
+            f"the {name} page should have exactly one payload script and one shared shell script"
+        )
+    # The implementation itself is in the shell, not duplicated per template.
+    for html in (chat, image):
+        assert "REFRESH_API" not in html
+        assert "llmDashboardRefreshSeenAt" not in html
+
+
+def test_image_page_keeps_its_theme_toggle():
+    image = read(IMAGE_TEMPLATE_PATH)
     assert 'id="themeToggle"' in image, "the theme toggle is self-contained and must stay"
     assert image.count("__DATA__") == 1
-    assert image.count("<script>") == 2
 
 
 def test_every_nav_tab_is_both_served_and_staged():

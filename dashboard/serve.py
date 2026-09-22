@@ -58,7 +58,13 @@ import weekly_picks  # noqa: E402
 PROJECT_ROOT = build_dashboard.PROJECT_ROOT
 DASHBOARD_PATH = build_dashboard.OUTPUT_PATH
 IMAGE_DASHBOARD_PATH = build_image_dashboard.OUTPUT_PATH
-REFRESH_SCRIPT = DASHBOARD_DIR / "refresh.py"
+REFRESH_SCRIPT = DASHBOARD_DIR / "refresh_all.py"
+
+# The unified refresh runs BOTH pipelines as separate processes, so its ceiling
+# must exceed the sum of refresh_all.py's per-target timeouts (2 x 600s). If it
+# did not, a slow media fetch would be killed mid-run and the chat result would
+# be thrown away with it.
+DEFAULT_REFRESH_TIMEOUT_SECONDS = 1500.0
 
 # Exactly what may be served, by filename.
 SERVABLE = {
@@ -123,8 +129,12 @@ class RefreshJob:
         return "started", 202
 
     def _run(self, args: argparse.Namespace) -> None:
+        # dashboard/refresh_all.py runs refresh.py (chat) and refresh_media.py
+        # (image) as two independent subprocesses and reports each one's outcome
+        # separately, so one pipeline failing still leaves the other updated.
         command = [sys.executable, str(REFRESH_SCRIPT), "--json",
-                   "--max-age-hours", str(args.max_age_hours)]
+                   "--chat-max-age-hours", str(args.max_age_hours),
+                   "--media-max-age-hours", str(args.media_max_age_hours)]
         if getattr(args, "skip_fetch", False):
             command.append("--skip-fetch")
         if getattr(args, "no_snapshot", False):
@@ -256,12 +266,43 @@ class Handler(BaseHTTPRequestHandler):
             "data": {
                 "retrieved_at": retrieved_at,
                 "age_hours": round(age, 2) if age is not None else None,
-                "stale": (age is None) or age > 72,
+                # Was a hardcoded 72, which silently disagreed with the configured
+                # window and with the Worker's STALE_AFTER_HOURS of 192.
+                "stale": (age is None) or age > self.server.args.max_age_hours,
                 "dashboard_built_at": build_dashboard.dashboard_built_at(),
                 "model_count": build_dashboard.model_count(),
             },
+            "media": self._media_status(),
             "job": self.server.job.snapshot(),
             "weekly": weekly_picks.embed_view(history),
+        }
+
+    def _media_status(self) -> dict:
+        """Freshness of the IMAGE dashboard's own data, from its own paths.
+
+        Mirrors the shape of `data` so both dashboards can read one contract.
+        Deliberately reads the media pipeline's files only - never the chat
+        pipeline's status.json.
+        """
+        retrieved_at = build_image_dashboard.read_retrieved_at()
+        age = build_image_dashboard.data_age_hours(retrieved_at)
+        built_at = None
+        model_count = None
+        status_path = DASHBOARD_DIR / "media_status.json"
+        if status_path.exists():
+            try:
+                with open(status_path, encoding="utf-8") as handle:
+                    media_status = json.load(handle)
+                built_at = media_status.get("generated_at")
+                model_count = media_status.get("model_count")
+            except (OSError, ValueError):
+                pass
+        return {
+            "retrieved_at": retrieved_at,
+            "age_hours": round(age, 2) if age is not None else None,
+            "stale": (age is None) or age > self.server.args.media_max_age_hours,
+            "dashboard_built_at": built_at,
+            "model_count": model_count,
         }
 
     # -- routes -------------------------------------------------------------
@@ -336,9 +377,15 @@ def main() -> int:
     parser.add_argument("--cooldown-seconds", type=float, default=600.0,
                         help="Minimum seconds between refreshes (default 600)")
     parser.add_argument("--max-age-hours", type=float, default=72.0,
-                        help="Freshness window passed to the dashboard build (default 72)")
-    parser.add_argument("--timeout-seconds", type=float, default=300.0,
-                        help="Give up on a single refresh after this long (default 300)")
+                        help="Freshness window passed to the CHAT build (default 72)")
+    parser.add_argument("--media-max-age-hours", type=float, default=192.0,
+                        help="Freshness window passed to the IMAGE build (default 192). "
+                             "Deliberately wider than the chat window: media data shares the "
+                             "weekly cadence, and its build has always defaulted to 192.")
+    parser.add_argument("--timeout-seconds", type=float, default=DEFAULT_REFRESH_TIMEOUT_SECONDS,
+                        help="Give up on a whole unified refresh after this long "
+                             f"(default {DEFAULT_REFRESH_TIMEOUT_SECONDS:g}; must exceed "
+                             "2x refresh_all.py's per-target timeout)")
     parser.add_argument("--skip-fetch", action="store_true",
                         help="Do not re-fetch from OpenRouter; recompute and rebuild from the data already on disk")
     parser.add_argument("--no-snapshot", action="store_true",
