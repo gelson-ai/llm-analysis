@@ -9,11 +9,13 @@ holds that credential securely on the server and exposes two endpoints:
 
 | Endpoint | Purpose |
 | --- | --- |
-| `GET /status` | Data freshness (`dashboard/status.json`) plus the current refresh-job state |
-| `POST /refresh` | Asks GitHub to run the `Publish dashboard` workflow |
+| `GET /status` | Data freshness for **both** dashboards (`dashboard/status.json` + `dashboard/media_status.json`), the current refresh-job state, and the per-dashboard outcome of the last run (`dashboard/refresh_status.json`) |
+| `POST /refresh` | Asks GitHub to run the `Publish dashboard` workflow, which refreshes **both** pipelines |
 
-The response shapes mirror `dashboard/serve.py` on purpose, so
-`dashboard/template.html` needs no rework — only a different base URL.
+The response shapes mirror `dashboard/serve.py` on purpose, so the dashboard
+pages need no rework — only a different base URL. One refresh dispatches one
+workflow: `publish.yml` runs the chat and media pipelines as independent steps,
+so one failing still leaves the other updated and published.
 
 ---
 
@@ -82,6 +84,11 @@ curl -i -X POST -H "Origin: https://evil.example.com" \
 curl -i -X POST -H "Origin: https://gelson-ai.github.io" \
   -H "Content-Type: application/json" -d '{}' \
   https://llm-refresh-proxy.<your-subdomain>.workers.dev/refresh
+
+# 5. Both dashboards are reported - data.media must be present, and job.targets
+#    must name chat + media once a run has recently finished (null while idle)
+curl -s https://llm-refresh-proxy.<your-subdomain>.workers.dev/status \
+  | python -c "import json,sys; d=json.load(sys.stdin); print(sorted(d['data'])); print(d['job']['targets'])"
 ```
 
 ---
@@ -97,28 +104,47 @@ curl -i -X POST -H "Origin: https://gelson-ai.github.io" \
     "retrieved_at": "2026-09-12T02:02:11Z",
     "age_hours": 0.5,
     "stale": false,
-    "model_count": 445
+    "model_count": 445,
+    "media": {
+      "retrieved_at": "2026-09-17T03:40:50Z",
+      "age_hours": 122.85,
+      "stale": false,
+      "model_count": 52
+    }
   },
   "job": {
     "state": "idle",
     "started_at": null,
     "finished_at": null,
     "result": null,
+    "targets": null,
     "cooldown_seconds": 600,
     "retry_after_seconds": 0
   }
 }
 ```
 
+`data` holds the chat pipeline's freshness fields plus a `media` block for the
+image dashboard, each read from its own sidecar file. `job.targets` reports the
+last run per dashboard, e.g.
+`{"chat": {"state": "failed", "message": "…"}, "media": {"state": "ok"}}` —
+that is how the button can say "Chat: failed — …, Image: updated." after a single
+click.
+
 `POST /refresh` returns `202` accepted, `409` already running, `429` during the
 cooldown (with a `Retry-After` header), or `403` for a foreign origin.
 
 ## Design notes
 
-- **`status.json` is read through the GitHub Contents API**, not
+- **Both status sidecars are read through the GitHub Contents API**, not
   `raw.githubusercontent.com`. The raw host is CDN-cached and can serve a stale
   copy for minutes after a deploy, which would make the button misreport how old
   the data is.
+- **Per-dashboard outcomes are recency-gated.** `refresh_status.json` is a
+  committed file holding whatever the last run wrote — including a *local* run —
+  so the Worker only trusts it when its `generated_at` is at or after the
+  workflow run it is attributed to, and only while a run is recent. Without that
+  guard a stale file would be reported as a brand-new result.
 - **Only a *recent* completed run counts as the job state.** Without that, every
   visitor would see a lingering `ok` state and auto-reload once on page load.
 - **`/status` is cached for 5 seconds.** The page polls roughly once per second

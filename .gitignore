@@ -8,8 +8,13 @@ __pycache__/
 # --- Local run logs (run_weekly.bat output) ---
 logs/
 
-# --- Machine-local runtime lock (must never be committed) ---
+# --- Machine-local runtime locks (must never be committed) ---
+# One lock file per pipeline: the chat refresh and the media refresh must never
+# share one, or a stuck run in either would block the other. The wildcard also
+# covers a future video pipeline's *_refresh.lock - without it, CI's
+# `git add -A data` would happily commit a lock file.
 data/analysis/.refresh.lock
+data/analysis/.*_refresh.lock
 
 # --- Secrets, editors, OS cruft ---
 .env

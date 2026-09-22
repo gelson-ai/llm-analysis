@@ -1,0 +1,1175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenRouter Image Generation Price vs Performance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+<meta name="description" content="Editorial analysis of OpenRouter image-generation model pricing against OpenRouter media prompt benchmarks and Design Arena preference scores.">
+<style>
+:root{color-scheme:light;--surface-1:#fff;--surface-2:#f4f7fb;--page-plane:#eef2f6;--text-primary:#101820;--text-secondary:#4d5b67;--text-muted:#76838e;--gridline:#dbe2e8;--baseline:#aeb9c2;--border:rgba(16,24,32,.12);--series-1:#1769aa;--series-1-strong:#0d4f86;--series-1-wash:rgba(23,105,170,.10);--warning:#9b5c08;--warning-wash:#fff6e5;--card-shadow:0 8px 24px rgba(35,55,72,.06)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--surface-1:#171c20;--surface-2:#20272d;--page-plane:#0d1114;--text-primary:#f4f7f9;--text-secondary:#c0cad1;--text-muted:#8d9aa3;--gridline:#303a42;--baseline:#4a5760;--border:rgba(255,255,255,.11);--series-1:#4a9ddd;--series-1-strong:#78b9e8;--series-1-wash:rgba(74,157,221,.14);--warning:#f1bd69;--warning-wash:#2a2319;--card-shadow:0 8px 24px rgba(0,0,0,.18)}}
+:root[data-theme="dark"]{color-scheme:dark;--surface-1:#171c20;--surface-2:#20272d;--page-plane:#0d1114;--text-primary:#f4f7f9;--text-secondary:#c0cad1;--text-muted:#8d9aa3;--gridline:#303a42;--baseline:#4a5760;--border:rgba(255,255,255,.11);--series-1:#4a9ddd;--series-1-strong:#78b9e8;--series-1-wash:rgba(74,157,221,.14);--warning:#f1bd69;--warning-wash:#2a2319;--card-shadow:0 8px 24px rgba(0,0,0,.18)}
+*{box-sizing:border-box}body{margin:0;background:var(--page-plane);color:var(--text-primary);font-family:"Segoe UI",Tahoma,sans-serif}.viz-root{min-height:100vh;padding:28px 22px 48px;background:radial-gradient(circle at 85% 0%,var(--series-1-wash),transparent 30%),var(--page-plane)}.wrap{max-width:1180px;margin:0 auto}header{border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:18px}h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(26px,4vw,42px);font-weight:500;margin:0 0 5px;letter-spacing:0}.subtitle,.card-sub,figcaption{color:var(--text-secondary);font-size:12px;line-height:1.5}.subtitle{margin:0}h2{font-size:15px;margin:0 0 3px;letter-spacing:0}.section-number{color:var(--series-1);font-variant-numeric:tabular-nums;margin-right:7px}
+.banner,.card,.kpi,.quality-panel{background:var(--surface-1);border:1px solid var(--border);border-radius:8px;box-shadow:var(--card-shadow)}.banner{padding:13px 15px;font-size:12.5px;color:var(--text-secondary);line-height:1.55;margin-bottom:18px}.banner strong{color:var(--text-primary)}.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}.kpi{padding:14px 15px;min-height:94px}.kpi .label{font-size:11.5px;color:var(--text-secondary);margin-bottom:6px}.kpi .value{font-family:Georgia,"Times New Roman",serif;font-size:27px;line-height:1}.kpi .sub{font-size:10.5px;color:var(--text-muted);margin-top:7px}.card{padding:16px;margin-bottom:18px;position:relative;overflow:hidden}.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}.card-sub{margin:0}figure{margin:0}figcaption{margin-top:6px}.chart-wrap{position:relative;width:100%;overflow-x:auto}svg{display:block;width:100%;min-width:620px;height:auto;overflow:visible}svg text{fill:var(--text-muted);font:10.5px "Segoe UI",Tahoma,sans-serif}.axis-label{fill:var(--text-secondary);font-size:11px}.value-label{fill:var(--text-primary);font-size:11px;font-weight:600}.gridline{stroke:var(--gridline);stroke-width:1}.axis-line{stroke:var(--baseline);stroke-width:1}.bar{fill:var(--series-1);cursor:default;transition:opacity 100ms ease}.bar:hover{opacity:.78}.dot{fill:var(--series-1);fill-opacity:.72;stroke:var(--surface-1);stroke-width:2}.dot-hit{fill:transparent;cursor:pointer}.dot.hovered{fill-opacity:1;stroke:var(--series-1-strong)}
+.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0 12px}.seg{display:inline-flex;background:var(--surface-2);border:1px solid var(--border);border-radius:7px;padding:2px;gap:2px}.seg button{appearance:none;border:0;background:transparent;color:var(--text-secondary);font:12.5px inherit;padding:7px 12px;border-radius:5px;cursor:pointer}.seg button.active{background:var(--series-1);color:#fff}.search{flex:1;min-width:190px;max-width:300px}.search input{width:100%;font:12.5px inherit;padding:8px 10px;border-radius:7px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-primary)}.count-note{color:var(--text-muted);font-size:11.5px;margin-left:auto}.weekly-pick{padding:18px 20px;margin-bottom:18px}.pick-grid{display:grid;grid-template-columns:minmax(220px,1.4fr) repeat(4,minmax(90px,.6fr));gap:16px;align-items:end}.pick-eyebrow{color:var(--series-1);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:7px}.pick-name{font-family:Georgia,"Times New Roman",serif;font-size:23px;line-height:1.12}.pick-provider{color:var(--text-muted);font-size:11.5px;margin-top:5px}.pick-stat{border-left:1px solid var(--border);padding-left:16px}.pick-stat .label{color:var(--text-muted);font-size:10.5px;text-transform:uppercase;letter-spacing:.04em}.pick-stat .value{font-size:20px;font-weight:600;margin-top:4px;font-variant-numeric:tabular-nums}.pick-stat .detail{color:var(--text-secondary);font-size:10.5px;margin-top:3px}.leader-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.chart-panel{min-width:0;background:var(--surface-2);border:1px solid var(--border);border-radius:7px;padding:12px}.chart-panel svg{min-width:0}.chart-panel h3{font-size:12.5px;margin:0 0 2px}.chart-panel p{color:var(--text-muted);font-size:11px;margin:0 0 6px}.value-legend{display:flex;gap:10px;flex-wrap:wrap;color:var(--text-muted);font-size:10.5px;margin:0 0 5px}.value-legend span::before{content:"";display:inline-block;width:8px;height:8px;margin-right:4px;background:var(--series-1);vertical-align:middle}.value-legend span:nth-child(1)::before{opacity:.35}.value-legend span:nth-child(2)::before{opacity:.65}.quality-panel{padding:15px 17px;margin-bottom:18px}.quality-panel ul{margin:9px 0 0;padding-left:18px;color:var(--text-secondary);font-size:12px;line-height:1.55}.quality-panel li+li{margin-top:4px}.quality-panel code{color:var(--text-primary);font-size:11px;overflow-wrap:anywhere}
+.tooltip{position:fixed;pointer-events:none;background:var(--text-primary);color:var(--surface-1);font-size:11.5px;line-height:1.45;border-radius:7px;padding:8px 10px;box-shadow:0 5px 18px rgba(0,0,0,.28);max-width:270px;opacity:0;transform:translate(-50%,calc(-100% - 10px));transition:opacity 70ms ease;z-index:20}.tooltip.show{opacity:1}.tooltip strong{display:block;margin-bottom:3px}.tooltip-row{display:flex;justify-content:space-between;gap:14px}.table-scroll{overflow:auto;max-height:650px;margin:0 -16px;padding:0 16px 10px}table{width:100%;border-collapse:collapse;font-size:12px}thead{position:sticky;top:0;z-index:2;background:var(--surface-1)}th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.02em;color:var(--text-muted);padding:9px 10px;border-bottom:1px solid var(--border);cursor:pointer;white-space:nowrap}th.active{color:var(--text-primary)}td{padding:8px 10px;border-bottom:1px solid var(--gridline);font-variant-numeric:tabular-nums;white-space:nowrap}td.name-cell{min-width:230px;white-space:normal}tbody tr:hover td{background:var(--series-1-wash)}.model-name{color:var(--text-primary)}.model-provider,.num-dim{color:var(--text-muted)}.model-provider{font-size:10.5px}footer{color:var(--text-muted);font-size:10.5px;text-align:center;margin-top:8px}
+@media(max-width:960px){.pick-grid{grid-template-columns:repeat(2,1fr)}.pick-stat{border-left:0;padding-left:0}.leader-grid{grid-template-columns:1fr}}
+@media(max-width:760px){.viz-root{padding:18px 12px 36px}.kpi-row{grid-template-columns:repeat(2,1fr)}.card-head{display:block}.count-note{width:100%;margin-left:0}svg{min-width:560px}}
+:root{--series-input:#a8c9de;--series-output:#548db5;--series-score:#0d5e92}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--series-input:#7daac3;--series-output:#4a88b4;--series-score:#8bc3e8}}
+:root[data-theme="dark"]{--series-input:#7daac3;--series-output:#4a88b4;--series-score:#8bc3e8}
+.leader-grid{grid-template-columns:1fr}.chart-panel{padding:16px}.value-legend{gap:16px;font-size:11.5px;margin:2px 0 10px}.value-legend span{font-weight:600}.value-legend .legend-input::before{background:var(--series-input);opacity:1}.value-legend .legend-output::before{background:var(--series-output);opacity:1}.value-legend .legend-score::before{background:var(--series-score);opacity:1}.bar.value-input{fill:var(--series-input)}.bar.value-output{fill:var(--series-output)}.bar.value-score{fill:var(--series-score)}.value-axis-label{fill:var(--text-muted);font-size:11px}.value-model-label{fill:var(--text-secondary);font-size:11px;font-weight:600}.value-rank-label{fill:var(--text-primary);font-size:12px;font-weight:700}.value-bar-label{fill:var(--text-primary);font-size:10.5px;font-weight:600}
+</style>
+<style>.section-number{display:none}</style>
+<style>
+.model-comparison{padding:18px 20px}.comparison-picker{max-width:560px;margin:12px 0}.comparison-picker label{display:block;color:var(--text-secondary);font-size:11.5px;font-weight:600;margin-bottom:6px}.comparison-picker input{width:100%;font:12.5px inherit;padding:9px 10px;border-radius:7px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-primary)}.comparison-results{border:1px solid var(--border);border-radius:7px;margin-top:6px;max-height:230px;overflow:auto}.comparison-results:empty{display:none}.comparison-option{appearance:none;display:block;width:100%;border:0;border-bottom:1px solid var(--gridline);background:var(--surface-1);color:var(--text-primary);cursor:pointer;padding:9px 10px;text-align:left}.comparison-option:last-child{border-bottom:0}.comparison-option:hover,.comparison-option.active{background:var(--series-1-wash)}.comparison-option-name{display:block;font-size:12px;font-weight:600}.comparison-option-meta{display:block;color:var(--text-muted);font-size:10.5px;margin-top:2px}.comparison-empty{border-top:1px solid var(--border);color:var(--text-secondary);font-size:12px;margin-top:14px;padding-top:14px}.comparison-title{font-family:Georgia,"Times New Roman",serif;font-size:18px;line-height:1.25;margin:16px 0 10px}.comparison-title span{color:var(--text-secondary)}.comparison-table-wrap{margin:0;max-height:none}.comparison-table{min-width:670px}.comparison-table th{cursor:default;text-transform:none;font-size:11px}.comparison-table th:first-child{width:36%}.comparison-table td:first-child{color:var(--text-secondary);font-weight:600}.comparison-table th:not(:first-child),.comparison-table td:not(:first-child){text-align:right}.comparison-summary{border-top:1px solid var(--border);margin-top:14px;padding-top:12px}.comparison-summary p{color:var(--text-secondary);font-size:12px;margin:0 0 7px}.comparison-summary ul{margin:0;padding-left:18px}.comparison-summary li{font-size:12px;line-height:1.55;margin:2px 0}@media(max-width:760px){.model-comparison{padding:16px}.comparison-table{min-width:620px}.comparison-title{font-size:16px}}
+</style>
+<style>
+/* ============================================================
+   EDITORIAL DATA-JOURNALISM LAYER
+   Serif display type carries editorial voice (titles, model
+   names, section headings); Inter carries data, tables and
+   controls. Layout moves from card boxes to ruled paper.
+   ============================================================ */
+:root{--font-display:"DM Serif Display","Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;--font-text:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--paper:#f6f4ef;--paper-raised:#fffefb;--paper-sunk:#efebe3;--ink:#151a1e;--ink-soft:#49525a;--ink-faint:#7c848b;--rule:#dcd7cd;--rule-strong:#b5afa2;--accent:#1b4d76;--accent-strong:#123553;--accent-wash:rgba(27,77,118,.07);--editorial:#9c2f18;--measure:72ch;color-scheme:light;--surface-1:var(--paper-raised);--surface-2:var(--paper-sunk);--page-plane:var(--paper);--text-primary:var(--ink);--text-secondary:var(--ink-soft);--text-muted:var(--ink-faint);--gridline:#e3ded4;--baseline:#c8c2b6;--border:rgba(21,26,30,.14);--series-1:var(--accent);--series-1-strong:var(--accent-strong);--series-1-wash:var(--accent-wash);--card-shadow:none;--series-input:#a6c3d6;--series-output:#5589b0;--series-score:#12456b}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--paper:#0f1317;--paper-raised:#161b20;--paper-sunk:#1b2126;--ink:#eef1f3;--ink-soft:#b6bec5;--ink-faint:#858f97;--rule:#282f36;--rule-strong:#3b444c;--accent:#63a9de;--accent-strong:#8ec6ec;--accent-wash:rgba(99,169,222,.13);--editorial:#e1825f;--surface-1:var(--paper-raised);--surface-2:var(--paper-sunk);--page-plane:var(--paper);--text-primary:var(--ink);--text-secondary:var(--ink-soft);--text-muted:var(--ink-faint);--gridline:#242b31;--baseline:#3a444c;--border:rgba(238,241,243,.13);--series-1:var(--accent);--series-1-strong:var(--accent-strong);--series-1-wash:var(--accent-wash);--series-input:#5f8298;--series-output:#3f6f95;--series-score:#7cb8e2}}
+:root[data-theme="dark"]{color-scheme:dark;--paper:#0f1317;--paper-raised:#161b20;--paper-sunk:#1b2126;--ink:#eef1f3;--ink-soft:#b6bec5;--ink-faint:#858f97;--rule:#282f36;--rule-strong:#3b444c;--accent:#63a9de;--accent-strong:#8ec6ec;--accent-wash:rgba(99,169,222,.13);--editorial:#e1825f;--surface-1:var(--paper-raised);--surface-2:var(--paper-sunk);--page-plane:var(--paper);--text-primary:var(--ink);--text-secondary:var(--ink-soft);--text-muted:var(--ink-faint);--gridline:#242b31;--baseline:#3a444c;--border:rgba(238,241,243,.13);--series-1:var(--accent);--series-1-strong:var(--accent-strong);--series-1-wash:var(--accent-wash);--series-input:#5f8298;--series-output:#3f6f95;--series-score:#7cb8e2}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-text);font-size:13px;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-feature-settings:"kern" 1,"liga" 1}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.viz-root{min-height:100vh;padding:0 26px 76px;background:var(--paper)}
+.wrap{max-width:1180px;margin:0 auto}
+header.masthead{display:block;border:0;border-bottom:3px double var(--rule-strong);padding:46px 0 20px;margin:0 0 30px}
+.eyebrow{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--editorial);margin:0 0 14px;font-variant-numeric:tabular-nums}
+h1{font-family:var(--font-display);font-weight:400;font-size:clamp(34px,5.2vw,60px);line-height:1.03;letter-spacing:-.012em;margin:0 0 16px;color:var(--ink)}
+.masthead .subtitle{font-size:12.5px;line-height:1.65;color:var(--ink-faint);max-width:var(--measure);margin:0;letter-spacing:.005em}
+.masthead-meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 30px;margin-top:24px;padding-top:16px;border-top:1px solid var(--rule);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+.masthead-meta b{color:var(--ink);font-weight:600;margin-right:7px}
+.masthead-meta code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10.5px;text-transform:none;letter-spacing:0;color:var(--ink-soft)}
+.tabs{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-left:0}
+.tabs .tab{display:inline-block;border:1px solid var(--rule-strong);background:transparent;color:var(--ink-soft);font-family:var(--font-text);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 13px;border-radius:0;cursor:pointer;text-decoration:none;transition:background 120ms ease,color 120ms ease,border-color 120ms ease}
+.tabs .tab:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.tabs .tab[aria-current="page"]{background:var(--ink);color:var(--paper);border-color:var(--ink);cursor:default}
+.theme-toggle{appearance:none;margin-left:auto;border:1px solid var(--rule-strong);background:transparent;color:var(--ink-soft);font-family:var(--font-text);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 13px;border-radius:0;cursor:pointer;transition:background 120ms ease,color 120ms ease,border-color 120ms ease}
+.theme-toggle:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.banner,.card,.kpi,.quality-panel{background:transparent;border:0;border-radius:0;box-shadow:none}
+.banner{margin:0 0 38px;padding:20px 0 20px 22px;border-left:2px solid var(--editorial);font-size:12.5px;line-height:1.75;color:var(--ink-soft)}
+.banner::before{content:"Methodology note";display:block;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--editorial);margin:0 0 8px}
+.banner strong{color:var(--ink);font-weight:600}
+.banner em{font-family:var(--font-display);font-style:italic;font-size:14px;color:var(--ink)}
+.section-head{display:block;border-top:1px solid var(--rule-strong);padding:20px 0 0;margin:0 0 22px}
+.section-head h2,.card-head h2,.quality-panel h2{font-family:var(--font-display);font-weight:400;font-size:clamp(21px,2.5vw,28px);line-height:1.16;letter-spacing:-.008em;margin:0;color:var(--ink)}
+.section-head .card-sub{margin-top:9px;max-width:var(--measure)}
+.card-sub,figcaption,.chart-panel p{font-family:var(--font-text);font-size:11.5px;line-height:1.65;color:var(--ink-faint)}
+.card-head{display:block;border-top:1px solid var(--rule-strong);padding:20px 0 0;margin:0 0 22px}
+.card-head h2::before{content:"";display:block;font-family:var(--font-text);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--editorial);margin:0 0 10px}
+#comparisonTitle::before{content:"Head to head"}
+#scatterTitle::before{content:"Price and capability"}
+#leaderTitle::before{content:"Rankings"}
+#tableTitle::before{content:"Full reference"}
+.quality-panel h2::before{content:"Provenance and caveats";display:block;font-family:var(--font-text);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--editorial);margin:0 0 10px}
+.section-number{display:none}
+.card{padding:0;margin:0 0 52px;position:relative;overflow:visible}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:0;border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong)}
+.kpi{padding:22px 24px;min-height:0;border-left:1px solid var(--rule)}
+.kpi:first-child{border-left:0;padding-left:0}
+.kpi .label{font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 14px}
+.kpi .value{font-family:var(--font-text);font-weight:600;font-size:clamp(30px,3.8vw,42px);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--ink)}
+.kpi .sub{font-size:11px;line-height:1.5;color:var(--ink-faint);margin-top:12px}
+.weekly-pick{padding:0}
+.pick-grid{grid-template-columns:1.6fr repeat(4,.62fr);gap:0;align-items:end;padding-bottom:24px;border-bottom:1px solid var(--rule)}
+.pick-grid>div:first-child{padding-right:28px}
+.pick-eyebrow{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--editorial);margin:0 0 14px}
+.pick-name{font-family:var(--font-display);font-weight:400;font-size:clamp(26px,3.3vw,38px);line-height:1.07;letter-spacing:-.01em;color:var(--ink)}
+.pick-provider{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-top:10px}
+.pick-stat{border-left:1px solid var(--rule);padding:4px 0 2px 18px}
+.pick-stat .label{font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.pick-stat .value{font-family:var(--font-text);font-size:clamp(22px,2.5vw,30px);font-weight:600;line-height:1.1;letter-spacing:-.015em;margin-top:9px;font-variant-numeric:tabular-nums;color:var(--ink)}
+.pick-stat .detail{font-size:10.5px;line-height:1.5;color:var(--ink-faint);margin-top:6px}
+.model-comparison{padding:0}
+.comparison-picker{max-width:540px;margin:0 0 4px}
+.comparison-picker label{display:block;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:9px}
+.comparison-picker input,.search input{width:100%;font-family:var(--font-text);font-size:12.5px;padding:11px 13px;border-radius:0;border:1px solid var(--rule-strong);background:var(--paper-raised);color:var(--ink)}
+.comparison-picker input:focus,.search input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.comparison-results{border:1px solid var(--rule-strong);border-top:0;border-radius:0;margin-top:0;max-height:250px;overflow:auto}
+.comparison-option{border-radius:0;border-bottom:1px solid var(--rule);background:var(--paper-raised);font-family:var(--font-text);padding:11px 13px}
+.comparison-option-name{font-size:12.5px;font-weight:600}
+.comparison-option-meta{font-size:10px;letter-spacing:.04em;color:var(--ink-faint);margin-top:3px}
+.comparison-empty{border-top:1px solid var(--rule-strong);border-radius:0;color:var(--ink-faint);font-size:12px;margin-top:20px;padding-top:18px}
+.comparison-title{font-family:var(--font-display);font-weight:400;font-size:clamp(20px,2.3vw,26px);line-height:1.2;margin:26px 0 12px;color:var(--ink)}
+.comparison-table th{font-family:var(--font-text);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase}
+.comparison-summary p,.comparison-summary li{font-size:11.5px;line-height:1.7;color:var(--ink-soft)}
+.controls{gap:12px;margin:0 0 22px;align-items:center}
+.seg{background:transparent;border:1px solid var(--rule-strong);border-radius:0;padding:0;gap:0}
+.seg button{font-family:var(--font-text);font-size:10px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft);background:transparent;padding:9px 16px;border-radius:0;transition:background 120ms ease,color 120ms ease}
+.seg button+button{border-left:1px solid var(--rule)}
+.seg button.active{background:var(--accent);color:#fff}
+.seg button:hover:not(.active){background:var(--accent-wash)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.search{flex:0 1 260px;max-width:300px}
+.count-note{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+figure{margin:0}
+figcaption{margin-top:14px;padding-top:12px;border-top:1px solid var(--rule)}
+.chart-wrap{overflow-x:auto}
+svg text{font-family:var(--font-text);font-size:10.5px;letter-spacing:.02em}
+.axis-label{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase}
+.value-label{font-family:var(--font-text);font-weight:600}
+.axis-line{stroke:var(--rule-strong)}
+.leader-grid{gap:30px;grid-template-columns:1fr}
+.chart-panel{background:var(--paper-raised);border:1px solid var(--rule);border-radius:0;padding:20px 22px 16px}
+.chart-panel h3{font-family:var(--font-text);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--ink);margin:0 0 7px}
+.chart-panel p{margin:0 0 14px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+.value-legend{display:flex;gap:20px;flex-wrap:wrap;font-size:9.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 16px}
+.value-legend span{display:inline-flex;align-items:center;gap:7px}
+.value-legend span::before{content:"";display:inline-block;width:9px;height:9px}
+.value-axis-label,.value-model-label,.value-rank-label,.value-bar-label{font-family:var(--font-text)}
+.quality-panel{padding:24px 0 0;margin:0 0 52px;border-top:1px solid var(--rule-strong)}
+#qualityList{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:13px}
+#qualityList li{position:relative;padding-left:20px;font-size:11.5px;line-height:1.75;color:var(--ink-soft)}
+#qualityList li::before{content:"";position:absolute;left:0;top:10px;width:8px;height:1px;background:var(--editorial)}
+#qualityList strong{color:var(--ink);font-weight:600}
+#qualityList code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10.5px;color:var(--ink-soft)}
+.table-scroll{overflow:auto;max-height:720px;margin:0;padding:0;border-top:1px solid var(--rule-strong)}
+table{width:100%;border-collapse:collapse;font-size:12px;font-family:var(--font-text)}
+thead{position:sticky;top:0;z-index:2;background:var(--paper)}
+th{text-align:left;font-size:9.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);padding:13px 12px;border-bottom:1px solid var(--rule-strong);cursor:pointer;white-space:nowrap}
+th.active{color:var(--editorial)}
+td{padding:12px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums;white-space:nowrap;vertical-align:top}
+td.name-cell{min-width:250px;white-space:normal}
+tbody tr:hover td{background:var(--accent-wash)}
+.model-name{font-family:var(--font-display);font-weight:400;font-size:15px;line-height:1.25;color:var(--ink)}
+.model-provider{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint);margin-top:3px}
+.num-dim{color:var(--ink-faint)}
+.arena-flag{display:inline-block;margin-left:8px;padding:2px 7px;border:1px solid var(--rule-strong);font-family:var(--font-text);font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;vertical-align:middle}
+footer{max-width:var(--measure);margin:0;padding:26px 0 0;border-top:3px double var(--rule-strong);text-align:left;font-size:11px;line-height:1.75;color:var(--ink-faint)}
+footer p{margin:0 0 10px}
+footer p:last-child{margin-bottom:0}
+footer code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10.5px}
+.tooltip{border-radius:0;font-family:var(--font-text);font-size:11.5px;padding:11px 13px;box-shadow:0 10px 30px rgba(0,0,0,.22);letter-spacing:.01em}
+.tooltip strong{font-weight:600;letter-spacing:.02em}
+@media(max-width:1040px){.pick-grid{grid-template-columns:1fr 1fr;column-gap:24px;row-gap:24px}.pick-grid>div:first-child{grid-column:1/-1;padding-right:0}.pick-stat{border-left:1px solid var(--rule);padding-left:18px}.pick-stat:nth-child(even){border-left:0;padding-left:0}}
+@media(max-width:900px){.kpi-row{grid-template-columns:1fr 1fr}.kpi{padding:20px}.kpi:nth-child(odd){border-left:0;padding-left:0}.kpi:nth-child(n+3){border-top:1px solid var(--rule)}}
+@media(max-width:760px){.viz-root{padding:0 18px 60px}header.masthead{padding-top:30px}h1{font-size:clamp(30px,8vw,42px)}.masthead-meta{gap:10px 20px}.theme-toggle{margin-left:0}.controls{flex-direction:column;align-items:stretch}.seg{display:flex}.seg button{flex:1}.search{flex:1 1 auto;max-width:none}.count-note{margin-left:0}.comparison-title{font-size:19px}svg{min-width:520px}.table-scroll{max-height:none}}
+@media(max-width:560px){.kpi-row{grid-template-columns:1fr}.kpi{border-left:0;padding-left:0}.kpi:nth-child(n+2){border-top:1px solid var(--rule)}.pick-grid{grid-template-columns:1fr}.pick-stat{border-left:0;padding-left:0}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+@media print{.viz-root{padding:0}.theme-toggle,.refresh-btn,.refresh-status,.controls,.comparison-results{display:none!important}.card,.chart-panel{break-inside:avoid}}
+.refresh-btn{appearance:none;margin-left:auto;border:1px solid var(--rule-strong);background:transparent;color:var(--ink-soft);font-family:var(--font-text);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;padding:8px 13px;border-radius:0;cursor:pointer;transition:background 120ms ease,color 120ms ease,border-color 120ms ease}
+.refresh-btn:hover:not([disabled]){background:var(--accent);border-color:var(--accent);color:#fff}
+.refresh-btn[disabled]{opacity:.55;cursor:not-allowed}
+.refresh-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.refresh-status{display:block;margin:9px 0 0;min-height:15px;text-align:right;font-size:10px;letter-spacing:.04em;color:var(--ink-faint);font-weight:500;text-transform:none}
+.theme-toggle{margin-left:0}
+.pick-week{margin:12px 0 0;font-size:10px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--editorial)}
+.pick-live{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--rule);font-size:11px;line-height:1.6;color:var(--ink-soft)}
+.pick-live[hidden]{display:none}
+@media(max-width:760px){.refresh-btn{margin-left:0}.refresh-status{width:100%}}
+</style>
+</head>
+<body>
+<!--
+  Styling note: every <style> block above is a verbatim copy of the chat
+  dashboard's (dashboard/template.html), in the same order, and nothing new is
+  added here. Section labels therefore come from the two mechanisms that
+  template already provides:
+    * <p class="eyebrow"> inside .card-head / .section-head for this page's own
+      sections, and
+    * the id-scoped ::before labels that travel with the copied CSS, which is
+      why #leaderTitle, #scatterTitle and #tableTitle are reused unchanged
+      (they carry the "Rankings", "Price and capability" and "Full reference"
+      eyebrows) and must NOT also get an eyebrow paragraph.
+  This page's own markup uses existing classes only. The two inline styles are
+  both deliberate and are the reason no new CSS is needed:
+    * the nav link borrows .theme-toggle for its button styling, so it resets
+      that class's auto margin and underline inline, and
+    * this page's theme toggle needs margin-left:auto, because the copied CSS
+      sets .theme-toggle{margin-left:0}. On the chat page the right-hand button
+      group is anchored by the refresh button's auto margin, and this page has
+      no refresh button (refresh.py rebuilds only the chat dashboard).
+  The only other inline style is the same closing-note spacing tweak the chat
+  template itself uses on #pickNote.
+-->
+<main class="viz-root"><div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">Model economics · Image generation</p>
+  <h1>Image Generation Price vs. Performance</h1>
+  <p class="subtitle" id="snapshotLine"></p>
+  <div class="masthead-meta">
+    <nav class="tabs" id="navTabs" aria-label="Dashboards"></nav>
+    <span><b>Source</b>OpenRouter <code>/api/v1/images/models</code></span>
+    <span><b>Benchmarks</b>OpenRouter media prompt benchmarks · Design Arena</span>
+    <span><b>Value</b>pass rate ÷ benchmark cost</span>
+    <button type="button" class="refresh-btn" id="refreshBtn">Update All Latest AI Data</button>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-pressed="false">Dark mode</button>
+  </div>
+  <p class="refresh-status" id="refreshStatus" role="status" aria-live="polite"></p>
+</header>
+
+<aside class="banner">
+  <strong>Same metric, different units.</strong> Performance here is every judged check a model passed
+  divided by every check it attempted, pooled flat across its benchmark prompts. Price is the mean
+  <code>cost_usd</code> of those same generations — <em>not</em> the catalogue's per-image,
+  per-megapixel or per-token rate — so performance and price come from identical rows and are
+  directly comparable to each other. Cost comparability caveat, measured rather than assumed: each
+  row now records the resolution it was generated at, and resolutions are <em>not</em> held fixed
+  across models — the catalogue spans roughly 768 to 2560 pixels on the long edge and cost tracks
+  it — so a cheaper model is not necessarily cheaper at the same fidelity. The reference table
+  below carries a resolution column for exactly that reason. Generation time is captured per row
+  too and is shown separately from cost and quality. Design Arena scores are
+  shown separately and never affect the value score, and no Artificial Analysis data exists for image
+  models at all.
+</aside>
+
+<!-- 01 — inventory snapshot --------------------------------------------------->
+<!-- Ordered as the chat dashboard is: inventory first, then the pick. A reader
+     who lands here and on the chat page should meet the same sequence. -->
+<section aria-labelledby="inventoryTitle">
+  <div class="section-head">
+    <p class="eyebrow">Overview</p>
+    <h2 id="inventoryTitle">Inventory snapshot</h2>
+    <p class="card-sub">Coverage across the full image-generation catalogue in this embedded snapshot. Models without benchmark rows are counted, never dropped.</p>
+  </div>
+  <div class="kpi-row" id="kpiRow"></div>
+</section>
+
+<!-- 02 — hero ------------------------------------------------------------------>
+<section aria-labelledby="heroTitle">
+  <div class="card weekly-pick">
+    <div class="pick-grid">
+      <div>
+        <div class="pick-eyebrow">Model of the week</div>
+        <h2 class="pick-name"><span id="heroTitle"></span><span class="arena-flag" id="heroArenaFlag" hidden></span></h2>
+        <div class="pick-provider" id="heroProvider"></div>
+        <p class="pick-week" id="heroWeek"></p>
+        <p class="pick-week" id="heroRank"></p>
+      </div>
+      <div class="pick-stat"><div class="label">Pass rate</div><div class="value" id="heroPass"></div><div class="detail" id="heroPassDetail"></div></div>
+      <div class="pick-stat"><div class="label">Cost per generation</div><div class="value" id="heroCost"></div><div class="detail">mean benchmark cost</div></div>
+      <div class="pick-stat"><div class="label">Value</div><div class="value" id="heroValue"></div><div class="detail">pass rate ÷ cost</div></div>
+      <div class="pick-stat"><div class="label">Evidence</div><div class="value" id="heroEvidence"></div><div class="detail">checks attempted</div></div>
+    </div>
+    <p class="card-sub" id="heroNote" style="margin-top:14px;"></p>
+    <p class="pick-live" id="heroLocked" hidden></p>
+  </div>
+</section>
+
+<!-- 02b — head to head --------------------------------------------------------->
+<!-- The same control the chat dashboard offers, over this page's metrics. The
+     baseline is the Model of the Week above (the locked pick when there is one),
+     so the comparison cannot quietly answer a different question than the card
+     it sits under. -->
+<section aria-labelledby="comparisonTitle">
+  <div class="card model-comparison">
+    <div class="card-head">
+      <div>
+        <h2 id="comparisonTitle">Compare the model of the week</h2>
+        <p class="card-sub">Choose any model in the embedded snapshot to compare against the week's pick.</p>
+      </div>
+    </div>
+    <div class="comparison-picker">
+      <label for="comparisonSearch">Choose another model</label>
+      <input type="search" id="comparisonSearch" role="combobox" aria-autocomplete="list" aria-controls="comparisonResults" aria-expanded="false" autocomplete="off" placeholder="Search model or provider">
+      <div class="comparison-results" id="comparisonResults" role="listbox" aria-label="Matching models"></div>
+    </div>
+    <div id="comparisonContent" class="comparison-empty" aria-live="polite">Choose a model to compare.</div>
+  </div>
+</section>
+
+<!-- 03 — value leaders ------------------------------------------------------->
+<section class="card" aria-labelledby="leaderTitle">
+  <div class="card-head">
+    <div>
+      <h2 id="leaderTitle">Value leaders</h2>
+      <p class="card-sub" id="leaderCaption"></p>
+    </div>
+  </div>
+  <figure class="chart-panel">
+    <h3>Top models by value</h3>
+    <p>Value is pass rate divided by mean benchmark cost. Bars are shown as a share of the leader.</p>
+    <div class="chart-wrap"><svg id="valueBars" role="img" aria-label="Top image-generation models by value score"></svg></div>
+  </figure>
+</section>
+
+<!-- 04 — scatter ------------------------------------------------------------->
+<section class="card" aria-labelledby="scatterTitle">
+  <div class="card-head">
+    <div>
+      <h2 id="scatterTitle">Pass rate vs. cost per generation</h2>
+      <p class="card-sub" id="scatterSub"></p>
+    </div>
+  </div>
+  <div class="value-legend" id="scatterLegend"></div>
+  <figure>
+    <div class="chart-wrap"><svg id="imageScatter" viewBox="0 0 1100 470" role="img" aria-label="Pass rate versus cost per generation scatter chart"></svg></div>
+    <figcaption id="scatterCaption"></figcaption>
+  </figure>
+</section>
+
+<!-- 05 — design arena -------------------------------------------------------->
+<section class="card" aria-labelledby="arenaTitle">
+  <div class="card-head">
+    <div>
+      <p class="eyebrow">Preference survey</p>
+      <h2 id="arenaTitle">Design Arena preference score</h2>
+      <p class="card-sub">Elo and win rate per Design Arena category, for the models that have them. This is a preference survey, not a capability score, and it is deliberately kept out of the value ranking above.</p>
+    </div>
+  </div>
+  <figure class="chart-panel">
+    <h3>Category leaders</h3>
+    <p>Strongest model per Design Arena category, from the same survey as the table below. Bar length is the leader's win rate on a fixed 0–100 scale — the share of pairwise comparisons it won — so the categories can be read against each other, with its Elo beside it.</p>
+    <div class="chart-wrap"><svg id="arenaLeaders" role="img" aria-label="Strongest model in each Design Arena category by win rate"></svg></div>
+    <p class="card-sub" id="arenaLeadersCaption"></p>
+  </figure>
+  <div class="table-scroll">
+    <table id="arenaTable">
+      <thead><tr id="arenaHead"><th rowspan="2">Model</th></tr><tr id="arenaSubhead"></tr></thead>
+      <tbody id="arenaBody"></tbody>
+    </table>
+  </div>
+  <p class="card-sub" id="arenaNote" style="margin-top:14px;"></p>
+</section>
+
+<!-- 06 — coverage ------------------------------------------------------------>
+<section class="card" aria-labelledby="coverageTitle">
+  <div class="card-head">
+    <div>
+      <p class="eyebrow">Coverage</p>
+      <h2 id="coverageTitle">What is rated, and what is not</h2>
+      <p class="card-sub">Four different questions, counted separately. A priced model with no benchmark rows is listed as unrated rather than removed from the dataset.</p>
+    </div>
+  </div>
+  <div class="table-scroll">
+    <table id="coverageTable">
+      <thead><tr><th>Bucket</th><th>Models</th><th>What it means</th></tr></thead>
+      <tbody id="coverageBody"></tbody>
+    </table>
+  </div>
+  <p class="eyebrow" style="margin:26px 0 12px;">Unrated — no benchmark rows</p>
+  <div class="table-scroll">
+    <table id="unratedTable">
+      <thead><tr><th>Model</th><th>Catalogue rate</th><th>Rate basis</th><th>Design Arena</th></tr></thead>
+      <tbody id="unratedBody"></tbody>
+    </table>
+  </div>
+  <p class="card-sub" id="unratedNote" style="margin-top:14px;"></p>
+  <p class="card-sub" id="coverageNote" style="margin-top:14px;"></p>
+</section>
+
+<!-- 07 — budget picks -------------------------------------------------------->
+<section class="card" aria-labelledby="budgetTitle">
+  <div class="card-head">
+    <div>
+      <p class="eyebrow">Budget picks</p>
+      <h2 id="budgetTitle">Cheapest models that still clear the bar</h2>
+      <p class="card-sub" id="budgetSub"></p>
+    </div>
+  </div>
+  <div class="table-scroll">
+    <table id="budgetTable">
+      <thead><tr><th>Model</th><th>Pass rate</th><th>Cost per generation</th><th>Value</th><th>Checks attempted</th></tr></thead>
+      <tbody id="budgetBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 08 — pricing breakdown --------------------------------------------------->
+<section class="card" aria-labelledby="tableTitle">
+  <div class="card-head">
+    <div>
+      <h2 id="tableTitle">Catalogue pricing vs. benchmark cost</h2>
+      <p class="card-sub">Every catalogue model, ranked by value. The catalogue rate column is the published list rate and is <em>not</em> comparable across models — the units differ per row. The benchmark cost column is the money the value score actually uses. <span id="pricingCount"></span></p>
+    </div>
+  </div>
+  <div class="table-scroll">
+    <table id="pricingTable">
+      <thead><tr><th>Model</th><th>Value</th><th>Benchmark cost</th><th>Generated at</th><th>Gen. time</th><th>Catalogue rate</th><th>Rate basis</th><th>Endpoint pricing lines</th></tr></thead>
+      <tbody id="pricingBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 09 — history placeholder ------------------------------------------------->
+<section class="card" aria-labelledby="trendTitle">
+  <div class="card-head">
+    <div>
+      <p class="eyebrow">History</p>
+      <h2 id="trendTitle">Value over time</h2>
+      <p class="card-sub" id="trendSub"></p>
+    </div>
+  </div>
+  <div class="chart-panel">
+    <h3>Value leader by snapshot date</h3>
+    <p>This fills in on its own once enough dated snapshots exist.</p>
+    <p class="card-sub" id="trendState" style="margin-top:14px;"></p>
+  </div>
+</section>
+
+<!-- provenance --------------------------------------------------------------->
+<section class="quality-panel" aria-labelledby="qualityTitle">
+  <h2 id="qualityTitle">Methodology and provenance</h2>
+  <ul id="qualityList"></ul>
+</section>
+
+<footer>
+  <p id="footerProvenance"></p>
+  <p>Source: OpenRouter <code>/api/v1/images/models</code> and <code>/api/v1/images/models/&lt;id&gt;/endpoints</code> for the catalogue, OpenRouter's media prompt benchmark pages for checks and cost, and OpenRouter's <code>/api/v1/models?output_modalities=image</code> filtered catalogue for Design Arena. This report embeds a single data snapshot and never re-fetches at view time.</p>
+  <p><a href="index.html" style="text-decoration:none">&#8592; Back to the chat model report</a> · Typography: DM Serif Display for editorial headings and model names, Inter for data, tables and interface text, served from Google Fonts with local serif and sans-serif fallbacks.</p>
+</footer>
+
+</div></main><div class="tooltip" id="tooltip" role="tooltip"></div>
+
+<script>
+const NAV_TABS=[{"key":"chat","label":"Chat models","href":"index.html","page":"price_performance_final.html"},{"key":"image","label":"Image models","href":"image_model_analysis.html","page":"image_model_analysis.html"}];
+/* Shared page shell for the OpenRouter dashboards.
+ *
+ * Injected into every dashboard at build time at the __SHELL_JS__ placeholder
+ * (see the page builders), so the pages cannot drift apart. It owns three things:
+ *
+ *   1. the theme toggle - behaviour unchanged from when it lived inline, just
+ *      shared instead of copied;
+ *   2. the dashboard tab bar;
+ *   3. the unified "Update All Latest AI Data" refresh control.
+ *
+ * The tab list is NOT defined here. It comes from the Python-side source of
+ * truth (dashboard/nav_tabs.py) and is injected immediately above this code as
+ * `const NAV_TABS = [...]` rather than being read out of the page payload.
+ * That is deliberate: the two templates do not put their scripts in the same
+ * order - the image page's shell runs BEFORE its payload script, so the theme
+ * toggle applies before first paint - and reading the payload here would
+ * therefore silently render no tabs on one of the two pages.
+ *
+ * Everything is defensive: with no tab list the nav is simply hidden.
+ */
+(() => {
+  "use strict";
+
+  /* --------------------------------------------------------------------- *
+   * theme toggle
+   * --------------------------------------------------------------------- */
+  const root = document.documentElement;
+  const themeBtn = document.getElementById("themeToggle");
+  const mq = window.matchMedia("(prefers-color-scheme: dark)");
+
+  const resolved = () => root.dataset.theme || (mq.matches ? "dark" : "light");
+  const label = () => {
+    if (!themeBtn) return;
+    const theme = resolved();
+    themeBtn.textContent = theme === "dark" ? "Light mode" : "Dark mode";
+    themeBtn.setAttribute("aria-pressed", String(theme === "dark"));
+  };
+  label();
+  if (themeBtn) {
+    themeBtn.addEventListener("click", () => {
+      root.dataset.theme = resolved() === "dark" ? "light" : "dark";
+      label();
+    });
+  }
+  if (mq.addEventListener) {
+    mq.addEventListener("change", label);
+  } else if (mq.addListener) {
+    mq.addListener(label);
+  }
+
+  /* --------------------------------------------------------------------- *
+   * dashboard tabs
+   * --------------------------------------------------------------------- */
+  const nav = document.getElementById("navTabs");
+  if (!nav) return;
+
+  const tabs = (typeof NAV_TABS !== "undefined" && NAV_TABS) || [];
+  if (!tabs.length) {
+    nav.hidden = true;
+    return;
+  }
+
+  // Which tab is "here"? Compare against both the staged URL basename and the
+  // built filename, so the active state is right when served by serve.py (as
+  // "/" or "/dashboard.html"), on the live site, and when opened as a file.
+  const here = location.pathname.split("/").pop() || "";
+  const isCurrent = (tab) =>
+    tab.href === here ||
+    tab.page === here ||
+    (here === "" && tab.href === "index.html");
+
+  tabs.forEach((tab) => {
+    const link = document.createElement("a");
+    link.className = "tab";
+    link.href = tab.href;
+    link.textContent = tab.label;
+    link.dataset.tab = tab.key;
+    if (isCurrent(tab)) link.setAttribute("aria-current", "page");
+    nav.appendChild(link);
+  });
+
+  /* --------------------------------------------------------------------- *
+   * unified refresh control
+   *
+   * One click refreshes BOTH dashboards. The pipelines themselves stay
+   * independent (dashboard/refresh_all.py only spawns them), and this reports
+   * per-dashboard success/failure when one works and the other does not.
+   * --------------------------------------------------------------------- */
+  const refreshBtn = document.getElementById("refreshBtn");
+  const refreshStatus = document.getElementById("refreshStatus");
+  if (!refreshBtn || !refreshStatus) return;
+
+  const setStatus = (text) => {
+    refreshStatus.textContent = text;
+  };
+  const SEEN_KEY = "llmDashboardRefreshSeenAt";
+  // Base URL of the status/refresh endpoints: dashboard/serve.py locally (its
+  // routes live under /api), the Cloudflare Worker in public. The Worker holds
+  // the GitHub token server-side so it is never readable by page visitors.
+  const REFRESH_API =
+    location.hostname === "localhost" || location.hostname === "127.0.0.1"
+      ? "/api"
+      : "https://llm-refresh-proxy.gelson-a26.workers.dev";
+
+  if (location.protocol === "file:") {
+    refreshBtn.disabled = true;
+    refreshBtn.textContent = "Refresh unavailable";
+    refreshBtn.title =
+      "Refreshing requires the local server. Run: python dashboard/serve.py, then open the http:// address it prints.";
+    setStatus("Opened as a local file - start dashboard/serve.py to enable refresh.");
+    return;
+  }
+
+  let timer = null;
+  const stopPolling = () => {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  };
+  const schedule = (ms) => {
+    stopPolling();
+    timer = setInterval(poll, ms);
+  };
+
+  // refresh_all.py returns one outcome per target, so a single click can say
+  // "Chat: updated. Image: failed - <reason>". `job.targets` is the contract on
+  // BOTH backends: dashboard/serve.py lifts it from its own job result, and the
+  // Cloudflare Worker lifts it from the committed refresh_status.json.
+  const summarise = (job) => {
+    const targets = job.targets;
+    if (!targets) return (job.result || {}).message || "Refresh failed.";
+    const labels = { chat: "Chat", media: "Image" };
+    return Object.keys(targets)
+      .map((key) => {
+        const res = targets[key] || {};
+        const label = labels[key] || key;
+        if (res.state === "ok") return label + ": updated.";
+        if (res.state === "already_running") return label + ": a refresh was already running.";
+        return label + ": failed - " + (res.message || res.error || "unknown error");
+      })
+      .join(" ");
+  };
+
+  function poll() {
+    fetch(REFRESH_API + "/status", { cache: "no-store" })
+      .then((r) => r.json())
+      .then((data) => {
+        const job = data.job || {};
+        const retry = job.retry_after_seconds || 0;
+        if (job.state === "running") {
+          setStatus("Refreshing both dashboards...");
+          schedule(1500);
+          return;
+        }
+        const stamp = job.finished_at || "";
+        const seen = sessionStorage.getItem(SEEN_KEY) || "";
+        const isNew = Boolean(stamp) && stamp !== seen;
+        if (job.state === "ok" && isNew) {
+          stopPolling();
+          sessionStorage.setItem(SEEN_KEY, stamp);
+          setStatus("Updated - reloading...");
+          location.reload();
+          return;
+        }
+        if (job.state === "failed" && isNew) {
+          // Deliberately does NOT reload. A partial failure is exactly when the
+          // per-dashboard summary matters most, and reloading would wipe it.
+          // Each page keeps showing whatever its own dashboard last published.
+          stopPolling();
+          sessionStorage.setItem(SEEN_KEY, stamp);
+          refreshBtn.disabled = false;
+          setStatus(summarise(job));
+          return;
+        }
+        if (retry > 0) {
+          refreshBtn.disabled = true;
+          setStatus(`Data is up to date - next refresh available in ${retry}s.`);
+          schedule(1000);
+          return;
+        }
+        stopPolling();
+        refreshBtn.disabled = false;
+        setStatus("");
+      })
+      .catch(() => {
+        stopPolling();
+        refreshBtn.disabled = false;
+        setStatus("Cannot reach the refresh service. Please try again shortly.");
+      });
+  }
+
+  refreshBtn.addEventListener("click", () => {
+    refreshBtn.disabled = true;
+    setStatus("Starting...");
+    fetch(REFRESH_API + "/refresh", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: "{}",
+    })
+      .then(async (response) => {
+        const data = await response.json().catch(() => ({}));
+        if (response.status === 202 || response.status === 409) {
+          setStatus("Refreshing both dashboards...");
+          schedule(1500);
+          return;
+        }
+        if (response.status === 429 || data.error === "cooldown") {
+          poll();
+          return;
+        }
+        stopPolling();
+        refreshBtn.disabled = false;
+        if (response.status === 401) {
+          setStatus("This server requires a refresh token (start it with --token).");
+          return;
+        }
+        if (response.status === 403) {
+          setStatus("Blocked: the request did not come from this dashboard.");
+          return;
+        }
+        setStatus(data.message || data.error || "Refresh failed.");
+      })
+      .catch(() => {
+        stopPolling();
+        refreshBtn.disabled = false;
+        setStatus("Cannot reach the refresh service. Please try again shortly.");
+      });
+  });
+
+  poll();
+})();
+
+</script>
+<script>
+(()=>{"use strict";
+const PAYLOAD={"rows":[{"model_id":"openai/gpt-image-2.5-sunburst","model_name":"OpenAI: GPT Image 2.5 Sunburst","benchmark_name":null,"provider":"openai","has_catalog_rate":true,"benchmarked":false,"design_arena":false,"pricing_unit":"usd_per_token","comparable_price":3e-05,"comparable_price_basis":"plain_output_token_rate","endpoint_count":1,"providers":["OpenAI"],"pricing_lines":[{"provider":"OpenAI","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":8e-06},{"provider":"OpenAI","billable":"input_text","unit":"token","unit_family":"usd_per_token","variant":null,"usd":5e-06},{"provider":"OpenAI","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":3e-05}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":null,"checks_passed":null,"checks_total":null,"pass_rate":null,"avg_cost_usd":null,"cost_rows":null,"output_resolutions":[],"resolution_mixed":false,"duration_ms_mean":null,"duration_rows":null,"evidence_checks":null,"value":null,"value_rank":null,"point_radius":null},{"model_id":"openai/gpt-image-2.5-flare","model_name":"OpenAI: GPT Image 2.5 Flare","benchmark_name":null,"provider":"openai","has_catalog_rate":true,"benchmarked":false,"design_arena":false,"pricing_unit":"usd_per_token","comparable_price":3e-05,"comparable_price_basis":"plain_output_token_rate","endpoint_count":1,"providers":["OpenAI"],"pricing_lines":[{"provider":"OpenAI","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":8e-06},{"provider":"OpenAI","billable":"input_text","unit":"token","unit_family":"usd_per_token","variant":null,"usd":5e-06},{"provider":"OpenAI","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":3e-05}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":null,"checks_passed":null,"checks_total":null,"pass_rate":null,"avg_cost_usd":null,"cost_rows":null,"output_resolutions":[],"resolution_mixed":false,"duration_ms_mean":null,"duration_rows":null,"evidence_checks":null,"value":null,"value_rank":null,"point_radius":null},{"model_id":"microsoft/mai-image-2.6","model_name":"Microsoft AI: MAI-Image-2.6","benchmark_name":"MAI-Image-2.6","provider":"microsoft","has_catalog_rate":true,"benchmarked":true,"design_arena":true,"pricing_unit":"usd_per_token","comparable_price":3.8e-05,"comparable_price_basis":"plain_output_token_rate","endpoint_count":1,"providers":["Azure"],"pricing_lines":[{"provider":"Azure","billable":"input_text","unit":"token","unit_family":"usd_per_token","variant":null,"usd":5e-06},{"provider":"Azure","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":8e-06},{"provider":"Azure","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":3.8e-05}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":15,"checks_passed":51,"checks_total":64,"pass_rate":0.796875,"avg_cost_usd":0.0432,"cost_rows":15,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":23495.3,"duration_rows":15,"evidence_checks":64,"value":18.446180555555554,"value_rank":16,"point_radius":11.0},{"model_id":"microsoft/mai-image-2.6-flash","model_name":"Microsoft AI: MAI-Image-2.6 Flash","benchmark_name":"MAI-Image-2.6 Flash","provider":"microsoft","has_catalog_rate":true,"benchmarked":true,"design_arena":true,"pricing_unit":"usd_per_token","comparable_price":1.9e-05,"comparable_price_basis":"plain_output_token_rate","endpoint_count":1,"providers":["Azure"],"pricing_lines":[{"provider":"Azure","billable":"input_text","unit":"token","unit_family":"usd_per_token","variant":null,"usd":1.75e-06},{"provider":"Azure","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":2.5e-06},{"provider":"Azure","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":1.9e-05}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":15,"checks_passed":46,"checks_total":64,"pass_rate":0.71875,"avg_cost_usd":0.0212,"cost_rows":15,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":12530.7,"duration_rows":15,"evidence_checks":64,"value":33.903301886792455,"value_rank":6,"point_radius":11.0},{"model_id":"meta/muse-image","model_name":"Meta: Muse Image","benchmark_name":"Muse Image","provider":"meta","has_catalog_rate":false,"benchmarked":true,"design_arena":false,"pricing_unit":null,"comparable_price":null,"comparable_price_basis":null,"endpoint_count":0,"providers":[],"pricing_lines":[],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":15,"checks_passed":56,"checks_total":64,"pass_rate":0.875,"avg_cost_usd":0.01,"cost_rows":15,"output_resolutions":["1600x1600"],"resolution_mixed":false,"duration_ms_mean":19148.6,"duration_rows":15,"evidence_checks":64,"value":87.5,"value_rank":1,"point_radius":11.0},{"model_id":"recraft/recraft-v4-styles-pro","model_name":"Recraft: Recraft V4 Styles Pro","benchmark_name":null,"provider":"recraft","has_catalog_rate":true,"benchmarked":false,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.1,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Recraft"],"pricing_lines":[{"provider":"Recraft","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.1},{"provider":"Recraft","billable":"input_reference","unit":"request","unit_family":"unknown","variant":null,"usd":0.005}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":null,"checks_passed":null,"checks_total":null,"pass_rate":null,"avg_cost_usd":null,"cost_rows":null,"output_resolutions":[],"resolution_mixed":false,"duration_ms_mean":null,"duration_rows":null,"evidence_checks":null,"value":null,"value_rank":null,"point_radius":null},{"model_id":"recraft/recraft-v4-styles-vector","model_name":"Recraft: Recraft V4 Styles Vector","benchmark_name":null,"provider":"recraft","has_catalog_rate":true,"benchmarked":false,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.05,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Recraft"],"pricing_lines":[{"provider":"Recraft","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.05},{"provider":"Recraft","billable":"input_reference","unit":"request","unit_family":"unknown","variant":null,"usd":0.005}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":null,"checks_passed":null,"checks_total":null,"pass_rate":null,"avg_cost_usd":null,"cost_rows":null,"output_resolutions":[],"resolution_mixed":false,"duration_ms_mean":null,"duration_rows":null,"evidence_checks":null,"value":null,"value_rank":null,"point_radius":null},{"model_id":"recraft/recraft-v4-styles-pro-vector","model_name":"Recraft: Recraft V4 Styles Pro Vector","benchmark_name":null,"provider":"recraft","has_catalog_rate":true,"benchmarked":false,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.12,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Recraft"],"pricing_lines":[{"provider":"Recraft","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.12},{"provider":"Recraft","billable":"input_reference","unit":"request","unit_family":"unknown","variant":null,"usd":0.005}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":null,"checks_passed":null,"checks_total":null,"pass_rate":null,"avg_cost_usd":null,"cost_rows":null,"output_resolutions":[],"resolution_mixed":false,"duration_ms_mean":null,"duration_rows":null,"evidence_checks":null,"value":null,"value_rank":null,"point_radius":null},{"model_id":"recraft/recraft-v4-styles","model_name":"Recraft: Recraft V4 Styles","benchmark_name":null,"provider":"recraft","has_catalog_rate":true,"benchmarked":false,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.035,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Recraft"],"pricing_lines":[{"provider":"Recraft","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.035},{"provider":"Recraft","billable":"input_reference","unit":"request","unit_family":"unknown","variant":null,"usd":0.005}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":null,"checks_passed":null,"checks_total":null,"pass_rate":null,"avg_cost_usd":null,"cost_rows":null,"output_resolutions":[],"resolution_mixed":false,"duration_ms_mean":null,"duration_rows":null,"evidence_checks":null,"value":null,"value_rank":null,"point_radius":null},{"model_id":"bytedance-seed/seedream-5-0-lite","model_name":"ByteDance Seed: Seedream 5.0 Lite","benchmark_name":"Seedream 5.0 Lite","provider":"bytedance-seed","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.035,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Seed"],"pricing_lines":[{"provider":"Seed","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.035},{"provider":"Seed","billable":"input_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.0}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":49,"checks_total":59,"pass_rate":0.830508,"avg_cost_usd":0.035,"cost_rows":14,"output_resolutions":["2048x2048"],"resolution_mixed":false,"duration_ms_mean":33582.0,"duration_rows":14,"evidence_checks":59,"value":23.7288,"value_rank":12,"point_radius":4.0},{"model_id":"bytedance-seed/seedream-5-0-pro","model_name":"ByteDance Seed: Seedream 5.0 Pro","benchmark_name":"Seedream 5.0 Pro","provider":"bytedance-seed","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.045,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Seed"],"pricing_lines":[{"provider":"Seed","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.045},{"provider":"Seed","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"high_resolution","usd":0.09},{"provider":"Seed","billable":"input_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.003}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":45,"checks_total":59,"pass_rate":0.762712,"avg_cost_usd":0.09,"cost_rows":14,"output_resolutions":["2048x2048"],"resolution_mixed":false,"duration_ms_mean":67273.3,"duration_rows":14,"evidence_checks":59,"value":8.474577777777778,"value_rank":31,"point_radius":4.0},{"model_id":"x-ai/grok-imagine-image-2.0","model_name":"xAI: Grok Imagine Image 2.0","benchmark_name":"Grok Imagine Image 2.0","provider":"x-ai","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.04,"comparable_price_basis":"cheapest_variant_tier","endpoint_count":1,"providers":["SpaceXAI"],"pricing_lines":[{"provider":"SpaceXAI","billable":"input_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.01},{"provider":"SpaceXAI","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"low_1k","usd":0.04},{"provider":"SpaceXAI","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"low_2k","usd":0.06},{"provider":"SpaceXAI","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"medium_1k","usd":0.06},{"provider":"SpaceXAI","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"medium_2k","usd":0.08}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":51,"checks_total":59,"pass_rate":0.864407,"avg_cost_usd":0.062857,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":55464.1,"duration_rows":14,"evidence_checks":59,"value":13.75196079991091,"value_rank":24,"point_radius":4.0},{"model_id":"qwen/qwen-image-3-pro","model_name":"Qwen: Qwen Image 3 Pro","benchmark_name":"Qwen Image 3 Pro","provider":"qwen","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.04,"comparable_price_basis":"cheapest_variant_tier","endpoint_count":1,"providers":["Alibaba Cloud Int."],"pricing_lines":[{"provider":"Alibaba Cloud Int.","billable":"input_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.003},{"provider":"Alibaba Cloud Int.","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"1k","usd":0.04},{"provider":"Alibaba Cloud Int.","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"2k","usd":0.075}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":52,"checks_total":59,"pass_rate":0.881356,"avg_cost_usd":0.040857,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":78385.3,"duration_rows":14,"evidence_checks":59,"value":21.57172577526495,"value_rank":14,"point_radius":4.0},{"model_id":"qwen/qwen-image-3","model_name":"Qwen: Qwen Image 3","benchmark_name":"Qwen Image 3","provider":"qwen","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.03,"comparable_price_basis":"cheapest_variant_tier","endpoint_count":1,"providers":["Alibaba Cloud Int."],"pricing_lines":[{"provider":"Alibaba Cloud Int.","billable":"input_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.003},{"provider":"Alibaba Cloud Int.","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"1k","usd":0.03},{"provider":"Alibaba Cloud Int.","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"2k","usd":0.03}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":45,"checks_total":59,"pass_rate":0.762712,"avg_cost_usd":0.030857,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":65165.6,"duration_rows":14,"evidence_checks":59,"value":24.717632952004408,"value_rank":10,"point_radius":4.0},{"model_id":"microsoft/mai-image-2.5-pro","model_name":"Microsoft AI: MAI-Image-2.5 Pro","benchmark_name":"MAI-Image-2.5 Pro","provider":"microsoft","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_token","comparable_price":0.000108,"comparable_price_basis":"plain_output_token_rate","endpoint_count":1,"providers":["Azure"],"pricing_lines":[{"provider":"Azure","billable":"input_text","unit":"token","unit_family":"usd_per_token","variant":null,"usd":5e-06},{"provider":"Azure","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":8e-06},{"provider":"Azure","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":0.000108}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":48,"checks_total":59,"pass_rate":0.813559,"avg_cost_usd":0.112857,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":30741.9,"duration_rows":14,"evidence_checks":59,"value":7.208759757923745,"value_rank":32,"point_radius":4.0},{"model_id":"krea/krea-2-large","model_name":"Krea: Krea 2 Large","benchmark_name":"Krea 2 Large","provider":"krea","has_catalog_rate":false,"benchmarked":true,"design_arena":false,"pricing_unit":null,"comparable_price":null,"comparable_price_basis":null,"endpoint_count":1,"providers":["Krea"],"pricing_lines":[],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":38,"checks_total":59,"pass_rate":0.644068,"avg_cost_usd":0.06,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":27467.7,"duration_rows":14,"evidence_checks":59,"value":10.734466666666666,"value_rank":28,"point_radius":4.0},{"model_id":"krea/krea-2-medium","model_name":"Krea: Krea 2 Medium","benchmark_name":"Krea 2 Medium","provider":"krea","has_catalog_rate":false,"benchmarked":true,"design_arena":false,"pricing_unit":null,"comparable_price":null,"comparable_price_basis":null,"endpoint_count":1,"providers":["Krea"],"pricing_lines":[],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":42,"checks_total":59,"pass_rate":0.711864,"avg_cost_usd":0.03,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":15877.1,"duration_rows":14,"evidence_checks":59,"value":23.728800000000003,"value_rank":11,"point_radius":4.0},{"model_id":"krea/krea-2-medium-turbo","model_name":"Krea: Krea 2 Medium Turbo","benchmark_name":"Krea 2 Medium Turbo","provider":"krea","has_catalog_rate":false,"benchmarked":true,"design_arena":false,"pricing_unit":null,"comparable_price":null,"comparable_price_basis":null,"endpoint_count":1,"providers":["Krea"],"pricing_lines":[],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":46,"checks_total":59,"pass_rate":0.779661,"avg_cost_usd":0.015,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":10344.1,"duration_rows":14,"evidence_checks":59,"value":51.9774,"value_rank":2,"point_radius":4.0},{"model_id":"google/gemini-3.1-flash-lite-image","model_name":"Google: Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)","benchmark_name":"Nano Banana 2 Lite","provider":"google","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_token","comparable_price":3e-05,"comparable_price_basis":"plain_output_token_rate","endpoint_count":2,"providers":["Google Vertex","Google AI Studio"],"pricing_lines":[{"provider":"Google Vertex","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":3e-05},{"provider":"Google AI Studio","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":3e-05}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":46,"checks_total":59,"pass_rate":0.779661,"avg_cost_usd":0.034,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":3421.4,"duration_rows":14,"evidence_checks":59,"value":22.93120588235294,"value_rank":13,"point_radius":4.0},{"model_id":"openai/gpt-image-2","model_name":"OpenAI: GPT Image 2","benchmark_name":"GPT Image 2","provider":"openai","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_token","comparable_price":3e-05,"comparable_price_basis":"plain_output_token_rate","endpoint_count":1,"providers":["OpenAI"],"pricing_lines":[{"provider":"OpenAI","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":8e-06},{"provider":"OpenAI","billable":"input_text","unit":"token","unit_family":"usd_per_token","variant":null,"usd":5e-06},{"provider":"OpenAI","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":3e-05}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":52,"checks_total":59,"pass_rate":0.881356,"avg_cost_usd":0.0225,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":27127.5,"duration_rows":14,"evidence_checks":59,"value":39.17137777777778,"value_rank":3,"point_radius":4.0},{"model_id":"openai/gpt-image-1-mini","model_name":"OpenAI: GPT Image 1 Mini","benchmark_name":"GPT Image 1 Mini","provider":"openai","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_token","comparable_price":8e-06,"comparable_price_basis":"plain_output_token_rate","endpoint_count":1,"providers":["OpenAI"],"pricing_lines":[{"provider":"OpenAI","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":2.5e-06},{"provider":"OpenAI","billable":"input_text","unit":"token","unit_family":"usd_per_token","variant":null,"usd":2e-06},{"provider":"OpenAI","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":8e-06}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":38,"checks_total":59,"pass_rate":0.644068,"avg_cost_usd":0.025,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":26966.3,"duration_rows":14,"evidence_checks":59,"value":25.762719999999998,"value_rank":9,"point_radius":4.0},{"model_id":"openai/gpt-image-1","model_name":"OpenAI: GPT Image 1","benchmark_name":"GPT Image 1","provider":"openai","has_catalog_rate":true,"benchmarked":true,"design_arena":true,"pricing_unit":"usd_per_token","comparable_price":4e-05,"comparable_price_basis":"plain_output_token_rate","endpoint_count":1,"providers":["OpenAI"],"pricing_lines":[{"provider":"OpenAI","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":1e-05},{"provider":"OpenAI","billable":"input_text","unit":"token","unit_family":"usd_per_token","variant":null,"usd":5e-06},{"provider":"OpenAI","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":4e-05}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":43,"checks_total":59,"pass_rate":0.728814,"avg_cost_usd":0.133857,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":30561.6,"duration_rows":14,"evidence_checks":59,"value":5.4447208588269564,"value_rank":38,"point_radius":4.0},{"model_id":"google/gemini-3.1-flash-image","model_name":"Google: Nano Banana 2 (Gemini 3.1 Flash Image)","benchmark_name":"Nano Banana 2","provider":"google","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_token","comparable_price":6e-05,"comparable_price_basis":"plain_output_token_rate","endpoint_count":2,"providers":["Google AI Studio","Google Vertex"],"pricing_lines":[{"provider":"Google AI Studio","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":6e-05},{"provider":"Google Vertex","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":6e-05}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":47,"checks_total":59,"pass_rate":0.79661,"avg_cost_usd":0.068357,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":9610.0,"duration_rows":14,"evidence_checks":59,"value":11.65367116754685,"value_rank":27,"point_radius":4.0},{"model_id":"google/gemini-3-pro-image","model_name":"Google: Nano Banana Pro (Gemini 3 Pro Image)","benchmark_name":"Nano Banana Pro","provider":"google","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_token","comparable_price":0.00012,"comparable_price_basis":"plain_output_token_rate","endpoint_count":2,"providers":["Google AI Studio","Google Vertex"],"pricing_lines":[{"provider":"Google AI Studio","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":2e-06},{"provider":"Google AI Studio","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":0.00012},{"provider":"Google Vertex","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":2e-06},{"provider":"Google Vertex","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":0.00012}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":47,"checks_total":59,"pass_rate":0.79661,"avg_cost_usd":0.137857,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":22419.2,"duration_rows":14,"evidence_checks":59,"value":5.778524122822925,"value_rank":35,"point_radius":4.0},{"model_id":"sourceful/riverflow-v2.5-pro","model_name":"Sourceful: Riverflow V2.5 Pro","benchmark_name":"Riverflow V2.5 Pro","provider":"sourceful","has_catalog_rate":true,"benchmarked":true,"design_arena":true,"pricing_unit":"usd_per_image","comparable_price":0.13,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Sourceful"],"pricing_lines":[{"provider":"Sourceful","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.13},{"provider":"Sourceful","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"2k","usd":0.15},{"provider":"Sourceful","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"4k","usd":0.17}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":55,"checks_total":59,"pass_rate":0.932203,"avg_cost_usd":0.288571,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":171453.9,"duration_rows":14,"evidence_checks":59,"value":3.2304112332840096,"value_rank":39,"point_radius":4.0},{"model_id":"sourceful/riverflow-v2.5-fast","model_name":"Sourceful: Riverflow V2.5 Fast","benchmark_name":"Riverflow V2.5 Fast","provider":"sourceful","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.019,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Sourceful"],"pricing_lines":[{"provider":"Sourceful","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.019},{"provider":"Sourceful","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"2k","usd":0.021}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":38,"checks_total":59,"pass_rate":0.644068,"avg_cost_usd":0.037714,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":39935.8,"duration_rows":14,"evidence_checks":59,"value":17.07768998249987,"value_rank":17,"point_radius":4.0},{"model_id":"microsoft/mai-image-2.5","model_name":"Microsoft AI: MAI-Image-2.5","benchmark_name":"MAI-Image-2.5","provider":"microsoft","has_catalog_rate":true,"benchmarked":true,"design_arena":true,"pricing_unit":"usd_per_token","comparable_price":4.7e-05,"comparable_price_basis":"plain_output_token_rate","endpoint_count":1,"providers":["Azure"],"pricing_lines":[{"provider":"Azure","billable":"input_text","unit":"token","unit_family":"usd_per_token","variant":null,"usd":5e-06},{"provider":"Azure","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":8e-06},{"provider":"Azure","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":4.7e-05}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":42,"checks_total":59,"pass_rate":0.711864,"avg_cost_usd":0.050714,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":31739.5,"duration_rows":14,"evidence_checks":59,"value":14.036834010332454,"value_rank":23,"point_radius":4.0},{"model_id":"x-ai/grok-imagine-image-quality","model_name":"SpaceXAI: Grok Imagine Image Quality","benchmark_name":"Grok Imagine Image Quality","provider":"x-ai","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.05,"comparable_price_basis":"cheapest_variant_tier","endpoint_count":1,"providers":["SpaceXAI"],"pricing_lines":[{"provider":"SpaceXAI","billable":"input_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.01},{"provider":"SpaceXAI","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"1k","usd":0.05},{"provider":"SpaceXAI","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"2k","usd":0.07}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":44,"checks_total":59,"pass_rate":0.745763,"avg_cost_usd":0.052857,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":5112.6,"duration_rows":14,"evidence_checks":59,"value":14.109067862345572,"value_rank":22,"point_radius":4.0},{"model_id":"recraft/recraft-v4.1-pro-vector","model_name":"Recraft: Recraft V4.1 Pro Vector","benchmark_name":null,"provider":"recraft","has_catalog_rate":true,"benchmarked":false,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.3,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Recraft"],"pricing_lines":[{"provider":"Recraft","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.3}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":null,"checks_passed":null,"checks_total":null,"pass_rate":null,"avg_cost_usd":null,"cost_rows":null,"output_resolutions":[],"resolution_mixed":false,"duration_ms_mean":null,"duration_rows":null,"evidence_checks":null,"value":null,"value_rank":null,"point_radius":null},{"model_id":"recraft/recraft-v4.1-vector","model_name":"Recraft: Recraft V4.1 Vector","benchmark_name":null,"provider":"recraft","has_catalog_rate":true,"benchmarked":false,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.08,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Recraft"],"pricing_lines":[{"provider":"Recraft","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.08}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":null,"checks_passed":null,"checks_total":null,"pass_rate":null,"avg_cost_usd":null,"cost_rows":null,"output_resolutions":[],"resolution_mixed":false,"duration_ms_mean":null,"duration_rows":null,"evidence_checks":null,"value":null,"value_rank":null,"point_radius":null},{"model_id":"recraft/recraft-v4.1-utility-pro","model_name":"Recraft: Recraft V4.1 Utility Pro","benchmark_name":"Recraft V4.1 Utility Pro","provider":"recraft","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.21,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Recraft"],"pricing_lines":[{"provider":"Recraft","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.21}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":34,"checks_total":59,"pass_rate":0.576271,"avg_cost_usd":0.21,"cost_rows":14,"output_resolutions":["1024x1024","1024x768","2048x2048"],"resolution_mixed":true,"duration_ms_mean":15957.6,"duration_rows":14,"evidence_checks":59,"value":2.744147619047619,"value_rank":41,"point_radius":4.0},{"model_id":"recraft/recraft-v4.1-utility","model_name":"Recraft: Recraft V4.1 Utility","benchmark_name":"Recraft V4.1 Utility","provider":"recraft","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.035,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Recraft"],"pricing_lines":[{"provider":"Recraft","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.035}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":33,"checks_total":59,"pass_rate":0.559322,"avg_cost_usd":0.035,"cost_rows":14,"output_resolutions":["1024x1024","1024x768"],"resolution_mixed":true,"duration_ms_mean":13292.9,"duration_rows":14,"evidence_checks":59,"value":15.98062857142857,"value_rank":19,"point_radius":4.0},{"model_id":"recraft/recraft-v4.1-pro","model_name":"Recraft: Recraft V4.1 Pro","benchmark_name":"Recraft V4.1 Pro","provider":"recraft","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.21,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Recraft"],"pricing_lines":[{"provider":"Recraft","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.21}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":34,"checks_total":59,"pass_rate":0.576271,"avg_cost_usd":0.21,"cost_rows":14,"output_resolutions":["1024x1024","1024x768","2048x2048"],"resolution_mixed":true,"duration_ms_mean":11541.3,"duration_rows":14,"evidence_checks":59,"value":2.744147619047619,"value_rank":40,"point_radius":4.0},{"model_id":"recraft/recraft-v4.1","model_name":"Recraft: Recraft V4.1","benchmark_name":"Recraft V4.1","provider":"recraft","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.035,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Recraft"],"pricing_lines":[{"provider":"Recraft","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.035}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":33,"checks_total":59,"pass_rate":0.559322,"avg_cost_usd":0.035,"cost_rows":14,"output_resolutions":["1024x1024","1024x768"],"resolution_mixed":true,"duration_ms_mean":8134.5,"duration_rows":14,"evidence_checks":59,"value":15.98062857142857,"value_rank":18,"point_radius":4.0},{"model_id":"recraft/recraft-v4-pro-vector","model_name":"Recraft: Recraft V4 Pro Vector","benchmark_name":null,"provider":"recraft","has_catalog_rate":true,"benchmarked":false,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.3,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Recraft"],"pricing_lines":[{"provider":"Recraft","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.3}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":null,"checks_passed":null,"checks_total":null,"pass_rate":null,"avg_cost_usd":null,"cost_rows":null,"output_resolutions":[],"resolution_mixed":false,"duration_ms_mean":null,"duration_rows":null,"evidence_checks":null,"value":null,"value_rank":null,"point_radius":null},{"model_id":"recraft/recraft-v4-vector","model_name":"Recraft: Recraft V4 Vector","benchmark_name":null,"provider":"recraft","has_catalog_rate":true,"benchmarked":false,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.08,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Recraft"],"pricing_lines":[{"provider":"Recraft","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.08}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":null,"checks_passed":null,"checks_total":null,"pass_rate":null,"avg_cost_usd":null,"cost_rows":null,"output_resolutions":[],"resolution_mixed":false,"duration_ms_mean":null,"duration_rows":null,"evidence_checks":null,"value":null,"value_rank":null,"point_radius":null},{"model_id":"recraft/recraft-v4-pro","model_name":"Recraft: Recraft V4 Pro","benchmark_name":"Recraft V4 Pro","provider":"recraft","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.25,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Recraft"],"pricing_lines":[{"provider":"Recraft","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.25}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":31,"checks_total":59,"pass_rate":0.525424,"avg_cost_usd":0.25,"cost_rows":14,"output_resolutions":["1024x1024","1024x768","2048x2048"],"resolution_mixed":true,"duration_ms_mean":14851.9,"duration_rows":14,"evidence_checks":59,"value":2.101696,"value_rank":42,"point_radius":4.0},{"model_id":"recraft/recraft-v4","model_name":"Recraft: Recraft V4","benchmark_name":"Recraft V4","provider":"recraft","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.04,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Recraft"],"pricing_lines":[{"provider":"Recraft","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.04}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":28,"checks_total":59,"pass_rate":0.474576,"avg_cost_usd":0.04,"cost_rows":14,"output_resolutions":["1024x1024","1024x768"],"resolution_mixed":true,"duration_ms_mean":10492.6,"duration_rows":14,"evidence_checks":59,"value":11.8644,"value_rank":26,"point_radius":4.0},{"model_id":"recraft/recraft-v3","model_name":"Recraft: Recraft V3","benchmark_name":"Recraft V3","provider":"recraft","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.04,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Recraft"],"pricing_lines":[{"provider":"Recraft","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.04}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":17,"checks_total":59,"pass_rate":0.288136,"avg_cost_usd":0.04,"cost_rows":14,"output_resolutions":["1024x1024","1024x768"],"resolution_mixed":true,"duration_ms_mean":4618.3,"duration_rows":14,"evidence_checks":59,"value":7.2034,"value_rank":33,"point_radius":4.0},{"model_id":"openai/gpt-5.4-image-2","model_name":"OpenAI: GPT-5.4 Image 2","benchmark_name":"GPT-5.4 Image 2","provider":"openai","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_token","comparable_price":3e-05,"comparable_price_basis":"plain_output_token_rate","endpoint_count":1,"providers":["OpenAI"],"pricing_lines":[{"provider":"OpenAI","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":8e-06},{"provider":"OpenAI","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":3e-05}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":52,"checks_total":59,"pass_rate":0.881356,"avg_cost_usd":0.0235,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":27100.4,"duration_rows":14,"evidence_checks":59,"value":37.50451063829787,"value_rank":4,"point_radius":4.0},{"model_id":"google/gemini-3.1-flash-image-preview","model_name":"Google: Nano Banana 2 (Gemini 3.1 Flash Image Preview)","benchmark_name":"Nano Banana 2","provider":"google","has_catalog_rate":true,"benchmarked":true,"design_arena":true,"pricing_unit":"usd_per_token","comparable_price":6e-05,"comparable_price_basis":"plain_output_token_rate","endpoint_count":1,"providers":["Google AI Studio"],"pricing_lines":[{"provider":"Google AI Studio","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":6e-05}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":51,"checks_total":59,"pass_rate":0.864407,"avg_cost_usd":0.068357,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":7998.1,"duration_rows":14,"evidence_checks":59,"value":12.645478882923475,"value_rank":25,"point_radius":4.0},{"model_id":"sourceful/riverflow-v2-pro","model_name":"Sourceful: Riverflow V2 Pro","benchmark_name":"Riverflow V2 Pro","provider":"sourceful","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.15,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Sourceful"],"pricing_lines":[{"provider":"Sourceful","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.15},{"provider":"Sourceful","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"2k","usd":0.15},{"provider":"Sourceful","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"4k","usd":0.33},{"provider":"Sourceful","billable":"input_font","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.03},{"provider":"Sourceful","billable":"input_reference","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.2}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":51,"checks_total":59,"pass_rate":0.864407,"avg_cost_usd":0.15,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":147299.7,"duration_rows":14,"evidence_checks":59,"value":5.762713333333334,"value_rank":36,"point_radius":4.0},{"model_id":"sourceful/riverflow-v2-fast","model_name":"Sourceful: Riverflow V2 Fast","benchmark_name":"Riverflow V2 Fast","provider":"sourceful","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.02,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Sourceful"],"pricing_lines":[{"provider":"Sourceful","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.02},{"provider":"Sourceful","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":"2k","usd":0.04},{"provider":"Sourceful","billable":"input_font","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.03},{"provider":"Sourceful","billable":"input_reference","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.2}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":40,"checks_total":59,"pass_rate":0.677966,"avg_cost_usd":0.02,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":88507.4,"duration_rows":14,"evidence_checks":59,"value":33.8983,"value_rank":7,"point_radius":4.0},{"model_id":"black-forest-labs/flux.2-klein-4b","model_name":"Black Forest Labs: FLUX.2 Klein 4B","benchmark_name":"FLUX.2 Klein 4B","provider":"black-forest-labs","has_catalog_rate":true,"benchmarked":true,"design_arena":true,"pricing_unit":"usd_per_megapixel","comparable_price":0.014,"comparable_price_basis":"plain_output_megapixel_rate","endpoint_count":1,"providers":["Black Forest Labs"],"pricing_lines":[{"provider":"Black Forest Labs","billable":"output_image","unit":"megapixel","unit_family":"usd_per_megapixel","variant":null,"usd":0.014}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":31,"checks_total":59,"pass_rate":0.525424,"avg_cost_usd":0.014286,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":4196.7,"duration_rows":14,"evidence_checks":59,"value":36.778944421111575,"value_rank":5,"point_radius":4.0},{"model_id":"bytedance-seed/seedream-4.5","model_name":"ByteDance Seed: Seedream 4.5","benchmark_name":"Seedream 4.5","provider":"bytedance-seed","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_image","comparable_price":0.04,"comparable_price_basis":"plain_output_image_rate","endpoint_count":1,"providers":["Seed"],"pricing_lines":[{"provider":"Seed","billable":"output_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.04},{"provider":"Seed","billable":"input_image","unit":"image","unit_family":"usd_per_image","variant":null,"usd":0.0}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":37,"checks_total":59,"pass_rate":0.627119,"avg_cost_usd":0.04,"cost_rows":14,"output_resolutions":["2048x2048"],"resolution_mixed":false,"duration_ms_mean":11865.4,"duration_rows":14,"evidence_checks":59,"value":15.677975,"value_rank":20,"point_radius":4.0},{"model_id":"black-forest-labs/flux.2-max","model_name":"Black Forest Labs: FLUX.2 Max","benchmark_name":"FLUX.2 Max","provider":"black-forest-labs","has_catalog_rate":true,"benchmarked":true,"design_arena":false,"pricing_unit":"usd_per_megapixel","comparable_price":0.07,"comparable_price_basis":"plain_output_megapixel_rate","endpoint_count":1,"providers":["Black Forest Labs"],"pricing_lines":[{"provider":"Black Forest Labs","billable":"output_image","unit":"megapixel","unit_family":"usd_per_megapixel","variant":null,"usd":0.07}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":45,"checks_total":59,"pass_rate":0.762712,"avg_cost_usd":0.078571,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":23537.8,"duration_rows":14,"evidence_checks":59,"value":9.7072965852541,"value_rank":30,"point_radius":4.0},{"model_id":"black-forest-labs/flux.2-flex","model_name":"Black Forest Labs: FLUX.2 Flex","benchmark_name":"FLUX.2 Flex","provider":"black-forest-labs","has_catalog_rate":true,"benchmarked":true,"design_arena":true,"pricing_unit":"usd_per_megapixel","comparable_price":0.06,"comparable_price_basis":"plain_output_megapixel_rate","endpoint_count":1,"providers":["Black Forest Labs"],"pricing_lines":[{"provider":"Black Forest Labs","billable":"input_image","unit":"megapixel","unit_family":"usd_per_megapixel","variant":null,"usd":0.06},{"provider":"Black Forest Labs","billable":"output_image","unit":"megapixel","unit_family":"usd_per_megapixel","variant":null,"usd":0.06}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":39,"checks_total":59,"pass_rate":0.661017,"avg_cost_usd":0.064286,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":13773.5,"duration_rows":14,"evidence_checks":59,"value":10.282440966929036,"value_rank":29,"point_radius":4.0},{"model_id":"black-forest-labs/flux.2-pro","model_name":"Black Forest Labs: FLUX.2 Pro","benchmark_name":"FLUX.2 Pro","provider":"black-forest-labs","has_catalog_rate":true,"benchmarked":true,"design_arena":true,"pricing_unit":"usd_per_megapixel","comparable_price":0.03,"comparable_price_basis":"plain_output_megapixel_rate","endpoint_count":1,"providers":["Black Forest Labs"],"pricing_lines":[{"provider":"Black Forest Labs","billable":"output_image","unit":"megapixel","unit_family":"usd_per_megapixel","variant":null,"usd":0.03}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":40,"checks_total":59,"pass_rate":0.677966,"avg_cost_usd":0.034286,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":11299.9,"duration_rows":14,"evidence_checks":59,"value":19.773843551303738,"value_rank":15,"point_radius":4.0},{"model_id":"google/gemini-3-pro-image-preview","model_name":"Google: Nano Banana Pro (Gemini 3 Pro Image Preview)","benchmark_name":"Nano Banana Pro","provider":"google","has_catalog_rate":true,"benchmarked":true,"design_arena":true,"pricing_unit":"usd_per_token","comparable_price":6e-05,"comparable_price_basis":"plain_output_token_rate","endpoint_count":2,"providers":["Google AI Studio"],"pricing_lines":[{"provider":"Google AI Studio","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":1e-06},{"provider":"Google AI Studio","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":6e-05},{"provider":"Google AI Studio","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":2e-06},{"provider":"Google AI Studio","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":0.00012}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":50,"checks_total":59,"pass_rate":0.847458,"avg_cost_usd":0.14,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":16209.0,"duration_rows":14,"evidence_checks":59,"value":6.053271428571429,"value_rank":34,"point_radius":4.0},{"model_id":"openai/gpt-5-image-mini","model_name":"OpenAI: GPT-5 Image Mini","benchmark_name":"GPT-5 Image Mini","provider":"openai","has_catalog_rate":true,"benchmarked":true,"design_arena":true,"pricing_unit":"usd_per_token","comparable_price":8e-06,"comparable_price_basis":"plain_output_token_rate","endpoint_count":1,"providers":["OpenAI"],"pricing_lines":[{"provider":"OpenAI","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":2.5e-06},{"provider":"OpenAI","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":8e-06}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":37,"checks_total":59,"pass_rate":0.627119,"avg_cost_usd":0.023429,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":25263.6,"duration_rows":14,"evidence_checks":59,"value":26.76678475393743,"value_rank":8,"point_radius":4.0},{"model_id":"openai/gpt-5-image","model_name":"OpenAI: GPT-5 Image","benchmark_name":"GPT-5 Image","provider":"openai","has_catalog_rate":true,"benchmarked":true,"design_arena":true,"pricing_unit":"usd_per_token","comparable_price":4e-05,"comparable_price_basis":"plain_output_token_rate","endpoint_count":1,"providers":["OpenAI"],"pricing_lines":[{"provider":"OpenAI","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":1e-05},{"provider":"OpenAI","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":4e-05}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":45,"checks_total":59,"pass_rate":0.762712,"avg_cost_usd":0.134071,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":30928.9,"duration_rows":14,"evidence_checks":59,"value":5.688866346935579,"value_rank":37,"point_radius":4.0},{"model_id":"google/gemini-2.5-flash-image","model_name":"Google: Nano Banana (Gemini 2.5 Flash Image)","benchmark_name":"Nano Banana","provider":"google","has_catalog_rate":true,"benchmarked":true,"design_arena":true,"pricing_unit":"usd_per_token","comparable_price":5.4e-05,"comparable_price_basis":"plain_output_token_rate","endpoint_count":4,"providers":["Google AI Studio","Google Vertex"],"pricing_lines":[{"provider":"Google AI Studio","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":5.4e-07},{"provider":"Google AI Studio","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":5.4e-05},{"provider":"Google AI Studio","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":1.5e-07},{"provider":"Google AI Studio","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":1.5e-05},{"provider":"Google AI Studio","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":3e-07},{"provider":"Google AI Studio","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":3e-05},{"provider":"Google Vertex","billable":"input_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":3e-07},{"provider":"Google Vertex","billable":"output_image","unit":"token","unit_family":"usd_per_token","variant":null,"usd":3e-05}],"resolutions":null,"aspect_ratios":null,"sizes":null,"durations":null,"prompts":14,"checks_passed":34,"checks_total":59,"pass_rate":0.576271,"avg_cost_usd":0.039,"cost_rows":14,"output_resolutions":["1024x1024"],"resolution_mixed":false,"duration_ms_mean":7076.9,"duration_rows":14,"evidence_checks":59,"value":14.776179487179487,"value_rank":21,"point_radius":4.0}],"design_arena":{"source":"Design Arena","categories":[{"key":"graphicdesign","label":"Graphic design"},{"key":"image","label":"Image"},{"key":"imageediting","label":"Image editing"},{"key":"logo","label":"Logo"}],"models":[{"model_id":"black-forest-labs/flux.2-flex","model_name":"black-forest-labs/flux.2-flex","categories":{"graphicdesign":{"elo":1189,"win_rate":54.7,"score_unit":"percentage_0_100","rank":7},"image":{"elo":1203,"win_rate":55.5,"score_unit":"percentage_0_100","rank":7},"logo":{"elo":1209,"win_rate":54.0,"score_unit":"percentage_0_100","rank":7}}},{"model_id":"black-forest-labs/flux.2-klein-4b","model_name":"black-forest-labs/flux.2-klein-4b","categories":{"graphicdesign":{"elo":1005,"win_rate":35.8,"score_unit":"percentage_0_100","rank":12},"image":{"elo":1066,"win_rate":38.9,"score_unit":"percentage_0_100","rank":12},"logo":{"elo":1059,"win_rate":37.9,"score_unit":"percentage_0_100","rank":12},"imageediting":{"elo":1058,"win_rate":39.4,"score_unit":"percentage_0_100","rank":8}}},{"model_id":"black-forest-labs/flux.2-pro","model_name":"black-forest-labs/flux.2-pro","categories":{"graphicdesign":{"elo":1173,"win_rate":47.3,"score_unit":"percentage_0_100","rank":8},"image":{"elo":1198,"win_rate":49.1,"score_unit":"percentage_0_100","rank":8},"logo":{"elo":1193,"win_rate":48.8,"score_unit":"percentage_0_100","rank":10},"imageediting":{"elo":1136,"win_rate":47.3,"score_unit":"percentage_0_100","rank":6}}},{"model_id":"google/gemini-2.5-flash-image","model_name":"google/gemini-2.5-flash-image","categories":{"graphicdesign":{"elo":1168,"win_rate":56.9,"score_unit":"percentage_0_100","rank":10},"image":{"elo":1189,"win_rate":55.6,"score_unit":"percentage_0_100","rank":10},"logo":{"elo":1169,"win_rate":51.4,"score_unit":"percentage_0_100","rank":11}}},{"model_id":"google/gemini-3-pro-image-preview","model_name":"google/gemini-3-pro-image-preview","categories":{"graphicdesign":{"elo":1251,"win_rate":65.8,"score_unit":"percentage_0_100","rank":5},"image":{"elo":1246,"win_rate":62.1,"score_unit":"percentage_0_100","rank":5},"logo":{"elo":1241,"win_rate":61.0,"score_unit":"percentage_0_100","rank":6},"imageediting":{"elo":1254,"win_rate":66.0,"score_unit":"percentage_0_100","rank":3}}},{"model_id":"google/gemini-3.1-flash-image-preview","model_name":"google/gemini-3.1-flash-image-preview","categories":{"graphicdesign":{"elo":1262,"win_rate":66.3,"score_unit":"percentage_0_100","rank":4},"image":{"elo":1279,"win_rate":65.1,"score_unit":"percentage_0_100","rank":4},"logo":{"elo":1263,"win_rate":62.9,"score_unit":"percentage_0_100","rank":4}}},{"model_id":"microsoft/mai-image-2.5","model_name":"microsoft/mai-image-2.5","categories":{"graphicdesign":{"elo":1209,"win_rate":52.2,"score_unit":"percentage_0_100","rank":6},"image":{"elo":1227,"win_rate":54.0,"score_unit":"percentage_0_100","rank":6},"imageediting":{"elo":1230,"win_rate":55.1,"score_unit":"percentage_0_100","rank":5},"logo":{"elo":1249,"win_rate":53.5,"score_unit":"percentage_0_100","rank":5}}},{"model_id":"microsoft/mai-image-2.6","model_name":"microsoft/mai-image-2.6","categories":{"graphicdesign":{"elo":1332,"win_rate":62.0,"score_unit":"percentage_0_100","rank":2},"image":{"elo":1316,"win_rate":61.1,"score_unit":"percentage_0_100","rank":2},"imageediting":{"elo":1247,"win_rate":51.7,"score_unit":"percentage_0_100","rank":4},"logo":{"elo":1295,"win_rate":59.1,"score_unit":"percentage_0_100","rank":1}}},{"model_id":"microsoft/mai-image-2.6-flash","model_name":"microsoft/mai-image-2.6-flash","categories":{"graphicdesign":{"elo":1316,"win_rate":62.9,"score_unit":"percentage_0_100","rank":3},"image":{"elo":1304,"win_rate":60.8,"score_unit":"percentage_0_100","rank":3},"imageediting":{"elo":1267,"win_rate":58.7,"score_unit":"percentage_0_100","rank":2},"logo":{"elo":1269,"win_rate":57.0,"score_unit":"percentage_0_100","rank":3}}},{"model_id":"openai/gpt-5-image","model_name":"openai/gpt-5-image","categories":{"graphicdesign":{"elo":1173,"win_rate":48.9,"score_unit":"percentage_0_100","rank":9},"image":{"elo":1194,"win_rate":53.9,"score_unit":"percentage_0_100","rank":9},"logo":{"elo":1203,"win_rate":52.7,"score_unit":"percentage_0_100","rank":9}}},{"model_id":"openai/gpt-5-image-mini","model_name":"openai/gpt-5-image-mini","categories":{"graphicdesign":{"elo":1166,"win_rate":47.7,"score_unit":"percentage_0_100","rank":11},"image":{"elo":1186,"win_rate":51.0,"score_unit":"percentage_0_100","rank":11},"logo":{"elo":1209,"win_rate":51.4,"score_unit":"percentage_0_100","rank":8}}},{"model_id":"openai/gpt-image-1","model_name":"openai/gpt-image-1","categories":{"imageediting":{"elo":1108,"win_rate":46.6,"score_unit":"percentage_0_100","rank":7}}},{"model_id":"sourceful/riverflow-v2.5-pro","model_name":"sourceful/riverflow-v2.5-pro","categories":{"graphicdesign":{"elo":1439,"win_rate":78.3,"score_unit":"percentage_0_100","rank":1},"image":{"elo":1380,"win_rate":71.7,"score_unit":"percentage_0_100","rank":1},"logo":{"elo":1294,"win_rate":64.5,"score_unit":"percentage_0_100","rank":2},"imageediting":{"elo":1342,"win_rate":70.7,"score_unit":"percentage_0_100","rank":1}}}],"model_count":13,"row_count":44},"design_arena_summary":[{"category":"graphicdesign","label":"Graphic design","model_id":"sourceful/riverflow-v2.5-pro","model_name":"sourceful/riverflow-v2.5-pro","elo":1439,"win_rate":78.3,"rank":1,"models_with_a_score":12,"elo_spread":434,"lead_over_second":107},{"category":"image","label":"Image","model_id":"sourceful/riverflow-v2.5-pro","model_name":"sourceful/riverflow-v2.5-pro","elo":1380,"win_rate":71.7,"rank":1,"models_with_a_score":12,"elo_spread":314,"lead_over_second":64},{"category":"imageediting","label":"Image editing","model_id":"sourceful/riverflow-v2.5-pro","model_name":"sourceful/riverflow-v2.5-pro","elo":1342,"win_rate":70.7,"rank":1,"models_with_a_score":8,"elo_spread":284,"lead_over_second":75},{"category":"logo","label":"Logo","model_id":"microsoft/mai-image-2.6","model_name":"microsoft/mai-image-2.6","elo":1295,"win_rate":59.1,"rank":1,"models_with_a_score":12,"elo_spread":236,"lead_over_second":1}],"coverage":{"catalog_models":52,"priced_models":48,"benchmarked_models":42,"rankable_models":42,"unrated_models":10,"unrated_ids":["openai/gpt-image-2.5-sunburst","openai/gpt-image-2.5-flare","recraft/recraft-v4-styles-pro","recraft/recraft-v4-styles-vector","recraft/recraft-v4-styles-pro-vector","recraft/recraft-v4-styles","recraft/recraft-v4.1-pro-vector","recraft/recraft-v4.1-vector","recraft/recraft-v4-pro-vector","recraft/recraft-v4-vector"],"unrated_but_priced_models":10,"unrated_but_priced_ids":["openai/gpt-image-2.5-sunburst","openai/gpt-image-2.5-flare","recraft/recraft-v4-styles-pro","recraft/recraft-v4-styles-vector","recraft/recraft-v4-styles-pro-vector","recraft/recraft-v4-styles","recraft/recraft-v4.1-pro-vector","recraft/recraft-v4.1-vector","recraft/recraft-v4-pro-vector","recraft/recraft-v4-vector"],"benchmarked_unpriced_models":4,"benchmarked_unpriced_ids":["meta/muse-image","krea/krea-2-large","krea/krea-2-medium","krea/krea-2-medium-turbo"],"benchmarked_unrankable_ids":[],"design_arena_models":13,"prompt_count_min":14,"prompt_count_max":15,"media_coverage_report":{"retrieved_at":"2026-09-22T06:54:39.005862+00:00","model_inventory":{"image":{"total_models":52,"models_with_resolved_price":48,"models_without_resolved_price":4,"price_resolution_rate":92.31,"models_with_any_price_data":48,"models_with_price_data_but_no_comparable_rate":0,"models_with_design_arena":13,"models_without_design_arena":39,"unit_families_present":[],"comparable_price_units_used":["usd_per_image","usd_per_megapixel","usd_per_token"],"comparable_price_basis_used":["cheapest_variant_tier","plain_output_image_rate","plain_output_megapixel_rate","plain_output_token_rate"],"comparable_price_range":{"min":8e-06,"max":0.3,"count":48},"provider_count":11},"video":{"total_models":29,"models_with_resolved_price":23,"models_without_resolved_price":6,"price_resolution_rate":79.31,"models_with_any_price_data":29,"models_with_price_data_but_no_comparable_rate":6,"models_with_design_arena":0,"models_without_design_arena":29,"unit_families_present":["cents_per_generation","cents_per_image","cents_per_megapixel_second","cents_per_second","usd_per_image","usd_per_second","usd_per_video_token"],"comparable_price_units_used":["usd_per_second"],"comparable_price_basis_used":["720p_tier","720p_tier_with_operation","audio_qualified_rate","plain_rate"],"comparable_price_range":{"min":0.03,"max":0.3,"count":23},"provider_count":10},"total_models":81,"total_with_resolved_price":71,"total_with_design_arena":13},"image_endpoint_pricing":{"enabled":true,"requested":52,"succeeded":52,"failed":0,"failed_model_ids":[],"models_with_any_price_from_endpoints":48,"models_with_no_price_from_endpoints":["krea/krea-2-large","krea/krea-2-medium","krea/krea-2-medium-turbo","meta/muse-image"],"delay_seconds_between_requests":0.25},"image_inventory_cross_check":{"dedicated_image_catalog":52,"filtered_generic_catalog":54,"in_both":52,"only_in_dedicated_catalog":[],"only_in_filtered_catalog":["openrouter/auto","openrouter/auto-beta"]},"benchmark_coverage":[{"benchmark_name":"Design Arena: models/graphicdesign","benchmark_source":"Design Arena","source_endpoint":"/api/v1/models?output_modalities=image","number_of_models":12,"percentage_of_media_inventory":14.81},{"benchmark_name":"Design Arena: models/image","benchmark_source":"Design Arena","source_endpoint":"/api/v1/models?output_modalities=image","number_of_models":12,"percentage_of_media_inventory":14.81},{"benchmark_name":"Design Arena: models/logo","benchmark_source":"Design Arena","source_endpoint":"/api/v1/models?output_modalities=image","number_of_models":12,"percentage_of_media_inventory":14.81},{"benchmark_name":"Design Arena: models/imageediting","benchmark_source":"Design Arena","source_endpoint":"/api/v1/models?output_modalities=image","number_of_models":8,"percentage_of_media_inventory":9.88}],"prompt_benchmark_coverage":{"enabled":true,"source":"https://openrouter.ai/benchmarks/media/{images,videos}","benchmark_source":"OpenRouter Media Benchmarks","pages_fetched":28,"pages_skipped":[{"page":"/benchmarks/media/images/portraits","reason":"no_judged_checks","row_blocks":192}],"pages_skipped_count":1,"prompt_page_count":27,"rows":867,"rows_per_prompt":{"full-glass":42,"closed-umbrellas":42,"three-fingers":42,"cards-dice":42,"long-exact-string":42,"multiple-languages":42,"occlusion":42,"mirror":42,"plain-zebra":42,"times-square":42,"minimal-diff":42,"object-removal":42,"person-removal":42,"product-placement":42,"composite-refs":3,"traffic-light":24,"five-candles":23,"wrong-way-escalator":24,"frozen-crowd":24,"sign-stays-readable":24,"glass-of-water":24,"domino-run":24,"mirror-walk":24,"behind-the-pillar":24,"steaming-mug":23,"walk-out":14,"continuous-shot":24},"distinct_models_in_benchmarks":66,"models_matched_to_inventory":66,"models_unmatched":0,"unmatched_model_slugs":[],"rows_missing_cost":0,"rows_missing_generation_time":0,"correctness_extraction_sources":{"aria-label":867},"conflicting_row_values":0,"note":"Correctness is the count of judged checks passed for ONE prompt, not a global score - pass rates are only comparable within the same prompt_slug. Cost and generation_seconds are the observed values for that single generation."},"benchmark_records_by_source_endpoint":{"/api/v1/models?output_modalities=image":44},"benchmark_duplicates_suppressed":0,"pricing_unit_assumptions":{"cents_converted_to_usd_sku_keys":["cents_per_image_input","cents_per_megapixel_second_creative","cents_per_megapixel_second_precise","cents_per_second_output","cents_per_second_output_1080p","cents_per_second_output_720p","cents_per_second_video_continuation_1080p","cents_per_second_video_continuation_720p","cents_per_video_output_second_1080p","cents_per_video_output_second_480p","cents_per_video_output_second_720p","minimum_cents_per_generation"],"bare_keys_assumed_usd_sku_keys":["duration_seconds","duration_seconds_1024p","duration_seconds_1080p","duration_seconds_480p","duration_seconds_720p","duration_seconds_768p","duration_seconds_with_audio","duration_seconds_with_audio_4k","duration_seconds_with_audio_720p","duration_seconds_without_audio","duration_seconds_without_audio_4k","duration_seconds_without_audio_720p","image_to_video_duration_seconds_1080p","image_to_video_duration_seconds_720p","reference_images","text_to_video_duration_seconds_1080p","text_to_video_duration_seconds_480p","text_to_video_duration_seconds_720p","video_tokens","video_tokens_1080p","video_tokens_1080p_with_video_input","video_tokens_4k","video_tokens_4k_with_video_input","video_tokens_with_video_input","video_tokens_without_audio"],"note":"OpenRouter mixes denominations inside a single pricing_skus object (e.g. 'cents_per_second_output': '3' next to 'duration_seconds_720p': '0.08'). Keys starting with 'cents_' are divided by 100; keys with no explicit currency marker are treated as USD. Both lists above name exactly which keys each rule was applied to, so no converted figure is ever silently mixed with a USD one."},"benchmark_note":"Design Arena scores are read from the generic catalog filtered by output modality (/api/v1/models?output_modalities=image), because the dedicated /api/v1/images/models endpoint publishes no `benchmarks` block at all. Video models publish no Design Arena scores on any endpoint. `source_endpoint` on each benchmark record says where its row came from."},"media_data_quality_report":{"issue_count":9,"error_count":0,"warning_count":0,"info_count":9,"issues":[{"severity":"info","issue":"no_pricing_skus","count":52,"detail":"52 media model(s) publish no pricing_skus at all (expected for every image model - image pricing lives in the per-model endpoints record instead; sample: ['openai/gpt-image-2.5-sunburst', 'openai/gpt-image-2.5-flare', 'microsoft/mai-image-2.6', 'microsoft/mai-image-2.6-flash', 'meta/muse-image', 'recraft/recraft-v4-styles-pro', 'recraft/recraft-v4-styles-vector', 'recraft/recraft-v4-styles-pro-vector', 'recraft/recraft-v4-styles', 'bytedance-seed/seedream-5-0-lite'])"},{"severity":"info","issue":"price_data_without_comparable_rate","count":6,"detail":"6 media model(s) publish a price but not in a unit that can be compared across models (e.g. priced only per video token, per megapixel-second, or with a per-generation minimum): ['black-forest-labs/flux-video-upscale', 'bytedance/seedance-2.0-mini', 'bytedance/seedance-2.5', 'bytedance/seedance-2.0', 'bytedance/seedance-2.0-fast', 'bytedance/seedance-1-5-pro']. They are NOT unpriced - see 'has_any_price' vs 'has_valid_pricing' on each record."},{"severity":"info","issue":"image_endpoint_pricing_missing","count":4,"detail":"4 image model(s) returned an endpoints record with no usable price: ['krea/krea-2-large', 'krea/krea-2-medium', 'krea/krea-2-medium-turbo', 'meta/muse-image']"},{"severity":"info","issue":"prompt_benchmarks_collected","count":867,"detail":"867 prompt-benchmark row(s) parsed from 28 page(s); 66 distinct model(s) matched to the catalog. Correctness values are per-prompt judged pass counts, not a global score."},{"severity":"info","issue":"prompt_benchmark_page_skipped","count":1,"detail":"/benchmarks/media/images/portraits was skipped: no_judged_checks. The page publishes 192 result-row block(s) of generated assets but no judged pass count anywhere, so there is nothing to score. Its rows are excluded from both the pass-rate and the cost averages, which keeps this dataset's rule that price and performance come from the same rows."},{"severity":"info","issue":"design_arena_collected","count":44,"detail":"44 Design Arena row(s) collected for 13 media model(s), by source: {'/api/v1/models?output_modalities=image': 44}. Rows come from the generic catalog filtered by output modality, not from the dedicated image/video endpoints."},{"severity":"info","issue":"architecture_synthesized","count":29,"detail":"29 media model(s) had no `architecture` block in the API response (expected for video models), so output modality was derived from the catalog they came from and `architecture.synthesized` is set on those records."},{"severity":"info","issue":"unit_conversion_applied","count":12,"detail":"12 cent-denominated SKU key(s) were converted to USD by dividing by 100: ['cents_per_image_input', 'cents_per_megapixel_second_creative', 'cents_per_megapixel_second_precise', 'cents_per_second_output', 'cents_per_second_output_1080p', 'cents_per_second_output_720p', 'cents_per_second_video_continuation_1080p', 'cents_per_second_video_continuation_720p', 'cents_per_video_output_second_1080p', 'cents_per_video_output_second_480p', 'cents_per_video_output_second_720p', 'minimum_cents_per_generation']"},{"severity":"info","issue":"currency_assumed_usd","count":25,"detail":"25 SKU key(s) carry no explicit currency marker and were assumed to be USD (all bare keys observed live are USD): ['duration_seconds', 'duration_seconds_1024p', 'duration_seconds_1080p', 'duration_seconds_480p', 'duration_seconds_720p', 'duration_seconds_768p', 'duration_seconds_with_audio', 'duration_seconds_with_audio_4k', 'duration_seconds_with_audio_720p', 'duration_seconds_without_audio', 'duration_seconds_without_audio_4k', 'duration_seconds_without_audio_720p', 'image_to_video_duration_seconds_1080p', 'image_to_video_duration_seconds_720p', 'reference_images', 'text_to_video_duration_seconds_1080p', 'text_to_video_duration_seconds_480p', 'text_to_video_duration_seconds_720p', 'video_tokens', 'video_tokens_1080p', 'video_tokens_1080p_with_video_input', 'video_tokens_4k', 'video_tokens_4k_with_video_input', 'video_tokens_with_video_input', 'video_tokens_without_audio']"}]}},"budget":{"min_pass_rate":0.7,"top_n":5,"model_ids":["meta/muse-image","krea/krea-2-medium-turbo","microsoft/mai-image-2.6-flash","openai/gpt-image-2","openai/gpt-5.4-image-2"]},"trend":{"snapshot_dates":["2026-09-17","2026-09-22","2026-09-22-2"],"points":3,"min_points":2,"ready":true},"weekly":{"timezone":"Asia/Manila","week_key":"2026-09-21_2026-09-27","week_label":"Mon 21 Sep - Sun 27 Sep 2026","iso_week":"2026-W39","picks":{"value":{"model_id":"meta/muse-image","model_name":"Meta: Muse Image","provider":"meta","value":87.5,"pass_rate":0.875,"avg_cost_usd":0.01,"prompts":15,"output_resolutions":["1600x1600"],"duration_ms_mean":19148.6,"design_arena":false,"has_catalog_rate":false,"recorded_label":"Tue 22 Sep 2026, 22:07 PHT","locked_by":"refresh_media","revision_count":0,"current_leader":{"model_id":"meta/muse-image","model_name":"Meta: Muse Image","provider":"meta","value":87.5,"pass_rate":0.875,"avg_cost_usd":0.01,"prompts":15},"current_leader_differs":false}},"history_weeks":1,"history_updated_at":"2026-09-22T14:07:15.543222+00:00"},"constants":{"top_n_bars":12,"point_radius_min":4.0,"point_radius_max":11.0,"resolution_values":["1024x1024","1024x768","1600x1600","2048x2048"],"resolution_mixed_models":7,"value_definition":"pass rate (checks passed / checks attempted) divided by mean benchmark cost in USD","methodology_note":"Performance is every judged check this model passed divided by every check it attempted, pooled flat across its benchmark prompts - no per-category grouping or weighting. Price is the mean cost_usd of those same generations, not the catalogue's per-image/per-megapixel/per-token rate, so price and performance come from the identical rows and are directly comparable. Cost comparability caveat, now measured rather than assumed: each benchmark row DOES record the resolution it was generated at, and resolutions are not held fixed across models - the catalogue spans roughly 768 to 2560 pixels on the long edge, and cost tracks resolution (a 2048x2048 generation costs several times a 1024x1024 one). A cheaper model is therefore not necessarily cheaper at the same fidelity, which is why the reference table carries a resolution column: read the comparison per model rather than averaging over it. Generation time is captured per row too and is reported separately from the cost and quality figures.","provenance_note":"Benchmarks are OpenRouter's media prompt benchmark pages plus the Design Arena preference scores published on OpenRouter's catalogue. Artificial Analysis publishes no image-generation data and nothing on this page implies otherwise. Design Arena is never folded into the value score. Output resolution, generation time and a thumbnail URL are read per row from the page's own embedded data, because the rendered markup carries none of the three. Uptime and provider-level effective pricing are not captured by this pipeline and are not shown."},"sources":{"image_catalog_endpoint":"/api/v1/images/models","image_pricing_endpoint":"/api/v1/images/models/{id}/endpoints","prompt_benchmarks":"https://openrouter.ai/benchmarks/media/images","design_arena_endpoint":"/api/v1/models?output_modalities=image"},"data_retrieved_at":"2026-09-22T06:54:39.005862+00:00","benchmarks_retrieved_at":"2026-09-22T06:54:39.005862+00:00","design_arena_retrieved_at":"2026-09-22T06:54:39.005862+00:00","generated_at":"2026-09-22T14:14:43.229348+00:00"};
+const ROWS=PAYLOAD.rows||[],ARENA=PAYLOAD.design_arena||{categories:[],models:[]},COVERAGE=PAYLOAD.coverage||{},CONST=PAYLOAD.constants||{};
+
+// ---------------------------------------------------------------- helpers --
+const byId=id=>document.getElementById(id);
+const esc=value=>String(value==null?"":value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money=v=>(v==null||!isFinite(v))?"—":"$"+(v<0.01?v.toFixed(4):v.toFixed(v<1?3:2));
+const pct=v=>(v==null||!isFinite(v))?"—":(v*100).toFixed(1)+"%";
+const value=(v)=>(v==null||!isFinite(v))?"—":(v>=100?v.toFixed(0):v.toFixed(1));
+const num=v=>(v==null||!isFinite(v))?"—":v.toLocaleString();
+const seconds=v=>(v==null||!isFinite(v))?"—":(v/1000).toFixed(1)+"s";
+const list=(items)=>items&&items.length?items.join(", "):"—";
+const truncate=(text,max)=>{text=String(text==null?"":text);return text.length>max?text.slice(0,max-1)+"…":text};
+const setText=(id,text)=>{const node=byId(id);if(node){node.textContent=text}};
+const setHtml=(id,html)=>{const node=byId(id);if(node){node.innerHTML=html}};
+const svgEl=(name,attrs)=>{const node=document.createElementNS("http://www.w3.org/2000/svg",name);for(const key in attrs){node.setAttribute(key,attrs[key])}return node};
+const ranked=ROWS.filter(r=>r.value!=null).slice().sort((a,b)=>a.value_rank-b.value_rank);
+const plotted=ROWS.filter(r=>r.pass_rate!=null&&r.avg_cost_usd!=null);
+const dateOnly=v=>v?String(v).slice(0,10):"unknown";
+// The week's locked Model of the Week (recorded by refresh_media.py BEFORE this
+// page was built - see dashboard/media_picks.py) and the display helpers it
+// needs. WEEKPICK is null until the first refresh of a week has locked one, and
+// in that case the page falls back to today's live leader rather than showing
+// nothing.
+const WEEKLY=PAYLOAD.weekly||{},WEEKPICK=(WEEKLY.picks||{}).value||null;
+
+// ------------------------------------------------------------ snapshot line --
+(()=>{
+  const parts=[`Snapshot ${dateOnly(PAYLOAD.data_retrieved_at)}`];
+  if(PAYLOAD.benchmarks_retrieved_at&&dateOnly(PAYLOAD.benchmarks_retrieved_at)!==dateOnly(PAYLOAD.data_retrieved_at)){
+    parts.push(`benchmarks ${dateOnly(PAYLOAD.benchmarks_retrieved_at)}`);
+  }
+  parts.push(`${COVERAGE.catalog_models} catalogue models`);
+  parts.push(`${COVERAGE.benchmarked_models} benchmarked`);
+  if(COVERAGE.prompt_count_min!=null)parts.push(`${COVERAGE.prompt_count_min}–${COVERAGE.prompt_count_max} prompts each`);
+  parts.push(`${COVERAGE.design_arena_models} with Design Arena`);
+  setText("snapshotLine",parts.join(" · ")+". Value = pass rate ÷ mean benchmark cost; no Artificial Analysis data is included for image models.");
+})();
+
+// -------------------------------------------------------------------- hero --
+// The card is the week's pick. When refresh_media.py has locked one, the
+// HEADLINE NUMBERS ARE THE LOCKED ONES: a pick that changed every time the data
+// refreshed would not be a weekly pick. Rank and evidence are still recomputed
+// from today's snapshot, and the line says "today" so the two cannot be confused.
+(()=>{
+  const record=WEEKPICK;
+  const row=record?ROWS.find(item=>item.model_id===record.model_id):null;
+  const leader=record||ranked[0];
+  if(!leader){setText("heroTitle","No rankable model in this snapshot");setText("heroProvider","—");return}
+  setText("heroTitle",leader.model_name||leader.model_id);
+  // Item 3: never let a cost-efficiency win read as a human-preference win. The
+  // Design Arena score is a separate source and is never blended into value, so
+  // a leader without one is flagged rather than quietly presented as a winner.
+  const arenaFlag=byId("heroArenaFlag");
+  if(arenaFlag){arenaFlag.hidden=Boolean(leader.design_arena);arenaFlag.textContent="No preference data"}
+  setText("heroProvider",leader.provider||leader.model_id);
+  setText("heroWeek",WEEKLY.week_label?`Week of ${WEEKLY.week_label} · ${WEEKLY.timezone}`:"");
+  setText("heroRank",row?`Rank ${row.value_rank} of ${ranked.length} rankable models today · ${num(leader.prompts)} prompts benchmarked`:`${num(leader.prompts)} prompts benchmarked; no rank today, so it is not in the current value ranking`);
+  setText("heroPass",pct(leader.pass_rate));
+  setText("heroPassDetail",row?`${num(row.checks_passed)} of ${num(row.checks_total)} checks`:"checks not in this snapshot");
+  setText("heroCost",money(leader.avg_cost_usd));
+  setText("heroValue",value(leader.value));
+  setText("heroEvidence",row?num(row.evidence_checks):"—");
+  const notes=[`Value ${value(leader.value)} = pass rate ${pct(leader.pass_rate)} ÷ mean benchmark cost ${money(leader.avg_cost_usd)} across ${num(leader.prompts)} benchmark prompts.`];
+  if(record){
+    notes.push(`Locked as this week's pick on ${record.recorded_label||"the first refresh of the week"}: it ranked #1 of ${ranked.length} rankable models by that value. Refreshing again this week updates the data but not this pick.`);
+  }else{
+    notes.push(`Recommended from this snapshot: it ranks #1 of ${ranked.length} rankable models by value. The pick is locked on the first refresh of the week.`);
+  }
+  if(!leader.design_arena){
+    notes.push("This model has no Design Arena row, so this is a cost-efficiency result only: it is not evidence of stronger human preference. Design Arena is a separate survey and is never blended into the value score.");
+  }
+  if(!leader.has_catalog_rate){
+    notes.push("Note: this model publishes no resolvable catalogue rate, so its price comes from its own benchmark generations and cannot be cross-checked against a list price (see the full table below).");
+  }
+  setText("heroNote",notes.join(" "));
+  // The locked pick standing; today's leader may have moved on since. Said out
+  // loud rather than silently swapping the headline.
+  const liveLine=byId("heroLocked");
+  const current=record?record.current_leader:null;
+  const moved=Boolean(record&&record.current_leader_differs&&current);
+  if(liveLine){
+    liveLine.hidden=!moved;
+    liveLine.textContent=moved?`Current leader today: ${current.model_name||current.model_id}${current.value==null?"":` (value ${value(current.value)})`}.${record.revision_count?` The leader has moved ${record.revision_count}× since this pick was locked; if it holds, it becomes next week's pick.`:""}`:"";
+  }
+})();
+
+// ---------------------------------------------------------------- head to head --
+// The chat dashboard's comparison, over this page's metrics. Same DOM contract
+// and same behaviour so the two pages feel like one product.
+//
+// Both columns come from THIS snapshot - the baseline is the week's pick looked
+// up among today's rows. Only the hero card above shows the locked figures, and
+// it says so; keeping the comparison on a single snapshot is what stops the two
+// columns from silently mixing vintages.
+(()=>{
+  const search=byId("comparisonSearch"),results=byId("comparisonResults"),content=byId("comparisonContent");
+  if(!search||!results||!content)return;
+  let selectedId=null,matches=[],activeIndex=-1;
+
+  const nameOf=row=>esc(row.model_name||row.model_id);
+  const pickRow=()=>{
+    if(WEEKPICK&&WEEKPICK.model_id){
+      const found=ROWS.find(item=>item.model_id===WEEKPICK.model_id);
+      if(found)return found;
+    }
+    return ranked[0]||null;
+  };
+  const arenaEntry=modelId=>(ARENA.models||[]).find(item=>item.model_id===modelId)||null;
+  const arenaCell=row=>{
+    const entry=arenaEntry(row.model_id);
+    if(!entry)return '<span class="num-dim">No Design Arena row</span>';
+    const keys=Object.keys(entry.categories||{}).sort();
+    if(!keys.length)return "Has a Design Arena row";
+    return keys.map(key=>{
+      const cell=entry.categories[key]||{},label=(ARENA.categories||[]).find(item=>item.key===key);
+      return `${esc(label?label.label:key)} Elo ${num(cell.elo)}`;
+    }).join(" · ");
+  };
+  const rankCell=row=>row.value_rank==null?'<span class="num-dim">not rankable</span>':`#${num(row.value_rank)} of ${num(ranked.length)}`;
+  const rateCell=row=>row.has_catalog_rate?`Yes (${esc(row.comparable_price_basis||"catalogue rate")})`:'<span class="num-dim">none published</span>';
+
+  function matchesFor(term){
+    const baseline=pickRow(),query=term.trim().toLowerCase();
+    if(!query)return [];
+    return ROWS.filter(row=>row.model_id!==(baseline?baseline.model_id:"")&&(
+      String(row.model_name||"").toLowerCase().includes(query)
+      ||String(row.provider||"").toLowerCase().includes(query)
+      ||row.model_id.toLowerCase().includes(query))).slice(0,12);
+  }
+
+  function renderResults(){
+    matches=matchesFor(search.value);activeIndex=-1;
+    results.innerHTML=matches.map((row,index)=>`<button type="button" class="comparison-option" role="option" aria-selected="false" data-model-id="${esc(row.model_id)}" data-index="${index}"><span class="comparison-option-name">${esc(row.model_name||row.model_id)}</span><span class="comparison-option-meta">${esc(row.provider||"")} | ${esc(row.model_id)}</span></button>`).join("");
+    search.setAttribute("aria-expanded",String(matches.length>0));
+  }
+
+  function selectModel(row){
+    selectedId=row.model_id;search.value=row.model_name||row.model_id;matches=[];activeIndex=-1;
+    results.innerHTML="";search.setAttribute("aria-expanded","false");renderComparison();
+  }
+
+  // Every sentence below is a comparison the page can actually support. Where
+  // the two sides are not commensurable the sentence is omitted rather than
+  // guessed at - in particular, a cost difference is never phrased as a quality
+  // difference, and a resolution difference is always disclosed next to cost.
+  function describeCost(baseline,other){
+    const left=baseline.avg_cost_usd,right=other.avg_cost_usd;
+    if(left==null||right==null||left===right)return null;
+    const percent=Math.round(Math.abs(left-right)/right*100);
+    return `<strong>${left<right?nameOf(baseline):nameOf(other)}</strong> is ${percent}% cheaper per benchmark generation (${money(left)} vs ${money(right)}).`;
+  }
+  function describeRatio(label,left,right,baseline,other){
+    if(left==null||right==null||left===right)return null;
+    if(left>0&&right>0){
+      const factor=Number((Math.max(left,right)/Math.min(left,right)).toFixed(1));
+      return `<strong>${left>right?nameOf(baseline):nameOf(other)}</strong> has a ${label} ${factor}x higher.`;
+    }
+    return null;
+  }
+  function describePoints(label,left,right,baseline,other){
+    if(left==null||right==null||left===right)return null;
+    const points=Math.abs((left-right)*100).toFixed(1);
+    return `<strong>${left>right?nameOf(baseline):nameOf(other)}</strong> is ${points} percentage points higher on ${label}.`;
+  }
+  // Item 3, restated in the comparison: the whole point of the Design Arena
+  // cross-check is that a cheaper model is not thereby a better-liked one.
+  function describeArena(baseline,other){
+    const left=arenaEntry(baseline.model_id),right=arenaEntry(other.model_id);
+    if(Boolean(left)===Boolean(right))return null;
+    const withArena=left?baseline:other,without=left?other:baseline;
+    return `<strong>${nameOf(withArena)}</strong> has Design Arena (human-preference) rows and <strong>${nameOf(without)}</strong> has none, so the figures above are cost-efficiency and judged-check results only: they say nothing about which model people prefer.`;
+  }
+  function describeResolution(baseline,other){
+    const left=list(baseline.output_resolutions),right=list(other.output_resolutions);
+    if(left==="—"||right==="—"||left===right)return null;
+    return `These two generated at different output sizes in this snapshot (${esc(left)} vs ${esc(right)}), and benchmark cost is not normalised for resolution, so read the cost difference with that in mind.`;
+  }
+
+  function renderComparison(){
+    const baseline=pickRow(),other=ROWS.find(row=>row.model_id===selectedId);
+    if(!baseline){
+      content.className="comparison-empty";
+      content.textContent="No rankable model in this snapshot, so there is nothing to compare against.";
+      return;
+    }
+    if(!other||baseline.model_id===other.model_id){
+      if(other&&baseline.model_id===other.model_id){selectedId=null;search.value=""}
+      content.className="comparison-empty";
+      content.textContent="Choose a model to compare.";
+      return;
+    }
+    const measures=[
+      ["Value (pass rate ÷ cost)",value(baseline.value),value(other.value)],
+      ["Pass rate",pct(baseline.pass_rate),pct(other.pass_rate)],
+      ["Benchmark cost per generation",money(baseline.avg_cost_usd),money(other.avg_cost_usd)],
+      ["Checks passed",`${num(baseline.checks_passed)} of ${num(baseline.checks_total)}`,`${num(other.checks_passed)} of ${num(other.checks_total)}`],
+      ["Evidence checks attempted",num(baseline.evidence_checks),num(other.evidence_checks)],
+      ["Prompts benchmarked",num(baseline.prompts),num(other.prompts)],
+      ["Generated at",list(baseline.output_resolutions),list(other.output_resolutions)],
+      ["Mean generation time",seconds(baseline.duration_ms_mean),seconds(other.duration_ms_mean)],
+      ["Design Arena (human preference)",arenaCell(baseline),arenaCell(other)],
+      ["Value rank in this snapshot",rankCell(baseline),rankCell(other)],
+      ["Catalogue rate",rateCell(baseline),rateCell(other)],
+    ];
+    const summary=[
+      describeCost(baseline,other),
+      describePoints("pass rate",baseline.pass_rate,other.pass_rate,baseline,other),
+      describeRatio("value ratio",baseline.value,other.value,baseline,other),
+      describeArena(baseline,other),
+      describeResolution(baseline,other),
+    ].filter(Boolean);
+    content.className="";
+    content.innerHTML=`<div class="comparison-title">Comparison: <strong>${nameOf(baseline)}</strong> <span>vs.</span> <strong>${nameOf(other)}</strong></div>`
+      +`<div class="table-scroll comparison-table-wrap"><table class="comparison-table"><thead><tr><th>Measure</th><th>${nameOf(baseline)}${WEEKPICK&&WEEKPICK.model_id===baseline.model_id?" (pick)":""}</th><th>${nameOf(other)}</th></tr></thead><tbody>`
+      +measures.map(([label,left,right])=>`<tr><td>${label}</td><td>${left}</td><td>${right}</td></tr>`).join("")
+      +"</tbody></table></div>"
+      +`<div class="comparison-summary"><p>${nameOf(baseline)} is approximately:</p>${summary.length?`<ul>${summary.map(item=>`<li>${item}</li>`).join("")}</ul>`:"<p>These two models are comparable on every measure this page can check, or the values needed are not recorded for one of them.</p>"}</div>`;
+  }
+
+  search.addEventListener("input",()=>{selectedId=null;renderComparison();renderResults()});
+  search.addEventListener("keydown",event=>{
+    if(event.key==="ArrowDown"&&matches.length){event.preventDefault();activeIndex=(activeIndex+1)%matches.length}
+    else if(event.key==="ArrowUp"&&matches.length){event.preventDefault();activeIndex=(activeIndex-1+matches.length)%matches.length}
+    else if(event.key==="Enter"&&activeIndex>=0){event.preventDefault();selectModel(matches[activeIndex])}
+    else if(event.key==="Escape"){matches=[];activeIndex=-1;results.innerHTML="";search.setAttribute("aria-expanded","false")}
+    results.querySelectorAll(".comparison-option").forEach((option,index)=>option.classList.toggle("active",index===activeIndex));
+  });
+  results.addEventListener("click",event=>{
+    const option=event.target.closest("[data-model-id]");
+    if(!option)return;
+    const row=ROWS.find(item=>item.model_id===option.dataset.modelId);
+    if(row)selectModel(row);
+  });
+
+  renderComparison();
+})();
+
+// -------------------------------------------------------------------- kpis --
+(()=>{
+  const costs=plotted.map(r=>r.avg_cost_usd).sort((a,b)=>a-b);
+  const median=costs.length?(costs.length%2?costs[(costs.length-1)/2]:(costs[costs.length/2-1]+costs[costs.length/2])/2):null;
+  const tiles=[
+    ["Catalogue models",num(COVERAGE.catalog_models),`${num(COVERAGE.priced_models)} publish a resolvable rate`],
+    ["Benchmarked",num(COVERAGE.benchmarked_models),`${num(COVERAGE.unrated_models)} unrated, listed below`],
+    ["Rankable by value",num(COVERAGE.rankable_models),`${num(COVERAGE.benchmarked_unpriced_models)} without a catalogue rate`],
+    ["Median cost",money(median),"per benchmark generation"],
+  ];
+  setHtml("kpiRow",tiles.map(([label,val,sub])=>`<div class="kpi"><div class="label">${esc(label)}</div><div class="value">${esc(val)}</div><div class="sub">${esc(sub)}</div></div>`).join(""));
+})();
+
+// ------------------------------------------------------------ value leaders --
+(()=>{
+  const svg=byId("valueBars");if(!svg||!ranked.length)return;
+  const top=ranked.slice(0,CONST.top_n_bars||12),leader=top[0].value;
+  // Item 3, applied to the chart: mark any bar whose model has no Design Arena
+  // (human-preference) row, and explain the mark in the caption whenever such a
+  // model is actually in view - otherwise the marker would be unexplained.
+  const withoutArena=top.filter(row=>!row.design_arena).length;
+  setText("leaderCaption",`Top ${top.length} of ${ranked.length} rankable models by value, each bar scaled to the leader.`
+    +(withoutArena?` † marks ${withoutArena} of them with no Design Arena (human-preference) score, so their position reflects cost-efficiency only.`:""));
+  // RESERVE is space for the value label that sits after the longest bar
+  // ("87.5 · 87.5% @ $0.010"); without it the leader's own label overflows the
+  // chart panel, which has overflow-x:auto.
+  const W=900,ROW=30,PAD=14,LABEL=300,RESERVE=150,BAR_MAX=W-LABEL-RESERVE,H=top.length*ROW+PAD*2;
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  top.forEach((row,index)=>{
+    const y=PAD+index*ROW,center=y+ROW/2-3;
+    const barW=leader>0?Math.max(2,BAR_MAX*(row.value/leader)):2;
+    const name=svgEl("text",{x:0,y:center+4,class:"value-model-label"});
+    name.textContent=`${row.value_rank}. ${truncate(row.model_name||row.model_id,34)}`;
+    svg.appendChild(name);
+    svg.appendChild(svgEl("rect",{x:LABEL,y:center-6,width:2,height:12,class:"gridline"}));
+    svg.appendChild(svgEl("rect",{x:LABEL,y:center-6,width:barW,height:12,class:"bar"}));
+    const label=svgEl("text",{x:LABEL+barW+8,y:center+4,class:"value-bar-label"});
+    label.textContent=`${value(row.value)} · ${pct(row.pass_rate)} @ ${money(row.avg_cost_usd)}${row.design_arena?"":" †"}`;
+    svg.appendChild(label);
+  });
+})();
+
+// ----------------------------------------------------------------- scatter --
+(()=>{
+  const svg=byId("imageScatter");if(!svg||!plotted.length)return;
+  // The section heading already names both axes, so only the x axis is
+  // labelled here - a y-axis title collides with the 100% tick label.
+  const W=1100,H=470,M={l:74,r:34,t:24,b:76};
+  const maxCost=Math.max(...plotted.map(r=>r.avg_cost_usd));
+  const xMax=maxCost>0?maxCost*1.06:1;
+  const x=v=>M.l+(v/xMax)*(W-M.l-M.r);
+  const y=v=>H-M.b-(v)*(H-M.t-M.b);
+  svg.innerHTML="";
+
+  for(let tick=0;tick<=4;tick++){
+    const fraction=tick/4,gy=y(fraction);
+    svg.appendChild(svgEl("line",{x1:M.l,x2:W-M.r,y1:gy,y2:gy,class:"gridline"}));
+    const label=svgEl("text",{x:M.l-10,y:gy+4,class:"axis-label","text-anchor":"end"});
+    label.textContent=Math.round(fraction*100)+"%";
+    svg.appendChild(label);
+  }
+  const xTicks=5;
+  for(let tick=0;tick<=xTicks;tick++){
+    const v=(xMax/xTicks)*tick,gx=x(v);
+    svg.appendChild(svgEl("line",{x1:gx,x2:gx,y1:M.t,y2:H-M.b,class:"gridline"}));
+    const label=svgEl("text",{x:gx,y:H-M.b+22,class:"axis-label","text-anchor":"middle"});
+    label.textContent=v===0?"$0":(v<0.01?"$"+v.toFixed(4):"$"+v.toFixed(2));
+    svg.appendChild(label);
+  }
+  svg.appendChild(svgEl("line",{x1:M.l,x2:W-M.r,y1:H-M.b,y2:H-M.b,class:"axis-line"}));
+  const xTitle=svgEl("text",{x:W-M.r,y:H-16,class:"axis-label","text-anchor":"end"});
+  xTitle.textContent="mean cost per generation (USD)";
+  svg.appendChild(xTitle);
+
+  plotted.slice().sort((a,b)=>b.avg_cost_usd-a.avg_cost_usd).forEach(row=>{
+    const cx=x(row.avg_cost_usd),cy=y(row.pass_rate),r=row.point_radius||CONST.point_radius_min||4;
+    svg.appendChild(svgEl("circle",{cx,cy,r,class:"dot"}));
+    const hit=svgEl("circle",{cx,cy,r:Math.max(r,12),class:"dot-hit"});
+    hit.addEventListener("mouseenter",()=>{
+      const tip=byId("tooltip");
+      tip.innerHTML=`<strong>${esc(row.model_name||row.model_id)}</strong>`
+        +`<div class="tooltip-row"><span>Pass rate</span><span>${esc(pct(row.pass_rate))} (${num(row.checks_passed)}/${num(row.checks_total)})</span></div>`
+        +`<div class="tooltip-row"><span>Cost</span><span>${esc(money(row.avg_cost_usd))}</span></div>`
+        +`<div class="tooltip-row"><span>Value</span><span>${esc(value(row.value))}</span></div>`
+        +`<div class="tooltip-row"><span>Evidence</span><span>${num(row.evidence_checks)} checks · ${num(row.prompts)} prompts</span></div>`;
+      tip.style.left=cx+"px";tip.style.top=(cy-12)+"px";tip.classList.add("show");
+    });
+    hit.addEventListener("mouseleave",()=>byId("tooltip").classList.remove("show"));
+    svg.appendChild(hit);
+  });
+
+  const legend=byId("scatterLegend");
+  if(legend){
+    const evidence=plotted.map(r=>r.evidence_checks).filter(v=>v!=null);
+    const range=evidence.length?`${Math.min(...evidence)}–${Math.max(...evidence)}`:"—";
+    legend.innerHTML=`<span class="legend-input">point size = checks attempted (${esc(range)})</span>`
+      +`<span class="legend-score">${plotted.length} of ${COVERAGE.catalog_models} models plotted</span>`;
+  }
+})();
+
+// --------------------------------------------------------------- design arena --
+(()=>{
+  const head=byId("arenaHead"),subhead=byId("arenaSubhead");
+  if(!head||!subhead)return;
+  const categories=ARENA.categories||[];
+  categories.forEach(category=>{
+    const th=document.createElement("th");th.colSpan=2;th.textContent=category.label;head.appendChild(th);
+    ["Elo","Win rate"].forEach(text=>{const cell=document.createElement("th");cell.textContent=text;subhead.appendChild(cell)});
+  });
+  const body=byId("arenaBody");if(!body)return;
+  (ARENA.models||[]).forEach(model=>{
+    const row=ROWS.find(r=>r.model_id===model.model_id);
+    const name=row?row.model_name:model.model_name;
+    let cells=`<td class="name-cell"><span class="model-name">${esc(name)}</span><div class="model-provider">${esc(row?row.provider:"")}</div></td>`;
+    categories.forEach(category=>{
+      const entry=(model.categories||{})[category.key]||{};
+      cells+=`<td>${entry.elo==null?'<span class="num-dim">—</span>':esc(entry.elo)}</td>`;
+      cells+=`<td>${entry.win_rate==null?'<span class="num-dim">—</span>':esc(entry.win_rate.toFixed(1)+"%")}</td>`;
+    });
+    const tr=document.createElement("tr");tr.innerHTML=cells;body.appendChild(tr);
+  });
+  setText("arenaNote",`${ARENA.model_count} of ${COVERAGE.catalog_models} catalogue models carry Design Arena scores (${ARENA.row_count} category rows). Missing categories are shown as — rather than filled in. Elo and win rate come from human preference voting and are not capability measurements; the win rate column is the share of pairwise comparisons won.`);
+
+  // Item 4: one synthesised row per category, so the preference data does not
+  // require scanning an 9-column table by hand. Bar length uses a FIXED 0-100
+  // win-rate axis rather than being scaled to the leader: Elo values cluster
+  // tightly (roughly 1300-1500), so leader-scaled bars would all look identical
+  // and say nothing. Elo still rides along in the label.
+  const leaders=PAYLOAD.design_arena_summary||[];
+  const caption=byId("arenaLeadersCaption");
+  const chart=byId("arenaLeaders");
+  if(chart&&leaders.length){
+    const W=900,ROW=30,PAD=14,LABEL=300,RESERVE=150,BAR_MAX=W-LABEL-RESERVE,H=leaders.length*ROW+PAD*2;
+    chart.setAttribute("viewBox",`0 0 ${W} ${H}`);
+    leaders.forEach((leader,index)=>{
+      const y=PAD+index*ROW,center=y+ROW/2-3;
+      const row=ROWS.find(r=>r.model_id===leader.model_id);
+      const label=svgEl("text",{x:0,y:center+4,class:"value-model-label"});
+      label.textContent=`${leader.label}: ${truncate((row&&row.model_name)||leader.model_name||leader.model_id,26)}`;
+      chart.appendChild(label);
+      chart.appendChild(svgEl("rect",{x:LABEL,y:center-6,width:2,height:12,class:"gridline"}));
+      const pctWidth=leader.win_rate==null?2:Math.max(2,BAR_MAX*(leader.win_rate/100));
+      chart.appendChild(svgEl("rect",{x:LABEL,y:center-6,width:pctWidth,height:12,class:"bar"}));
+      const value=svgEl("text",{x:LABEL+pctWidth+8,y:center+4,class:"value-bar-label"});
+      value.textContent=`Elo ${leader.elo} · ${leader.win_rate==null?"—":leader.win_rate.toFixed(1)+"%"}`;
+      chart.appendChild(value);
+    });
+  }
+  if(caption&&leaders.length){
+    const parts=[`${leaders.length} categories, each won by the highest Elo among the models scored in it.`];
+    // How firm each result is matters as much as who won: a 3-Elo lead is
+    // effectively a tie, and saying so is the difference between a ranking and
+    // a claim.
+    const withMargin=leaders.filter(l=>l.lead_over_second!=null);
+    if(withMargin.length){
+      const closest=withMargin.slice().sort((a,b)=>a.lead_over_second-b.lead_over_second)[0];
+      const widest=withMargin.slice().sort((a,b)=>b.lead_over_second-a.lead_over_second)[0];
+      parts.push(`Closest call: ${closest.label}, where the leader is ${closest.lead_over_second} Elo ahead of second place.`);
+      parts.push(`Clearest: ${widest.label} (${widest.lead_over_second} Elo).`);
+    }
+    const thin=leaders.filter(l=>l.models_with_a_score<3);
+    if(thin.length){
+      parts.push(`Thin field: ${thin.map(l=>`${l.label} (${l.models_with_a_score})`).join(", ")} — a winner from a field this small is not a general result.`);
+    }
+    setText("arenaLeadersCaption",parts.join(" "));
+  }
+})();
+
+// ----------------------------------------------------------------- coverage --
+(()=>{
+  const bucketRows=[
+    ["Catalogue models",COVERAGE.catalog_models,"Every image model the catalogue lists in this snapshot"],
+    ["Publish a resolvable rate",COVERAGE.priced_models,"Endpoint pricing parsed into a comparable rate"],
+    ["Benchmarked",COVERAGE.benchmarked_models,"Has at least one judged benchmark prompt row"],
+    ["Rankable by value",COVERAGE.rankable_models,"Has both a pass rate and a benchmark cost"],
+    ["Unrated",COVERAGE.unrated_models,"No benchmark rows at all — shown below, never dropped"],
+    ["Ranked without a catalogue rate",COVERAGE.benchmarked_unpriced_models,"Benchmark rows carry cost even when no list rate was published"],
+  ];
+  setHtml("coverageBody",bucketRows.map(([name,count,meaning])=>
+    `<tr><td><span class="model-name">${esc(name)}</span></td><td>${esc(num(count))}</td><td class="name-cell num-dim">${esc(meaning)}</td></tr>`).join(""));
+
+  const unrated=(COVERAGE.unrated_ids||[]).map(id=>ROWS.find(r=>r.model_id===id)).filter(Boolean);
+  setHtml("unratedBody",unrated.map(row=>
+    `<tr><td class="name-cell"><span class="model-name">${esc(row.model_name||row.model_id)}</span><div class="model-provider">${esc(row.provider||"")}</div></td>`
+    +`<td>${row.comparable_price==null?'<span class="num-dim">not published</span>':esc(money(row.comparable_price))}</td>`
+    +`<td>${row.pricing_unit?esc(row.pricing_unit):'<span class="num-dim">—</span>'}</td>`
+    +`<td>${row.design_arena?'<span class="num-dim">has a score</span>':'<span class="num-dim">—</span>'}</td></tr>`).join(""));
+
+  const notes=[];
+  if(unrated.length)notes.push(`${unrated.length} priced models have no benchmark rows yet, so they cannot be rated — they are listed above rather than removed.`);
+  if(COVERAGE.benchmarked_unpriced_ids&&COVERAGE.benchmarked_unpriced_ids.length){
+    notes.push(`${COVERAGE.benchmarked_unpriced_ids.length} benchmarked models (${COVERAGE.benchmarked_unpriced_ids.join(", ")}) publish no resolvable catalogue rate, so their cost comes only from their own generations.`);
+  }
+  if(COVERAGE.benchmarked_unrankable_ids&&COVERAGE.benchmarked_unrankable_ids.length){
+    notes.push(`${COVERAGE.benchmarked_unrankable_ids.length} benchmarked models have no usable benchmark cost and are therefore unranked: ${COVERAGE.benchmarked_unrankable_ids.join(", ")}.`);
+  }
+  setText("coverageNote",notes.join(" "));
+
+  // Item 5: state the ceiling explicitly. These models are not merely unmeasured
+  // yet - there is no source to measure them from, which is a different and more
+  // permanent situation than a model that simply has not been benchmarked. The
+  // chat dashboard can cascade through OpenRouter -> Artificial Analysis -> a
+  // manual override; nothing equivalent exists for image generation.
+  if(unrated.length){
+    const providers=[...new Set(unrated.map(r=>r.provider).filter(Boolean))].sort();
+    const composition=providers.length?` In this snapshot they are ${providers.map(p=>`${unrated.filter(r=>r.provider===p).length} ${p}`).join(" and ")} models.`:'';
+    setText("unratedNote",`Coverage ceiling: these ${unrated.length} models have no benchmark rows at all, and no fallback source can supply one.${composition} `
+      +`The chat dashboard can fall back through OpenRouter → Artificial Analysis → a manual override; image generation has no equivalent, because Artificial Analysis publishes no image-generation benchmark at all and the OpenRouter media endpoints publish no judging data. `
+      +`This is a structural gap in the available evidence, not a temporary one, and it cannot be closed by refreshing.`);
+  }
+})();
+
+// ------------------------------------------------------------------- budget --
+(()=>{
+  setText("budgetSub",`Cheapest models that still pass at least ${pct(PAYLOAD.budget?PAYLOAD.budget.min_pass_rate:null)} of their attempted checks, ranked by benchmark cost. The threshold is a deliberate cut, not a data property: it sits just below the run's median pass rate.`);
+  const picks=(PAYLOAD.budget&&PAYLOAD.budget.model_ids||[]).map(id=>ROWS.find(r=>r.model_id===id)).filter(Boolean);
+  setHtml("budgetBody",picks.map(row=>
+    `<tr><td class="name-cell"><span class="model-name">${esc(row.model_name||row.model_id)}</span><div class="model-provider">${esc(row.provider||"")}${row.has_catalog_rate?"":" · no catalogue rate"}</div></td>`
+    +`<td>${esc(pct(row.pass_rate))}</td><td>${esc(money(row.avg_cost_usd))}</td><td>${esc(value(row.value))}</td><td>${esc(num(row.evidence_checks))}</td></tr>`).join("")
+    ||'<tr><td colspan="5" class="num-dim">No model clears the threshold in this snapshot.</td></tr>');
+})();
+
+// -------------------------------------------------------- pricing breakdown --
+(()=>{
+  setText("pricingCount",`${ROWS.length} rows.`);
+  const ordered=ROWS.slice().sort((a,b)=>{
+    if(a.value==null&&b.value==null)return (a.model_id||"").localeCompare(b.model_id||"");
+    if(a.value==null)return 1;if(b.value==null)return -1;return b.value-a.value;
+  });
+  setHtml("pricingBody",ordered.map(row=>{
+    const lines=(row.pricing_lines||[]).map(line=>
+      `${esc(line.billable||"")} · ${esc(line.unit||"")}${line.variant?" ("+esc(line.variant)+")":""} @ ${esc(money(line.usd))}`).join("<br>");
+    return `<tr><td class="name-cell"><span class="model-name">${esc(row.model_name||row.model_id)}</span><div class="model-provider">${esc(row.provider||"")}</div></td>`
+      +`<td>${row.value==null?'<span class="num-dim">Unrated</span>':esc(value(row.value))}</td>`
+      +`<td>${row.avg_cost_usd==null?'<span class="num-dim">—</span>':esc(money(row.avg_cost_usd))}</td>`
+      // The resolution the benchmark generation ran at - the caveat's subject,
+      // shown per model so the cost can be read against it. A model whose rows
+      // span several sizes is marked rather than silently averaged.
+      +`<td>${(row.output_resolutions||[]).length?esc(row.output_resolutions.join(", "))+(row.resolution_mixed?' <span class="num-dim">(mixed)</span>':''):'<span class="num-dim">not recorded</span>'}</td>`
+      +`<td>${row.duration_ms_mean==null?'<span class="num-dim">—</span>':esc(seconds(row.duration_ms_mean))}</td>`
+      +`<td>${row.comparable_price==null?'<span class="num-dim">not published</span>':esc(money(row.comparable_price))}</td>`
+      +`<td>${row.comparable_price_basis?esc(row.comparable_price_basis):'<span class="num-dim">—</span>'}</td>`
+      +`<td class="name-cell num-dim">${lines||"—"}</td></tr>`;
+  }).join(""));
+})();
+
+// -------------------------------------------------------------------- trend --
+(()=>{
+  const trend=PAYLOAD.trend||{points:0,min_points:2,snapshot_dates:[]};
+  setText("trendSub","Value and cost per generation across snapshots, once there is more than one.");
+  if(trend.ready){
+    setText("trendState",`${trend.points} snapshots recorded (${trend.snapshot_dates.join(", ")}).`);
+  }else{
+    setText("trendState",`Not enough history yet — ${trend.points} snapshot recorded${trend.points===1?"":"s"} (${trend.snapshot_dates.join(", ")||"none"}). This chart starts rendering at ${trend.min_points}; until then there is no trend to show and nothing is drawn.`);
+  }
+})();
+
+// ---------------------------------------------------------------- provenance --
+(()=>{
+  const items=[
+    CONST.provenance_note,
+    CONST.methodology_note,
+    `Coverage in this snapshot: ${COVERAGE.catalog_models} catalogue models, ${COVERAGE.priced_models} with a resolvable catalogue rate, ${COVERAGE.benchmarked_models} benchmarked over ${COVERAGE.prompt_count_min}–${COVERAGE.prompt_count_max} prompts each, ${COVERAGE.unrated_models} unrated, ${COVERAGE.design_arena_models} with Design Arena scores.`,
+    "Prompt counts per model are not uniform, so a point or bar backed by more attempted checks rests on more evidence than one backed by fewer.",
+    (CONST.resolution_values||[]).length
+      ? `Generated output sizes in this snapshot: ${CONST.resolution_values.join(", ")}, and ${CONST.resolution_mixed_models||0} benchmarked model(s) generated at more than one of them. Cost is not resolution-normalised, so read it against the resolution column.`
+      : null,
+  ];
+  setHtml("qualityList",items.filter(Boolean).map(text=>`<li>${esc(text)}</li>`).join(""));
+  setText("footerProvenance",`Generated ${dateOnly(PAYLOAD.generated_at)} from data retrieved ${dateOnly(PAYLOAD.data_retrieved_at)}. Value = pass rate ÷ mean benchmark cost (${CONST.value_definition||""}).`);
+})();
+})();
+</script>
+</body>
+</html>

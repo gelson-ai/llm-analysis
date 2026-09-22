@@ -164,6 +164,12 @@ MEDIA_BENCHMARKS_CSV_PATH = NORMALIZED_DIR / "media_benchmarks.csv"
 MEDIA_COVERAGE_REPORT_PATH = ANALYSIS_DIR / "media_coverage_report.json"
 MEDIA_DATA_QUALITY_REPORT_PATH = ANALYSIS_DIR / "media_data_quality_report.json"
 
+# The image dashboard's weekly "Model of the week" history. A SEPARATE file from
+# the chat pipeline's data/analysis/weekly_picks.json: the two dashboards lock
+# picks from different rankings over different models, so a shared file would let
+# one pipeline's lock silently overwrite the other's record.
+MEDIA_WEEKLY_PICKS_PATH = ANALYSIS_DIR / "media_weekly_picks.json"
+
 # Media snapshots live in their OWN top-level directory, NOT under
 # SNAPSHOTS_DIR.
 #

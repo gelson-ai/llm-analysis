@@ -50,6 +50,10 @@ h1{font-family:var(--font-display);font-weight:400;font-size:clamp(34px,5.2vw,60
 .masthead-meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 30px;margin-top:24px;padding-top:16px;border-top:1px solid var(--rule);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
 .masthead-meta b{color:var(--ink);font-weight:600;margin-right:7px}
 .masthead-meta code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10.5px;text-transform:none;letter-spacing:0;color:var(--ink-soft)}
+.tabs{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-left:0}
+.tabs .tab{display:inline-block;border:1px solid var(--rule-strong);background:transparent;color:var(--ink-soft);font-family:var(--font-text);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 13px;border-radius:0;cursor:pointer;text-decoration:none;transition:background 120ms ease,color 120ms ease,border-color 120ms ease}
+.tabs .tab:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.tabs .tab[aria-current="page"]{background:var(--ink);color:var(--paper);border-color:var(--ink);cursor:default}
 .theme-toggle{appearance:none;margin-left:auto;border:1px solid var(--rule-strong);background:transparent;color:var(--ink-soft);font-family:var(--font-text);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 13px;border-radius:0;cursor:pointer;transition:background 120ms ease,color 120ms ease,border-color 120ms ease}
 .theme-toggle:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 .banner,.card,.kpi,.quality-panel{background:transparent;border:0;border-radius:0;box-shadow:none}
@@ -140,6 +144,7 @@ tbody tr:hover td{background:var(--accent-wash)}
 .model-name{font-family:var(--font-display);font-weight:400;font-size:15px;line-height:1.25;color:var(--ink)}
 .model-provider{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint);margin-top:3px}
 .num-dim{color:var(--ink-faint)}
+.arena-flag{display:inline-block;margin-left:8px;padding:2px 7px;border:1px solid var(--rule-strong);font-family:var(--font-text);font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;vertical-align:middle}
 footer{max-width:var(--measure);margin:0;padding:26px 0 0;border-top:3px double var(--rule-strong);text-align:left;font-size:11px;line-height:1.75;color:var(--ink-faint)}
 footer p{margin:0 0 10px}
 footer p:last-child{margin-bottom:0}
@@ -166,7 +171,7 @@ footer code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fon
 </head>
 <body>
 <main class="viz-root"><div class="wrap">
-<header class="masthead"><p class="eyebrow">Model economics · Research report</p><h1>OpenRouter Price vs. Performance</h1><p class="subtitle" id="snapshotLine"></p><div class="masthead-meta"><span><b>Source</b>OpenRouter <code>/api/v1/models</code></span><span><b>Benchmarks</b>Artificial Analysis · Design Arena</span><span><b>Cost model</b>(3 × input + 1 × output) ÷ 4</span><button type="button" class="refresh-btn" id="refreshBtn">Update Latest AI Data</button><button type="button" class="theme-toggle" id="themeToggle" aria-pressed="false">Dark mode</button></div><p class="refresh-status" id="refreshStatus" role="status" aria-live="polite"></p></header>
+<header class="masthead"><p class="eyebrow">Model economics · Research report</p><h1>OpenRouter Price vs. Performance</h1><p class="subtitle" id="snapshotLine"></p><div class="masthead-meta"><nav class="tabs" id="navTabs" aria-label="Dashboards"></nav><span><b>Source</b>OpenRouter <code>/api/v1/models</code></span><span><b>Benchmarks</b>Artificial Analysis · Design Arena</span><span><b>Cost model</b>(3 × input + 1 × output) ÷ 4</span><button type="button" class="refresh-btn" id="refreshBtn">Update All Latest AI Data</button><button type="button" class="theme-toggle" id="themeToggle" aria-pressed="false">Dark mode</button></div><p class="refresh-status" id="refreshStatus" role="status" aria-live="polite"></p></header>
 <aside class="banner"><strong>Benchmark scope matters.</strong> OpenRouter does not expose GPQA Diamond, IFBench, or AA-Omniscience individually. It exposes three <em>blended</em> Artificial Analysis indices (Intelligence, Coding, and Agentic) plus separately sourced Design Arena results. These composite indices must not be interpreted as standalone reasoning or knowledge scores. Missing scores remain missing, never zero.</aside>
 <section aria-labelledby="inventoryTitle"><div class="section-head"><p class="eyebrow">Overview</p><h2 id="inventoryTitle">Inventory snapshot</h2><p class="card-sub">Coverage across the full OpenRouter catalogue in this embedded snapshot.</p></div><div class="kpi-row" id="kpiRow"></div></section>
 <section class="card weekly-pick" aria-labelledby="pickTitle"><div class="pick-grid"><div><div class="pick-eyebrow">Model of the week</div><h2 class="pick-name" id="pickTitle"></h2><div class="pick-provider" id="pickProvider"></div><p class="pick-week" id="pickWeek"></p></div><div class="pick-stat"><div class="label">Selected score</div><div class="value" id="pickScore"></div><div class="detail" id="pickMetric"></div></div><div class="pick-stat"><div class="label">Blended price</div><div class="value" id="pickPrice"></div><div class="detail">per million tokens</div></div><div class="pick-stat"><div class="label">Value ratio</div><div class="value" id="pickValue"></div><div class="detail">score ÷ price</div></div><div class="pick-stat"><div class="label">Context</div><div class="value" id="pickContext"></div><div class="detail">token window</div></div></div><p class="card-sub" id="pickNote" style="margin-top:14px;"></p><p class="pick-live" id="pickLive" hidden></p></section>
@@ -215,61 +220,7 @@ renderKpis();renderMetricViews();renderQuality();
 })();
 </script>
 <script>
-(()=>{"use strict";
-const root=document.documentElement,btn=document.getElementById("themeToggle"),mq=window.matchMedia("(prefers-color-scheme: dark)");
-const resolved=()=>root.dataset.theme||(mq.matches?"dark":"light");
-const label=()=>{const theme=resolved();btn.textContent=theme==="dark"?"Light mode":"Dark mode";btn.setAttribute("aria-pressed",String(theme==="dark"))};
-label();
-btn.addEventListener("click",()=>{root.dataset.theme=resolved()==="dark"?"light":"dark";label()});
-if(mq.addEventListener){mq.addEventListener("change",label)}else if(mq.addListener){mq.addListener(label)}
-})();
-</script>
-<script>
-(()=>{"use strict";
-const btn=document.getElementById("refreshBtn"),status=document.getElementById("refreshStatus");
-const setStatus=text=>{status.textContent=text};
-const SEEN_KEY="llmDashboardRefreshSeenAt";
-// Base URL of the status/refresh endpoints: dashboard/serve.py locally (its
-// routes live under /api), the Cloudflare Worker in public. The Worker holds
-// the GitHub token server-side so it is never readable by page visitors.
-const REFRESH_API=(location.hostname==="localhost"||location.hostname==="127.0.0.1")?"/api":"https://llm-refresh-proxy.gelson-a26.workers.dev";
-if(location.protocol==="file:"){
-  btn.disabled=true;
-  btn.textContent="Refresh unavailable";
-  btn.title="Refreshing requires the local server. Run: python dashboard/serve.py, then open the http:// address it prints.";
-  setStatus("Opened as a local file — start dashboard/serve.py to enable refresh.");
-  return;
-}
-let timer=null;
-function stopPolling(){if(timer){clearInterval(timer);timer=null}}
-function schedule(ms){stopPolling();timer=setInterval(poll,ms)}
-function poll(){
-  fetch(REFRESH_API+"/status",{cache:"no-store"}).then(r=>r.json()).then(data=>{
-    const job=data.job||{},retry=job.retry_after_seconds||0;
-    if(job.state==="running"){setStatus("Refreshing…");schedule(1500);return}
-    const stamp=job.finished_at||"",seen=sessionStorage.getItem(SEEN_KEY)||"",isNew=Boolean(stamp)&&stamp!==seen;
-    if(job.state==="ok"&&isNew){stopPolling();sessionStorage.setItem(SEEN_KEY,stamp);setStatus("Updated — reloading…");location.reload();return}
-    if(job.state==="failed"&&isNew){stopPolling();sessionStorage.setItem(SEEN_KEY,stamp);const result=job.result||{};btn.disabled=false;setStatus(result.message||result.error||"Refresh failed.");return}
-    if(retry>0){btn.disabled=true;setStatus(`Data is up to date — next refresh available in ${retry}s.`);schedule(1000);return}
-    stopPolling();btn.disabled=false;setStatus("");
-  }).catch(()=>{stopPolling();btn.disabled=false;setStatus("Cannot reach the refresh service. Please try again shortly.")});
-}
-btn.addEventListener("click",()=>{
-  btn.disabled=true;setStatus("Starting…");
-  fetch(REFRESH_API+"/refresh",{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"})
-    .then(async response=>{
-      const data=await response.json().catch(()=>({}));
-      if(response.status===202||response.status===409){setStatus("Refreshing…");schedule(1500);return}
-      if(response.status===429||data.error==="cooldown"){poll();return}
-      stopPolling();btn.disabled=false;
-      if(response.status===401){setStatus("This server requires a refresh token (start it with --token).");return}
-      if(response.status===403){setStatus("Blocked: the request did not come from this dashboard.");return}
-      setStatus(data.message||data.error||"Refresh failed.");
-    })
-    .catch(()=>{stopPolling();btn.disabled=false;setStatus("Cannot reach the refresh service. Please try again shortly.")});
-});
-poll();
-})();
+__SHELL_JS__
 </script>
 </body>
 </html>

@@ -47,7 +47,23 @@ const RECENT_COMPLETION_SECONDS = 900;
 const STATUS_CACHE_SECONDS = 5;
 
 // Weekly cadence is 168h; allow headroom before calling the data stale.
+// Applies to BOTH dashboards: they publish on the same weekly beat, but from
+// separate pipelines writing separate status files.
 const STALE_AFTER_HOURS = 192;
+
+// One status sidecar per pipeline. Deliberately NOT a single combined file: the
+// chat and media pipelines must not share an output, so that a broken media run
+// can never leave the chat freshness unreadable (or vice versa).
+const STATUS_FILES = {
+  chat: "dashboard/status.json",
+  media: "dashboard/media_status.json",
+};
+
+// The per-target outcome of the last unified refresh, written by
+// dashboard/refresh_all.py. This is how this Worker can report per-dashboard
+// success/failure at all: it cannot see the action runner's memory, only the
+// repository.
+const REFRESH_STATUS_FILE = "dashboard/refresh_status.json";
 
 // Only these triggers represent an actual DATA refresh. A `push` run
 // republishes the site but fetches nothing, so counting it would disable the
@@ -172,14 +188,14 @@ async function readJob(token) {
 }
 
 /**
- * Read dashboard/status.json straight from the repository.
+ * Read one dashboard's status sidecar straight from the repository.
  *
  * Deliberately the Contents API rather than raw.githubusercontent.com: the raw
  * host is CDN-cached, so it can serve a stale copy for minutes after a deploy
  * and the button would misreport how old the data is.
  */
-async function readDataStatus(token) {
-  const res = await github("/contents/dashboard/status.json", token, {
+async function readDataStatus(token, path) {
+  const res = await github(`/contents/${path}`, token, {
     accept: "application/vnd.github.raw+json",
   });
   if (!res.ok) {
@@ -215,12 +231,53 @@ async function readDataStatus(token) {
   };
 }
 
+/**
+ * The per-target outcomes of a run, IF they belong to that run.
+ *
+ * The recency guard is load-bearing. refresh_status.json is a committed file
+ * that keeps whatever the last run wrote - including a local run, or one from
+ * days ago - so without comparing its timestamp against the run it is being
+ * attributed to, a stale file would be reported as the outcome of a refresh
+ * that just happened.
+ */
+async function readRefreshTargets(token, run) {
+  if (!run || !run.started_at) return null;
+  const res = await github(`/contents/${REFRESH_STATUS_FILE}`, token, {
+    accept: "application/vnd.github.raw+json",
+  });
+  if (!res.ok) return null;
+
+  let parsed;
+  try {
+    parsed = JSON.parse(await res.text());
+  } catch {
+    return null;
+  }
+  if (!parsed || !parsed.generated_at) return null;
+
+  const generated = Date.parse(parsed.generated_at);
+  const started = Date.parse(run.started_at);
+  if (Number.isNaN(generated) || Number.isNaN(started)) return null;
+  if (generated < started) return null;
+
+  return parsed.targets || null;
+}
+
 async function buildStatus(token) {
-  const [job, data] = await Promise.all([
+  const [job, chat, media] = await Promise.all([
     readJob(token),
-    readDataStatus(token),
+    readDataStatus(token, STATUS_FILES.chat),
+    readDataStatus(token, STATUS_FILES.media),
   ]);
-  return { ok: true, data, job };
+
+  // Per-target detail only while it belongs to the run being reported. `idle`
+  // means no recent run, so there is nothing to attribute an outcome to.
+  const targets = job.state === "idle" ? null : await readRefreshTargets(token, job);
+
+  // `data` keeps the chat pipeline's fields at the top level for backwards
+  // compatibility with the already-deployed page, and gains the image
+  // dashboard's own block beside them.
+  return { ok: true, data: { ...chat, media }, job: { ...job, targets } };
 }
 
 async function cachedStatus(request, token) {

@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "generated_at": "2026-09-22T06:32:27.553343+00:00",
+  "state": "failed",
+  "duration_seconds": 0.49,
+  "targets": {
+    "chat": {
+      "ok": false,
+      "steps": [
+        {
+          "step": "fetch",
+          "at": "2026-09-22T06:32:27.152545+00:00",
+          "skipped": true,
+          "reason": "--skip-fetch"
+        },
+        {
+          "step": "weekly_picks",
+          "at": "2026-09-22T06:32:27.182054+00:00",
+          "summary": {
+            "intelligence": "unchanged",
+            "coding": "unchanged",
+            "agentic": "unchanged"
+          },
+          "week": "2026-09-21_2026-09-27"
+        },
+        {
+          "step": "build",
+          "at": "2026-09-22T06:32:27.292833+00:00",
+          "exit_code": 1
+        }
+      ],
+      "started_at": "2026-09-22T06:32:27.151281+00:00",
+      "dashboard": "C:\\Users\\Mark Gelson\\Desktop\\Hurdman\\Data Analysis\\LLM Analysis\\dashboard\\price_performance_final.html",
+      "weekly": {
+        "week_key": "2026-09-21_2026-09-27",
+        "week_label": "Mon 21 Sep - Sun 27 Sep 2026",
+        "iso_week": "2026-W39",
+        "metrics": {
+          "intelligence": "unchanged",
+          "coding": "unchanged",
+          "agentic": "unchanged"
+        }
+      },
+      "error": "build_failed",
+      "message": "The dashboard rebuild was refused, so the previous HTML is still in place.",
+      "detail": "STALE: data is 184.0 hours old (retrieved_at=2026-09-14T14:33:01.477439+00:00), older than the 1.0-hour freshness window - the weekly pull may not have run",
+      "duration_seconds": 0.24,
+      "finished_at": "2026-09-22T06:32:27.292856+00:00",
+      "target": "chat",
+      "state": "failed"
+    },
+    "media": {
+      "ok": true,
+      "target": "media",
+      "steps": [
+        {
+          "step": "fetch",
+          "at": "2026-09-22T06:32:27.407103+00:00",
+          "skipped": true,
+          "reason": "--skip-fetch"
+        },
+        {
+          "step": "build",
+          "at": "2026-09-22T06:32:27.527409+00:00",
+          "exit_code": 0
+        },
+        {
+          "step": "status",
+          "at": "2026-09-22T06:32:27.541537+00:00",
+          "path": "C:\\Users\\Mark Gelson\\Desktop\\Hurdman\\Data Analysis\\LLM Analysis\\dashboard\\media_status.json"
+        }
+      ],
+      "started_at": "2026-09-22T06:32:27.405800+00:00",
+      "dashboard": "C:\\Users\\Mark Gelson\\Desktop\\Hurdman\\Data Analysis\\LLM Analysis\\dashboard\\image_model_analysis.html",
+      "retrieved_at": "2026-09-17T03:40:50.991972+00:00",
+      "model_count": 52,
+      "status_path": "C:\\Users\\Mark Gelson\\Desktop\\Hurdman\\Data Analysis\\LLM Analysis\\dashboard\\media_status.json",
+      "duration_seconds": 0.25,
+      "finished_at": "2026-09-22T06:32:27.541564+00:00",
+      "state": "ok"
+    }
+  }
+}

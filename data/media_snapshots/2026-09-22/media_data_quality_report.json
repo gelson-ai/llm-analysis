@@ -1,0 +1,56 @@
+{
+  "issue_count": 8,
+  "error_count": 0,
+  "warning_count": 0,
+  "info_count": 8,
+  "issues": [
+    {
+      "severity": "info",
+      "issue": "no_pricing_skus",
+      "count": 52,
+      "detail": "52 media model(s) publish no pricing_skus at all (expected for every image model - image pricing lives in the per-model endpoints record instead; sample: ['openai/gpt-image-2.5-sunburst', 'openai/gpt-image-2.5-flare', 'microsoft/mai-image-2.6', 'microsoft/mai-image-2.6-flash', 'meta/muse-image', 'recraft/recraft-v4-styles-pro', 'recraft/recraft-v4-styles-vector', 'recraft/recraft-v4-styles-pro-vector', 'recraft/recraft-v4-styles', 'bytedance-seed/seedream-5-0-lite'])"
+    },
+    {
+      "severity": "info",
+      "issue": "price_data_without_comparable_rate",
+      "count": 6,
+      "detail": "6 media model(s) publish a price but not in a unit that can be compared across models (e.g. priced only per video token, per megapixel-second, or with a per-generation minimum): ['black-forest-labs/flux-video-upscale', 'bytedance/seedance-2.0-mini', 'bytedance/seedance-2.5', 'bytedance/seedance-2.0', 'bytedance/seedance-2.0-fast', 'bytedance/seedance-1-5-pro']. They are NOT unpriced - see 'has_any_price' vs 'has_valid_pricing' on each record."
+    },
+    {
+      "severity": "info",
+      "issue": "image_endpoint_pricing_missing",
+      "count": 4,
+      "detail": "4 image model(s) returned an endpoints record with no usable price: ['krea/krea-2-large', 'krea/krea-2-medium', 'krea/krea-2-medium-turbo', 'meta/muse-image']"
+    },
+    {
+      "severity": "info",
+      "issue": "prompt_benchmarks_collected",
+      "count": 867,
+      "detail": "867 prompt-benchmark row(s) parsed from 28 page(s); 66 distinct model(s) matched to the catalog. Correctness values are per-prompt judged pass counts, not a global score."
+    },
+    {
+      "severity": "info",
+      "issue": "design_arena_collected",
+      "count": 44,
+      "detail": "44 Design Arena row(s) collected for 13 media model(s), by source: {'/api/v1/models?output_modalities=image': 44}. Rows come from the generic catalog filtered by output modality, not from the dedicated image/video endpoints."
+    },
+    {
+      "severity": "info",
+      "issue": "architecture_synthesized",
+      "count": 29,
+      "detail": "29 media model(s) had no `architecture` block in the API response (expected for video models), so output modality was derived from the catalog they came from and `architecture.synthesized` is set on those records."
+    },
+    {
+      "severity": "info",
+      "issue": "unit_conversion_applied",
+      "count": 12,
+      "detail": "12 cent-denominated SKU key(s) were converted to USD by dividing by 100: ['cents_per_image_input', 'cents_per_megapixel_second_creative', 'cents_per_megapixel_second_precise', 'cents_per_second_output', 'cents_per_second_output_1080p', 'cents_per_second_output_720p', 'cents_per_second_video_continuation_1080p', 'cents_per_second_video_continuation_720p', 'cents_per_video_output_second_1080p', 'cents_per_video_output_second_480p', 'cents_per_video_output_second_720p', 'minimum_cents_per_generation']"
+    },
+    {
+      "severity": "info",
+      "issue": "currency_assumed_usd",
+      "count": 25,
+      "detail": "25 SKU key(s) carry no explicit currency marker and were assumed to be USD (all bare keys observed live are USD): ['duration_seconds', 'duration_seconds_1024p', 'duration_seconds_1080p', 'duration_seconds_480p', 'duration_seconds_720p', 'duration_seconds_768p', 'duration_seconds_with_audio', 'duration_seconds_with_audio_4k', 'duration_seconds_with_audio_720p', 'duration_seconds_without_audio', 'duration_seconds_without_audio_4k', 'duration_seconds_without_audio_720p', 'image_to_video_duration_seconds_1080p', 'image_to_video_duration_seconds_720p', 'reference_images', 'text_to_video_duration_seconds_1080p', 'text_to_video_duration_seconds_480p', 'text_to_video_duration_seconds_720p', 'video_tokens', 'video_tokens_1080p', 'video_tokens_1080p_with_video_input', 'video_tokens_4k', 'video_tokens_4k_with_video_input', 'video_tokens_with_video_input', 'video_tokens_without_audio']"
+    }
+  ]
+}

@@ -31,10 +31,28 @@ Extraction therefore parses markup, and is written defensively because of it:
   - a page that parses to zero rows raises, because the only way that happens is
     a markup change, and silently returning nothing would look exactly like
     "these models have no benchmark data".
+
+ADDITIVE ENRICHMENT (2026-09-22): the pages ALSO embed a machine-readable
+per-asset payload (a Next.js RSC flight payload) carrying, per generated asset,
+`asset{url,thumbnailUrl,width,height,mediaType}` and `durationMs`. That is where
+per-row output RESOLUTION and precise generation time come from - the rendered
+markup has neither. It is deliberately an ADDITION, not a second source of
+truth:
+
+  - the judged pass counts stay authoritative from the markup, because
+    `score.checks` is empty on some pages (e.g. /benchmarks/media/images/portraits
+    carried 144 assets and zero checks), so a payload-only parser would lose
+    them;
+  - rows are found BY KEY (walk out from `"costUsd"` to the enclosing object),
+    never by position, because the RSC envelope around them is not a contract;
+  - a page whose payload contains `costUsd` but yields no rows RAISES, since
+    that combination can only mean this extraction broke - the silent
+    alternative would be a dashboard quietly losing its resolution column.
 """
 from __future__ import annotations
 
 import html as html_lib
+import json
 import re
 from typing import Optional
 
@@ -78,6 +96,117 @@ _NON_MODEL_PREFIXES = (
 
 _RELEASE_DATE_SUFFIX_RE = re.compile(r"-\d{8}$")
 
+# The page ships its data as Next.js RSC flight chunks: JS string literals
+# pushed into a global array. Decoding them yields a blob of JSON-ish text.
+_FLIGHT_CHUNK_RE = re.compile(r'self\.__next_f\.push\(\[\d+,("(?:[^"\\]|\\.)*")\]\)')
+
+# Anchor for locating one asset object. The key is quoted, so it cannot match a
+# description mentioning cost.
+_ASSET_ANCHOR_RE = re.compile(r'"costUsd"')
+
+
+def _decode_flight_payload(page_html: str) -> str:
+    """Concatenate and unescape the page's RSC flight chunks. "" if none."""
+    parts: list[str] = []
+    for match in _FLIGHT_CHUNK_RE.finditer(page_html):
+        try:
+            parts.append(json.loads(match.group(1)))
+        except ValueError:
+            continue
+    return "".join(parts)
+
+
+def _enclosing_object_bounds(text: str, anchor: int) -> Optional[tuple[int, int]]:
+    """The [start, end) slice of the JSON object containing `anchor`.
+
+    Walks outwards on brace depth. The result is validated by the caller actually
+    parsing it, so a miscount (a brace inside a string value, say) fails that
+    row rather than producing a wrong number.
+    """
+    depth = 0
+    start = None
+    for index in range(anchor, -1, -1):
+        character = text[index]
+        if character == "}":
+            depth += 1
+        elif character == "{":
+            if depth == 0:
+                start = index
+                break
+            depth -= 1
+    if start is None:
+        return None
+
+    depth = 0
+    for index in range(start, len(text)):
+        character = text[index]
+        if character == "{":
+            depth += 1
+        elif character == "}":
+            depth -= 1
+            if depth == 0:
+                return start, index + 1
+    return None
+
+
+def parse_asset_payload(page_html: str) -> dict[str, dict]:
+    """Per-asset measurements from the embedded payload, keyed by model id.
+
+    Keys are date-stripped (`foo/bar-20260101` and `foo/bar` collapse to the
+    same key) because the payload and the markup disagree about whether the
+    canonical slug carries its release date: image payloads use the undated
+    form, video payloads the dated one, and the markup always uses the dated
+    one. Comparing stripped forms handles all three cases.
+
+    A model with more than one asset keeps the FIRST in payload order and
+    records how many it had, so the choice is deterministic rather than
+    dependent on scan order. Resolving multiple assets into one figure is a
+    separate question and is not guessed at here.
+    """
+    payload = _decode_flight_payload(page_html)
+    if not payload:
+        return {}
+
+    assets: dict[str, dict] = {}
+    for match in _ASSET_ANCHOR_RE.finditer(payload):
+        bounds = _enclosing_object_bounds(payload, match.start())
+        if not bounds:
+            continue
+        try:
+            record = json.loads(payload[bounds[0]:bounds[1]])
+        except ValueError:
+            continue
+        if not isinstance(record, dict) or "asset" not in record:
+            continue
+
+        model_id = (record.get("model") or {}).get("id")
+        if not model_id:
+            continue
+        asset = record.get("asset") or {}
+
+        key = strip_release_date_suffix(model_id)
+        entry = assets.get(key)
+        if entry is None:
+            assets[key] = {
+                "asset_count": 1,
+                "asset_url": asset.get("url"),
+                "thumbnail_url": asset.get("thumbnailUrl"),
+                "asset_media_type": asset.get("mediaType"),
+                "output_width": asset.get("width"),
+                "output_height": asset.get("height"),
+                "duration_ms": record.get("durationMs"),
+            }
+        else:
+            entry["asset_count"] += 1
+
+    if not assets and "costUsd" in payload:
+        raise MediaBenchmarkParseError(
+            "the embedded per-asset payload lists costUsd entries but none could "
+            "be parsed - the payload shape has changed, and continuing would "
+            "silently drop output resolution and generation time"
+        )
+    return assets
+
 
 def discover_prompt_slugs(index_html: str, media_type: str) -> list[str]:
     """Return the prompt slugs linked from a benchmark index page, in page order.
@@ -98,6 +227,23 @@ def discover_prompt_slugs(index_html: str, media_type: str) -> list[str]:
         if slug not in slugs:
             slugs.append(slug)
     return slugs
+
+
+def page_publishes_judged_checks(page_html: str) -> bool:
+    """Whether the page carries ANY judged pass count.
+
+    This exists to tell two very different empty results apart, because the
+    caller's correct reaction to each is opposite:
+
+      * a page with NO check markers anywhere is a different kind of page -
+        OpenRouter added one (``/benchmarks/media/images/portraits``, live
+        2026-09-22: 192 result-row blocks, 144 generated assets, and the word
+        "checks" nowhere in the document). There is nothing to score, so it is
+        skipped and recorded;
+      * a page that DOES publish check markers but yielded no rows means this
+        parser broke, and must raise rather than quietly contribute nothing.
+    """
+    return bool(_CHECKS_ARIA_RE.search(page_html) or _CHECKS_VISIBLE_RE.search(page_html))
 
 
 def _clean_text(raw: str) -> str:
@@ -167,6 +313,14 @@ def parse_prompt_page(page_html: str) -> list[dict]:
                 if field == "checks_passed" and (row[field] or 0) > (existing[field] or 0):
                     existing[field] = row[field]
 
+    # Additive enrichment from the embedded payload. Absent fields stay absent:
+    # this must never be required for a row to be usable.
+    assets = parse_asset_payload(page_html)
+    for row in merged.values():
+        entry = assets.get(strip_release_date_suffix(row["raw_model_slug"]))
+        if entry:
+            row.update(entry)
+
     return list(merged.values())
 
 
@@ -211,6 +365,16 @@ def normalize_prompt_benchmark_row(
         "model_name": row.get("model_name"),
         "matched": model_id is not None,
         "media_type": media_type,
+        # --- additive, from the embedded per-asset payload -------------------
+        # Always present as keys (None when the page published no payload), so
+        # the normalized schema and the CSV columns do not vary per page.
+        "asset_count": row.get("asset_count"),
+        "asset_url": row.get("asset_url"),
+        "thumbnail_url": row.get("thumbnail_url"),
+        "asset_media_type": row.get("asset_media_type"),
+        "output_width": row.get("output_width"),
+        "output_height": row.get("output_height"),
+        "duration_ms": row.get("duration_ms"),
         "prompt_slug": prompt_slug,
         "prompt_name": prompt_name,
         "benchmark_name": f"Media Prompt Benchmark: {media_type}/{prompt_slug}",

@@ -1,10 +1,21 @@
 # OpenRouter Model Price-to-Performance Data Pipeline
 
-Data acquisition and validation phase only. This does **not** produce a
-final performance score or a value ranking — it collects OpenRouter's model
-inventory and pricing reliably, investigates what benchmark data (if any)
-OpenRouter actually exposes, and reports coverage so that decision can be
-made on evidence.
+Two dashboards are published from this repo, each with its own pipeline and
+source data:
+
+| Page | Pipeline | Source |
+| --- | --- | --- |
+| **Chat models** (`index.html`) | `run_pipeline.py` | `/api/v1/models` + Artificial Analysis indices |
+| **Image models** (`image_model_analysis.html`) | `run_media_pipeline.py` | `/api/v1/images/models` + media prompt benchmarks + Design Arena |
+
+The two pipelines are deliberately independent - separate entry points, separate
+lock files, separate status files - so one can never break the other. A single
+**Update All Latest AI Data** button (and `dashboard/refresh_all.py`) runs both
+and reports per-dashboard success/failure.
+
+Data acquisition and validation phase only for the chat pipeline. Neither page
+invokes a generation model: everything shown is scraped or read from published
+catalogues, so refreshing never spends money on model API calls.
 
 ## Setup
 
@@ -17,15 +28,16 @@ pip install -r requirements.txt
 ## Run
 
 ```bash
-python run_pipeline.py
+python run_pipeline.py        # chat models
+python run_media_pipeline.py  # image + video models (~90s)
 ```
 
-This requires normal internet access to `https://openrouter.ai`. **It will
+Both require normal internet access to `https://openrouter.ai`. **They will
 not run inside a network-restricted sandbox** — this project was scaffolded
 and tested (with synthetic data) inside one, so the first real run needs to
 happen from a normal terminal on your machine.
 
-Run the test suite (uses synthetic fixtures, no network needed):
+Run the test suite (uses saved fixtures, no network needed):
 
 ```bash
 python -m pytest tests/ -v
@@ -33,7 +45,7 @@ python -m pytest tests/ -v
 
 ## Refresh on demand
 
-The dashboard is a single self-contained HTML file with the data snapshot
+Each dashboard is a single self-contained HTML file with the data snapshot
 baked in, so a copy opened straight from disk can never update itself - it has
 no way to rewrite `data/normalized/` or republish the HTML. The refresh button
 therefore needs a small local server:
@@ -44,25 +56,31 @@ python dashboard/serve.py
 
 On Windows you can just double-click **`start_dashboard.bat`**, which starts the
 server and opens the browser for you. Otherwise run the command above, open the
-address it prints (`http://127.0.0.1:8765/`), then use **Refresh data** in the
-masthead.
+address it prints (`http://127.0.0.1:8765/`), then use **Update All Latest AI
+Data** in the masthead - it is on both pages and refreshes **both** dashboards in
+one click.
 
 The server has to stay running: if you close that window, the page still loads
 from the browser cache but refresh will report that it cannot reach the
 service. The same work is available from the command line:
 
 ```bash
-python dashboard/refresh.py                # fetch + rebuild (one command)
-python dashboard/refresh.py --skip-fetch   # rebuild from data already on disk
+python dashboard/refresh_all.py              # both dashboards, one command
+python dashboard/refresh_all.py --targets media
+python dashboard/refresh_all.py --skip-fetch # rebuild from data on disk
 ```
 
-`dashboard/refresh.py` is the single entry point: it runs the pipeline, locks
-this week's picks, then rebuilds the HTML. `dashboard/serve.py` only executes
-it - which is deliberate, so the identical command can later be called by a
-GitHub Action with no changes.
+`dashboard/refresh_all.py` is the single entry point: it runs `refresh.py`
+(chat: pipeline, weekly picks, rebuild) and `refresh_media.py` (media: pipeline,
+rebuild) as **separate processes** and reports each one's outcome. It never
+merges their code paths, so the media pipeline cannot break the chat one. A
+failure in either does not skip the other - you get
+`Chat: failed - … Image: updated.` rather than an all-or-nothing result.
+`dashboard/serve.py` only executes it, which is deliberate, so the identical
+command is what CI calls.
 
-A refresh fails safely: if the fetch fails, nothing is rebuilt and the
-previously published dashboard keeps being served.
+A refresh fails safely: if a fetch fails, that dashboard is not rebuilt and the
+previously published version keeps being served.
 
 Server options:
 
@@ -72,8 +90,9 @@ Server options:
 | `--port` | `8765` | Port. |
 | `--token` | none | Require a token on refresh (`Authorization: Bearer <token>`). |
 | `--cooldown-seconds` | `600` | Minimum gap between refreshes; earlier requests get `429`. |
-| `--max-age-hours` | `72` | Freshness window enforced by the build. |
-| `--skip-fetch` | off | Rebuild only, no network. |
+| `--max-age-hours` | `72` | Freshness window enforced by the **chat** build. |
+| `--media-max-age-hours` | `192` | Freshness window for the **image** build. Wider on purpose: media shares the weekly cadence. |
+| `--skip-fetch` | off | Rebuild only, no network (either pipeline). |
 
 Guards: one refresh at a time (`409`), a cooldown (`429`) with `Retry-After`,
 cross-origin `POST`s rejected (`403`), a required JSON content type (`415`),
@@ -105,6 +124,16 @@ week's recorded pick stands. History lives in
 `data/analysis/weekly_picks.json` - one entry per metric per week, with the
 top-3 contenders and any revisions. Ties break deterministically on value
 ratio, then score, then price, then model id.
+
+The **image dashboard** has its own Model of the Week with the same week
+semantics over a single metric (pass rate ÷ benchmark cost), and its own history
+file at `data/analysis/media_weekly_picks.json`. The two are deliberately
+separate files: they lock different picks over different model sets, so a shared
+record would let one pipeline's lock overwrite the other's. Its tie-break is the
+one the page's own value ranking already uses - value, then model id - so the
+locked pick can never disagree with the rank printed beside it. On both pages the
+card is labelled "Model of the week", shows the week range, and sits directly
+above a head-to-head comparison against any other model in the snapshot.
 
 **Snapshot note:** an on-demand refresh deliberately writes at most one
 snapshot per day (`--no-snapshot` is passed when today's snapshot already
