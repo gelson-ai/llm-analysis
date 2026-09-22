@@ -224,7 +224,19 @@ footer code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fon
   models at all.
 </aside>
 
-<!-- 01 — hero ---------------------------------------------------------------->
+<!-- 01 — inventory snapshot --------------------------------------------------->
+<!-- Ordered as the chat dashboard is: inventory first, then the pick. A reader
+     who lands here and on the chat page should meet the same sequence. -->
+<section aria-labelledby="inventoryTitle">
+  <div class="section-head">
+    <p class="eyebrow">Overview</p>
+    <h2 id="inventoryTitle">Inventory snapshot</h2>
+    <p class="card-sub">Coverage across the full image-generation catalogue in this embedded snapshot. Models without benchmark rows are counted, never dropped.</p>
+  </div>
+  <div class="kpi-row" id="kpiRow"></div>
+</section>
+
+<!-- 02 — hero ------------------------------------------------------------------>
 <section aria-labelledby="heroTitle">
   <div class="card weekly-pick">
     <div class="pick-grid">
@@ -245,7 +257,7 @@ footer code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fon
   </div>
 </section>
 
-<!-- 01b — head to head --------------------------------------------------------->
+<!-- 02b — head to head --------------------------------------------------------->
 <!-- The same control the chat dashboard offers, over this page's metrics. The
      baseline is the Model of the Week above (the locked pick when there is one),
      so the comparison cannot quietly answer a different question than the card
@@ -265,16 +277,6 @@ footer code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fon
     </div>
     <div id="comparisonContent" class="comparison-empty" aria-live="polite">Choose a model to compare.</div>
   </div>
-</section>
-
-<!-- 02 — inventory ----------------------------------------------------------->
-<section aria-labelledby="inventoryTitle">
-  <div class="section-head">
-    <p class="eyebrow">Overview</p>
-    <h2 id="inventoryTitle">Inventory snapshot</h2>
-    <p class="card-sub">Coverage across the full image-generation catalogue in this embedded snapshot. Models without benchmark rows are counted, never dropped.</p>
-  </div>
-  <div class="kpi-row" id="kpiRow"></div>
 </section>
 
 <!-- 03 — value leaders ------------------------------------------------------->
