@@ -50,6 +50,10 @@ h1{font-family:var(--font-display);font-weight:400;font-size:clamp(34px,5.2vw,60
 .masthead-meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 30px;margin-top:24px;padding-top:16px;border-top:1px solid var(--rule);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
 .masthead-meta b{color:var(--ink);font-weight:600;margin-right:7px}
 .masthead-meta code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10.5px;text-transform:none;letter-spacing:0;color:var(--ink-soft)}
+.tabs{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-left:0}
+.tabs .tab{display:inline-block;border:1px solid var(--rule-strong);background:transparent;color:var(--ink-soft);font-family:var(--font-text);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 13px;border-radius:0;cursor:pointer;text-decoration:none;transition:background 120ms ease,color 120ms ease,border-color 120ms ease}
+.tabs .tab:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.tabs .tab[aria-current="page"]{background:var(--ink);color:var(--paper);border-color:var(--ink);cursor:default}
 .theme-toggle{appearance:none;margin-left:auto;border:1px solid var(--rule-strong);background:transparent;color:var(--ink-soft);font-family:var(--font-text);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 13px;border-radius:0;cursor:pointer;transition:background 120ms ease,color 120ms ease,border-color 120ms ease}
 .theme-toggle:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 .banner,.card,.kpi,.quality-panel{background:transparent;border:0;border-radius:0;box-shadow:none}
@@ -194,7 +198,7 @@ footer code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fon
   <h1>Image Generation Price vs. Performance</h1>
   <p class="subtitle" id="snapshotLine"></p>
   <div class="masthead-meta">
-    <a class="theme-toggle" href="index.html" style="margin-left:0;text-decoration:none">Chat models &#8594;</a>
+    <nav class="tabs" id="navTabs" aria-label="Dashboards"></nav>
     <span><b>Source</b>OpenRouter <code>/api/v1/images/models</code></span>
     <span><b>Benchmarks</b>OpenRouter media prompt benchmarks · Design Arena</span>
     <span><b>Value</b>pass rate ÷ benchmark cost</span>
@@ -380,14 +384,7 @@ footer code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fon
 </div></main><div class="tooltip" id="tooltip" role="tooltip"></div>
 
 <script>
-(()=>{"use strict";
-const root=document.documentElement,btn=document.getElementById("themeToggle"),mq=window.matchMedia("(prefers-color-scheme: dark)");
-const resolved=()=>root.dataset.theme||(mq.matches?"dark":"light");
-const label=()=>{const theme=resolved();btn.textContent=theme==="dark"?"Light mode":"Dark mode";btn.setAttribute("aria-pressed",String(theme==="dark"))};
-label();
-btn.addEventListener("click",()=>{root.dataset.theme=resolved()==="dark"?"light":"dark";label()});
-if(mq.addEventListener){mq.addEventListener("change",label)}else if(mq.addListener){mq.addListener(label)}
-})();
+__SHELL_JS__
 </script>
 <script>
 (()=>{"use strict";

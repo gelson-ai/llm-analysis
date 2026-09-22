@@ -30,6 +30,7 @@ DASHBOARD_DIR = Path(__file__).resolve().parent
 if str(DASHBOARD_DIR) not in sys.path:
     sys.path.insert(0, str(DASHBOARD_DIR))
 
+import page_shell  # noqa: E402  (sibling module - needs the path insert above)
 import weekly_picks  # noqa: E402  (sibling module - needs the path insert above)
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -199,6 +200,9 @@ def main() -> int:
     with open(TEMPLATE_PATH, encoding="utf-8") as f:
         html = f.read()
     html = html.replace("__DATA__", json.dumps(payload, separators=(",", ":")))
+    # The nav bar + theme toggle are shared with the image page rather than
+    # duplicated per template, so the two pages cannot drift apart.
+    html = page_shell.inject(html)
 
     # Write to a temp file and swap it in, so a viewer can never load a
     # half-written dashboard.

@@ -26,7 +26,14 @@ if str(DASHBOARD_DIR) not in sys.path:
 
 import build_image_dashboard as builder  # noqa: E402  (needs the path insert above)
 
-RETRIEVED_AT = datetime(2026, 9, 17, 3, 40, 50, tzinfo=timezone.utc)
+# Anchored relative to the real clock on purpose. check_freshness() compares the
+# fixture timestamp against datetime.now(), so a frozen calendar date silently
+# turns this suite red once that date is older than the window under assertion
+# (72h) - which is exactly what happened on 2026-09-20, breaking the pytest gate
+# that publish.yml runs before every deploy. One hour old is comfortably inside a
+# 72h window and stays that way. The stale case is still covered explicitly by the
+# 30-day offset in test_stale_data_refuses_to_build_and_writes_nothing.
+RETRIEVED_AT = datetime.now(timezone.utc) - timedelta(hours=1)
 
 
 def iso(moment: datetime) -> str:
@@ -187,7 +194,9 @@ def install(tmp_path, monkeypatch, models=None, prompt_rows=None, arena_rows=Non
     return paths
 
 
-def install_template(tmp_path, monkeypatch, template="<html><body><script>const PAYLOAD=__DATA__;</script></body></html>"):
+def install_template(tmp_path, monkeypatch,
+                     template="<html><body><script>const PAYLOAD=__DATA__;</script>"
+                              "<script>__SHELL_JS__</script></body></html>"):
     template_path = tmp_path / "image_template.html"
     template_path.write_text(template, encoding="utf-8")
     output_path = tmp_path / "image_model_analysis.html"
@@ -539,7 +548,8 @@ def test_render_substitutes_the_data_placeholder_with_parseable_json(tmp_path, m
     install(tmp_path, monkeypatch)
     _, output_path = install_template(
         tmp_path, monkeypatch,
-        template="<html><body><script>const PAYLOAD=__DATA__;</script></body></html>",
+        template="<html><body><script>const PAYLOAD=__DATA__;</script>"
+                 "<script>__SHELL_JS__</script></body></html>",
     )
     payload = builder.build_payload()
     written = builder.render(payload)

@@ -53,8 +53,11 @@ DASHBOARD_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = DASHBOARD_DIR.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
+if str(DASHBOARD_DIR) not in sys.path:
+    sys.path.insert(0, str(DASHBOARD_DIR))
 
 from config import settings  # noqa: E402  (needs the path insert above)
+import page_shell  # noqa: E402  (sibling module - shared with the chat builder)
 
 # --- inputs: media-pipeline outputs only -----------------------------------
 IMAGE_MODELS_PATH = settings.MEDIA_IMAGE_MODELS_JSON_PATH
@@ -535,6 +538,9 @@ def render(payload: dict) -> Path:
     with open(TEMPLATE_PATH, encoding="utf-8") as f:
         html = f.read()
     html = html.replace("__DATA__", json.dumps(payload, separators=(",", ":")))
+    # Nav bar + theme toggle are shared with the chat page rather than
+    # duplicated per template, so the two pages cannot drift apart.
+    html = page_shell.inject(html)
 
     # Temp file + swap, so a viewer can never load a half-written dashboard.
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)

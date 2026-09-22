@@ -5,10 +5,12 @@ that only hold across files, and that a future edit could quietly break:
 
   * the image template's styling is a *verbatim copy* of the chat template's,
     so the two pages cannot drift apart into different-looking products;
-  * the chat page gained exactly one link and nothing else;
+  * navigation is rendered from dashboard/nav_tabs.py rather than hardcoded per
+    template, and every tab is both served locally and staged on deploy, so a
+    tab can never 404 and a third (video) dashboard is one entry in that file;
+  * both pages receive the same injected shell, so their nav bar and theme
+    toggle cannot drift;
   * serve.py's original routes still point at the original file;
-  * the workflow stages the new page at the exact path the nav link uses, so
-    the link cannot 404 on the live site;
   * the new build writes to a path no frozen chat-side surface is watching.
 
 tests/test_media_snapshot_paths.py is the precedent for this style: import the
@@ -19,6 +21,8 @@ import re
 import sys
 from pathlib import Path
 
+import pytest
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DASHBOARD_DIR = PROJECT_ROOT / "dashboard"
 if str(DASHBOARD_DIR) not in sys.path:
@@ -26,6 +30,8 @@ if str(DASHBOARD_DIR) not in sys.path:
 
 import build_dashboard  # noqa: E402  (imported read-only - never modified)
 import build_image_dashboard  # noqa: E402
+import nav_tabs  # noqa: E402  (the shared tab list - single source of truth)
+import page_shell  # noqa: E402
 import serve  # noqa: E402
 
 CHAT_TEMPLATE_PATH = DASHBOARD_DIR / "template.html"
@@ -35,11 +41,12 @@ PUBLISH_WORKFLOW_PATH = PROJECT_ROOT / ".github" / "workflows" / "publish.yml"
 IMAGE_PAGE = "image_model_analysis.html"
 
 # Fingerprint of the chat template's four <style> blocks, concatenated. This is
-# a deliberate tripwire: the design system lives entirely in those blocks, and
-# this phase promised not to touch them. If you are *intentionally* changing
-# the design system, update this hash in the same commit - and remember the
-# image template is then out of date too.
-CHAT_STYLE_BLOCK_SHA256 = "cd2bde2a75ffbe0dc69f93812e8ba489203e852c2652bd74b75d129529c97658"
+# a deliberate tripwire: the design system lives entirely in those blocks.
+# Updated once so far - the shared nav-tab rules (.tabs/.tab) were added when
+# navigation moved off the per-template link and onto the shared shell. That was
+# an intentional design-system change, and the image template's copy moved with
+# it (see test_image_template_styles_are_a_verbatim_copy_of_the_chat_template).
+CHAT_STYLE_BLOCK_SHA256 = "a5efa541dac6ea5fbe2ae69db5d1a262eb94a30a465358c98e9230c555f1c412"
 
 # The DOM ids the chat dashboard's minified script owns. They are the contract
 # between that template's markup and its JavaScript; an edit that drops one
@@ -107,13 +114,98 @@ def test_chat_template_style_blocks_are_unchanged():
 
 
 # ---------------------------------------------------------------------------
-# the chat page gained one link and nothing else
+# navigation comes from the shared tab list, not from per-template markup
 # ---------------------------------------------------------------------------
-def test_chat_page_gained_exactly_one_link():
-    body = body_of(read(CHAT_TEMPLATE_PATH))
-    links = re.findall(r"<a\s[^>]*>", body)
-    assert len(links) == 1, f"expected exactly one link on the chat page, found {len(links)}"
-    assert f'href="{IMAGE_PAGE}"' in links[0]
+def test_nav_is_rendered_from_the_shared_tab_list():
+    """Both pages must carry an EMPTY tab container for the shared shell to
+    fill. A hardcoded anchor in there is exactly how a one-way toggle starts,
+    and how the two-way version drifted from a third tab being addable."""
+    for path in (CHAT_TEMPLATE_PATH, IMAGE_TEMPLATE_PATH):
+        html = read(path)
+        match = re.search(r'<nav class="tabs" id="navTabs"[^>]*>(.*?)</nav>', html, re.S)
+        assert match, f"{path.name} is missing the shared tab container"
+        assert match.group(1).strip() == "", (
+            f"{path.name} hardcodes tab markup; tabs must come from nav_tabs.NAV_TABS"
+        )
+        assert html.count("__SHELL_JS__") == 1, (
+            f"{path.name} must receive the shared shell exactly once"
+        )
+
+
+def test_the_shared_shell_never_reads_the_page_payload():
+    """Ordering guard, and the reason the tab data is injected with the code.
+
+    The two templates deliberately order their scripts differently: the image
+    page runs the shell BEFORE its payload script so the theme is applied before
+    first paint. A shell that read PAYLOAD would therefore work on the chat page
+    and silently render ZERO tabs on the image page - no error, just a missing
+    nav. This asserts the dependency never comes back.
+    """
+    source = read(DASHBOARD_DIR / "web_assets" / "shell.js")
+    code = re.sub(r"/\*.*?\*/", "", source, flags=re.S)  # the docs may say anything
+    assert "PAYLOAD" not in code, (
+        "the shell must not read the payload - the templates do not agree on script order"
+    )
+    assert "NAV_TABS" in code, "the shell should render from the injected tab data"
+
+
+def test_the_committed_pages_inject_tab_data_with_the_shell_code():
+    """Self-contained by construction: the data sits immediately above the code
+    in the built page, so the shell cannot depend on another script having run."""
+    for built in (build_dashboard.OUTPUT_PATH, build_image_dashboard.OUTPUT_PATH):
+        html = read(built)
+        data_at = html.index("const NAV_TABS=[")
+        uses_at = html.index('getElementById("navTabs")', data_at)
+        assert data_at < uses_at, f"{built.name} uses NAV_TABS before injecting it"
+
+
+def test_the_shell_placeholder_is_required_and_unique():
+    """inject() must refuse a template that lost the placeholder: silently
+    shipping a page with no navigation is worse than a failed build."""
+    with pytest.raises(ValueError):
+        page_shell.inject("<html><body>no placeholder here</body></html>")
+    with pytest.raises(ValueError):
+        page_shell.inject("<script>__SHELL_JS__</script><script>__SHELL_JS__</script>")
+
+    injected = page_shell.inject(
+        "<nav id=\"navTabs\"></nav><script>__SHELL_JS__</script>",
+        tabs=[{"key": "x", "label": "X", "href": "x.html", "page": "x.html"}],
+    )
+    assert 'const NAV_TABS=[{"key":"x"' in injected
+    # Assert the placeholder was CONSUMED at its injection point. A bare
+    # `"__SHELL_JS__" not in injected` would match the shell's own doc comment,
+    # which names the placeholder on purpose.
+    assert "<script>const NAV_TABS=" in injected
+
+
+def test_both_pages_receive_the_same_shell_source():
+    """The nav bar and theme toggle exist in ONE file, injected at build time.
+    If a builder stops using it, that page silently loses its navigation."""
+    shell_path = DASHBOARD_DIR / "web_assets" / "shell.js"
+    assert shell_path.exists(), "the shared shell asset is missing"
+    source = read(shell_path)
+    # Anchor on the ASSIGNMENT form: the shell's own comment explains the
+    # injected constant by name, so a substring check would match the docs.
+    assert not re.search(r"^const NAV_TABS=", source, re.M), (
+        "the tab DATA is injected per page; only the CODE is shared"
+    )
+    for module in (build_dashboard, build_image_dashboard):
+        assert module.page_shell.SHELL_JS_SOURCE == shell_path
+
+
+def test_the_committed_pages_are_not_stale_relative_to_their_templates():
+    """A template edit does NOT rebuild the published artifact, and the workflow
+    stages the COMMITTED html rather than rebuilding it - so a stale artifact is
+    how a nav change silently fails to appear on the live site."""
+    for built in (build_dashboard.OUTPUT_PATH, build_image_dashboard.OUTPUT_PATH):
+        html = read(built)
+        assert "__DATA__" not in html, f"{built.name} still holds an unsubstituted payload"
+        # The injected form is machine-generated JSON and therefore has no space
+        # around the `=`, unlike the shell's own comment - which is why this can
+        # assert on the injected marker without matching the documentation.
+        assert "const NAV_TABS=[" in html, (
+            f"{built.name} has no injected tab list - rebuild it from its template"
+        )
 
 
 def test_chat_page_still_has_the_structure_its_script_depends_on():
@@ -135,10 +227,35 @@ def test_image_page_does_not_offer_a_refresh_button_it_cannot_honour():
     assert image.count("<script>") == 2
 
 
-def test_the_two_pages_link_to_each_other():
-    image = read(IMAGE_TEMPLATE_PATH)
-    assert f'href="{IMAGE_PAGE}"' in read(CHAT_TEMPLATE_PATH)
-    assert 'href="index.html"' in image, "the image page needs a way back to the chat page"
+def test_every_nav_tab_is_both_served_and_staged():
+    """A tab that 404s is worse than no tab. Tie the tab list to BOTH delivery
+    paths - serve.py locally, the staging step on deploy - so adding the video
+    dashboard fails loudly here until its route and its `cp` line exist."""
+    staged = {Path(dest).name for _, dest in cp_lines()}
+    for tab in nav_tabs.NAV_TABS:
+        assert tab["href"] in staged, (
+            f"the {tab['key']} tab links to {tab['href']}, which the workflow never stages"
+        )
+        assert f"/{tab['href']}" in serve.SERVABLE, (
+            f"the {tab['key']} tab links to {tab['href']}, which serve.py does not route"
+        )
+
+
+def test_every_nav_tab_points_at_a_page_that_is_actually_built():
+    """`page` is the built filename; it differs from `href` for the chat tab
+    (built as price_performance_final.html, staged as index.html). The shell
+    uses both so the active tab is right on the live site AND when the file is
+    opened directly from disk."""
+    for tab in nav_tabs.NAV_TABS:
+        assert (DASHBOARD_DIR / tab["page"]).exists(), (
+            f"the {tab['key']} tab points at {tab['page']}, which is not built"
+        )
+
+    chat_tab = next(tab for tab in nav_tabs.NAV_TABS if tab["key"] == "chat")
+    assert chat_tab["page"] == build_dashboard.OUTPUT_PATH.name
+    assert chat_tab["href"] == "index.html"
+    assert ("dashboard/price_performance_final.html", "_site/index.html") in cp_lines()
+    assert build_image_dashboard.OUTPUT_PATH.name in nav_tabs.pages()
 
 
 # ---------------------------------------------------------------------------
@@ -167,15 +284,18 @@ def test_publish_workflow_stages_every_page_the_nav_links_point_at():
     ]
 
 
-def test_the_staged_image_page_name_is_exactly_the_name_the_link_uses():
-    staged = [dest for source, dest in cp_lines() if source == f"dashboard/{IMAGE_PAGE}"]
-    assert staged == [f"_site/{IMAGE_PAGE}"]
+def test_the_staged_chat_page_name_is_exactly_the_name_its_tab_uses():
+    """The nav link is relative, so it resolves to the same directory only if
+    the basename matches what actually gets staged. This is the reason a tab
+    carries both `href` and `page` rather than one of them."""
+    chat_tab = next(tab for tab in nav_tabs.NAV_TABS if tab["key"] == "chat")
+    staged = [dest for source, dest in cp_lines()
+              if source == f"dashboard/{build_dashboard.OUTPUT_PATH.name}"]
+    assert staged == ["_site/index.html"]
+    assert Path(staged[0]).name == chat_tab["href"]
 
-    # The link in the chat page is relative, so it resolves against the same
-    # directory only if the basename matches what gets staged.
-    href = re.search(r'<a[^>]*href="([^"]+)"[^>]*>', body_of(read(CHAT_TEMPLATE_PATH))).group(1)
-    assert href == IMAGE_PAGE == build_image_dashboard.OUTPUT_PATH.name
-    assert Path(staged[0]).name == href
+    image_tab = next(tab for tab in nav_tabs.NAV_TABS if tab["key"] == "image")
+    assert image_tab["href"] == IMAGE_PAGE == build_image_dashboard.OUTPUT_PATH.name
 
 
 # ---------------------------------------------------------------------------
