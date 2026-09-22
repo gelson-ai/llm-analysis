@@ -100,6 +100,12 @@ class RefreshJob:
                 "started_at": self.started_at,
                 "finished_at": self.finished_at,
                 "result": self.last_result,
+                # Per-target outcomes, lifted to the job level so the local
+                # server and the deployed Worker expose the SAME shape: the
+                # Cloudflare Worker can only report per-target state by reading
+                # refresh_status.json out of the repo, and the page must not
+                # have to care which of the two it is talking to.
+                "targets": (self.last_result or {}).get("targets"),
                 "cooldown_seconds": self.cooldown_seconds,
                 "retry_after_seconds": retry_after,
             }

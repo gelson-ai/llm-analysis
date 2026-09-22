@@ -2,12 +2,23 @@ name: Publish dashboard
 
 # Three ways this runs:
 #   schedule        - the weekly refresh: Monday 00:00 UTC == Monday 08:00 Asia/Manila (UTC+8, no DST)
-#   workflow_dispatch - manual "Run workflow" click, and what the refresh button's proxy triggers
+#   workflow_dispatch - manual "Run workflow" click, and what the refresh button's proxy triggers.
+#                     Its `targets` input picks which dashboards to refresh; the button
+#                     itself always dispatches the default (all).
 #   push            - a human edit; republish only, no network fetch
 on:
   schedule:
     - cron: "0 0 * * 1"
   workflow_dispatch:
+    inputs:
+      targets:
+        description: "Which dashboards to refresh"
+        type: choice
+        options:
+          - all
+          - chat
+          - media
+        default: all
   push:
     branches: [main]
     paths:
@@ -36,7 +47,10 @@ concurrency:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # Must exceed 2x refresh_all.py's per-target ceiling: the unified refresh
+    # gives each pipeline up to 10 minutes, and killing the job mid-pipeline
+    # would throw away a result the other pipeline had already produced.
+    timeout-minutes: 30
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -59,13 +73,29 @@ jobs:
       - name: Run tests
         run: python -m pytest tests/ -q
 
-      # Only on schedule/manual runs, and always fetch-then-build: refresh.py
-      # aborts WITHOUT republishing if the fetch fails, so a bad scrape can
-      # never replace a good dashboard. --max-age-hours 192 (not the 72h
-      # default) leaves headroom for a weekly cadence.
-      - name: Refresh data and rebuild dashboard
+      # One step, BOTH pipelines. dashboard/refresh_all.py runs refresh.py
+      # (chat) and refresh_media.py (image) as separate processes and reports
+      # each outcome separately, so a media failure can never stop the chat
+      # dashboard from updating - or the reverse. That separation is why the
+      # two are not merged into one script.
+      #
+      # continue-on-error keeps the job alive so whatever DID succeed is still
+      # committed and deployed; a refresh failure must not leave the site
+      # serving nothing. The final step below turns a failure into a failed run
+      # only AFTER the deploy, because the refresh button's proxy reads the
+      # run's conclusion to decide what to report.
+      #
+      # Each pipeline keeps its own freshness window, and both are 192h (not the
+      # chat 72h default) to leave headroom for a weekly cadence.
+      - name: Refresh data and rebuild dashboards
+        id: refresh
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-        run: python dashboard/refresh.py --max-age-hours 192
+        continue-on-error: true
+        run: |
+          python dashboard/refresh_all.py \
+            --targets "${{ inputs.targets || 'all' }}" \
+            --chat-max-age-hours 192 \
+            --media-max-age-hours 192
 
       # GITHUB_TOKEN commits do not re-trigger this workflow, so there is no
       # loop. Pages is deployed later in this same job instead.
@@ -84,6 +114,11 @@ jobs:
       # The dashboard is a single self-contained HTML file, so "the site" is
       # just it, renamed index.html, plus the status sidecar the refresh
       # button's proxy reads.
+      #
+      # dashboard/media_status.json and dashboard/refresh_status.json are
+      # deliberately NOT staged: the Worker reads both from the repository via
+      # the Contents API (see cloudflare-worker/worker.js), and nothing in the
+      # browser requests them directly. Adding them here would be dead weight.
       - name: Stage site
         run: |
           mkdir -p _site
@@ -108,3 +143,14 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      # Last, deliberately. Everything above has already run, so a partial
+      # refresh failure still publishes the dashboard that succeeded - and the
+      # run is still marked failed, which is what the refresh button reports.
+      # The per-dashboard detail is in dashboard/refresh_status.json, which the
+      # previous step committed.
+      - name: Fail the run if a dashboard failed to refresh
+        if: steps.refresh.outcome == 'failure'
+        run: |
+          echo "::error::A dashboard refresh failed. See the refresh step log, and dashboard/refresh_status.json for which target failed."
+          exit 1

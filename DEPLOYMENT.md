@@ -75,18 +75,26 @@ scheduled CI job or a Worker call.
 | Component | What it does | Where it lives |
 | --- | --- | --- |
 | **Data pipeline** | Scrapes OpenRouter, normalizes, writes `data/**` | `run_pipeline.py`, `src/**` |
+| **Media pipeline** | Scrapes the image/video catalogs + media prompt benchmarks | `run_media_pipeline.py`, `src/media_*.py` |
 | **Dashboard build** | Renders `data/**` into one self-contained HTML file | `dashboard/build_dashboard.py`, `dashboard/template.html` |
-| **Refresh orchestrator** | Fetch → lock weekly picks → rebuild, as one command | `dashboard/refresh.py` |
+| **Image dashboard build** | Same, for the image-generation page | `dashboard/build_image_dashboard.py`, `dashboard/image_template.html` |
+| **Refresh orchestrator (chat)** | Fetch → lock weekly picks → rebuild, as one command | `dashboard/refresh.py` |
+| **Refresh orchestrator (media)** | Fetch media data → rebuild the image page, as one command | `dashboard/refresh_media.py` |
+| **Unified refresh** | Runs BOTH pipelines as separate processes, per-target outcomes | `dashboard/refresh_all.py` |
 | **Weekly picks** | Locks one "Model of the Week" per metric, Monday–Sunday | `dashboard/weekly_picks.py`, `data/analysis/weekly_picks.json` |
 | **CI workflow** | Runs the refresh, commits results, publishes Pages | `.github/workflows/publish.yml` |
 | **Static host** | Serves the built HTML publicly over HTTPS | GitHub Pages |
 | **Refresh proxy** | Holds the GitHub token; exposes `/status` + `/refresh` | `cloudflare-worker/worker.js` |
 | **Credential** | Fine-grained PAT, one repo, `Actions: read+write` | Cloudflare Worker secret `GITHUB_TOKEN` |
 | **Local dev server** | Serves the same HTML + endpoints on loopback | `dashboard/serve.py` |
+| **Shared page shell** | Tab nav + theme toggle + refresh control, injected into both pages | `dashboard/web_assets/shell.js`, `dashboard/page_shell.py`, `dashboard/nav_tabs.py` |
 
 **`dashboard/refresh.py` is deliberately untouched by this deployment.** It was
-written as a standalone CLI precisely so CI could call the identical command.
-Nothing about it changed.
+written as a standalone CLI precisely so CI could call the identical command,
+and it is a frozen surface: the media pipeline was added as a *sibling*
+(`refresh_media.py`) rather than a mode of it, so a media failure can never
+break the chat dashboard. `refresh_all.py` only spawns the two; it merges
+neither their code nor their outputs.
 
 ---
 
@@ -97,18 +105,27 @@ Nothing about it changed.
 Fires on cron `0 0 * * 1` (UTC), i.e. **Monday 08:00 Asia/Manila**.
 
 ```
-cron → checkout → install deps → pytest → refresh.py --max-age-hours 192
+cron → checkout → install deps → pytest → refresh_all.py --targets all
+                                       --chat-max-age-hours 192 --media-max-age-hours 192
      → commit data/** + dashboard/** as github-actions[bot]
-     → stage _site/index.html + _site/status.json
+     → stage _site/index.html + _site/status.json + _site/image_model_analysis.html
      → configure-pages → upload artifact → deploy Pages
+     → (only now) fail the run if a dashboard failed to refresh
 ```
 
-`refresh.py` internally does three things in order:
+`refresh_all.py` runs two independent pipelines and reports each outcome:
 
-1. `run_pipeline.py` — the network fetch. **If this fails, the run aborts
-   without rebuilding**, so a bad scrape can never replace a good dashboard.
-2. Lock this week's picks for any metric not yet locked.
-3. `build_dashboard.py` — republish the HTML.
+1. **chat** — `dashboard/refresh.py`: `run_pipeline.py` (network) → lock this
+   week's picks → `build_dashboard.py`. **If the fetch fails, that pipeline
+   aborts without rebuilding**, so a bad scrape can never replace a good
+   dashboard.
+2. **media** — `dashboard/refresh_media.py`: `run_media_pipeline.py` (network,
+   ~90s) → `build_image_dashboard.py`, on the same fail-without-rebuilding rule.
+
+A failure in one **does not skip the other**, and the workflow keeps going so
+whatever succeeded is still committed and deployed. The run is marked failed
+only *after* the deploy, because the refresh button's proxy reads the run's
+conclusion. Per-dashboard detail lands in `dashboard/refresh_status.json`.
 
 The bot commit uses the built-in `GITHUB_TOKEN`, and **commits made with
 `GITHUB_TOKEN` do not re-trigger workflows** — so there is no loop. Pages is
@@ -152,18 +169,38 @@ The Worker deliberately mirrors `dashboard/serve.py`'s response shapes, so
     "retrieved_at": "2026-09-12T04:26:33Z",
     "age_hours": 0.01,
     "stale": false,
-    "model_count": 445
+    "model_count": 445,
+    "media": {
+      "retrieved_at": "2026-09-17T03:40:50Z",
+      "age_hours": 122.85,
+      "stale": false,
+      "model_count": 52
+    }
   },
   "job": {
     "state": "idle",
     "started_at": null,
     "finished_at": null,
     "result": null,
+    "targets": null,
     "cooldown_seconds": 600,
     "retry_after_seconds": 0
   }
 }
 ```
+
+- `data` keeps the **chat** pipeline's fields at the top level for backwards
+  compatibility with the already-deployed page, and carries the image
+  dashboard's own block under `data.media`. Each comes from that pipeline's own
+  status sidecar (`dashboard/status.json`, `dashboard/media_status.json`).
+- `job.targets` is the per-dashboard outcome of the last unified refresh:
+  `{"chat": {"state": "ok|failed|already_running", "message": …}, "media": {…}}`.
+  It is the SAME key on both backends — `dashboard/serve.py` lifts it from its
+  in-process result, the Worker from the committed `refresh_status.json`.
+- **The Worker's attribution is recency-gated**: `refresh_status.json` is a
+  committed file, so it is only trusted when its `generated_at` is at or after
+  the workflow run it is being reported against, and only while a run is recent.
+  Without that guard a stale file would be reported as a fresh outcome.
 
 `job.state` ∈ `idle | running | ok | failed`.
 

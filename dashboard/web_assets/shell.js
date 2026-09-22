@@ -124,9 +124,11 @@
   };
 
   // refresh_all.py returns one outcome per target, so a single click can say
-  // "Chat: updated. Image: failed - <reason>".
+  // "Chat: updated. Image: failed - <reason>". `job.targets` is the contract on
+  // BOTH backends: dashboard/serve.py lifts it from its own job result, and the
+  // Cloudflare Worker lifts it from the committed refresh_status.json.
   const summarise = (job) => {
-    const targets = (job.result || {}).targets;
+    const targets = job.targets;
     if (!targets) return (job.result || {}).message || "Refresh failed.";
     const labels = { chat: "Chat", media: "Image" };
     return Object.keys(targets)

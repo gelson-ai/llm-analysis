@@ -14,20 +14,28 @@ The load-bearing promises here are about SEPARATION, not about fetching:
 No network and no subprocesses: every child process is replaced.
 """
 import json
+import re
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 from types import SimpleNamespace
+
+import pytest
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DASHBOARD_DIR = PROJECT_ROOT / "dashboard"
 if str(DASHBOARD_DIR) not in sys.path:
     sys.path.insert(0, str(DASHBOARD_DIR))
 
+import build_dashboard  # noqa: E402
 import refresh  # noqa: E402  (the chat pipeline - imported read-only, never modified)
 import refresh_all  # noqa: E402
 import refresh_lock  # noqa: E402
 import refresh_media  # noqa: E402
 import serve  # noqa: E402
+
+WORKER_PATH = PROJECT_ROOT / "cloudflare-worker" / "worker.js"
 
 
 def completed(returncode=0, stdout="", stderr=""):
@@ -326,3 +334,47 @@ def test_serve_timeout_exceeds_the_orchestrators_own_ceiling():
     """Otherwise serve.py would kill a slow unified refresh mid-media-fetch and
     throw away a chat result that had already succeeded."""
     assert serve.DEFAULT_REFRESH_TIMEOUT_SECONDS > 2 * refresh_all.DEFAULT_TIMEOUT_SECONDS
+
+
+# ---------------------------------------------------------------------------
+# the deployed Worker reads the same artifacts
+# ---------------------------------------------------------------------------
+def test_the_workers_status_files_are_the_ones_the_pipelines_write():
+    """The Worker reads these paths out of the repository, from another language
+    in another repository directory. A rename on either side would silently
+    break status reporting on the live site, and nothing else would notice."""
+    worker = WORKER_PATH.read_text(encoding="utf-8")
+
+    block = re.search(r"const STATUS_FILES = \{(.*?)\};", worker, re.S)
+    assert block, "the Worker's STATUS_FILES map was removed or renamed"
+    declared = dict(re.findall(r'(\w+):\s*"([^"]+)"', block.group(1)))
+
+    assert declared == {
+        "chat": f"dashboard/{build_dashboard.STATUS_PATH.name}",
+        "media": f"dashboard/{refresh_media.STATUS_PATH.name}",
+    }
+    assert (
+        f'REFRESH_STATUS_FILE = "dashboard/{refresh_all.STATUS_PATH.name}"' in worker
+    ), "the Worker no longer reads the orchestrator's per-target status"
+
+
+def test_the_worker_keeps_its_recency_guard():
+    """refresh_status.json is a committed file holding whatever the last run
+    wrote - including a LOCAL run, which is exactly what it contains right now.
+    Without comparing its timestamp to the run it is attributed to, the live
+    button would report a stale outcome as the result of a fresh refresh."""
+    worker = WORKER_PATH.read_text(encoding="utf-8")
+    assert "async function readRefreshTargets(token, run)" in worker
+    assert "generated < started" in worker
+    assert 'job.state === "idle" ? null' in worker
+
+
+@pytest.mark.skipif(shutil.which("node") is None, reason="node is not installed")
+def test_the_worker_script_parses():
+    """worker.js has no other coverage - this repo has no JS test runner - so a
+    syntax error in it would first be discovered by the live site breaking."""
+    result = subprocess.run(
+        [shutil.which("node"), "--check", str(WORKER_PATH)],
+        capture_output=True, text=True,
+    )
+    assert result.returncode == 0, result.stderr
