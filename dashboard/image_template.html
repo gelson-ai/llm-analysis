@@ -737,16 +737,20 @@ const WEEKLY=PAYLOAD.weekly||{},WEEKPICK=(WEEKLY.picks||{}).value||null;
     const cx=x(row.avg_cost_usd),cy=y(row.pass_rate),r=row.point_radius||CONST.point_radius_min||4;
     svg.appendChild(svgEl("circle",{cx,cy,r,class:"dot"}));
     const hit=svgEl("circle",{cx,cy,r:Math.max(r,12),class:"dot-hit"});
-    hit.addEventListener("mouseenter",()=>{
+    hit.addEventListener("pointerenter",event=>{
       const tip=byId("tooltip");
       tip.innerHTML=`<strong>${esc(row.model_name||row.model_id)}</strong>`
         +`<div class="tooltip-row"><span>Pass rate</span><span>${esc(pct(row.pass_rate))} (${num(row.checks_passed)}/${num(row.checks_total)})</span></div>`
         +`<div class="tooltip-row"><span>Cost</span><span>${esc(money(row.avg_cost_usd))}</span></div>`
         +`<div class="tooltip-row"><span>Value</span><span>${esc(value(row.value))}</span></div>`
         +`<div class="tooltip-row"><span>Evidence</span><span>${num(row.evidence_checks)} checks · ${num(row.prompts)} prompts</span></div>`;
-      tip.style.left=cx+"px";tip.style.top=(cy-12)+"px";tip.classList.add("show");
+      tip.style.left=event.clientX+"px";tip.style.top=event.clientY+"px";tip.classList.add("show");
     });
-    hit.addEventListener("mouseleave",()=>byId("tooltip").classList.remove("show"));
+    hit.addEventListener("pointermove",event=>{
+      const tip=byId("tooltip");
+      tip.style.left=event.clientX+"px";tip.style.top=event.clientY+"px";
+    });
+    hit.addEventListener("pointerleave",()=>byId("tooltip").classList.remove("show"));
     svg.appendChild(hit);
   });
 

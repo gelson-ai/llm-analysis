@@ -126,6 +126,20 @@ def test_value_leader_bar_labels_show_only_the_value_score():
     assert "†" not in render_value_bars
 
 
+def test_scatter_tooltip_tracks_the_pointer_in_viewport_coordinates():
+    image = read(IMAGE_TEMPLATE_PATH)
+    scatter = image.split("// ----------------------------------------------------------------- scatter --", 1)[1]
+    scatter = scatter.split("// --------------------------------------------------------------- design arena --", 1)[0]
+
+    assert 'hit.addEventListener("pointerenter",event=>' in scatter
+    assert 'hit.addEventListener("pointermove",event=>' in scatter
+    assert 'hit.addEventListener("pointerleave",' in scatter
+    assert 'tip.style.left=event.clientX+"px"' in scatter
+    assert 'tip.style.top=event.clientY+"px"' in scatter
+    assert 'tip.style.left=cx+"px"' not in scatter
+    assert "tip.style.top=(cy-12)" not in scatter
+
+
 # ---------------------------------------------------------------------------
 # navigation comes from the shared tab list, not from per-template markup
 # ---------------------------------------------------------------------------
