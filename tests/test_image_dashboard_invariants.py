@@ -115,6 +115,31 @@ def test_chat_template_style_blocks_are_unchanged():
     )
 
 
+def test_value_leader_bar_labels_show_only_the_value_score():
+    image = read(IMAGE_TEMPLATE_PATH)
+    render_value_bars = image.split("// ------------------------------------------------------------ value leaders --", 1)[1]
+    render_value_bars = render_value_bars.split("// ----------------------------------------------------------------- scatter --", 1)[0]
+
+    assert "label.textContent=value(row.value);" in render_value_bars
+    assert "pct(row.pass_rate)" not in render_value_bars
+    assert "money(row.avg_cost_usd)" not in render_value_bars
+    assert "†" not in render_value_bars
+
+
+def test_scatter_tooltip_tracks_the_pointer_in_viewport_coordinates():
+    image = read(IMAGE_TEMPLATE_PATH)
+    scatter = image.split("// ----------------------------------------------------------------- scatter --", 1)[1]
+    scatter = scatter.split("// --------------------------------------------------------------- design arena --", 1)[0]
+
+    assert 'hit.addEventListener("pointerenter",event=>' in scatter
+    assert 'hit.addEventListener("pointermove",event=>' in scatter
+    assert 'hit.addEventListener("pointerleave",' in scatter
+    assert 'tip.style.left=event.clientX+"px"' in scatter
+    assert 'tip.style.top=event.clientY+"px"' in scatter
+    assert 'tip.style.left=cx+"px"' not in scatter
+    assert "tip.style.top=(cy-12)" not in scatter
+
+
 # ---------------------------------------------------------------------------
 # navigation comes from the shared tab list, not from per-template markup
 # ---------------------------------------------------------------------------
