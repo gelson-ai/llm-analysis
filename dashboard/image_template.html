@@ -682,15 +682,9 @@ const WEEKLY=PAYLOAD.weekly||{},WEEKPICK=(WEEKLY.picks||{}).value||null;
 (()=>{
   const svg=byId("valueBars");if(!svg||!ranked.length)return;
   const top=ranked.slice(0,CONST.top_n_bars||12),leader=top[0].value;
-  // Item 3, applied to the chart: mark any bar whose model has no Design Arena
-  // (human-preference) row, and explain the mark in the caption whenever such a
-  // model is actually in view - otherwise the marker would be unexplained.
-  const withoutArena=top.filter(row=>!row.design_arena).length;
-  setText("leaderCaption",`Top ${top.length} of ${ranked.length} rankable models by value, each bar scaled to the leader.`
-    +(withoutArena?` † marks ${withoutArena} of them with no Design Arena (human-preference) score, so their position reflects cost-efficiency only.`:""));
+  setText("leaderCaption",`Top ${top.length} of ${ranked.length} rankable models by value, each bar scaled to the leader.`);
   // RESERVE is space for the value label that sits after the longest bar
-  // ("87.5 · 87.5% @ $0.010"); without it the leader's own label overflows the
-  // chart panel, which has overflow-x:auto.
+  // without overflowing the chart panel, which has overflow-x:auto.
   const W=900,ROW=30,PAD=14,LABEL=300,RESERVE=150,BAR_MAX=W-LABEL-RESERVE,H=top.length*ROW+PAD*2;
   svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
   top.forEach((row,index)=>{
@@ -702,7 +696,7 @@ const WEEKLY=PAYLOAD.weekly||{},WEEKPICK=(WEEKLY.picks||{}).value||null;
     svg.appendChild(svgEl("rect",{x:LABEL,y:center-6,width:2,height:12,class:"gridline"}));
     svg.appendChild(svgEl("rect",{x:LABEL,y:center-6,width:barW,height:12,class:"bar"}));
     const label=svgEl("text",{x:LABEL+barW+8,y:center+4,class:"value-bar-label"});
-    label.textContent=`${value(row.value)} · ${pct(row.pass_rate)} @ ${money(row.avg_cost_usd)}${row.design_arena?"":" †"}`;
+    label.textContent=value(row.value);
     svg.appendChild(label);
   });
 })();

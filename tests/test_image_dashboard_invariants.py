@@ -115,6 +115,17 @@ def test_chat_template_style_blocks_are_unchanged():
     )
 
 
+def test_value_leader_bar_labels_show_only_the_value_score():
+    image = read(IMAGE_TEMPLATE_PATH)
+    render_value_bars = image.split("// ------------------------------------------------------------ value leaders --", 1)[1]
+    render_value_bars = render_value_bars.split("// ----------------------------------------------------------------- scatter --", 1)[0]
+
+    assert "label.textContent=value(row.value);" in render_value_bars
+    assert "pct(row.pass_rate)" not in render_value_bars
+    assert "money(row.avg_cost_usd)" not in render_value_bars
+    assert "†" not in render_value_bars
+
+
 # ---------------------------------------------------------------------------
 # navigation comes from the shared tab list, not from per-template markup
 # ---------------------------------------------------------------------------
