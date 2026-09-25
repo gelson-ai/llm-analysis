@@ -1,0 +1,148 @@
+{
+  "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+  "model_inventory": {
+    "total_models": 29,
+    "provider_count": 10,
+    "models_with_resolved_price": 23,
+    "models_without_resolved_price": 6,
+    "price_resolution_rate": 79.31,
+    "models_with_any_price_data": 29,
+    "models_with_price_data_but_no_comparable_rate": 6,
+    "models_with_benchmark_rows": 24,
+    "unit_families_present": [
+      "cents_per_generation",
+      "cents_per_image",
+      "cents_per_megapixel_second",
+      "cents_per_second",
+      "usd_per_image",
+      "usd_per_second",
+      "usd_per_video_token"
+    ],
+    "comparable_price_units_used": [
+      "usd_per_second"
+    ],
+    "comparable_price_basis_used": [
+      "720p_tier",
+      "720p_tier_with_operation",
+      "audio_qualified_rate",
+      "plain_rate"
+    ],
+    "comparable_price_range": {
+      "min": 0.03,
+      "max": 0.3,
+      "count": 23
+    }
+  },
+  "unrated": {
+    "count": 5,
+    "model_ids": [
+      "black-forest-labs/flux-video-edit",
+      "black-forest-labs/flux-video-upscale",
+      "heygen/avatar-iv",
+      "minimax/hailuo-2.3",
+      "runway/aleph-2"
+    ],
+    "note": "Catalogue models with no judged benchmark row. They are listed as unrated rather than scored zero: no evidence is not the same as bad evidence."
+  },
+  "priced_without_rate": {
+    "count": 6,
+    "model_ids": [
+      "black-forest-labs/flux-video-upscale",
+      "bytedance/seedance-1-5-pro",
+      "bytedance/seedance-2.0",
+      "bytedance/seedance-2.0-fast",
+      "bytedance/seedance-2.0-mini",
+      "bytedance/seedance-2.5"
+    ],
+    "note": "Models that publish pricing but in a unit that cannot be converted to USD per output second (per-token, per-megapixel-second, or a minimum charge only). Their catalogue rate is blank; they are STILL ranked on value when their observed benchmark cost is known, because value uses the observed cost."
+  },
+  "evidence_gate": {
+    "min_prompts": 8,
+    "min_checks": 40,
+    "models_measured": 24,
+    "models_passing": 24,
+    "models_failing": []
+  },
+  "prompt_benchmark_coverage": {
+    "enabled": true,
+    "source": "https://openrouter.ai/benchmarks/media/videos",
+    "benchmark_source": "OpenRouter Media Benchmarks",
+    "pages_fetched": 12,
+    "pages_skipped": [],
+    "pages_skipped_count": 0,
+    "prompt_page_count": 12,
+    "rows": 276,
+    "rows_per_prompt": {
+      "traffic-light": 24,
+      "five-candles": 23,
+      "wrong-way-escalator": 24,
+      "frozen-crowd": 24,
+      "sign-stays-readable": 24,
+      "glass-of-water": 24,
+      "domino-run": 24,
+      "mirror-walk": 24,
+      "behind-the-pillar": 24,
+      "steaming-mug": 23,
+      "walk-out": 14,
+      "continuous-shot": 24
+    },
+    "distinct_models_in_benchmarks": 24,
+    "models_matched_to_inventory": 24,
+    "models_unmatched": 0,
+    "unmatched_model_slugs": [],
+    "rows_missing_cost": 0,
+    "rows_missing_generation_time": 0,
+    "correctness_extraction_sources": {
+      "aria-label": 276
+    },
+    "conflicting_row_values": 0,
+    "note": "A pass rate is the share of judged checks a model passed across the prompts it was benchmarked on. Checks are POOLED (total passes over total attempts), not averaged per prompt, and OpenRouter judges a different number of checks per prompt - so a pooled rate summarises a model's whole benchmark run and is not a like-for-like comparison within any single prompt."
+  },
+  "pricing_unit_assumptions": {
+    "cents_conversions_applied": {
+      "cents_per_second_output": "12 -> 0.12 USD",
+      "cents_per_megapixel_second_precise": "7.5 -> 0.075 USD",
+      "cents_per_megapixel_second_creative": "10.5 -> 0.105 USD",
+      "cents_per_second_output_720p": "17 -> 0.17 USD",
+      "cents_per_second_output_1080p": "29 -> 0.29 USD",
+      "cents_per_second_video_continuation_720p": "41 -> 0.41000000000000003 USD",
+      "cents_per_second_video_continuation_1080p": "53 -> 0.53 USD",
+      "minimum_cents_per_generation": "56 -> 0.56 USD",
+      "cents_per_image_input": "0.2 -> 0.002 USD",
+      "cents_per_video_output_second_480p": "5 -> 0.05 USD",
+      "cents_per_video_output_second_720p": "7 -> 0.07 USD",
+      "cents_per_video_output_second_1080p": "25 -> 0.25 USD"
+    },
+    "currency_assumed": {
+      "duration_seconds": "0.1",
+      "duration_seconds_480p": "0.05",
+      "duration_seconds_768p": "0.08",
+      "duration_seconds_720p": "0.30",
+      "duration_seconds_1080p": "0.50",
+      "video_tokens": "0.0000024",
+      "video_tokens_without_audio": "0.0000012",
+      "video_tokens_with_video_input": "0.000002475",
+      "reference_images": "0.04",
+      "duration_seconds_with_audio": "0.40",
+      "text_to_video_duration_seconds_480p": "0.04",
+      "text_to_video_duration_seconds_720p": "0.08",
+      "image_to_video_duration_seconds_720p": "0.10",
+      "text_to_video_duration_seconds_1080p": "0.12",
+      "image_to_video_duration_seconds_1080p": "0.15",
+      "duration_seconds_with_audio_4k": "0.60",
+      "duration_seconds_without_audio": "0.20",
+      "duration_seconds_with_audio_720p": "0.05",
+      "duration_seconds_without_audio_4k": "0.40",
+      "duration_seconds_without_audio_720p": "0.03",
+      "video_tokens_4k": "0.000004",
+      "video_tokens_1080p": "0.0000077",
+      "video_tokens_4k_with_video_input": "0.0000024",
+      "video_tokens_1080p_with_video_input": "0.0000047",
+      "duration_seconds_1024p": "0.50"
+    },
+    "note": "OpenRouter mixes cents- and USD-denominated keys in one pricing_skus object, so any conversion is recorded here rather than applied silently."
+  },
+  "prompt_comparability_note": "A pass rate is the share of judged checks a model passed across the prompts it was benchmarked on. Checks are POOLED (total passes over total attempts), not averaged per prompt, and OpenRouter judges a different number of checks per prompt - so a pooled rate summarises a model's whole benchmark run and is not a like-for-like comparison within any single prompt.",
+  "cost_unit_note": "Benchmark cost is the observed USD cost of ONE generated clip, taken from the same rows as the pass rate. The clip length generated for those rows is not published, so two models' observed costs may describe clips of different lengths; the catalogue rate (USD per output second, and the 5-second figure derived from it) is shown alongside it with its rate basis for that reason.",
+  "benchmark_note": "Video models publish no preference or arena benchmark: OpenRouter's video catalogue carries no `benchmarks` block (checked live 2026-09-25), and Artificial Analysis' Video Arena is a voting interface with no published score table. Correctness therefore comes only from OpenRouter's media prompt benchmarks."
+}

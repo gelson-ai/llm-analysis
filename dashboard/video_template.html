@@ -1,0 +1,924 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenRouter Video Generation Price vs Performance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+<meta name="description" content="Editorial analysis of OpenRouter video-generation model pricing against OpenRouter media prompt benchmarks.">
+<style>
+:root{color-scheme:light;--surface-1:#fff;--surface-2:#f4f7fb;--page-plane:#eef2f6;--text-primary:#101820;--text-secondary:#4d5b67;--text-muted:#76838e;--gridline:#dbe2e8;--baseline:#aeb9c2;--border:rgba(16,24,32,.12);--series-1:#1769aa;--series-1-strong:#0d4f86;--series-1-wash:rgba(23,105,170,.10);--warning:#9b5c08;--warning-wash:#fff6e5;--card-shadow:0 8px 24px rgba(35,55,72,.06)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--surface-1:#171c20;--surface-2:#20272d;--page-plane:#0d1114;--text-primary:#f4f7f9;--text-secondary:#c0cad1;--text-muted:#8d9aa3;--gridline:#303a42;--baseline:#4a5760;--border:rgba(255,255,255,.11);--series-1:#4a9ddd;--series-1-strong:#78b9e8;--series-1-wash:rgba(74,157,221,.14);--warning:#f1bd69;--warning-wash:#2a2319;--card-shadow:0 8px 24px rgba(0,0,0,.18)}}
+:root[data-theme="dark"]{color-scheme:dark;--surface-1:#171c20;--surface-2:#20272d;--page-plane:#0d1114;--text-primary:#f4f7f9;--text-secondary:#c0cad1;--text-muted:#8d9aa3;--gridline:#303a42;--baseline:#4a5760;--border:rgba(255,255,255,.11);--series-1:#4a9ddd;--series-1-strong:#78b9e8;--series-1-wash:rgba(74,157,221,.14);--warning:#f1bd69;--warning-wash:#2a2319;--card-shadow:0 8px 24px rgba(0,0,0,.18)}
+*{box-sizing:border-box}body{margin:0;background:var(--page-plane);color:var(--text-primary);font-family:"Segoe UI",Tahoma,sans-serif}.viz-root{min-height:100vh;padding:28px 22px 48px;background:radial-gradient(circle at 85% 0%,var(--series-1-wash),transparent 30%),var(--page-plane)}.wrap{max-width:1180px;margin:0 auto}header{border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:18px}h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(26px,4vw,42px);font-weight:500;margin:0 0 5px;letter-spacing:0}.subtitle,.card-sub,figcaption{color:var(--text-secondary);font-size:12px;line-height:1.5}.subtitle{margin:0}h2{font-size:15px;margin:0 0 3px;letter-spacing:0}.section-number{color:var(--series-1);font-variant-numeric:tabular-nums;margin-right:7px}
+.banner,.card,.kpi,.quality-panel{background:var(--surface-1);border:1px solid var(--border);border-radius:8px;box-shadow:var(--card-shadow)}.banner{padding:13px 15px;font-size:12.5px;color:var(--text-secondary);line-height:1.55;margin-bottom:18px}.banner strong{color:var(--text-primary)}.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}.kpi{padding:14px 15px;min-height:94px}.kpi .label{font-size:11.5px;color:var(--text-secondary);margin-bottom:6px}.kpi .value{font-family:Georgia,"Times New Roman",serif;font-size:27px;line-height:1}.kpi .sub{font-size:10.5px;color:var(--text-muted);margin-top:7px}.card{padding:16px;margin-bottom:18px;position:relative;overflow:hidden}.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}.card-sub{margin:0}figure{margin:0}figcaption{margin-top:6px}.chart-wrap{position:relative;width:100%;overflow-x:auto}svg{display:block;width:100%;min-width:620px;height:auto;overflow:visible}svg text{fill:var(--text-muted);font:10.5px "Segoe UI",Tahoma,sans-serif}.axis-label{fill:var(--text-secondary);font-size:11px}.value-label{fill:var(--text-primary);font-size:11px;font-weight:600}.gridline{stroke:var(--gridline);stroke-width:1}.axis-line{stroke:var(--baseline);stroke-width:1}.bar{fill:var(--series-1);cursor:default;transition:opacity 100ms ease}.bar:hover{opacity:.78}.dot{fill:var(--series-1);fill-opacity:.72;stroke:var(--surface-1);stroke-width:2}.dot-hit{fill:transparent;cursor:pointer}.dot.hovered{fill-opacity:1;stroke:var(--series-1-strong)}
+.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0 12px}.seg{display:inline-flex;background:var(--surface-2);border:1px solid var(--border);border-radius:7px;padding:2px;gap:2px}.seg button{appearance:none;border:0;background:transparent;color:var(--text-secondary);font:12.5px inherit;padding:7px 12px;border-radius:5px;cursor:pointer}.seg button.active{background:var(--series-1);color:#fff}.search{flex:1;min-width:190px;max-width:300px}.search input{width:100%;font:12.5px inherit;padding:8px 10px;border-radius:7px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-primary)}.count-note{color:var(--text-muted);font-size:11.5px;margin-left:auto}.weekly-pick{padding:18px 20px;margin-bottom:18px}.pick-grid{display:grid;grid-template-columns:minmax(220px,1.4fr) repeat(4,minmax(90px,.6fr));gap:16px;align-items:end}.pick-eyebrow{color:var(--series-1);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:7px}.pick-name{font-family:Georgia,"Times New Roman",serif;font-size:23px;line-height:1.12}.pick-provider{color:var(--text-muted);font-size:11.5px;margin-top:5px}.pick-stat{border-left:1px solid var(--border);padding-left:16px}.pick-stat .label{color:var(--text-muted);font-size:10.5px;text-transform:uppercase;letter-spacing:.04em}.pick-stat .value{font-size:20px;font-weight:600;margin-top:4px;font-variant-numeric:tabular-nums}.pick-stat .detail{color:var(--text-secondary);font-size:10.5px;margin-top:3px}.leader-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.chart-panel{min-width:0;background:var(--surface-2);border:1px solid var(--border);border-radius:7px;padding:12px}.chart-panel svg{min-width:0}.chart-panel h3{font-size:12.5px;margin:0 0 2px}.chart-panel p{color:var(--text-muted);font-size:11px;margin:0 0 6px}.value-legend{display:flex;gap:10px;flex-wrap:wrap;color:var(--text-muted);font-size:10.5px;margin:0 0 5px}.value-legend span::before{content:"";display:inline-block;width:8px;height:8px;margin-right:4px;background:var(--series-1);vertical-align:middle}.value-legend span:nth-child(1)::before{opacity:.35}.value-legend span:nth-child(2)::before{opacity:.65}.quality-panel{padding:15px 17px;margin-bottom:18px}.quality-panel ul{margin:9px 0 0;padding-left:18px;color:var(--text-secondary);font-size:12px;line-height:1.55}.quality-panel li+li{margin-top:4px}.quality-panel code{color:var(--text-primary);font-size:11px;overflow-wrap:anywhere}
+.tooltip{position:fixed;pointer-events:none;background:var(--text-primary);color:var(--surface-1);font-size:11.5px;line-height:1.45;border-radius:7px;padding:8px 10px;box-shadow:0 5px 18px rgba(0,0,0,.28);max-width:270px;opacity:0;transform:translate(-50%,calc(-100% - 10px));transition:opacity 70ms ease;z-index:20}.tooltip.show{opacity:1}.tooltip strong{display:block;margin-bottom:3px}.tooltip-row{display:flex;justify-content:space-between;gap:14px}.table-scroll{overflow:auto;max-height:650px;margin:0 -16px;padding:0 16px 10px}table{width:100%;border-collapse:collapse;font-size:12px}thead{position:sticky;top:0;z-index:2;background:var(--surface-1)}th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.02em;color:var(--text-muted);padding:9px 10px;border-bottom:1px solid var(--border);cursor:pointer;white-space:nowrap}th.active{color:var(--text-primary)}td{padding:8px 10px;border-bottom:1px solid var(--gridline);font-variant-numeric:tabular-nums;white-space:nowrap}td.name-cell{min-width:230px;white-space:normal}tbody tr:hover td{background:var(--series-1-wash)}.model-name{color:var(--text-primary)}.model-provider,.num-dim{color:var(--text-muted)}.model-provider{font-size:10.5px}footer{color:var(--text-muted);font-size:10.5px;text-align:center;margin-top:8px}
+@media(max-width:960px){.pick-grid{grid-template-columns:repeat(2,1fr)}.pick-stat{border-left:0;padding-left:0}.leader-grid{grid-template-columns:1fr}}
+@media(max-width:760px){.viz-root{padding:18px 12px 36px}.kpi-row{grid-template-columns:repeat(2,1fr)}.card-head{display:block}.count-note{width:100%;margin-left:0}svg{min-width:560px}}
+:root{--series-input:#a8c9de;--series-output:#548db5;--series-score:#0d5e92}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--series-input:#7daac3;--series-output:#4a88b4;--series-score:#8bc3e8}}
+:root[data-theme="dark"]{--series-input:#7daac3;--series-output:#4a88b4;--series-score:#8bc3e8}
+.leader-grid{grid-template-columns:1fr}.chart-panel{padding:16px}.value-legend{gap:16px;font-size:11.5px;margin:2px 0 10px}.value-legend span{font-weight:600}.value-legend .legend-input::before{background:var(--series-input);opacity:1}.value-legend .legend-output::before{background:var(--series-output);opacity:1}.value-legend .legend-score::before{background:var(--series-score);opacity:1}.bar.value-input{fill:var(--series-input)}.bar.value-output{fill:var(--series-output)}.bar.value-score{fill:var(--series-score)}.value-axis-label{fill:var(--text-muted);font-size:11px}.value-model-label{fill:var(--text-secondary);font-size:11px;font-weight:600}.value-rank-label{fill:var(--text-primary);font-size:12px;font-weight:700}.value-bar-label{fill:var(--text-primary);font-size:10.5px;font-weight:600}
+</style>
+<style>.section-number{display:none}</style>
+<style>
+.model-comparison{padding:18px 20px}.comparison-picker{max-width:560px;margin:12px 0}.comparison-picker label{display:block;color:var(--text-secondary);font-size:11.5px;font-weight:600;margin-bottom:6px}.comparison-picker input{width:100%;font:12.5px inherit;padding:9px 10px;border-radius:7px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-primary)}.comparison-results{border:1px solid var(--border);border-radius:7px;margin-top:6px;max-height:230px;overflow:auto}.comparison-results:empty{display:none}.comparison-option{appearance:none;display:block;width:100%;border:0;border-bottom:1px solid var(--gridline);background:var(--surface-1);color:var(--text-primary);cursor:pointer;padding:9px 10px;text-align:left}.comparison-option:last-child{border-bottom:0}.comparison-option:hover,.comparison-option.active{background:var(--series-1-wash)}.comparison-option-name{display:block;font-size:12px;font-weight:600}.comparison-option-meta{display:block;color:var(--text-muted);font-size:10.5px;margin-top:2px}.comparison-empty{border-top:1px solid var(--border);color:var(--text-secondary);font-size:12px;margin-top:14px;padding-top:14px}.comparison-title{font-family:Georgia,"Times New Roman",serif;font-size:18px;line-height:1.25;margin:16px 0 10px}.comparison-title span{color:var(--text-secondary)}.comparison-table-wrap{margin:0;max-height:none}.comparison-table{min-width:670px}.comparison-table th{cursor:default;text-transform:none;font-size:11px}.comparison-table th:first-child{width:36%}.comparison-table td:first-child{color:var(--text-secondary);font-weight:600}.comparison-table th:not(:first-child),.comparison-table td:not(:first-child){text-align:right}.comparison-summary{border-top:1px solid var(--border);margin-top:14px;padding-top:12px}.comparison-summary p{color:var(--text-secondary);font-size:12px;margin:0 0 7px}.comparison-summary ul{margin:0;padding-left:18px}.comparison-summary li{font-size:12px;line-height:1.55;margin:2px 0}@media(max-width:760px){.model-comparison{padding:16px}.comparison-table{min-width:620px}.comparison-title{font-size:16px}}
+</style>
+<style>
+/* ============================================================
+   EDITORIAL DATA-JOURNALISM LAYER
+   Serif display type carries editorial voice (titles, model
+   names, section headings); Inter carries data, tables and
+   controls. Layout moves from card boxes to ruled paper.
+   ============================================================ */
+:root{--font-display:"DM Serif Display","Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;--font-text:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--paper:#f6f4ef;--paper-raised:#fffefb;--paper-sunk:#efebe3;--ink:#151a1e;--ink-soft:#49525a;--ink-faint:#7c848b;--rule:#dcd7cd;--rule-strong:#b5afa2;--accent:#1b4d76;--accent-strong:#123553;--accent-wash:rgba(27,77,118,.07);--editorial:#9c2f18;--measure:72ch;color-scheme:light;--surface-1:var(--paper-raised);--surface-2:var(--paper-sunk);--page-plane:var(--paper);--text-primary:var(--ink);--text-secondary:var(--ink-soft);--text-muted:var(--ink-faint);--gridline:#e3ded4;--baseline:#c8c2b6;--border:rgba(21,26,30,.14);--series-1:var(--accent);--series-1-strong:var(--accent-strong);--series-1-wash:var(--accent-wash);--card-shadow:none;--series-input:#a6c3d6;--series-output:#5589b0;--series-score:#12456b}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--paper:#0f1317;--paper-raised:#161b20;--paper-sunk:#1b2126;--ink:#eef1f3;--ink-soft:#b6bec5;--ink-faint:#858f97;--rule:#282f36;--rule-strong:#3b444c;--accent:#63a9de;--accent-strong:#8ec6ec;--accent-wash:rgba(99,169,222,.13);--editorial:#e1825f;--surface-1:var(--paper-raised);--surface-2:var(--paper-sunk);--page-plane:var(--paper);--text-primary:var(--ink);--text-secondary:var(--ink-soft);--text-muted:var(--ink-faint);--gridline:#242b31;--baseline:#3a444c;--border:rgba(238,241,243,.13);--series-1:var(--accent);--series-1-strong:var(--accent-strong);--series-1-wash:var(--accent-wash);--series-input:#5f8298;--series-output:#3f6f95;--series-score:#7cb8e2}}
+:root[data-theme="dark"]{color-scheme:dark;--paper:#0f1317;--paper-raised:#161b20;--paper-sunk:#1b2126;--ink:#eef1f3;--ink-soft:#b6bec5;--ink-faint:#858f97;--rule:#282f36;--rule-strong:#3b444c;--accent:#63a9de;--accent-strong:#8ec6ec;--accent-wash:rgba(99,169,222,.13);--editorial:#e1825f;--surface-1:var(--paper-raised);--surface-2:var(--paper-sunk);--page-plane:var(--paper);--text-primary:var(--ink);--text-secondary:var(--ink-soft);--text-muted:var(--ink-faint);--gridline:#242b31;--baseline:#3a444c;--border:rgba(238,241,243,.13);--series-1:var(--accent);--series-1-strong:var(--accent-strong);--series-1-wash:var(--accent-wash);--series-input:#5f8298;--series-output:#3f6f95;--series-score:#7cb8e2}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-text);font-size:13px;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-feature-settings:"kern" 1,"liga" 1}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.viz-root{min-height:100vh;padding:0 26px 76px;background:var(--paper)}
+.wrap{max-width:1180px;margin:0 auto}
+header.masthead{display:block;border:0;border-bottom:3px double var(--rule-strong);padding:46px 0 20px;margin:0 0 30px}
+.eyebrow{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--editorial);margin:0 0 14px;font-variant-numeric:tabular-nums}
+h1{font-family:var(--font-display);font-weight:400;font-size:clamp(34px,5.2vw,60px);line-height:1.03;letter-spacing:-.012em;margin:0 0 16px;color:var(--ink)}
+.masthead .subtitle{font-size:12.5px;line-height:1.65;color:var(--ink-faint);max-width:var(--measure);margin:0;letter-spacing:.005em}
+.masthead-meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 30px;margin-top:24px;padding-top:16px;border-top:1px solid var(--rule);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+.masthead-meta b{color:var(--ink);font-weight:600;margin-right:7px}
+.masthead-meta code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10.5px;text-transform:none;letter-spacing:0;color:var(--ink-soft)}
+.tabs{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-left:0}
+.tabs .tab{display:inline-block;border:1px solid var(--rule-strong);background:transparent;color:var(--ink-soft);font-family:var(--font-text);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 13px;border-radius:0;cursor:pointer;text-decoration:none;transition:background 120ms ease,color 120ms ease,border-color 120ms ease}
+.tabs .tab:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.tabs .tab[aria-current="page"]{background:var(--ink);color:var(--paper);border-color:var(--ink);cursor:default}
+.theme-toggle{appearance:none;margin-left:auto;border:1px solid var(--rule-strong);background:transparent;color:var(--ink-soft);font-family:var(--font-text);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 13px;border-radius:0;cursor:pointer;transition:background 120ms ease,color 120ms ease,border-color 120ms ease}
+.theme-toggle:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.banner,.card,.kpi,.quality-panel{background:transparent;border:0;border-radius:0;box-shadow:none}
+.banner{margin:0 0 38px;padding:20px 0 20px 22px;border-left:2px solid var(--editorial);font-size:12.5px;line-height:1.75;color:var(--ink-soft)}
+.banner::before{content:"Methodology note";display:block;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--editorial);margin:0 0 8px}
+.banner strong{color:var(--ink);font-weight:600}
+.banner em{font-family:var(--font-display);font-style:italic;font-size:14px;color:var(--ink)}
+.section-head{display:block;border-top:1px solid var(--rule-strong);padding:20px 0 0;margin:0 0 22px}
+.section-head h2,.card-head h2,.quality-panel h2{font-family:var(--font-display);font-weight:400;font-size:clamp(21px,2.5vw,28px);line-height:1.16;letter-spacing:-.008em;margin:0;color:var(--ink)}
+.section-head .card-sub{margin-top:9px;max-width:var(--measure)}
+.card-sub,figcaption,.chart-panel p{font-family:var(--font-text);font-size:11.5px;line-height:1.65;color:var(--ink-faint)}
+.card-head{display:block;border-top:1px solid var(--rule-strong);padding:20px 0 0;margin:0 0 22px}
+.card-head h2::before{content:"";display:block;font-family:var(--font-text);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--editorial);margin:0 0 10px}
+#comparisonTitle::before{content:"Head to head"}
+#scatterTitle::before{content:"Price and capability"}
+#leaderTitle::before{content:"Rankings"}
+#tableTitle::before{content:"Full reference"}
+.quality-panel h2::before{content:"Provenance and caveats";display:block;font-family:var(--font-text);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--editorial);margin:0 0 10px}
+.section-number{display:none}
+.card{padding:0;margin:0 0 52px;position:relative;overflow:visible}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:0;border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong)}
+.kpi{padding:22px 24px;min-height:0;border-left:1px solid var(--rule)}
+.kpi:first-child{border-left:0;padding-left:0}
+.kpi .label{font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 14px}
+.kpi .value{font-family:var(--font-text);font-weight:600;font-size:clamp(30px,3.8vw,42px);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--ink)}
+.kpi .sub{font-size:11px;line-height:1.5;color:var(--ink-faint);margin-top:12px}
+.weekly-pick{padding:0}
+.pick-grid{grid-template-columns:1.6fr repeat(4,.62fr);gap:0;align-items:end;padding-bottom:24px;border-bottom:1px solid var(--rule)}
+.pick-grid>div:first-child{padding-right:28px}
+.pick-eyebrow{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--editorial);margin:0 0 14px}
+.pick-name{font-family:var(--font-display);font-weight:400;font-size:clamp(26px,3.3vw,38px);line-height:1.07;letter-spacing:-.01em;color:var(--ink)}
+.pick-provider{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-top:10px}
+.pick-stat{border-left:1px solid var(--rule);padding:4px 0 2px 18px}
+.pick-stat .label{font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+.pick-stat .value{font-family:var(--font-text);font-size:clamp(22px,2.5vw,30px);font-weight:600;line-height:1.1;letter-spacing:-.015em;margin-top:9px;font-variant-numeric:tabular-nums;color:var(--ink)}
+.pick-stat .detail{font-size:10.5px;line-height:1.5;color:var(--ink-faint);margin-top:6px}
+.model-comparison{padding:0}
+.comparison-picker{max-width:540px;margin:0 0 4px}
+.comparison-picker label{display:block;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:9px}
+.comparison-picker input,.search input{width:100%;font-family:var(--font-text);font-size:12.5px;padding:11px 13px;border-radius:0;border:1px solid var(--rule-strong);background:var(--paper-raised);color:var(--ink)}
+.comparison-picker input:focus,.search input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.comparison-results{border:1px solid var(--rule-strong);border-top:0;border-radius:0;margin-top:0;max-height:250px;overflow:auto}
+.comparison-option{border-radius:0;border-bottom:1px solid var(--rule);background:var(--paper-raised);font-family:var(--font-text);padding:11px 13px}
+.comparison-option-name{font-size:12.5px;font-weight:600}
+.comparison-option-meta{font-size:10px;letter-spacing:.04em;color:var(--ink-faint);margin-top:3px}
+.comparison-empty{border-top:1px solid var(--rule-strong);border-radius:0;color:var(--ink-faint);font-size:12px;margin-top:20px;padding-top:18px}
+.comparison-title{font-family:var(--font-display);font-weight:400;font-size:clamp(20px,2.3vw,26px);line-height:1.2;margin:26px 0 12px;color:var(--ink)}
+.comparison-table th{font-family:var(--font-text);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase}
+.comparison-summary p,.comparison-summary li{font-size:11.5px;line-height:1.7;color:var(--ink-soft)}
+.controls{gap:12px;margin:0 0 22px;align-items:center}
+.seg{background:transparent;border:1px solid var(--rule-strong);border-radius:0;padding:0;gap:0}
+.seg button{font-family:var(--font-text);font-size:10px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft);background:transparent;padding:9px 16px;border-radius:0;transition:background 120ms ease,color 120ms ease}
+.seg button+button{border-left:1px solid var(--rule)}
+.seg button.active{background:var(--accent);color:#fff}
+.seg button:hover:not(.active){background:var(--accent-wash)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.search{flex:0 1 260px;max-width:300px}
+.count-note{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+figure{margin:0}
+figcaption{margin-top:14px;padding-top:12px;border-top:1px solid var(--rule)}
+.chart-wrap{overflow-x:auto}
+svg text{font-family:var(--font-text);font-size:10.5px;letter-spacing:.02em}
+.axis-label{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase}
+.value-label{font-family:var(--font-text);font-weight:600}
+.axis-line{stroke:var(--rule-strong)}
+.leader-grid{gap:30px;grid-template-columns:1fr}
+.chart-panel{background:var(--paper-raised);border:1px solid var(--rule);border-radius:0;padding:20px 22px 16px}
+.chart-panel h3{font-family:var(--font-text);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--ink);margin:0 0 7px}
+.chart-panel p{margin:0 0 14px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+.value-legend{display:flex;gap:20px;flex-wrap:wrap;font-size:9.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 16px}
+.value-legend span{display:inline-flex;align-items:center;gap:7px}
+.value-legend span::before{content:"";display:inline-block;width:9px;height:9px}
+.value-axis-label,.value-model-label,.value-rank-label,.value-bar-label{font-family:var(--font-text)}
+.quality-panel{padding:24px 0 0;margin:0 0 52px;border-top:1px solid var(--rule-strong)}
+#qualityList{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:13px}
+#qualityList li{position:relative;padding-left:20px;font-size:11.5px;line-height:1.75;color:var(--ink-soft)}
+#qualityList li::before{content:"";position:absolute;left:0;top:10px;width:8px;height:1px;background:var(--editorial)}
+#qualityList strong{color:var(--ink);font-weight:600}
+#qualityList code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10.5px;color:var(--ink-soft)}
+.table-scroll{overflow:auto;max-height:720px;margin:0;padding:0;border-top:1px solid var(--rule-strong)}
+table{width:100%;border-collapse:collapse;font-size:12px;font-family:var(--font-text)}
+thead{position:sticky;top:0;z-index:2;background:var(--paper)}
+th{text-align:left;font-size:9.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);padding:13px 12px;border-bottom:1px solid var(--rule-strong);cursor:pointer;white-space:nowrap}
+th.active{color:var(--editorial)}
+td{padding:12px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums;white-space:nowrap;vertical-align:top}
+td.name-cell{min-width:250px;white-space:normal}
+tbody tr:hover td{background:var(--accent-wash)}
+.model-name{font-family:var(--font-display);font-weight:400;font-size:15px;line-height:1.25;color:var(--ink)}
+.model-provider{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint);margin-top:3px}
+.num-dim{color:var(--ink-faint)}
+.arena-flag{display:inline-block;margin-left:8px;padding:2px 7px;border:1px solid var(--rule-strong);font-family:var(--font-text);font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;vertical-align:middle}
+footer{max-width:var(--measure);margin:0;padding:26px 0 0;border-top:3px double var(--rule-strong);text-align:left;font-size:11px;line-height:1.75;color:var(--ink-faint)}
+footer p{margin:0 0 10px}
+footer p:last-child{margin-bottom:0}
+footer code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10.5px}
+.tooltip{border-radius:0;font-family:var(--font-text);font-size:11.5px;padding:11px 13px;box-shadow:0 10px 30px rgba(0,0,0,.22);letter-spacing:.01em}
+.tooltip strong{font-weight:600;letter-spacing:.02em}
+@media(max-width:1040px){.pick-grid{grid-template-columns:1fr 1fr;column-gap:24px;row-gap:24px}.pick-grid>div:first-child{grid-column:1/-1;padding-right:0}.pick-stat{border-left:1px solid var(--rule);padding-left:18px}.pick-stat:nth-child(even){border-left:0;padding-left:0}}
+@media(max-width:900px){.kpi-row{grid-template-columns:1fr 1fr}.kpi{padding:20px}.kpi:nth-child(odd){border-left:0;padding-left:0}.kpi:nth-child(n+3){border-top:1px solid var(--rule)}}
+@media(max-width:760px){.viz-root{padding:0 18px 60px}header.masthead{padding-top:30px}h1{font-size:clamp(30px,8vw,42px)}.masthead-meta{gap:10px 20px}.theme-toggle{margin-left:0}.controls{flex-direction:column;align-items:stretch}.seg{display:flex}.seg button{flex:1}.search{flex:1 1 auto;max-width:none}.count-note{margin-left:0}.comparison-title{font-size:19px}svg{min-width:520px}.table-scroll{max-height:none}}
+@media(max-width:560px){.kpi-row{grid-template-columns:1fr}.kpi{border-left:0;padding-left:0}.kpi:nth-child(n+2){border-top:1px solid var(--rule)}.pick-grid{grid-template-columns:1fr}.pick-stat{border-left:0;padding-left:0}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+@media print{.viz-root{padding:0}.theme-toggle,.refresh-btn,.refresh-status,.controls,.comparison-results{display:none!important}.card,.chart-panel{break-inside:avoid}}
+.refresh-btn{appearance:none;margin-left:auto;border:1px solid var(--rule-strong);background:transparent;color:var(--ink-soft);font-family:var(--font-text);font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;padding:8px 13px;border-radius:0;cursor:pointer;transition:background 120ms ease,color 120ms ease,border-color 120ms ease}
+.refresh-btn:hover:not([disabled]){background:var(--accent);border-color:var(--accent);color:#fff}
+.refresh-btn[disabled]{opacity:.55;cursor:not-allowed}
+.refresh-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.refresh-status{display:block;margin:9px 0 0;min-height:15px;text-align:right;font-size:10px;letter-spacing:.04em;color:var(--ink-faint);font-weight:500;text-transform:none}
+.theme-toggle{margin-left:0}
+.pick-week{margin:12px 0 0;font-size:10px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--editorial)}
+.pick-live{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--rule);font-size:11px;line-height:1.6;color:var(--ink-soft)}
+.pick-live[hidden]{display:none}
+@media(max-width:760px){.refresh-btn{margin-left:0}.refresh-status{width:100%}}
+</style>
+</head>
+<body>
+<!--
+  Styling note: every <style> block above is a verbatim copy of the chat
+  dashboard's (dashboard/template.html), in the same order, and nothing new is
+  added here. Section labels therefore come from the two mechanisms that
+  template already provides:
+    * <p class="eyebrow"> inside .card-head / .section-head for this page's own
+      sections, and
+    * the id-scoped ::before labels that travel with the copied CSS, which is
+      why #leaderTitle, #scatterTitle and #tableTitle are reused unchanged
+      (they carry the "Rankings", "Price and capability" and "Full reference"
+      eyebrows) and must NOT also get an eyebrow paragraph.
+  This page's own markup uses existing classes only. The two inline styles are
+  both deliberate and are the reason no new CSS is needed:
+    * the nav link borrows .theme-toggle for its button styling, so it resets
+      that class's auto margin and underline inline, and
+    * this page's theme toggle needs margin-left:auto, because the copied CSS
+      sets .theme-toggle{margin-left:0}. On the chat page the right-hand button
+      group is anchored by the refresh button's auto margin, and this page has
+      no refresh button (refresh.py rebuilds only the chat dashboard).
+  The only other inline style is the same closing-note spacing tweak the chat
+  template itself uses on #pickNote.
+-->
+<main class="viz-root"><div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">Model economics · Video generation</p>
+  <h1>Video Generation Price vs. Performance</h1>
+  <p class="subtitle" id="snapshotLine"></p>
+  <div class="masthead-meta">
+    <nav class="tabs" id="navTabs" aria-label="Dashboards"></nav>
+    <span><b>Source</b>OpenRouter <code>/api/v1/videos/models</code></span>
+    <span><b>Benchmarks</b>OpenRouter media prompt benchmarks (video)</span>
+    <span><b>Value</b>pass rate ÷ observed cost per clip</span>
+    <button type="button" class="refresh-btn" id="refreshBtn">Update All Latest AI Data</button>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-pressed="false">Dark mode</button>
+  </div>
+  <p class="refresh-status" id="refreshStatus" role="status" aria-live="polite"></p>
+</header>
+
+<aside class="banner">
+  <strong>Same metric, different units.</strong> Performance here is every judged check a model passed
+  divided by every check it attempted, pooled flat across its benchmark prompts. Price is the mean
+  <code>cost_usd</code> of those same generations — the observed cost of one generated clip, <em>not</em>
+  the catalogue's per-output-second rate — so performance and price come from identical rows and are
+  directly comparable to each other. Two caveats travel with that cost, and both are structural. The
+  catalogue rate is quoted per output second on a resolution- and audio-dependent basis, so it is shown
+  beside the observed cost and never merged into it. And the benchmark pages do not publish the clip
+  length they generated, so two models' observed costs may describe clips of different durations — a
+  cheaper model is not necessarily cheaper for the same output. Generation time is captured per row and
+  is shown separately from cost and quality. There is no video preference or arena score to show: judged
+  prompt results are the whole of the quality evidence, and no Artificial Analysis data exists for video
+  models at all.
+</aside>
+
+<!-- 01 — inventory snapshot --------------------------------------------------->
+<!-- Ordered as the chat dashboard is: inventory first, then the pick. A reader
+     who lands here and on the chat page should meet the same sequence. -->
+<section aria-labelledby="inventoryTitle">
+  <div class="section-head">
+    <p class="eyebrow">Overview</p>
+    <h2 id="inventoryTitle">Inventory snapshot</h2>
+    <p class="card-sub">Coverage across the full video-generation catalogue in this embedded snapshot. Models without benchmark rows are counted, never dropped.</p>
+  </div>
+  <div class="kpi-row" id="kpiRow"></div>
+</section>
+
+<!-- 02 — hero ------------------------------------------------------------------>
+<section aria-labelledby="heroTitle">
+  <div class="card weekly-pick">
+    <div class="pick-grid">
+      <div>
+        <div class="pick-eyebrow">Model of the week</div>
+        <h2 class="pick-name"><span id="heroTitle"></span><span class="arena-flag" id="heroArenaFlag" hidden></span></h2>
+        <div class="pick-provider" id="heroProvider"></div>
+        <p class="pick-week" id="heroWeek"></p>
+        <p class="pick-week" id="heroRank"></p>
+      </div>
+      <div class="pick-stat"><div class="label">Pass rate</div><div class="value" id="heroPass"></div><div class="detail" id="heroPassDetail"></div></div>
+      <div class="pick-stat"><div class="label">Cost per clip</div><div class="value" id="heroCost"></div><div class="detail">observed cost of one generation</div></div>
+      <div class="pick-stat"><div class="label">Value</div><div class="value" id="heroValue"></div><div class="detail">pass rate ÷ cost</div></div>
+      <div class="pick-stat"><div class="label">Evidence</div><div class="value" id="heroEvidence"></div><div class="detail">checks attempted</div></div>
+    </div>
+    <p class="card-sub" id="heroNote" style="margin-top:14px;"></p>
+    <p class="pick-live" id="heroLocked" hidden></p>
+  </div>
+</section>
+
+<!-- 02b — head to head --------------------------------------------------------->
+<!-- The same control the chat dashboard offers, over this page's metrics. The
+     baseline is the Model of the Week above (the locked pick when there is one),
+     so the comparison cannot quietly answer a different question than the card
+     it sits under. -->
+<section aria-labelledby="comparisonTitle">
+  <div class="card model-comparison">
+    <div class="card-head">
+      <div>
+        <h2 id="comparisonTitle">Compare the model of the week</h2>
+        <p class="card-sub">Choose any model in the embedded snapshot to compare against the week's pick.</p>
+      </div>
+    </div>
+    <div class="comparison-picker">
+      <label for="comparisonSearch">Choose another model</label>
+      <input type="search" id="comparisonSearch" role="combobox" aria-autocomplete="list" aria-controls="comparisonResults" aria-expanded="false" autocomplete="off" placeholder="Search model or provider">
+      <div class="comparison-results" id="comparisonResults" role="listbox" aria-label="Matching models"></div>
+    </div>
+    <div id="comparisonContent" class="comparison-empty" aria-live="polite">Choose a model to compare.</div>
+  </div>
+</section>
+
+<!-- 03 — value leaders ------------------------------------------------------->
+<section class="card" aria-labelledby="leaderTitle">
+  <div class="card-head">
+    <div>
+      <h2 id="leaderTitle">Value leaders</h2>
+      <p class="card-sub" id="leaderCaption"></p>
+    </div>
+  </div>
+  <figure class="chart-panel">
+    <h3>Top models by value</h3>
+    <p>Value is pass rate divided by the observed cost of one generated clip. Bars are shown as a share of the leader.</p>
+    <div class="chart-wrap"><svg id="valueBars" role="img" aria-label="Top video-generation models by value score"></svg></div>
+  </figure>
+</section>
+
+<!-- 04 — scatter ------------------------------------------------------------->
+<section class="card" aria-labelledby="scatterTitle">
+  <div class="card-head">
+    <div>
+      <h2 id="scatterTitle">Pass rate vs. cost per clip</h2>
+      <p class="card-sub" id="scatterSub"></p>
+    </div>
+  </div>
+  <div class="value-legend" id="scatterLegend"></div>
+  <figure>
+    <div class="chart-wrap"><svg id="videoScatter" viewBox="0 0 1100 470" role="img" aria-label="Pass rate versus cost per clip scatter chart"></svg></div>
+    <figcaption id="scatterCaption"></figcaption>
+  </figure>
+</section>
+
+<!-- 05 — prompt coverage ---------------------------------------------------->
+<!-- 05 — prompt coverage ----------------------------------------------------->
+<section class="card" aria-labelledby="promptCoverageTitle">
+  <div class="card-head">
+    <div>
+      <p class="eyebrow">Benchmark coverage</p>
+      <h2 id="promptCoverageTitle">Judged prompts, per model</h2>
+      <p class="card-sub">Every prompt OpenRouter judged for video, and how each benchmarked model scored on it. This stands where a preference survey would: no video arena or Elo data is published for these models, so judged prompt results are the whole of the quality evidence, and they are deliberately kept out of the value score.</p>
+    </div>
+  </div>
+  <div class="table-scroll">
+    <table id="promptCoverageTable">
+      <thead><tr id="promptCoverageHead"><th>Model</th></tr></thead>
+      <tbody id="promptCoverageBody"></tbody>
+    </table>
+  </div>
+  <p class="card-sub" id="promptCoverageNote" style="margin-top:14px;"></p>
+</section>
+
+<!-- 06 — coverage ------------------------------------------------------------>
+<section class="card" aria-labelledby="coverageTitle">
+  <div class="card-head">
+    <div>
+      <p class="eyebrow">Coverage</p>
+      <h2 id="coverageTitle">What is rated, and what is not</h2>
+      <p class="card-sub">Four different questions, counted separately. A priced model with no benchmark rows is listed as unrated rather than removed from the dataset.</p>
+    </div>
+  </div>
+  <div class="table-scroll">
+    <table id="coverageTable">
+      <thead><tr><th>Bucket</th><th>Models</th><th>What it means</th></tr></thead>
+      <tbody id="coverageBody"></tbody>
+    </table>
+  </div>
+  <p class="eyebrow" style="margin:26px 0 12px;">Unrated — no benchmark rows</p>
+  <div class="table-scroll">
+    <table id="unratedTable">
+      <thead><tr><th>Model</th><th>Catalogue $/s</th><th>Cost per 5s</th><th>Rate note</th></tr></thead>
+      <tbody id="unratedBody"></tbody>
+    </table>
+  </div>
+  <p class="card-sub" id="unratedNote" style="margin-top:14px;"></p>
+  <p class="card-sub" id="coverageNote" style="margin-top:14px;"></p>
+</section>
+
+<!-- 07 — budget picks -------------------------------------------------------->
+<section class="card" aria-labelledby="budgetTitle">
+  <div class="card-head">
+    <div>
+      <p class="eyebrow">Budget picks</p>
+      <h2 id="budgetTitle">Cheapest models that still clear the bar</h2>
+      <p class="card-sub" id="budgetSub"></p>
+    </div>
+  </div>
+  <div class="table-scroll">
+    <table id="budgetTable">
+      <thead><tr><th>Model</th><th>Pass rate</th><th>Cost per clip</th><th>Value</th><th>Checks attempted</th></tr></thead>
+      <tbody id="budgetBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 08 — pricing breakdown --------------------------------------------------->
+<section class="card" aria-labelledby="tableTitle">
+  <div class="card-head">
+    <div>
+      <h2 id="tableTitle">Catalogue rate vs. observed cost per clip</h2>
+      <p class="card-sub">Every catalogue model, ranked by value. <b>Cost per clip</b> is the observed cost of one generated clip and is the money the value score uses. <b>Catalogue $/s</b> is the published rate per output second, and it is <em>not</em> comparable across models without its basis (plain rate, a 720p tier, an audio-qualified rate). <span id="pricingCount"></span></p>
+    </div>
+  </div>
+  <div class="table-scroll">
+    <table id="pricingTable">
+      <thead><tr><th>Model</th><th>Value</th><th>Cost per clip</th><th>Output res</th><th>Mean gen. time</th><th>Catalogue $/s</th><th>Cost per 5s</th><th>Rate basis</th><th>Max duration</th><th>Audio</th><th>Frame control</th></tr></thead>
+      <tbody id="pricingBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 09 — history placeholder ------------------------------------------------->
+<section class="card" aria-labelledby="trendTitle">
+  <div class="card-head">
+    <div>
+      <p class="eyebrow">History</p>
+      <h2 id="trendTitle">Value over time</h2>
+      <p class="card-sub" id="trendSub"></p>
+    </div>
+  </div>
+  <div class="chart-panel">
+    <h3>Value leader by snapshot date</h3>
+    <p>This fills in on its own once enough dated snapshots exist.</p>
+    <p class="card-sub" id="trendState" style="margin-top:14px;"></p>
+  </div>
+</section>
+
+<!-- provenance --------------------------------------------------------------->
+<section class="quality-panel" aria-labelledby="qualityTitle">
+  <h2 id="qualityTitle">Methodology and provenance</h2>
+  <ul id="qualityList"></ul>
+</section>
+
+<footer>
+  <p id="footerProvenance"></p>
+  <p>Source: OpenRouter <code>/api/v1/videos/models</code> for the catalogue and its published rates, and OpenRouter's media prompt benchmark pages for video for judged checks and observed cost. This report embeds a single data snapshot and never re-fetches at view time.</p>
+  <p><a href="index.html" style="text-decoration:none">&#8592; Back to the chat model report</a> · Typography: DM Serif Display for editorial headings and model names, Inter for data, tables and interface text, served from Google Fonts with local serif and sans-serif fallbacks.</p>
+</footer>
+
+</div></main><div class="tooltip" id="tooltip" role="tooltip"></div>
+
+<script>
+__SHELL_JS__
+</script>
+<script>
+(()=>{"use strict";
+const PAYLOAD=__DATA__;
+const ROWS=PAYLOAD.rows||[],COVERAGE=PAYLOAD.coverage||{},CONST=PAYLOAD.constants||{};
+
+// ---------------------------------------------------------------- helpers --
+const byId=id=>document.getElementById(id);
+const esc=value=>String(value==null?"":value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money=v=>(v==null||!isFinite(v))?"—":"$"+(v<0.01?v.toFixed(4):v.toFixed(v<1?3:2));
+const pct=v=>(v==null||!isFinite(v))?"—":(v*100).toFixed(1)+"%";
+const value=(v)=>(v==null||!isFinite(v))?"—":(v>=100?v.toFixed(0):v.toFixed(1));
+const num=v=>(v==null||!isFinite(v))?"—":v.toLocaleString();
+const seconds=v=>(v==null||!isFinite(v))?"—":(v/1000).toFixed(1)+"s";
+const list=(items)=>items&&items.length?items.join(", "):"—";
+const truncate=(text,max)=>{text=String(text==null?"":text);return text.length>max?text.slice(0,max-1)+"…":text};
+const setText=(id,text)=>{const node=byId(id);if(node){node.textContent=text}};
+const setHtml=(id,html)=>{const node=byId(id);if(node){node.innerHTML=html}};
+const svgEl=(name,attrs)=>{const node=document.createElementNS("http://www.w3.org/2000/svg",name);for(const key in attrs){node.setAttribute(key,attrs[key])}return node};
+const ranked=ROWS.filter(r=>r.value!=null).slice().sort((a,b)=>a.value_rank-b.value_rank);
+const plotted=ROWS.filter(r=>r.pass_rate!=null&&r.avg_cost_usd!=null);
+const dateOnly=v=>v?String(v).slice(0,10):"unknown";
+// The week's locked Model of the Week (recorded by refresh_media.py BEFORE this
+// page was built - see dashboard/media_picks.py) and the display helpers it
+// needs. WEEKPICK is null until the first refresh of a week has locked one, and
+// in that case the page falls back to today's live leader rather than showing
+// nothing.
+const WEEKLY=PAYLOAD.weekly||{},WEEKPICK=(WEEKLY.picks||{}).value||null;
+
+// ------------------------------------------------------------ snapshot line --
+(()=>{
+  const parts=[`Snapshot ${dateOnly(PAYLOAD.data_retrieved_at)}`];
+  if(PAYLOAD.benchmarks_retrieved_at&&dateOnly(PAYLOAD.benchmarks_retrieved_at)!==dateOnly(PAYLOAD.data_retrieved_at)){
+    parts.push(`benchmarks ${dateOnly(PAYLOAD.benchmarks_retrieved_at)}`);
+  }
+  parts.push(`${COVERAGE.catalog_models} catalogue models`);
+  parts.push(`${COVERAGE.benchmarked_models} benchmarked`);
+  if(COVERAGE.prompt_count_min!=null)parts.push(`${COVERAGE.prompt_count_min}–${COVERAGE.prompt_count_max} prompts each`);
+  setText("snapshotLine",parts.join(" · ")+". Value = pass rate ÷ observed cost per clip; no Artificial Analysis data is included for video models.");
+})();
+
+// -------------------------------------------------------------------- hero --
+// The card is the week's pick. When refresh_media.py has locked one, the
+// HEADLINE NUMBERS ARE THE LOCKED ONES: a pick that changed every time the data
+// refreshed would not be a weekly pick. Rank and evidence are still recomputed
+// from today's snapshot, and the line says "today" so the two cannot be confused.
+(()=>{
+  const record=WEEKPICK;
+  // With no locked pick yet (a fresh history file), the hero describes today's
+  // leader - so the row must come from the same place the leader does. Inherited
+  // from the image template, where a null `row` made the card announce "no rank
+  // today" about the very model it was presenting as #1.
+  const row=record?ROWS.find(item=>item.model_id===record.model_id):(ranked[0]||null);
+  const leader=record||ranked[0];
+  if(!leader){setText("heroTitle","No rankable model in this snapshot");setText("heroProvider","—");return}
+  setText("heroTitle",leader.model_name||leader.model_id);
+  // The flag that needs surfacing on this page is a MISSING CATALOGUE RATE, and it
+  // names the scheme the model does publish rather than showing a zero.
+  const rateFlag=byId("heroArenaFlag");
+  if(rateFlag){
+    const absence=(row&&row.rate_absence_label)||null;
+    rateFlag.hidden=Boolean(leader.has_catalog_rate);
+    rateFlag.textContent=absence||"no catalogue rate";
+  }
+  setText("heroProvider",leader.provider||leader.model_id);
+  setText("heroWeek",WEEKLY.week_label?`Week of ${WEEKLY.week_label} · ${WEEKLY.timezone}`:"");
+  setText("heroRank",row?`Rank ${row.value_rank} of ${ranked.length} rankable models today · ${num(leader.prompts)} prompts and ${num(row.checks_total)} judged checks`:`${num(leader.prompts)} prompts benchmarked; no rank today, so it is not in the current value ranking`);
+  setText("heroPass",pct(leader.pass_rate));
+  setText("heroPassDetail",row?`${num(row.checks_passed)} of ${num(row.checks_total)} checks`:"checks not in this snapshot");
+  // Always the OBSERVED per-clip cost: the catalogue rate is a different unit
+  // (per output second) and is shown separately, never merged into this figure.
+  setText("heroCost",money(leader.avg_cost_usd));
+  setText("heroValue",value(leader.value));
+  setText("heroEvidence",row?num(row.evidence_checks):"—");
+  const notes=[`Value ${value(leader.value)} = pass rate ${pct(leader.pass_rate)} ÷ observed cost per clip ${money(leader.avg_cost_usd)} across ${num(leader.prompts)} benchmark prompts.`];
+  if(record){
+    notes.push(`Locked as this week's pick on ${record.recorded_label||"the first refresh of the week"}: it ranked #1 of ${ranked.length} rankable models by that value. Refreshing again this week updates the data but not this pick.`);
+  }else{
+    notes.push(`Recommended from this snapshot: it ranks #1 of ${ranked.length} rankable models by value. The pick is locked on the first refresh of the week.`);
+  }
+  if(!leader.has_catalog_rate){
+    notes.push(`Catalogue rate: ${(row&&row.rate_absence_label)||"not published"} - the price above is the observed cost of one generated clip, so it cannot be cross-checked against a published list rate (see the full table below).`);
+  }
+  // The caveat that qualifies the headline pick lives ON the card, not only in
+  // the provenance panel: the benchmark pages publish no clip length, so two
+  // models' observed costs may describe clips of different durations.
+  notes.push("Clip length is not published for these benchmark rows, so this observed cost may describe a clip of a different length from a rival's - it is the price of what was actually generated, not a controlled like-for-like.");
+  // Rankability is gated on evidence, so state the gate and where this model sits
+  // against it, rather than leaving the gate to the methodology panel alone.
+  if(CONST.evidence_min_prompts!=null){
+    notes.push(`Ranking requires at least ${num(CONST.evidence_min_prompts)} benchmarked prompts and ${num(CONST.evidence_min_checks)} judged checks; this model has ${num(leader.prompts)} prompt(s).`);
+  }
+  setText("heroNote",notes.join(" "));
+  // The locked pick standing; today's leader may have moved on since. Said out
+  // loud rather than silently swapping the headline.
+  const liveLine=byId("heroLocked");
+  const current=record?record.current_leader:null;
+  const moved=Boolean(record&&record.current_leader_differs&&current);
+  if(liveLine){
+    liveLine.hidden=!moved;
+    liveLine.textContent=moved?`Current leader today: ${current.model_name||current.model_id}${current.value==null?"":` (value ${value(current.value)})`}.${record.revision_count?` The leader has moved ${record.revision_count}× since this pick was locked; if it holds, it becomes next week's pick.`:""}`:"";
+  }
+})();
+
+// ---------------------------------------------------------------- head to head --
+// The chat dashboard's comparison, over this page's metrics. Same DOM contract
+// and same behaviour so the two pages feel like one product.
+//
+// Both columns come from THIS snapshot - the baseline is the week's pick looked
+// up among today's rows. Only the hero card above shows the locked figures, and
+// it says so; keeping the comparison on a single snapshot is what stops the two
+// columns from silently mixing vintages.
+(()=>{
+  const search=byId("comparisonSearch"),results=byId("comparisonResults"),content=byId("comparisonContent");
+  if(!search||!results||!content)return;
+  let selectedId=null,matches=[],activeIndex=-1;
+
+  const nameOf=row=>esc(row.model_name||row.model_id);
+  const pickRow=()=>{
+    if(WEEKPICK&&WEEKPICK.model_id){
+      const found=ROWS.find(item=>item.model_id===WEEKPICK.model_id);
+      if(found)return found;
+    }
+    return ranked[0]||null;
+  };
+    const rankCell=row=>row.value_rank==null?'<span class="num-dim">not rankable</span>':`#${num(row.value_rank)} of ${num(ranked.length)}`;
+  // A missing rate is an em dash WITH its reason, never a zero and never a bare
+  // "none" - the reader is told which scheme the model does publish.
+  const rateCell=row=>row.comparable_price==null?`<span class="num-dim">— ${esc(row.rate_absence_label||"no published rate")}</span>`:`${esc(money(row.comparable_price))}/s (${esc(row.comparable_price_basis||"catalogue rate")})`;
+  const durationCell=row=>row.max_duration_seconds==null?'<span class="num-dim">—</span>':`${num(row.max_duration_seconds)}s`;
+  // Tri-state: true, false, or unknown when the catalogue does not publish it.
+  const audioCell=row=>row.generate_audio===true?"Yes":(row.generate_audio===false?"No":'<span class="num-dim">—</span>');
+
+  function matchesFor(term){
+    const baseline=pickRow(),query=term.trim().toLowerCase();
+    if(!query)return [];
+    return ROWS.filter(row=>row.model_id!==(baseline?baseline.model_id:"")&&(
+      String(row.model_name||"").toLowerCase().includes(query)
+      ||String(row.provider||"").toLowerCase().includes(query)
+      ||row.model_id.toLowerCase().includes(query))).slice(0,12);
+  }
+
+  function renderResults(){
+    matches=matchesFor(search.value);activeIndex=-1;
+    results.innerHTML=matches.map((row,index)=>`<button type="button" class="comparison-option" role="option" aria-selected="false" data-model-id="${esc(row.model_id)}" data-index="${index}"><span class="comparison-option-name">${esc(row.model_name||row.model_id)}</span><span class="comparison-option-meta">${esc(row.provider||"")} | ${esc(row.model_id)}</span></button>`).join("");
+    search.setAttribute("aria-expanded",String(matches.length>0));
+  }
+
+  function selectModel(row){
+    selectedId=row.model_id;search.value=row.model_name||row.model_id;matches=[];activeIndex=-1;
+    results.innerHTML="";search.setAttribute("aria-expanded","false");renderComparison();
+  }
+
+  // Every sentence below is a comparison the page can actually support. Where
+  // the two sides are not commensurable the sentence is omitted rather than
+  // guessed at - in particular, a cost difference is never phrased as a quality
+  // difference, and a resolution difference is always disclosed next to cost.
+  function describeCost(baseline,other){
+    const left=baseline.avg_cost_usd,right=other.avg_cost_usd;
+    if(left==null||right==null||left===right)return null;
+    const percent=Math.round(Math.abs(left-right)/right*100);
+    return `<strong>${left<right?nameOf(baseline):nameOf(other)}</strong> is ${percent}% cheaper per generated clip (${money(left)} vs ${money(right)}).`;
+  }
+  function describeRatio(label,left,right,baseline,other){
+    if(left==null||right==null||left===right)return null;
+    if(left>0&&right>0){
+      const factor=Number((Math.max(left,right)/Math.min(left,right)).toFixed(1));
+      return `<strong>${left>right?nameOf(baseline):nameOf(other)}</strong> has a ${label} ${factor}x higher.`;
+    }
+    return null;
+  }
+  function describePoints(label,left,right,baseline,other){
+    if(left==null||right==null||left===right)return null;
+    const points=Math.abs((left-right)*100).toFixed(1);
+    return `<strong>${left>right?nameOf(baseline):nameOf(other)}</strong> is ${points} percentage points higher on ${label}.`;
+  }
+  // The clip-length caveat, said in the comparison as well as on the hero card:
+  // the benchmark pages publish no clip duration, so an observed-cost difference
+  // may be a duration difference rather than a unit-price difference.
+  function describeClipLength(baseline,other){
+    if(baseline.avg_cost_usd==null||other.avg_cost_usd==null)return null;
+    return "Clip length is not published for these benchmark rows, so the cost difference above may reflect different generated durations as well as different unit prices.";
+  }
+  function describeResolution(baseline,other){
+    const left=list(baseline.output_resolutions),right=list(other.output_resolutions);
+    if(left==="—"||right==="—"||left===right)return null;
+    return `These two generated at different output sizes in this snapshot (${esc(left)} vs ${esc(right)}), and cost per clip is not resolution-normalised, so read the cost difference with that in mind.`;
+  }
+
+  function renderComparison(){
+    const baseline=pickRow(),other=ROWS.find(row=>row.model_id===selectedId);
+    if(!baseline){
+      content.className="comparison-empty";
+      content.textContent="No rankable model in this snapshot, so there is nothing to compare against.";
+      return;
+    }
+    if(!other||baseline.model_id===other.model_id){
+      if(other&&baseline.model_id===other.model_id){selectedId=null;search.value=""}
+      content.className="comparison-empty";
+      content.textContent="Choose a model to compare.";
+      return;
+    }
+    const measures=[
+      ["Value (pass rate ÷ cost)",value(baseline.value),value(other.value)],
+      ["Pass rate",pct(baseline.pass_rate),pct(other.pass_rate)],
+      ["Cost per clip",money(baseline.avg_cost_usd),money(other.avg_cost_usd)],
+      ["Checks passed",`${num(baseline.checks_passed)} of ${num(baseline.checks_total)}`,`${num(other.checks_passed)} of ${num(other.checks_total)}`],
+      ["Evidence checks attempted",num(baseline.evidence_checks),num(other.evidence_checks)],
+      ["Prompts benchmarked",num(baseline.prompts),num(other.prompts)],
+      ["Output resolution",list(baseline.output_resolutions),list(other.output_resolutions)],
+      ["Mean generation time",seconds(baseline.duration_ms_mean),seconds(other.duration_ms_mean)],
+      ["Max duration (catalogue)",durationCell(baseline),durationCell(other)],
+      ["Audio (catalogue)",audioCell(baseline),audioCell(other)],
+      ["Value rank in this snapshot",rankCell(baseline),rankCell(other)],
+      ["Catalogue rate",rateCell(baseline),rateCell(other)],
+    ];
+    const summary=[
+      describeCost(baseline,other),
+      describePoints("pass rate",baseline.pass_rate,other.pass_rate,baseline,other),
+      describeRatio("value ratio",baseline.value,other.value,baseline,other),
+      describeClipLength(baseline,other),
+      describeResolution(baseline,other),
+    ].filter(Boolean);
+    content.className="";
+    content.innerHTML=`<div class="comparison-title">Comparison: <strong>${nameOf(baseline)}</strong> <span>vs.</span> <strong>${nameOf(other)}</strong></div>`
+      +`<div class="table-scroll comparison-table-wrap"><table class="comparison-table"><thead><tr><th>Measure</th><th>${nameOf(baseline)}${WEEKPICK&&WEEKPICK.model_id===baseline.model_id?" (pick)":""}</th><th>${nameOf(other)}</th></tr></thead><tbody>`
+      +measures.map(([label,left,right])=>`<tr><td>${label}</td><td>${left}</td><td>${right}</td></tr>`).join("")
+      +"</tbody></table></div>"
+      +`<div class="comparison-summary"><p>${nameOf(baseline)} is approximately:</p>${summary.length?`<ul>${summary.map(item=>`<li>${item}</li>`).join("")}</ul>`:"<p>These two models are comparable on every measure this page can check, or the values needed are not recorded for one of them.</p>"}</div>`;
+  }
+
+  search.addEventListener("input",()=>{selectedId=null;renderComparison();renderResults()});
+  search.addEventListener("keydown",event=>{
+    if(event.key==="ArrowDown"&&matches.length){event.preventDefault();activeIndex=(activeIndex+1)%matches.length}
+    else if(event.key==="ArrowUp"&&matches.length){event.preventDefault();activeIndex=(activeIndex-1+matches.length)%matches.length}
+    else if(event.key==="Enter"&&activeIndex>=0){event.preventDefault();selectModel(matches[activeIndex])}
+    else if(event.key==="Escape"){matches=[];activeIndex=-1;results.innerHTML="";search.setAttribute("aria-expanded","false")}
+    results.querySelectorAll(".comparison-option").forEach((option,index)=>option.classList.toggle("active",index===activeIndex));
+  });
+  results.addEventListener("click",event=>{
+    const option=event.target.closest("[data-model-id]");
+    if(!option)return;
+    const row=ROWS.find(item=>item.model_id===option.dataset.modelId);
+    if(row)selectModel(row);
+  });
+
+  renderComparison();
+})();
+
+// -------------------------------------------------------------------- kpis --
+(()=>{
+  const costs=plotted.map(r=>r.avg_cost_usd).sort((a,b)=>a-b);
+  const median=costs.length?(costs.length%2?costs[(costs.length-1)/2]:(costs[costs.length/2-1]+costs[costs.length/2])/2):null;
+  const tiles=[
+    ["Catalogue models",num(COVERAGE.catalog_models),`${num(COVERAGE.priced_models)} publish a resolvable rate`],
+    ["Benchmarked",num(COVERAGE.benchmarked_models),`${num(COVERAGE.unrated_models)} unrated, listed below`],
+    ["Rankable by value",num(COVERAGE.rankable_models),`${num(COVERAGE.benchmarked_unpriced_models)} without a catalogue rate`],
+    ["Median cost",money(median),"per generated clip"],
+  ];
+  setHtml("kpiRow",tiles.map(([label,val,sub])=>`<div class="kpi"><div class="label">${esc(label)}</div><div class="value">${esc(val)}</div><div class="sub">${esc(sub)}</div></div>`).join(""));
+})();
+
+// ------------------------------------------------------------ value leaders --
+(()=>{
+  const svg=byId("valueBars");if(!svg||!ranked.length)return;
+  const top=ranked.slice(0,CONST.top_n_bars||12),leader=top[0].value;
+  setText("leaderCaption",`Top ${top.length} of ${ranked.length} rankable models by value, each bar scaled to the leader.`);
+  // RESERVE is space for the value label that sits after the longest bar
+  // without overflowing the chart panel, which has overflow-x:auto.
+  const W=900,ROW=30,PAD=14,LABEL=300,RESERVE=150,BAR_MAX=W-LABEL-RESERVE,H=top.length*ROW+PAD*2;
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  top.forEach((row,index)=>{
+    const y=PAD+index*ROW,center=y+ROW/2-3;
+    const barW=leader>0?Math.max(2,BAR_MAX*(row.value/leader)):2;
+    const name=svgEl("text",{x:0,y:center+4,class:"value-model-label"});
+    name.textContent=`${row.value_rank}. ${truncate(row.model_name||row.model_id,34)}`;
+    svg.appendChild(name);
+    svg.appendChild(svgEl("rect",{x:LABEL,y:center-6,width:2,height:12,class:"gridline"}));
+    svg.appendChild(svgEl("rect",{x:LABEL,y:center-6,width:barW,height:12,class:"bar"}));
+    const label=svgEl("text",{x:LABEL+barW+8,y:center+4,class:"value-bar-label"});
+    label.textContent=value(row.value);
+    svg.appendChild(label);
+  });
+})();
+
+// ----------------------------------------------------------------- scatter --
+(()=>{
+  const svg=byId("videoScatter");if(!svg||!plotted.length)return;
+  // The section heading already names both axes, so only the x axis is
+  // labelled here - a y-axis title collides with the 100% tick label.
+  const W=1100,H=470,M={l:74,r:34,t:24,b:76};
+  const maxCost=Math.max(...plotted.map(r=>r.avg_cost_usd));
+  const xMax=maxCost>0?maxCost*1.06:1;
+  const x=v=>M.l+(v/xMax)*(W-M.l-M.r);
+  const y=v=>H-M.b-(v)*(H-M.t-M.b);
+  svg.innerHTML="";
+
+  for(let tick=0;tick<=4;tick++){
+    const fraction=tick/4,gy=y(fraction);
+    svg.appendChild(svgEl("line",{x1:M.l,x2:W-M.r,y1:gy,y2:gy,class:"gridline"}));
+    const label=svgEl("text",{x:M.l-10,y:gy+4,class:"axis-label","text-anchor":"end"});
+    label.textContent=Math.round(fraction*100)+"%";
+    svg.appendChild(label);
+  }
+  const xTicks=5;
+  for(let tick=0;tick<=xTicks;tick++){
+    const v=(xMax/xTicks)*tick,gx=x(v);
+    svg.appendChild(svgEl("line",{x1:gx,x2:gx,y1:M.t,y2:H-M.b,class:"gridline"}));
+    const label=svgEl("text",{x:gx,y:H-M.b+22,class:"axis-label","text-anchor":"middle"});
+    label.textContent=v===0?"$0":(v<0.01?"$"+v.toFixed(4):"$"+v.toFixed(2));
+    svg.appendChild(label);
+  }
+  svg.appendChild(svgEl("line",{x1:M.l,x2:W-M.r,y1:H-M.b,y2:H-M.b,class:"axis-line"}));
+  const xTitle=svgEl("text",{x:W-M.r,y:H-16,class:"axis-label","text-anchor":"end"});
+  xTitle.textContent="mean cost per clip (USD)";
+  svg.appendChild(xTitle);
+
+  plotted.slice().sort((a,b)=>b.avg_cost_usd-a.avg_cost_usd).forEach(row=>{
+    const cx=x(row.avg_cost_usd),cy=y(row.pass_rate),r=row.point_radius||CONST.point_radius_min||4;
+    svg.appendChild(svgEl("circle",{cx,cy,r,class:"dot"}));
+    const hit=svgEl("circle",{cx,cy,r:Math.max(r,12),class:"dot-hit"});
+    hit.addEventListener("pointerenter",event=>{
+      const tip=byId("tooltip");
+      tip.innerHTML=`<strong>${esc(row.model_name||row.model_id)}</strong>`
+        +`<div class="tooltip-row"><span>Pass rate</span><span>${esc(pct(row.pass_rate))} (${num(row.checks_passed)}/${num(row.checks_total)})</span></div>`
+        +`<div class="tooltip-row"><span>Cost per clip</span><span>${esc(money(row.avg_cost_usd))}</span></div>`
+        +`<div class="tooltip-row"><span>Output</span><span>${(row.output_resolutions||[]).length?esc(row.output_resolutions.join(", ")):'<span class="num-dim">—</span>'}</span></div>`
+        +`<div class="tooltip-row"><span>Mean gen. time</span><span>${row.mean_generation_seconds==null?'—':esc(seconds(row.mean_generation_seconds*1000))}</span></div>`
+        +`<div class="tooltip-row"><span>Value</span><span>${esc(value(row.value))}</span></div>`
+        +`<div class="tooltip-row"><span>Evidence</span><span>${num(row.evidence_checks)} checks · ${num(row.prompts)} prompts</span></div>`;
+      tip.style.left=event.clientX+"px";tip.style.top=event.clientY+"px";tip.classList.add("show");
+    });
+    hit.addEventListener("pointermove",event=>{
+      const tip=byId("tooltip");
+      tip.style.left=event.clientX+"px";tip.style.top=event.clientY+"px";
+    });
+    hit.addEventListener("pointerleave",()=>byId("tooltip").classList.remove("show"));
+    svg.appendChild(hit);
+  });
+
+  const legend=byId("scatterLegend");
+  if(legend){
+    const evidence=plotted.map(r=>r.evidence_checks).filter(v=>v!=null);
+    const range=evidence.length?`${Math.min(...evidence)}–${Math.max(...evidence)}`:"—";
+    legend.innerHTML=`<span class="legend-input">point size = checks attempted (${esc(range)})</span>`
+      +`<span class="legend-score">${plotted.length} of ${COVERAGE.catalog_models} models plotted</span>`;
+  }
+})();
+
+// ----------------------------------------------------------- prompt coverage --
+// The panel that stands in for a preference survey. Rows are the benchmark rows
+// themselves, so it cannot tell a different story from the pooled pass rate.
+(()=>{
+  const panel=PAYLOAD.prompt_coverage||{prompts:[],models:[]};
+  const prompts=panel.prompts||[];
+  const byModel={};
+  (panel.models||[]).forEach(m=>{byModel[m.model_id]=m.cells||{}});
+
+  const head=byId("promptCoverageHead");
+  if(head){
+    prompts.forEach(p=>{
+      const th=document.createElement("th");
+      th.textContent=p.name||p.slug;
+      th.title=`${p.name||p.slug}: ${num(p.row_count)} judged generation(s)`;
+      head.appendChild(th);
+    });
+  }
+
+  const ordered=ROWS.slice().filter(r=>r.benchmarked).sort((a,b)=>{
+    const ar=a.value_rank==null?1e9:a.value_rank,br=b.value_rank==null?1e9:b.value_rank;
+    return ar-br||(a.model_id||"").localeCompare(b.model_id||"");
+  });
+  setHtml("promptCoverageBody",ordered.map(row=>{
+    const cells=byModel[row.model_id]||{};
+    let out=`<td class="name-cell"><span class="model-name">${esc(row.model_name||row.model_id)}</span>`
+      +`<div class="model-provider">${esc(row.provider||"")}${row.rankable?"":" · not rankable"}</div></td>`;
+    prompts.forEach(p=>{
+      const cell=cells[p.slug];
+      out+=cell&&cell.pass_rate!=null
+        ?`<td title="cost ${esc(money(cell.cost_usd))}">${esc(pct(cell.pass_rate))}<div class="model-provider">${esc(num(cell.checks_passed))}/${esc(num(cell.checks_total))}</div></td>`
+        :'<td><span class="num-dim">—</span></td>';
+    });
+    return `<tr>${out}</tr>`;
+  }).join("")||'<tr><td class="num-dim">No judged prompt rows in this snapshot.</td></tr>');
+
+  setText("promptCoverageNote",`${esc(panel.note||"")} ${num(panel.model_count)} model(s), ${num(panel.prompt_count)} prompt(s), ${num(panel.row_count)} judged row(s). A dash means that model was not judged on that prompt - it is missing evidence, not a failed attempt.`);
+})();
+
+// ----------------------------------------------------------------- coverage --
+(()=>{
+  const bucketRows=[
+    ["Catalogue models",COVERAGE.catalog_models,"Every image model the catalogue lists in this snapshot"],
+    ["Publish a resolvable rate",COVERAGE.priced_models,"A rate in USD per output second; per-token and per-megapixel-second schemes cannot be converted"],
+    ["Benchmarked",COVERAGE.benchmarked_models,"Has at least one judged benchmark prompt row"],
+    ["Rankable by value",COVERAGE.rankable_models,"Has a benchmark cost AND clears the evidence gate"],
+    ["Unrated",COVERAGE.unrated_models,"No benchmark rows at all — shown below, never dropped"],
+    ["Below the evidence gate",COVERAGE.gated_out_models,"Benchmarked, but on too few prompts or checks to be ranked"],
+    ["Ranked without a catalogue rate",COVERAGE.benchmarked_unpriced_models,"Value uses the observed clip cost, so a missing list rate does not remove a model from the ranking"],
+  ];
+  setHtml("coverageBody",bucketRows.map(([name,count,meaning])=>
+    `<tr><td><span class="model-name">${esc(name)}</span></td><td>${esc(num(count))}</td><td class="name-cell num-dim">${esc(meaning)}</td></tr>`).join(""));
+
+  const unrated=(COVERAGE.unrated_ids||[]).map(id=>ROWS.find(r=>r.model_id===id)).filter(Boolean);
+  setHtml("unratedBody",unrated.map(row=>
+    `<tr><td class="name-cell"><span class="model-name">${esc(row.model_name||row.model_id)}</span><div class="model-provider">${esc(row.provider||"")}</div></td>`
+    +`<td>${row.comparable_price==null?'<span class="num-dim">—</span>':esc(money(row.comparable_price))}</td>`
+    +`<td>${row.cost_per_5s_clip==null?'<span class="num-dim">—</span>':esc(money(row.cost_per_5s_clip))}</td>`
+    +`<td class="name-cell num-dim">${row.rate_absence_label?esc(row.rate_absence_label):(row.comparable_price_basis?esc(row.comparable_price_basis):'—')}</td></tr>`).join(""));
+
+  const notes=[];
+  if(unrated.length)notes.push(`${unrated.length} catalogue model(s) have no judged benchmark rows yet, so they cannot be rated - they are listed above rather than removed, which is not the same as scoring zero.`);
+  if(COVERAGE.benchmarked_unpriced_ids&&COVERAGE.benchmarked_unpriced_ids.length){
+    notes.push(`${COVERAGE.benchmarked_unpriced_ids.length} benchmarked models (${COVERAGE.benchmarked_unpriced_ids.join(", ")}) publish no resolvable catalogue rate, so their cost comes only from their own generations.`);
+  }
+  if(COVERAGE.benchmarked_unrankable_ids&&COVERAGE.benchmarked_unrankable_ids.length){
+    notes.push(`${COVERAGE.benchmarked_unrankable_ids.length} benchmarked models have no usable benchmark cost and are therefore unranked: ${COVERAGE.benchmarked_unrankable_ids.join(", ")}.`);
+  }
+  setText("coverageNote",notes.join(" "));
+
+  // Item 5: state the ceiling explicitly. These models are not merely unmeasured
+  // yet - there is no source to measure them from, which is a different and more
+  // permanent situation than a model that simply has not been benchmarked. The
+  // chat dashboard can cascade through OpenRouter -> Artificial Analysis -> a
+  // manual override; nothing equivalent exists for image generation.
+  if(unrated.length){
+    const providers=[...new Set(unrated.map(r=>r.provider).filter(Boolean))].sort();
+    const composition=providers.length?` In this snapshot they are ${providers.map(p=>`${unrated.filter(r=>r.provider===p).length} ${p}`).join(" and ")} models.`:'';
+    setText("unratedNote",`Coverage ceiling: these ${unrated.length} models have no benchmark rows at all, and no fallback source can supply one.${composition} `
+      +`The chat dashboard can fall back through OpenRouter → Artificial Analysis → a manual override; video generation has no equivalent, because no source publishes a video arena score and OpenRouter's video catalogue carries no benchmarks block. `
+      +`This is a structural gap in the available evidence, not a temporary one, and it cannot be closed by refreshing.`);
+  }
+})();
+
+// ------------------------------------------------------------------- budget --
+(()=>{
+  setText("budgetSub",`Cheapest models that still pass at least ${pct(PAYLOAD.budget?PAYLOAD.budget.min_pass_rate:null)} of their attempted checks, ranked by observed cost per clip. Only models clearing the evidence gate are eligible. The threshold is a deliberate cut, not a data property: it sits just below the run's median pass rate.`);
+  const picks=(PAYLOAD.budget&&PAYLOAD.budget.model_ids||[]).map(id=>ROWS.find(r=>r.model_id===id)).filter(Boolean);
+  setHtml("budgetBody",picks.map(row=>
+    `<tr><td class="name-cell"><span class="model-name">${esc(row.model_name||row.model_id)}</span><div class="model-provider">${esc(row.provider||"")}${row.has_catalog_rate?"":" · no catalogue rate"}</div></td>`
+    +`<td>${esc(pct(row.pass_rate))}</td><td>${esc(money(row.avg_cost_usd))}</td><td>${esc(value(row.value))}</td><td>${esc(num(row.evidence_checks))}</td></tr>`).join("")
+    ||'<tr><td colspan="5" class="num-dim">No model clears the threshold in this snapshot.</td></tr>');
+})();
+
+// -------------------------------------------------------- pricing breakdown --
+(()=>{
+  setText("pricingCount",`${ROWS.length} rows.`);
+  const ordered=ROWS.slice().sort((a,b)=>{
+    if(a.value==null&&b.value==null)return (a.model_id||"").localeCompare(b.model_id||"");
+    if(a.value==null)return 1;if(b.value==null)return -1;return b.value-a.value;
+  });
+    setHtml("pricingBody",ordered.map(row=>{
+    const audio=row.generate_audio===true?"Yes":(row.generate_audio===false?"No":'<span class="num-dim">—</span>');
+    const frames=(row.frame_images||[]).length?row.frame_images.join(", "):'<span class="num-dim">—</span>';
+    return `<tr><td class="name-cell"><span class="model-name">${esc(row.model_name||row.model_id)}</span><div class="model-provider">${esc(row.provider||"")}</div></td>`
+      +`<td>${row.value==null?'<span class="num-dim">Unrated</span>':esc(value(row.value))}</td>`
+      +`<td>${row.avg_cost_usd==null?'<span class="num-dim">—</span>':esc(money(row.avg_cost_usd))}</td>`
+      // The resolution the benchmark generation ran at - the cost caveat's
+      // subject, shown per model so the cost can be read against it. A model
+      // whose rows span several sizes is marked rather than silently averaged.
+      +`<td>${(row.output_resolutions||[]).length?esc(row.output_resolutions.join(", "))+(row.resolution_mixed?' <span class="num-dim">(mixed)</span>':''):'<span class="num-dim">not recorded</span>'}</td>`
+      +`<td>${row.duration_ms_mean==null?'<span class="num-dim">—</span>':esc(seconds(row.duration_ms_mean))}</td>`
+      // A missing catalogue rate is an em dash WITH its reason. Never a zero:
+      // a model that publishes only per-token rates has no per-second price at
+      // all, which is a different statement from "it is free".
+      +`<td>${row.comparable_price==null?'<span class="num-dim">—</span>':esc(money(row.comparable_price))}</td>`
+      +`<td>${row.cost_per_5s_clip==null?'<span class="num-dim">—</span>':esc(money(row.cost_per_5s_clip))}</td>`
+      +`<td class="name-cell num-dim">${row.comparable_price==null?esc(row.rate_absence_label||"no published rate"):(row.comparable_price_basis?esc(row.comparable_price_basis):'—')}</td>`
+      +`<td>${row.max_duration_seconds==null?'<span class="num-dim">—</span>':esc(row.max_duration_seconds+"s")}</td>`
+      +`<td>${audio}</td>`
+      +`<td class="name-cell num-dim">${frames}</td></tr>`;
+  }).join(""));
+})();
+
+// -------------------------------------------------------------------- trend --
+(()=>{
+  const trend=PAYLOAD.trend||{points:0,min_points:2,snapshot_dates:[]};
+  setText("trendSub","Value and cost per clip across snapshots, once there is more than one.");
+  if(trend.ready){
+    setText("trendState",`${trend.points} snapshots recorded (${trend.snapshot_dates.join(", ")}).`);
+  }else{
+    setText("trendState",`Not enough history yet — ${trend.points} snapshot recorded${trend.points===1?"":"s"} (${trend.snapshot_dates.join(", ")||"none"}). This chart starts rendering at ${trend.min_points}; until then there is no trend to show and nothing is drawn.`);
+  }
+})();
+
+// ---------------------------------------------------------------- provenance --
+(()=>{
+  const items=[
+    CONST.provenance_note,
+    CONST.methodology_note,
+    `Coverage in this snapshot: ${COVERAGE.catalog_models} catalogue models, ${COVERAGE.priced_models} with a resolvable per-second rate, ${COVERAGE.benchmarked_models} benchmarked over ${COVERAGE.prompt_count_min}–${COVERAGE.prompt_count_max} prompts each, ${COVERAGE.rankable_models} rankable, ${COVERAGE.gated_out_models} below the evidence gate, ${COVERAGE.unrated_models} unrated.`,
+    "Prompt counts per model are not uniform, so a point or bar backed by more attempted checks rests on more evidence than one backed by fewer.",
+    CONST.cost_unit_note,
+    (CONST.resolution_values||[]).length
+      ? `Generated output sizes in this snapshot: ${CONST.resolution_values.join(", ")}, and ${CONST.resolution_mixed_models||0} benchmarked model(s) generated at more than one of them. Cost is not resolution-normalised, so read it against the resolution column.`
+      : null,
+  ];
+  setHtml("qualityList",items.filter(Boolean).map(text=>`<li>${esc(text)}</li>`).join(""));
+  setText("footerProvenance",`Generated ${dateOnly(PAYLOAD.generated_at)} from data retrieved ${dateOnly(PAYLOAD.data_retrieved_at)}. Value = pass rate ÷ observed cost per clip (${CONST.value_definition||""}).`);
+})();
+})();
+</script>
+</body>
+</html>

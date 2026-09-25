@@ -30,6 +30,7 @@ if str(DASHBOARD_DIR) not in sys.path:
 
 import build_dashboard  # noqa: E402  (imported read-only - never modified)
 import build_image_dashboard  # noqa: E402
+import build_video_dashboard  # noqa: E402
 import nav_tabs  # noqa: E402  (the shared tab list - single source of truth)
 import page_shell  # noqa: E402
 import serve  # noqa: E402
@@ -42,6 +43,7 @@ IMAGE_TEMPLATE_PATH = DASHBOARD_DIR / "image_template.html"
 PUBLISH_WORKFLOW_PATH = PROJECT_ROOT / ".github" / "workflows" / "publish.yml"
 
 IMAGE_PAGE = "image_model_analysis.html"
+VIDEO_PAGE = "video_model_analysis.html"
 
 # Fingerprint of the chat template's four <style> blocks, concatenated. This is
 # a deliberate tripwire: the design system lives entirely in those blocks.
@@ -340,6 +342,7 @@ def test_servable_keeps_the_chat_routes_and_adds_one_image_route():
         "/index.html": build_dashboard.OUTPUT_PATH,
         "/dashboard.html": build_dashboard.OUTPUT_PATH,
         f"/{IMAGE_PAGE}": build_image_dashboard.OUTPUT_PATH,
+        f"/{VIDEO_PAGE}": build_video_dashboard.OUTPUT_PATH,
     }
 
 
@@ -354,6 +357,7 @@ def test_publish_workflow_stages_every_page_the_nav_links_point_at():
         ("dashboard/price_performance_final.html", "_site/index.html"),
         ("dashboard/status.json", "_site/status.json"),
         (f"dashboard/{IMAGE_PAGE}", f"_site/{IMAGE_PAGE}"),
+        (f"dashboard/{VIDEO_PAGE}", f"_site/{VIDEO_PAGE}"),
     ]
 
 

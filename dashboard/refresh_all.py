@@ -1,19 +1,26 @@
 #!/usr/bin/env python3
 """
-Run BOTH data refreshes and report each one's outcome independently.
+Run EVERY data refresh and report each one's outcome independently.
 
 Usage:
-    python dashboard/refresh_all.py [--targets all|chat|media] [--skip-fetch]
+    python dashboard/refresh_all.py [--targets all|chat|media|video] [--skip-fetch]
                                     [--no-snapshot] [--json]
 
-The two pipelines stay independent. This module only spawns them as separate
+The three pipelines stay independent. This module only spawns them as separate
 processes, each with its own lock, its own status file and its own exit code -
-nothing here merges their code paths, so the media pipeline can never break the
-chat one. That separation is a deliberate earlier decision, not an accident of
-how this file happens to be written.
+nothing here merges their code paths, so the video pipeline can never break the
+chat or image ones. That separation is a deliberate earlier decision, not an
+accident of how this file happens to be written.
 
-Both targets always run: a failure in one does NOT skip the other, which is what
-lets the button report per-dashboard success/failure on a single click.
+The targets run SEQUENTIALLY, one after another. Two reasons: the exit-code
+contract is simpler to reason about when only one child can be mid-flight, and
+all three fetch from openrouter.ai - running them concurrently would put three
+unrelated scrapers on the same host at once for no wall-clock gain that matters
+at a weekly cadence.
+
+Every requested target always runs: a failure in one does NOT skip the others,
+which is what lets the button report per-dashboard success/failure on a single
+click.
 
 Exit codes:
     0 - every requested target succeeded
@@ -45,18 +52,19 @@ sys.path.insert(0, str(DASHBOARD_DIR))
 TARGET_SCRIPTS = {
     "chat": DASHBOARD_DIR / "refresh.py",
     "media": DASHBOARD_DIR / "refresh_media.py",
+    "video": DASHBOARD_DIR / "refresh_video.py",
 }
 TARGETS = tuple(TARGET_SCRIPTS)
 
 # Deliberately different windows. The chat pipeline's 72h default matches its
-# weekly cadence; the media pipeline's is 192h because media data is published
-# on the same weekly beat but its own build has always defaulted to 192. Forcing
-# one window on both would make a media rebuild refuse data that is legitimately
-# fresh for its own cadence.
-DEFAULT_MAX_AGE_HOURS = {"chat": 72.0, "media": 192.0}
+# weekly cadence; the media and video pipelines' is 192h because their data is
+# published on the same weekly beat and image generation's build has always
+# defaulted to 192. Forcing one window on all three would make a media or video
+# rebuild refuse data that is legitimately fresh for its own cadence.
+DEFAULT_MAX_AGE_HOURS = {"chat": 72.0, "media": 192.0, "video": 192.0}
 
 # Per-target ceiling. dashboard/serve.py's own --timeout-seconds must exceed
-# 2x this, or it would kill the whole unified refresh mid-pipeline.
+# 3x this, or it would kill the whole unified refresh mid-pipeline.
 DEFAULT_TIMEOUT_SECONDS = 600.0
 
 # Per-target last-run outcome, for the deployed Worker: it cannot see this
@@ -165,7 +173,7 @@ def run_all(targets: tuple[str, ...] = TARGETS,
 
 def _summarise(results: dict[str, dict]) -> str:
     """One human line naming which dashboard succeeded and which did not."""
-    labels = {"chat": "Chat", "media": "Image"}
+    labels = {"chat": "Chat", "media": "Image", "video": "Video"}
     parts = []
     for name, res in results.items():
         label = labels.get(name, name)
@@ -214,6 +222,10 @@ def main() -> int:
                         default=DEFAULT_MAX_AGE_HOURS["media"],
                         help="Freshness window for the image build "
                              f"(default {DEFAULT_MAX_AGE_HOURS['media']:g})")
+    parser.add_argument("--video-max-age-hours", type=float,
+                        default=DEFAULT_MAX_AGE_HOURS["video"],
+                        help="Freshness window for the video build "
+                             f"(default {DEFAULT_MAX_AGE_HOURS['video']:g})")
     parser.add_argument("--timeout-seconds", type=float, default=DEFAULT_TIMEOUT_SECONDS,
                         help=f"Per-target ceiling (default {DEFAULT_TIMEOUT_SECONDS:g})")
     parser.add_argument("--json", action="store_true",
@@ -225,7 +237,8 @@ def main() -> int:
         targets=targets,
         skip_fetch=args.skip_fetch,
         no_snapshot=args.no_snapshot,
-        windows={"chat": args.chat_max_age_hours, "media": args.media_max_age_hours},
+        windows={"chat": args.chat_max_age_hours, "media": args.media_max_age_hours,
+                 "video": args.video_max_age_hours},
         timeout_seconds=args.timeout_seconds,
     )
     write_status(aggregate)
