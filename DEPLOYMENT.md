@@ -62,17 +62,17 @@ flowchart TB
     RUNNER -- "scrape media" --> OR
     RUNNER -- "commit data + HTML back" --> REPO
     RUNNER -- "upload artifact + deploy" --> PAGES
-    PAGES -- "serves both pages" --> PAGE
+   PAGES -- "serves all three pages" --> PAGE
 ```
 
 **The one rule that shapes everything:** the dashboards are *static files*. They
 cannot rewrite data or republish themselves. Every dynamic behaviour is either a
 scheduled CI job or a Worker call.
 
-**Two pipelines, one button.** `publish.yml` runs `dashboard/refresh_all.py`,
-which spawns `refresh.py` (chat) and `refresh_media.py` (image) as separate
-processes. They share no code path, no lock file and no output, so one failing
-leaves the other updated - and the run still reports which dashboard succeeded.
+**Three pipelines, one button.** `publish.yml` runs `dashboard/refresh_all.py`,
+which spawns `refresh.py` (chat), `refresh_media.py` (image) and
+`refresh_video.py` (video) as sequential, separate processes. They have separate
+locks, status files and outputs, so one failing leaves the others updated.
 
 ---
 
@@ -84,24 +84,27 @@ leaves the other updated - and the run still reports which dashboard succeeded.
 | **Media pipeline** | Scrapes the image/video catalogs + media prompt benchmarks | `run_media_pipeline.py`, `src/media_*.py` |
 | **Dashboard build** | Renders `data/**` into one self-contained HTML file | `dashboard/build_dashboard.py`, `dashboard/template.html` |
 | **Image dashboard build** | Same, for the image-generation page | `dashboard/build_image_dashboard.py`, `dashboard/image_template.html` |
+| **Video pipeline** | Fetches and normalizes the video catalogue and video prompt benchmarks | `run_video_pipeline.py`, `src/video_*.py` |
+| **Video dashboard build** | Same, for the video-generation page | `dashboard/build_video_dashboard.py`, `dashboard/video_template.html` |
 | **Refresh orchestrator (chat)** | Fetch → lock weekly picks → rebuild, as one command | `dashboard/refresh.py` |
 | **Refresh orchestrator (media)** | Fetch media data → lock the image Model of the Week → rebuild the image page, as one command | `dashboard/refresh_media.py` |
-| **Unified refresh** | Runs BOTH pipelines as separate processes, per-target outcomes | `dashboard/refresh_all.py` |
+| **Refresh orchestrator (video)** | Fetch video data → lock the video Model of the Week → rebuild the video page, as one command | `dashboard/refresh_video.py` |
+| **Unified refresh** | Runs all three pipelines sequentially as separate processes, with per-target outcomes | `dashboard/refresh_all.py` |
 | **Weekly picks (chat)** | Locks one "Model of the Week" per AA metric, Monday–Sunday | `dashboard/weekly_picks.py`, `data/analysis/weekly_picks.json` |
 | **Weekly picks (image)** | Locks one "Model of the Week" by value, Monday–Sunday | `dashboard/media_picks.py`, `data/analysis/media_weekly_picks.json` |
+| **Weekly picks (video)** | Locks one "Model of the Week" by value, Monday–Sunday | `dashboard/video_picks.py`, `data/analysis/video_dashboard_weekly_picks.json` |
 | **CI workflow** | Runs the refresh, commits results, publishes Pages | `.github/workflows/publish.yml` |
 | **Static host** | Serves the built HTML publicly over HTTPS | GitHub Pages |
 | **Refresh proxy** | Holds the GitHub token; exposes `/status` + `/refresh` | `cloudflare-worker/worker.js` |
 | **Credential** | Fine-grained PAT, one repo, `Actions: read+write` | Cloudflare Worker secret `GITHUB_TOKEN` |
 | **Local dev server** | Serves the same HTML + endpoints on loopback | `dashboard/serve.py` |
-| **Shared page shell** | Tab nav + theme toggle + refresh control, injected into both pages | `dashboard/web_assets/shell.js`, `dashboard/page_shell.py`, `dashboard/nav_tabs.py` |
+| **Shared page shell** | Tab nav + theme toggle + refresh control, injected into all three pages | `dashboard/web_assets/shell.js`, `dashboard/page_shell.py`, `dashboard/nav_tabs.py` |
 
 **`dashboard/refresh.py` is deliberately untouched by this deployment.** It was
 written as a standalone CLI precisely so CI could call the identical command,
-and it is a frozen surface: the media pipeline was added as a *sibling*
-(`refresh_media.py`) rather than a mode of it, so a media failure can never
-break the chat dashboard. `refresh_all.py` only spawns the two; it merges
-neither their code nor their outputs.
+and it is a frozen surface: the image and video pipelines were added as
+*siblings* rather than modes of it. `refresh_all.py` only spawns the three; it
+merges neither their code nor their outputs.
 
 ---
 
@@ -114,13 +117,14 @@ Fires on cron `0 0 * * 1` (UTC), i.e. **Monday 08:00 Asia/Manila**.
 ```
 cron → checkout → install deps → pytest → refresh_all.py --targets all
                                        --chat-max-age-hours 192 --media-max-age-hours 192
+                         --video-max-age-hours 192
      → commit data/** + dashboard/** as github-actions[bot]
-     → stage _site/index.html + _site/status.json + _site/image_model_analysis.html
+   → stage index.html + status.json + image_model_analysis.html + video_model_analysis.html
      → configure-pages → upload artifact → deploy Pages
      → (only now) fail the run if a dashboard failed to refresh
 ```
 
-`refresh_all.py` runs two independent pipelines and reports each outcome:
+`refresh_all.py` runs three independent pipelines and reports each outcome:
 
 1. **chat** — `dashboard/refresh.py`: `run_pipeline.py` (network) → lock this
    week's picks → `build_dashboard.py`. **If the fetch fails, that pipeline
@@ -128,6 +132,9 @@ cron → checkout → install deps → pytest → refresh_all.py --targets all
    dashboard.
 2. **media** — `dashboard/refresh_media.py`: `run_media_pipeline.py` (network,
    ~90s) → `build_image_dashboard.py`, on the same fail-without-rebuilding rule.
+3. **video** — `dashboard/refresh_video.py`: `run_video_pipeline.py` → lock this
+   week's video pick → `build_video_dashboard.py`, with its own snapshot root
+   (`data/video_snapshots/`) and the same fail-without-rebuilding rule.
 
 A failure in one **does not skip the other**, and the workflow keeps going so
 whatever succeeded is still committed and deployed. The run is marked failed
@@ -140,14 +147,14 @@ deployed later in the same job rather than by a separate workflow.
 
 ### 4.2 On-demand refresh (the "Update All Latest AI Data" button)
 
-One button on both pages, refreshing **both** pipelines in a single dispatch.
+One button on all three pages, refreshing all pipelines in a single dispatch.
 
 ```
 visitor clicks
   → POST https://llm-refresh-proxy…workers.dev/refresh   (Origin: gelson-ai.github.io)
   → Worker validates Origin, checks cooldown + single-flight
   → POST /repos/…/actions/workflows/publish.yml/dispatches   → 204
-  → Worker replies 202; page shows "Refreshing both dashboards…" and polls /status
+   → Worker replies 202; page polls /status while the three targets run
   → run completes → /status returns state + job.targets
   → ALL targets ok  → page reloads and shows the updates
   → ANY target failed → page does NOT reload, so the per-dashboard
@@ -259,11 +266,11 @@ cooldown is the only brake. See §10 for how to tighten it.
 
 | Setting | Value |
 | --- | --- |
-| Triggers | `schedule` `0 0 * * 1`, `workflow_dispatch` (with a `targets` input: `all`/`chat`/`media`), `push` to `main` (path-filtered) |
+| Triggers | `schedule` `0 0 * * 1`, `workflow_dispatch` (`all`/`chat`/`media`/`video`), `push` to `main` (path-filtered) |
 | Permissions | `contents: write`, `pages: write`, `id-token: write` |
 | Concurrency | group `publish-dashboard`, `cancel-in-progress: false` |
-| Timeout | 30 minutes (must exceed 2× `refresh_all.py`'s per-target 600 s) |
-| Refresh flags | `--targets` `--chat-max-age-hours 192` `--media-max-age-hours 192` |
+| Timeout | 45 minutes (must exceed 3 x `refresh_all.py`'s per-target 600 s) |
+| Refresh flags | `--targets` plus explicit 192-hour chat, media and video windows |
 | Runner | `ubuntu-latest`, Python 3.12, pip cache |
 
 ### Worker — `cloudflare-worker/worker.js`
@@ -274,9 +281,9 @@ cooldown is the only brake. See §10 for how to tighten it.
 | `COOLDOWN_SECONDS` | `600` | Minimum gap between refreshes |
 | `RECENT_COMPLETION_SECONDS` | `900` | How long a finished run counts as "the job" |
 | `STATUS_CACHE_SECONDS` | `5` | `/status` cache lifetime |
-| `STALE_AFTER_HOURS` | `192` | When data is flagged stale (weekly cadence + headroom). Applies to BOTH dashboards |
+| `STALE_AFTER_HOURS` | `192` | When data is flagged stale (weekly cadence + headroom). Applies to all dashboards |
 | `REFRESH_EVENTS` | `workflow_dispatch`, `schedule` | Runs that count as a data refresh |
-| `STATUS_FILES` | `chat`/`media` → one sidecar each | Deliberately NOT one combined file: a broken media run must not make chat freshness unreadable |
+| `STATUS_FILES` | `chat`/`media`/`video` → one sidecar each | Separate files keep one broken run from hiding another dashboard's freshness |
 | `REFRESH_STATUS_FILE` | `dashboard/refresh_status.json` | Per-target outcome, read with a recency guard (see below) |
 
 ### Local server — `dashboard/serve.py`
@@ -288,8 +295,9 @@ cooldown is the only brake. See §10 for how to tighten it.
 | `--cooldown-seconds` | `600` | Minimum gap between refreshes |
 | `--max-age-hours` | `72` | Freshness window passed to the **chat** build |
 | `--media-max-age-hours` | `192` | Freshness window passed to the **image** build. Deliberately wider: media shares the weekly cadence and its build has always defaulted to 192 |
-| `--timeout-seconds` | `1500` | Ceiling for the WHOLE unified refresh; must exceed 2× `refresh_all.py`'s 600 s per-target |
-| `--skip-fetch` | off | Rebuild from disk, no network (either pipeline) |
+| `--video-max-age-hours` | `192` | Freshness window passed to the **video** build |
+| `--timeout-seconds` | `2100` | Whole-refresh ceiling; must exceed 3 x the 600-second per-target ceiling |
+| `--skip-fetch` | off | Rebuild from disk, no network (all pipelines) |
 
 ### Dependencies — `requirements.txt`
 
@@ -500,7 +508,7 @@ Private repos would change this: Pages needs GitHub Pro, and Actions drops to
 ## 12. File map
 
 ```
-.github/workflows/publish.yml     CI: refresh BOTH pipelines + commit + deploy Pages
+.github/workflows/publish.yml     CI: refresh all pipelines + commit + deploy Pages
 cloudflare-worker/worker.js       Refresh proxy (the only credential holder)
 cloudflare-worker/wrangler.toml   Config for optional CLI deploys
 cloudflare-worker/README.md       Worker setup + curl checks
@@ -510,19 +518,25 @@ dashboard/web_assets/shell.js     Shared page shell: tabs + theme toggle + refre
 dashboard/page_shell.py           Injects the shell at __SHELL_JS__ (with the tab data)
 dashboard/template.html           Chat page source; all CSS/DOM/JS
 dashboard/image_template.html     Image page source; byte-identical <style> blocks
+dashboard/video_template.html     Video page source, derived from the image template
 dashboard/build_dashboard.py      Chat: renders template + data → HTML and status.json
 dashboard/build_image_dashboard.py Image: renders image_template → image_model_analysis.html
+dashboard/build_video_dashboard.py Video: renders video_template → video_model_analysis.html
 dashboard/refresh.py              CHAT: fetch → lock picks → rebuild (frozen surface)
 dashboard/refresh_media.py        MEDIA: fetch → lock the image pick → rebuild the image page
-dashboard/refresh_all.py          Runs both, reports per-dashboard outcomes
+dashboard/refresh_video.py        VIDEO: fetch → lock the video pick → rebuild the video page
+dashboard/refresh_all.py          Runs all three, reports per-dashboard outcomes
 dashboard/refresh_lock.py         Shared lock implementation (refresh.py keeps its own copy)
 dashboard/weekly_picks.py         Monday–Sunday pick locking (UTC+8), chat metrics
 dashboard/media_picks.py          Monday–Sunday pick locking (UTC+8), image value metric
+dashboard/video_picks.py          Monday–Sunday pick locking (UTC+8), video value metric
 dashboard/serve.py                Local-only dev server (loopback)
 dashboard/price_performance_final.html   GENERATED — never hand-edit
 dashboard/image_model_analysis.html      GENERATED — never hand-edit
+dashboard/video_model_analysis.html      GENERATED — never hand-edit
 dashboard/status.json             GENERATED — CHAT freshness sidecar
 dashboard/media_status.json       GENERATED — MEDIA freshness sidecar
+dashboard/video_status.json       GENERATED — VIDEO freshness sidecar
 dashboard/refresh_status.json     GENERATED — per-target outcome of the last unified run
 
 data/normalized/*.json|csv        CHAT and MEDIA pipeline outputs share this directory.
@@ -534,24 +548,25 @@ data/analysis/media_*_report.json Media coverage + data-quality reports (tracked
 data/snapshots/<date>/            CHAT snapshots (tracked)
 data/media_snapshots/<date>/      MEDIA snapshots: deliberately a SEPARATE top-level
                                   directory - see the note below
+data/video_snapshots/<date>/      VIDEO snapshots: also a separate top-level directory
 data/analysis/.refresh.lock       Machine-local runtime lock (IGNORED)
 data/analysis/.media_refresh.lock MEDIA's own lock - NOT the chat one (IGNORED)
+data/analysis/.video_refresh.lock VIDEO's own lock - NOT either existing lock (IGNORED)
 
 DEPLOYMENT.md                     This document
 requirements.txt                  Pinned runtime + test dependencies
 ```
 
-> **The media pipeline is now part of this deployment**, but it remains a
-> separate pipeline from the chat one. `run_media_pipeline.py` serves the image
-> dashboard; `run_pipeline.py` serves the chat one. They share one workflow run
+> **The image and video pipelines are part of this deployment**, but remain
+> separate from chat and from each other. They share one workflow run
 > (because a `GITHUB_TOKEN` commit does not re-trigger workflows, so a separate
 > media workflow could never deploy its own output), and nothing else.
 >
 > Three consequences worth knowing:
 >
-> - **The two pipelines never share a lock file.** `data/analysis/.refresh.lock`
->   and `.media_refresh.lock` are deliberately distinct: a stuck media run must
->   not block a chat refresh, or the reverse. A test asserts the paths differ,
+> - **The three pipelines never share a lock file.** Their chat, media and video
+>   locks are deliberately distinct: a stuck run must not block another target.
+>   Tests assert the paths differ,
 >   and `.gitignore` covers both (`data/analysis/.*_refresh.lock`) so CI's
 >   `git add -A data` cannot commit a lock.
 > - Media snapshots live in **`data/media_snapshots/`**, not `data/snapshots/`.
@@ -612,8 +627,8 @@ Recorded so "it works" is a claim with evidence.
 | Weekly pick across a *user-triggered* refresh | ✅ still "Z.ai: GLM 5.3 Flash", locked 11 Sep 03:09 PHT |
 | Test suite | ✅ 59 passed when this section was first written; **237 passed** after the unified-nav-and-refresh work |
 | Worker syntax | ✅ `node --check`, exit 0 (now enforced by a test, skipped where node is absent) |
-| Tabs on both pages, active state, both directions | ✅ verified in-browser; refresh button and theme toggle intact; header right edge still x=1206–1302 at 1440px |
-| Unified refresh, both pipelines, one click | ✅ "Chat: updated. Image: updated." with `job.targets` naming both |
+| Tabs on all three pages, active state | ✅ verified in-browser; refresh button and theme toggle intact |
+| Unified refresh, all pipelines, one click | ✅ `Chat: updated. Image: updated. Video: updated.` with all targets named |
 | Unified refresh, one pipeline failing | ✅ with a deliberately impossible chat window: `Chat: failed — The dashboard rebuild was refused… Image: updated.` — media still published, chat kept its previous HTML, page did NOT reload so the message stayed readable |
 | Nav test is not vacuous | ✅ mutation-checked: pointing a tab at an unstaged file fails with `"the image tab links to MUTATION_TEST_not_staged.html, which the workflow never stages"` |
 | Media data capture completeness | ✅ 867/867 rows carry output resolution, duration and thumbnail URL |

@@ -1,16 +1,17 @@
 # OpenRouter Model Price-to-Performance Data Pipeline
 
-Two dashboards are published from this repo, each with its own pipeline and
+Three dashboards are published from this repo, each with its own pipeline and
 source data:
 
 | Page | Pipeline | Source |
 | --- | --- | --- |
 | **Chat models** (`index.html`) | `run_pipeline.py` | `/api/v1/models` + Artificial Analysis indices |
 | **Image models** (`image_model_analysis.html`) | `run_media_pipeline.py` | `/api/v1/images/models` + media prompt benchmarks + Design Arena |
+| **Video models** (`video_model_analysis.html`) | `run_video_pipeline.py` | `/api/v1/videos/models` + video prompt benchmarks |
 
-The two pipelines are deliberately independent - separate entry points, separate
-lock files, separate status files - so one can never break the other. A single
-**Update All Latest AI Data** button (and `dashboard/refresh_all.py`) runs both
+The three pipelines are deliberately independent - separate entry points,
+snapshot roots, lock files and status files - so one cannot break another. A
+single **Update All Latest AI Data** button (and `dashboard/refresh_all.py`) runs all three
 and reports per-dashboard success/failure.
 
 Data acquisition and validation phase only for the chat pipeline. Neither page
@@ -29,7 +30,8 @@ pip install -r requirements.txt
 
 ```bash
 python run_pipeline.py        # chat models
-python run_media_pipeline.py  # image + video models (~90s)
+python run_media_pipeline.py  # image models (~90s)
+python run_video_pipeline.py  # video models
 ```
 
 Both require normal internet access to `https://openrouter.ai`. **They will
@@ -57,7 +59,7 @@ python dashboard/serve.py
 On Windows you can just double-click **`start_dashboard.bat`**, which starts the
 server and opens the browser for you. Otherwise run the command above, open the
 address it prints (`http://127.0.0.1:8765/`), then use **Update All Latest AI
-Data** in the masthead - it is on both pages and refreshes **both** dashboards in
+Data** in the masthead - it is on all three pages and refreshes all dashboards in
 one click.
 
 The server has to stay running: if you close that window, the page still loads
@@ -65,17 +67,18 @@ from the browser cache but refresh will report that it cannot reach the
 service. The same work is available from the command line:
 
 ```bash
-python dashboard/refresh_all.py              # both dashboards, one command
+python dashboard/refresh_all.py              # all dashboards, one command
 python dashboard/refresh_all.py --targets media
+python dashboard/refresh_all.py --targets video
 python dashboard/refresh_all.py --skip-fetch # rebuild from data on disk
 ```
 
 `dashboard/refresh_all.py` is the single entry point: it runs `refresh.py`
-(chat: pipeline, weekly picks, rebuild) and `refresh_media.py` (media: pipeline,
-rebuild) as **separate processes** and reports each one's outcome. It never
-merges their code paths, so the media pipeline cannot break the chat one. A
-failure in either does not skip the other - you get
-`Chat: failed - … Image: updated.` rather than an all-or-nothing result.
+(chat), `refresh_media.py` (image) and `refresh_video.py` (video) as
+**sequential, separate processes** and reports each outcome. It never merges
+their code paths, so one pipeline cannot break another. A failure does not skip
+the remaining targets - you get a per-dashboard summary rather than an
+all-or-nothing result.
 `dashboard/serve.py` only executes it, which is deliberate, so the identical
 command is what CI calls.
 
@@ -92,7 +95,9 @@ Server options:
 | `--cooldown-seconds` | `600` | Minimum gap between refreshes; earlier requests get `429`. |
 | `--max-age-hours` | `72` | Freshness window enforced by the **chat** build. |
 | `--media-max-age-hours` | `192` | Freshness window for the **image** build. Wider on purpose: media shares the weekly cadence. |
-| `--skip-fetch` | off | Rebuild only, no network (either pipeline). |
+| `--video-max-age-hours` | `192` | Freshness window for the **video** build. |
+| `--timeout-seconds` | `2100` | Whole-refresh ceiling; exceeds three 600-second target ceilings. |
+| `--skip-fetch` | off | Rebuild only, no network (all pipelines). |
 
 Guards: one refresh at a time (`409`), a cooldown (`429`) with `Retry-After`,
 cross-origin `POST`s rejected (`403`), a required JSON content type (`415`),
@@ -131,7 +136,7 @@ file at `data/analysis/media_weekly_picks.json`. The two are deliberately
 separate files: they lock different picks over different model sets, so a shared
 record would let one pipeline's lock overwrite the other's. Its tie-break is the
 one the page's own value ranking already uses - value, then model id - so the
-locked pick can never disagree with the rank printed beside it. On both pages the
+locked pick can never disagree with the rank printed beside it. On all three pages the
 card is labelled "Model of the week", shows the week range, and sits directly
 above a head-to-head comparison against any other model in the snapshot.
 

@@ -9,13 +9,13 @@ holds that credential securely on the server and exposes two endpoints:
 
 | Endpoint | Purpose |
 | --- | --- |
-| `GET /status` | Data freshness for **both** dashboards (`dashboard/status.json` + `dashboard/media_status.json`), the current refresh-job state, and the per-dashboard outcome of the last run (`dashboard/refresh_status.json`) |
-| `POST /refresh` | Asks GitHub to run the `Publish dashboard` workflow, which refreshes **both** pipelines |
+| `GET /status` | Data freshness for all three dashboards (chat, image and video status sidecars), the current refresh-job state, and the per-dashboard outcome of the last run |
+| `POST /refresh` | Asks GitHub to run the `Publish dashboard` workflow, which refreshes all three pipelines |
 
 The response shapes mirror `dashboard/serve.py` on purpose, so the dashboard
 pages need no rework — only a different base URL. One refresh dispatches one
-workflow: `publish.yml` runs the chat and media pipelines as independent steps,
-so one failing still leaves the other updated and published.
+workflow: `publish.yml` runs the chat, image and video pipelines independently,
+so one failing still leaves the others updated and published.
 
 ---
 
@@ -85,8 +85,8 @@ curl -i -X POST -H "Origin: https://gelson-ai.github.io" \
   -H "Content-Type: application/json" -d '{}' \
   https://llm-refresh-proxy.<your-subdomain>.workers.dev/refresh
 
-# 5. Both dashboards are reported - data.media must be present, and job.targets
-#    must name chat + media once a run has recently finished (null while idle)
+# 5. All dashboards are reported - data.media and data.video must be present,
+#    and job.targets names chat + media + video after a recent run (null while idle)
 curl -s https://llm-refresh-proxy.<your-subdomain>.workers.dev/status \
   | python -c "import json,sys; d=json.load(sys.stdin); print(sorted(d['data'])); print(d['job']['targets'])"
 ```
@@ -110,6 +110,12 @@ curl -s https://llm-refresh-proxy.<your-subdomain>.workers.dev/status \
       "age_hours": 122.85,
       "stale": false,
       "model_count": 52
+    },
+    "video": {
+      "retrieved_at": "2026-09-24T14:35:30Z",
+      "age_hours": 0.5,
+      "stale": false,
+      "model_count": 29
     }
   },
   "job": {
@@ -124,19 +130,16 @@ curl -s https://llm-refresh-proxy.<your-subdomain>.workers.dev/status \
 }
 ```
 
-`data` holds the chat pipeline's freshness fields plus a `media` block for the
-image dashboard, each read from its own sidecar file. `job.targets` reports the
-last run per dashboard, e.g.
-`{"chat": {"state": "failed", "message": "…"}, "media": {"state": "ok"}}` —
-that is how the button can say "Chat: failed — …, Image: updated." after a single
-click.
+`data` holds the chat pipeline's freshness fields plus `media` and `video`
+blocks, each read from its own sidecar file. `job.targets` reports the last run
+per dashboard, so the button can report mixed outcomes after one click.
 
 `POST /refresh` returns `202` accepted, `409` already running, `429` during the
 cooldown (with a `Retry-After` header), or `403` for a foreign origin.
 
 ## Design notes
 
-- **Both status sidecars are read through the GitHub Contents API**, not
+- **All three status sidecars are read through the GitHub Contents API**, not
   `raw.githubusercontent.com`. The raw host is CDN-cached and can serve a stale
   copy for minutes after a deploy, which would make the button misreport how old
   the data is.
