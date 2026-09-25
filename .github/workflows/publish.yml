@@ -18,6 +18,7 @@ on:
           - all
           - chat
           - media
+          - video
         default: all
   push:
     branches: [main]
@@ -47,10 +48,11 @@ concurrency:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
-    # Must exceed 2x refresh_all.py's per-target ceiling: the unified refresh
-    # gives each pipeline up to 10 minutes, and killing the job mid-pipeline
-    # would throw away a result the other pipeline had already produced.
-    timeout-minutes: 30
+    # Must exceed 3x refresh_all.py's per-target ceiling: the unified refresh
+    # gives each of the three pipelines up to 10 minutes, and killing the job
+    # mid-pipeline would throw away results the other pipelines had already
+    # produced.
+    timeout-minutes: 45
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -73,11 +75,11 @@ jobs:
       - name: Run tests
         run: python -m pytest tests/ -q
 
-      # One step, BOTH pipelines. dashboard/refresh_all.py runs refresh.py
-      # (chat) and refresh_media.py (image) as separate processes and reports
-      # each outcome separately, so a media failure can never stop the chat
-      # dashboard from updating - or the reverse. That separation is why the
-      # two are not merged into one script.
+      # One step, ALL THREE pipelines. dashboard/refresh_all.py runs refresh.py
+      # (chat), refresh_media.py (image) and refresh_video.py (video) as separate
+      # processes and reports each outcome separately, so a video failure can
+      # never stop the chat or image dashboards from updating - or the reverse.
+      # That separation is why the three are not merged into one script.
       #
       # continue-on-error keeps the job alive so whatever DID succeed is still
       # committed and deployed; a refresh failure must not leave the site
@@ -95,7 +97,8 @@ jobs:
           python dashboard/refresh_all.py \
             --targets "${{ inputs.targets || 'all' }}" \
             --chat-max-age-hours 192 \
-            --media-max-age-hours 192
+            --media-max-age-hours 192 \
+            --video-max-age-hours 192
 
       # GITHUB_TOKEN commits do not re-trigger this workflow, so there is no
       # loop. Pages is deployed later in this same job instead.
@@ -115,16 +118,18 @@ jobs:
       # just it, renamed index.html, plus the status sidecar the refresh
       # button's proxy reads.
       #
-      # dashboard/media_status.json and dashboard/refresh_status.json are
-      # deliberately NOT staged: the Worker reads both from the repository via
-      # the Contents API (see cloudflare-worker/worker.js), and nothing in the
-      # browser requests them directly. Adding them here would be dead weight.
+      # dashboard/media_status.json, dashboard/video_status.json and
+      # dashboard/refresh_status.json are deliberately NOT staged: the Worker
+      # reads all three from the repository via the Contents API (see
+      # cloudflare-worker/worker.js), and nothing in the browser requests them
+      # directly. Adding them here would be dead weight.
       - name: Stage site
         run: |
           mkdir -p _site
           cp dashboard/price_performance_final.html _site/index.html
           cp dashboard/status.json _site/status.json
           cp dashboard/image_model_analysis.html _site/image_model_analysis.html
+          cp dashboard/video_model_analysis.html _site/video_model_analysis.html
 
       # configure-pages reads this repo's Pages config and fails fast with a
       # clear message if Pages is not switched on yet, so enabling it is a

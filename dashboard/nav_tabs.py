@@ -42,12 +42,12 @@ NAV_TABS: list[dict[str, str]] = [
         "href": "image_model_analysis.html",
         "page": "image_model_analysis.html",
     },
-    # A third (video) dashboard belongs HERE and nowhere else: add its entry with
-    # its own href + built filename, stage the built file in
-    # .github/workflows/publish.yml, and add a route to dashboard/serve.py.
-    # tests/test_image_dashboard_invariants.py is written to fail until all three
-    # exist, which is the point - a tab that 404s on the live site is worse than
-    # no tab at all.
+    {
+        "key": "video",
+        "label": "Video models",
+        "href": "video_model_analysis.html",
+        "page": "video_model_analysis.html",
+    },
 ]
 
 

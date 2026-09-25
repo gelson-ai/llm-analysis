@@ -57,6 +57,7 @@ const STALE_AFTER_HOURS = 192;
 const STATUS_FILES = {
   chat: "dashboard/status.json",
   media: "dashboard/media_status.json",
+  video: "dashboard/video_status.json",
 };
 
 // The per-target outcome of the last unified refresh, written by
@@ -264,10 +265,11 @@ async function readRefreshTargets(token, run) {
 }
 
 async function buildStatus(token) {
-  const [job, chat, media] = await Promise.all([
+  const [job, chat, media, video] = await Promise.all([
     readJob(token),
     readDataStatus(token, STATUS_FILES.chat),
     readDataStatus(token, STATUS_FILES.media),
+    readDataStatus(token, STATUS_FILES.video),
   ]);
 
   // Per-target detail only while it belongs to the run being reported. `idle`
@@ -275,9 +277,9 @@ async function buildStatus(token) {
   const targets = job.state === "idle" ? null : await readRefreshTargets(token, job);
 
   // `data` keeps the chat pipeline's fields at the top level for backwards
-  // compatibility with the already-deployed page, and gains the image
-  // dashboard's own block beside them.
-  return { ok: true, data: { ...chat, media }, job: { ...job, targets } };
+  // compatibility with the already-deployed page, and gains each sibling
+  // dashboard's own block beside them: `media` for image, `video` for video.
+  return { ok: true, data: { ...chat, media, video }, job: { ...job, targets } };
 }
 
 async function cachedStatus(request, token) {

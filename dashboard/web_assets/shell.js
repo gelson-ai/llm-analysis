@@ -130,7 +130,7 @@
   const summarise = (job) => {
     const targets = job.targets;
     if (!targets) return (job.result || {}).message || "Refresh failed.";
-    const labels = { chat: "Chat", media: "Image" };
+    const labels = { chat: "Chat", media: "Image", video: "Video" };
     return Object.keys(targets)
       .map((key) => {
         const res = targets[key] || {};

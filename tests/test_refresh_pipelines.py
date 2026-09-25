@@ -33,6 +33,7 @@ import refresh  # noqa: E402  (the chat pipeline - imported read-only, never mod
 import refresh_all  # noqa: E402
 import refresh_lock  # noqa: E402
 import refresh_media  # noqa: E402
+import refresh_video  # noqa: E402
 import serve  # noqa: E402
 
 from config import settings  # noqa: E402
@@ -251,15 +252,18 @@ def test_one_target_failing_does_not_stop_the_other(tmp_path, monkeypatch):
 
     aggregate = refresh_all.run_all()
 
-    assert seen == ["refresh.py", "refresh_media.py"], "both targets must be attempted"
+    assert seen == ["refresh.py", "refresh_media.py", "refresh_video.py"], \
+        "every target must be attempted"
     assert aggregate["ok"] is False
     assert aggregate["failed_targets"] == ["chat"]
     assert aggregate["targets"]["chat"]["state"] == "failed"
     assert aggregate["targets"]["media"]["state"] == "ok"
-    # The message has to name BOTH dashboards, or the button cannot report
+    assert aggregate["targets"]["video"]["state"] == "ok"
+    # The message has to name EVERY dashboard, or the button cannot report
     # per-dashboard success/failure.
     assert "Chat: failed" in aggregate["message"]
     assert "Image: updated." in aggregate["message"]
+    assert "Video: updated." in aggregate["message"]
 
 
 def test_the_cli_persists_the_per_target_status_and_returns_the_right_exit_code(tmp_path, monkeypatch, capsys):
@@ -318,9 +322,10 @@ def test_each_target_keeps_its_own_freshness_window(tmp_path, monkeypatch):
     monkeypatch.setattr(refresh_all, "STATUS_PATH", tmp_path / "refresh_status.json")
     refresh_all.run_all()
 
-    chat_cmd, media_cmd = commands
+    chat_cmd, media_cmd, video_cmd = commands
     assert chat_cmd[chat_cmd.index("--max-age-hours") + 1] == "72.0"
     assert media_cmd[media_cmd.index("--max-age-hours") + 1] == "192.0"
+    assert video_cmd[video_cmd.index("--max-age-hours") + 1] == "192.0"
 
 
 def test_a_timeout_is_a_failure_not_a_crash(tmp_path, monkeypatch):
@@ -350,6 +355,7 @@ def test_serve_runs_the_orchestrator_with_a_window_per_dashboard(monkeypatch):
     monkeypatch.setattr(serve, "subprocess", SimpleNamespace(run=fake_run))
     job = serve.RefreshJob(cooldown_seconds=600)
     args = SimpleNamespace(max_age_hours=72.0, media_max_age_hours=192.0,
+                           video_max_age_hours=192.0,
                            skip_fetch=False, no_snapshot=False, timeout_seconds=1500.0)
     job._run(args)
 
@@ -357,13 +363,16 @@ def test_serve_runs_the_orchestrator_with_a_window_per_dashboard(monkeypatch):
     assert Path(cmd[1]).name == "refresh_all.py"
     assert cmd[cmd.index("--chat-max-age-hours") + 1] == "72.0"
     assert cmd[cmd.index("--media-max-age-hours") + 1] == "192.0"
+    assert cmd[cmd.index("--video-max-age-hours") + 1] == "192.0"
     assert job.state == "ok"
 
 
 def test_serve_timeout_exceeds_the_orchestrators_own_ceiling():
-    """Otherwise serve.py would kill a slow unified refresh mid-media-fetch and
-    throw away a chat result that had already succeeded."""
-    assert serve.DEFAULT_REFRESH_TIMEOUT_SECONDS > 2 * refresh_all.DEFAULT_TIMEOUT_SECONDS
+    """Otherwise serve.py would kill a slow unified refresh mid-fetch and throw
+    away results the other pipelines had already produced."""
+    assert serve.DEFAULT_REFRESH_TIMEOUT_SECONDS > (
+        len(refresh_all.TARGETS) * refresh_all.DEFAULT_TIMEOUT_SECONDS
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -382,6 +391,7 @@ def test_the_workers_status_files_are_the_ones_the_pipelines_write():
     assert declared == {
         "chat": f"dashboard/{build_dashboard.STATUS_PATH.name}",
         "media": f"dashboard/{refresh_media.STATUS_PATH.name}",
+        "video": f"dashboard/{refresh_video.STATUS_PATH.name}",
     }
     assert (
         f'REFRESH_STATUS_FILE = "dashboard/{refresh_all.STATUS_PATH.name}"' in worker

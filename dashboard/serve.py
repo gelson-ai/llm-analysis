@@ -53,18 +53,20 @@ sys.path.insert(0, str(DASHBOARD_DIR))
 
 import build_dashboard  # noqa: E402
 import build_image_dashboard  # noqa: E402
+import build_video_dashboard  # noqa: E402
 import weekly_picks  # noqa: E402
 
 PROJECT_ROOT = build_dashboard.PROJECT_ROOT
 DASHBOARD_PATH = build_dashboard.OUTPUT_PATH
 IMAGE_DASHBOARD_PATH = build_image_dashboard.OUTPUT_PATH
+VIDEO_DASHBOARD_PATH = build_video_dashboard.OUTPUT_PATH
 REFRESH_SCRIPT = DASHBOARD_DIR / "refresh_all.py"
 
-# The unified refresh runs BOTH pipelines as separate processes, so its ceiling
-# must exceed the sum of refresh_all.py's per-target timeouts (2 x 600s). If it
-# did not, a slow media fetch would be killed mid-run and the chat result would
-# be thrown away with it.
-DEFAULT_REFRESH_TIMEOUT_SECONDS = 1500.0
+# The unified refresh runs ALL THREE pipelines as separate processes, so its
+# ceiling must exceed the sum of refresh_all.py's per-target timeouts
+# (3 x 600s). If it did not, a slow video fetch would be killed mid-run and the
+# chat and image results would be thrown away with it.
+DEFAULT_REFRESH_TIMEOUT_SECONDS = 2100.0
 
 # Exactly what may be served, by filename.
 SERVABLE = {
@@ -72,6 +74,7 @@ SERVABLE = {
     "/index.html": DASHBOARD_PATH,
     "/dashboard.html": DASHBOARD_PATH,
     "/image_model_analysis.html": IMAGE_DASHBOARD_PATH,
+    "/video_model_analysis.html": VIDEO_DASHBOARD_PATH,
 }
 
 # Refresh requests carry an empty JSON object; anything larger is not ours.
@@ -135,12 +138,14 @@ class RefreshJob:
         return "started", 202
 
     def _run(self, args: argparse.Namespace) -> None:
-        # dashboard/refresh_all.py runs refresh.py (chat) and refresh_media.py
-        # (image) as two independent subprocesses and reports each one's outcome
-        # separately, so one pipeline failing still leaves the other updated.
+        # dashboard/refresh_all.py runs refresh.py (chat), refresh_media.py
+        # (image) and refresh_video.py (video) as three independent subprocesses
+        # and reports each one's outcome separately, so one pipeline failing
+        # still leaves the others updated.
         command = [sys.executable, str(REFRESH_SCRIPT), "--json",
                    "--chat-max-age-hours", str(args.max_age_hours),
-                   "--media-max-age-hours", str(args.media_max_age_hours)]
+                   "--media-max-age-hours", str(args.media_max_age_hours),
+                   "--video-max-age-hours", str(args.video_max_age_hours)]
         if getattr(args, "skip_fetch", False):
             command.append("--skip-fetch")
         if getattr(args, "no_snapshot", False):
@@ -279,6 +284,7 @@ class Handler(BaseHTTPRequestHandler):
                 "model_count": build_dashboard.model_count(),
             },
             "media": self._media_status(),
+            "video": self._video_status(),
             "job": self.server.job.snapshot(),
             "weekly": weekly_picks.embed_view(history),
         }
@@ -307,6 +313,29 @@ class Handler(BaseHTTPRequestHandler):
             "retrieved_at": retrieved_at,
             "age_hours": round(age, 2) if age is not None else None,
             "stale": (age is None) or age > self.server.args.media_max_age_hours,
+            "dashboard_built_at": built_at,
+            "model_count": model_count,
+        }
+
+    def _video_status(self) -> dict:
+        """Freshness of the VIDEO dashboard's own data and status sidecar."""
+        retrieved_at = build_video_dashboard.read_retrieved_at()
+        age = build_video_dashboard.data_age_hours(retrieved_at)
+        built_at = None
+        model_count = None
+        status_path = DASHBOARD_DIR / "video_status.json"
+        if status_path.exists():
+            try:
+                with open(status_path, encoding="utf-8") as handle:
+                    video_status = json.load(handle)
+                built_at = video_status.get("generated_at")
+                model_count = video_status.get("model_count")
+            except (OSError, ValueError):
+                pass
+        return {
+            "retrieved_at": retrieved_at,
+            "age_hours": round(age, 2) if age is not None else None,
+            "stale": (age is None) or age > self.server.args.video_max_age_hours,
             "dashboard_built_at": built_at,
             "model_count": model_count,
         }
@@ -388,10 +417,13 @@ def main() -> int:
                         help="Freshness window passed to the IMAGE build (default 192). "
                              "Deliberately wider than the chat window: media data shares the "
                              "weekly cadence, and its build has always defaulted to 192.")
+    parser.add_argument("--video-max-age-hours", type=float, default=192.0,
+                        help="Freshness window passed to the VIDEO build (default 192). "
+                             "Same weekly cadence as the image build, so the same window.")
     parser.add_argument("--timeout-seconds", type=float, default=DEFAULT_REFRESH_TIMEOUT_SECONDS,
                         help="Give up on a whole unified refresh after this long "
                              f"(default {DEFAULT_REFRESH_TIMEOUT_SECONDS:g}; must exceed "
-                             "2x refresh_all.py's per-target timeout)")
+                             "3x refresh_all.py's per-target timeout)")
     parser.add_argument("--skip-fetch", action="store_true",
                         help="Do not re-fetch from OpenRouter; recompute and rebuild from the data already on disk")
     parser.add_argument("--no-snapshot", action="store_true",
