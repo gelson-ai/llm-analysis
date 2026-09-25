@@ -269,3 +269,67 @@ MIN_EXPECTED_TOTAL_PROMPT_BENCHMARK_ROWS = 200
 MEDIA_RAW_PROMPT_BENCHMARK_ROWS_PATH = RAW_DIR / "openrouter_media_prompt_benchmark_rows.json"
 MEDIA_PROMPT_BENCHMARKS_JSON_PATH = NORMALIZED_DIR / "media_prompt_benchmarks.json"
 MEDIA_PROMPT_BENCHMARKS_CSV_PATH = NORMALIZED_DIR / "media_prompt_benchmarks.csv"
+
+# ---------------------------------------------------------------------------
+# Video dashboard (its own pipeline, its own paths)
+#
+# The video page has its OWN fetch/normalize/report chain rather than sharing the
+# media pipeline's, for the same reason the media pipeline does not share the
+# chat one: refresh_all.py reports per target, and a failure in one pipeline must
+# never skip or corrupt another. Sharing a path would also mean the video refresh
+# overwriting the media pipeline's inputs, which are embedded verbatim in the
+# published image page.
+#
+# So every name below is deliberately NOT an existing MEDIA_* name. The media
+# pipeline keeps writing data/normalized/video_models.json for the image page's
+# coverage block; this dashboard reads and writes only its own files.
+#
+# Inputs are REUSED, not duplicated - the endpoints already exist and are fetched
+# with the same client helpers:
+#   VIDEOS_MODELS_ENDPOINT                        -> /api/v1/videos/models
+#   MEDIA_BENCHMARK_INDEX_ENDPOINTS["video"]      -> /benchmarks/media/videos
+#   MIN_EXPECTED_VIDEO_MODEL_COUNT                -> catalog floor
+#   MIN_EXPECTED_VIDEO_PROMPT_COUNT               -> prompt-page floor
+#   MIN_EXPECTED_TOTAL_PROMPT_BENCHMARK_ROWS      -> total-row floor
+#   MEDIA_BENCHMARK_PAGE_DELAY_SECONDS            -> page politeness gap
+#
+# No per-model endpoint fan-out is needed here: unlike image models, video models
+# publish their `pricing_skus` on the list endpoint itself.
+#
+# VIDEO_DASHBOARD_SNAPSHOTS_DIR is a sibling of SNAPSHOTS_DIR and
+# MEDIA_SNAPSHOTS_DIR, never nested inside either.
+# dashboard/refresh.py::snapshot_exists_for() treats any directory directly under
+# SNAPSHOTS_DIR named `<date>` or `<date>-N` as "today's chat snapshot already
+# exists", so a video snapshot written under a date-named directory there would
+# silently suppress the day's chat snapshot. data/video_snapshots/ cannot match
+# that pattern. Locked down by tests/test_video_snapshot_paths.py, which calls the
+# real snapshot_exists_for().
+# ---------------------------------------------------------------------------
+VIDEO_DASHBOARD_RAW_MODELS_PATH = RAW_DIR / "video_dashboard_models.json"
+VIDEO_DASHBOARD_MODELS_JSON_PATH = NORMALIZED_DIR / "video_dashboard_models.json"
+VIDEO_DASHBOARD_MODELS_CSV_PATH = NORMALIZED_DIR / "video_dashboard_models.csv"
+
+VIDEO_DASHBOARD_RAW_PROMPT_ROWS_PATH = RAW_DIR / "video_dashboard_prompt_benchmark_rows.json"
+VIDEO_DASHBOARD_PROMPT_BENCHMARKS_JSON_PATH = NORMALIZED_DIR / "video_dashboard_prompt_benchmarks.json"
+VIDEO_DASHBOARD_PROMPT_BENCHMARKS_CSV_PATH = NORMALIZED_DIR / "video_dashboard_prompt_benchmarks.csv"
+
+VIDEO_DASHBOARD_COVERAGE_REPORT_PATH = ANALYSIS_DIR / "video_dashboard_coverage_report.json"
+VIDEO_DASHBOARD_DATA_QUALITY_REPORT_PATH = ANALYSIS_DIR / "video_dashboard_data_quality_report.json"
+
+# The video dashboard's weekly "Model of the week" history. A SEPARATE file from
+# the chat pipeline's weekly_picks.json and the image dashboard's
+# media_weekly_picks.json: the three lock picks from different rankings over
+# different models, so a shared file would let one pipeline's lock silently
+# overwrite another's record.
+VIDEO_DASHBOARD_WEEKLY_PICKS_PATH = ANALYSIS_DIR / "video_dashboard_weekly_picks.json"
+
+VIDEO_DASHBOARD_SNAPSHOTS_DIR = DATA_DIR / "video_snapshots"
+
+# Total-row crash detector for the video prompt-benchmark scrape. The shared
+# MIN_EXPECTED_TOTAL_PROMPT_BENCHMARK_ROWS (200) is deliberately NOT reused: that
+# floor is for the COMBINED image+video total (observed 867), while this pipeline
+# scrapes only the 12 video prompts (observed 276 rows on 2026-09-22). A floor of
+# 150 leaves room for a prompt legitimately disappearing without turning a normal
+# run red, and still catches a partial parse. Like the media pipeline there is no
+# per-page floor - per-prompt row counts genuinely vary (14 to 24).
+MIN_EXPECTED_TOTAL_VIDEO_PROMPT_BENCHMARK_ROWS = 150
