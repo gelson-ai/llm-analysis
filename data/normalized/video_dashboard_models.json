@@ -1,0 +1,6201 @@
+[
+  {
+    "model_id": "black-forest-labs/flux-video-edit",
+    "canonical_slug": "black-forest-labs/flux-video-edit-20260910",
+    "model_name": "Black Forest Labs: FLUX Video Edit",
+    "provider": "black-forest-labs",
+    "model_type": "video",
+    "description": "FLUX Video Edit [fast] takes a source video and an edit prompt and returns a precisely edited video. Add, remove, or replace objects and characters, rebuild the setting, edit on-screen...",
+    "created": 1789073532,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": null,
+    "supported_aspect_ratios": null,
+    "supported_sizes": null,
+    "supported_durations": null,
+    "supported_frame_images": null,
+    "generate_audio": false,
+    "seed": false,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "safety_tolerance"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.03,
+    "comparable_price_basis": "plain_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "cents_per_second_output",
+          "raw_value": "3",
+          "amount": 3.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.03,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "cents_per_second_output": "3"
+      },
+      "sku_count": 1,
+      "resolved_sku_count": 1,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.03,
+        "basis": "plain_rate",
+        "basis_sku": "cents_per_second_output"
+      },
+      "usd_per_second_by_resolution": {
+        "default": 0.03
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "cents_per_second"
+      ],
+      "unit_conversions_applied": [
+        "cents_per_second_output"
+      ],
+      "currency_assumptions": []
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "black-forest-labs/flux-video-edit",
+      "canonical_slug": "black-forest-labs/flux-video-edit-20260910",
+      "hugging_face_id": null,
+      "name": "Black Forest Labs: FLUX Video Edit",
+      "created": 1789073532,
+      "description": "FLUX Video Edit [fast] takes a source video and an edit prompt and returns a precisely edited video. Add, remove, or replace objects and characters, rebuild the setting, edit on-screen...",
+      "supported_resolutions": null,
+      "supported_aspect_ratios": null,
+      "supported_sizes": null,
+      "supported_durations": null,
+      "supported_frame_images": null,
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": false,
+      "seed": false,
+      "pricing_skus": {
+        "cents_per_second_output": "3"
+      },
+      "allowed_passthrough_parameters": [
+        "safety_tolerance"
+      ]
+    }
+  },
+  {
+    "model_id": "minimax/hailuo-3-max",
+    "canonical_slug": "minimax/hailuo-3-max-20260901",
+    "model_name": "MiniMax: H3 Max",
+    "provider": "minimax",
+    "model_type": "video",
+    "description": "MiniMax H3 Max is a video-generation model from MiniMax, jointly released with fal.ai. Derived through additional training from MiniMax H3, it is designed for faster text-to-video and image-to-video generation with...",
+    "created": 1788313310,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "768p",
+      "480p"
+    ],
+    "supported_aspect_ratios": [
+      "21:9",
+      "16:9",
+      "4:3",
+      "1:1",
+      "3:4",
+      "9:16"
+    ],
+    "supported_sizes": null,
+    "supported_durations": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": false,
+    "seed": false,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "aigc_watermark"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.08,
+    "comparable_price_basis": "plain_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds",
+          "raw_value": "0.08",
+          "amount": 0.08,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.08,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_480p",
+          "raw_value": "0.05",
+          "amount": 0.05,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.05,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "480p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_768p",
+          "raw_value": "0.08",
+          "amount": 0.08,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.08,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "768p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds": "0.08",
+        "duration_seconds_480p": "0.05",
+        "duration_seconds_768p": "0.08"
+      },
+      "sku_count": 3,
+      "resolved_sku_count": 3,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.08,
+        "basis": "plain_rate",
+        "basis_sku": "duration_seconds"
+      },
+      "usd_per_second_by_resolution": {
+        "default": 0.08,
+        "480p": 0.05,
+        "768p": 0.08
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds",
+        "duration_seconds_480p",
+        "duration_seconds_768p"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "minimax/hailuo-3-max",
+      "canonical_slug": "minimax/hailuo-3-max-20260901",
+      "hugging_face_id": null,
+      "name": "MiniMax: H3 Max",
+      "created": 1788313310,
+      "description": "MiniMax H3 Max is a video-generation model from MiniMax, jointly released with fal.ai. Derived through additional training from MiniMax H3, it is designed for faster text-to-video and image-to-video generation with...",
+      "supported_resolutions": [
+        "768p",
+        "480p"
+      ],
+      "supported_aspect_ratios": [
+        "21:9",
+        "16:9",
+        "4:3",
+        "1:1",
+        "3:4",
+        "9:16"
+      ],
+      "supported_sizes": null,
+      "supported_durations": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": false,
+      "seed": false,
+      "pricing_skus": {
+        "duration_seconds": "0.08",
+        "duration_seconds_480p": "0.05",
+        "duration_seconds_768p": "0.08"
+      },
+      "allowed_passthrough_parameters": [
+        "aigc_watermark"
+      ]
+    }
+  },
+  {
+    "model_id": "alibaba/wan-3.0-prime",
+    "canonical_slug": "alibaba/wan-3.0-prime-20260827",
+    "model_name": "Alibaba: Wan 3.0 Prime",
+    "provider": "alibaba",
+    "model_type": "video",
+    "description": "Wan 3.0 Prime is a fast-mode variant of [Wan 3.0](https://openrouter.ai/alibaba/wan-3.0) from Alibaba. It supports text-to-video and first-frame image-to-video generation.",
+    "created": 1787863800,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "480p",
+      "720p",
+      "1080p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "4:3",
+      "1:1",
+      "3:4",
+      "9:16"
+    ],
+    "supported_sizes": null,
+    "supported_durations": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "supported_frame_images": [
+      "first_frame"
+    ],
+    "generate_audio": true,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.14,
+    "comparable_price_basis": "720p_tier",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds_480p",
+          "raw_value": "0.068",
+          "amount": 0.068,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.068,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "480p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_720p",
+          "raw_value": "0.14",
+          "amount": 0.14,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.14,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "720p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_1080p",
+          "raw_value": "0.28",
+          "amount": 0.28,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.28,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "1080p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds_480p": "0.068",
+        "duration_seconds_720p": "0.14",
+        "duration_seconds_1080p": "0.28"
+      },
+      "sku_count": 3,
+      "resolved_sku_count": 3,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.14,
+        "basis": "720p_tier",
+        "basis_sku": "duration_seconds_720p"
+      },
+      "usd_per_second_by_resolution": {
+        "480p": 0.068,
+        "720p": 0.14,
+        "1080p": 0.28
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds_1080p",
+        "duration_seconds_480p",
+        "duration_seconds_720p"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "alibaba/wan-3.0-prime",
+      "canonical_slug": "alibaba/wan-3.0-prime-20260827",
+      "hugging_face_id": null,
+      "name": "Alibaba: Wan 3.0 Prime",
+      "created": 1787863800,
+      "description": "Wan 3.0 Prime is a fast-mode variant of [Wan 3.0](https://openrouter.ai/alibaba/wan-3.0) from Alibaba. It supports text-to-video and first-frame image-to-video generation.",
+      "supported_resolutions": [
+        "480p",
+        "720p",
+        "1080p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "4:3",
+        "1:1",
+        "3:4",
+        "9:16"
+      ],
+      "supported_sizes": null,
+      "supported_durations": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "supported_frame_images": [
+        "first_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "duration_seconds_480p": "0.068",
+        "duration_seconds_720p": "0.14",
+        "duration_seconds_1080p": "0.28"
+      },
+      "allowed_passthrough_parameters": []
+    }
+  },
+  {
+    "model_id": "alibaba/wan-3.0",
+    "canonical_slug": "alibaba/wan-3.0-20260824",
+    "model_name": "Alibaba: Wan 3.0",
+    "provider": "alibaba",
+    "model_type": "video",
+    "description": "Wan 3.0 is a video generation model from Alibaba for text-to-video, image-to-video, and reference-guided video generation. It produces 480p, 720p, or 1080p video with durations from 2 to 30 seconds.",
+    "created": 1787603856,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "480p",
+      "720p",
+      "1080p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "4:3",
+      "1:1",
+      "3:4",
+      "9:16"
+    ],
+    "supported_sizes": null,
+    "supported_durations": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "supported_frame_images": [
+      "first_frame"
+    ],
+    "generate_audio": true,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.1,
+    "comparable_price_basis": "720p_tier",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds_480p",
+          "raw_value": "0.05",
+          "amount": 0.05,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.05,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "480p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_720p",
+          "raw_value": "0.1",
+          "amount": 0.1,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.1,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "720p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_1080p",
+          "raw_value": "0.2",
+          "amount": 0.2,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.2,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "1080p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds_480p": "0.05",
+        "duration_seconds_720p": "0.1",
+        "duration_seconds_1080p": "0.2"
+      },
+      "sku_count": 3,
+      "resolved_sku_count": 3,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.1,
+        "basis": "720p_tier",
+        "basis_sku": "duration_seconds_720p"
+      },
+      "usd_per_second_by_resolution": {
+        "480p": 0.05,
+        "720p": 0.1,
+        "1080p": 0.2
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds_1080p",
+        "duration_seconds_480p",
+        "duration_seconds_720p"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "alibaba/wan-3.0",
+      "canonical_slug": "alibaba/wan-3.0-20260824",
+      "hugging_face_id": null,
+      "name": "Alibaba: Wan 3.0",
+      "created": 1787603856,
+      "description": "Wan 3.0 is a video generation model from Alibaba for text-to-video, image-to-video, and reference-guided video generation. It produces 480p, 720p, or 1080p video with durations from 2 to 30 seconds.",
+      "supported_resolutions": [
+        "480p",
+        "720p",
+        "1080p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "4:3",
+        "1:1",
+        "3:4",
+        "9:16"
+      ],
+      "supported_sizes": null,
+      "supported_durations": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "supported_frame_images": [
+        "first_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "duration_seconds_480p": "0.05",
+        "duration_seconds_720p": "0.1",
+        "duration_seconds_1080p": "0.2"
+      },
+      "allowed_passthrough_parameters": []
+    }
+  },
+  {
+    "model_id": "heygen/avatar-iv",
+    "canonical_slug": "heygen/avatar-iv-20260625",
+    "model_name": "HeyGen: Avatar IV",
+    "provider": "heygen",
+    "model_type": "video",
+    "description": "HeyGen: Avatar IV is an image-to-video model that animates a single photo into an expressive, lip-synced talking-head video. Rather than only matching mouth shapes to words, it interprets the vocal...",
+    "created": 1787595728,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "720p",
+      "1080p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16",
+      "1:1"
+    ],
+    "supported_sizes": null,
+    "supported_durations": null,
+    "supported_frame_images": null,
+    "generate_audio": false,
+    "seed": false,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "voice_id",
+      "voice_settings",
+      "motion_prompt",
+      "expressiveness",
+      "fit",
+      "remove_background",
+      "background",
+      "caption",
+      "title"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.05,
+    "comparable_price_basis": "plain_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds",
+          "raw_value": "0.05",
+          "amount": 0.05,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.05,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds": "0.05"
+      },
+      "sku_count": 1,
+      "resolved_sku_count": 1,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.05,
+        "basis": "plain_rate",
+        "basis_sku": "duration_seconds"
+      },
+      "usd_per_second_by_resolution": {
+        "default": 0.05
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "heygen/avatar-iv",
+      "canonical_slug": "heygen/avatar-iv-20260625",
+      "hugging_face_id": null,
+      "name": "HeyGen: Avatar IV",
+      "created": 1787595728,
+      "description": "HeyGen: Avatar IV is an image-to-video model that animates a single photo into an expressive, lip-synced talking-head video. Rather than only matching mouth shapes to words, it interprets the vocal...",
+      "supported_resolutions": [
+        "720p",
+        "1080p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "supported_sizes": null,
+      "supported_durations": null,
+      "supported_frame_images": null,
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": false,
+      "seed": false,
+      "pricing_skus": {
+        "duration_seconds": "0.05"
+      },
+      "allowed_passthrough_parameters": [
+        "voice_id",
+        "voice_settings",
+        "motion_prompt",
+        "expressiveness",
+        "fit",
+        "remove_background",
+        "background",
+        "caption",
+        "title"
+      ]
+    }
+  },
+  {
+    "model_id": "black-forest-labs/flux-video-upscale",
+    "canonical_slug": "black-forest-labs/flux-video-upscale-20260819",
+    "model_name": "Black Forest Labs: FLUX Video Upscale",
+    "provider": "black-forest-labs",
+    "model_type": "video",
+    "description": "FLUX Video Upscale is a video upscaling model from Black Forest Labs. It enlarges a single source video by 1.5\u00d7 to 3\u00d7 while preserving its duration, with an optional prompt...",
+    "created": 1787173919,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": null,
+    "supported_aspect_ratios": null,
+    "supported_sizes": null,
+    "supported_durations": null,
+    "supported_frame_images": null,
+    "generate_audio": false,
+    "seed": false,
+    "upscale_factor": {
+      "min": 1.5,
+      "max": 3
+    },
+    "creativity": [
+      0,
+      1
+    ],
+    "allowed_passthrough_parameters": [
+      "safety_tolerance"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": false,
+    "pricing_unit": null,
+    "comparable_price": null,
+    "comparable_price_basis": null,
+    "pricing": {
+      "skus": [
+        {
+          "sku": "cents_per_megapixel_second_precise",
+          "raw_value": "7.5",
+          "amount": 7.5,
+          "currency": "cents",
+          "quantity": "megapixel_second",
+          "unit_family": "cents_per_megapixel_second",
+          "usd_amount": 0.075,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": "precise",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "cents_per_megapixel_second_creative",
+          "raw_value": "10.5",
+          "amount": 10.5,
+          "currency": "cents",
+          "quantity": "megapixel_second",
+          "unit_family": "cents_per_megapixel_second",
+          "usd_amount": 0.105,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": "creative",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "cents_per_megapixel_second_precise": "7.5",
+        "cents_per_megapixel_second_creative": "10.5"
+      },
+      "sku_count": 2,
+      "resolved_sku_count": 2,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": null,
+        "usd": null,
+        "basis": null,
+        "basis_sku": null
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "cents_per_megapixel_second"
+      ],
+      "unit_conversions_applied": [
+        "cents_per_megapixel_second_creative",
+        "cents_per_megapixel_second_precise"
+      ],
+      "currency_assumptions": []
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "black-forest-labs/flux-video-upscale",
+      "canonical_slug": "black-forest-labs/flux-video-upscale-20260819",
+      "hugging_face_id": null,
+      "name": "Black Forest Labs: FLUX Video Upscale",
+      "created": 1787173919,
+      "description": "FLUX Video Upscale is a video upscaling model from Black Forest Labs. It enlarges a single source video by 1.5\u00d7 to 3\u00d7 while preserving its duration, with an optional prompt...",
+      "supported_resolutions": null,
+      "supported_aspect_ratios": null,
+      "supported_sizes": null,
+      "supported_durations": null,
+      "supported_frame_images": null,
+      "upscale_factor": {
+        "min": 1.5,
+        "max": 3
+      },
+      "creativity": [
+        0,
+        1
+      ],
+      "generate_audio": false,
+      "seed": false,
+      "pricing_skus": {
+        "cents_per_megapixel_second_precise": "7.5",
+        "cents_per_megapixel_second_creative": "10.5"
+      },
+      "allowed_passthrough_parameters": [
+        "safety_tolerance"
+      ]
+    }
+  },
+  {
+    "model_id": "bytedance/seedance-2.0-mini",
+    "canonical_slug": "bytedance/seedance-2.0-mini-20260811",
+    "model_name": "ByteDance: Seedance 2.0 Mini",
+    "provider": "bytedance",
+    "model_type": "video",
+    "description": "Seedance 2.0 Mini is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video with image, video, and audio inputs. It...",
+    "created": 1786552600,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "480p",
+      "720p"
+    ],
+    "supported_aspect_ratios": [
+      "1:1",
+      "3:4",
+      "9:16",
+      "4:3",
+      "16:9",
+      "21:9",
+      "9:21"
+    ],
+    "supported_sizes": [
+      "480x480",
+      "480x640",
+      "480x854",
+      "640x480",
+      "854x480",
+      "1120x480",
+      "720x720",
+      "720x960",
+      "720x1280",
+      "720x1680",
+      "960x720",
+      "1280x720",
+      "1680x720"
+    ],
+    "supported_durations": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "watermark",
+      "req_key",
+      "return_last_frame"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": false,
+    "pricing_unit": null,
+    "comparable_price": null,
+    "comparable_price_basis": null,
+    "pricing": {
+      "skus": [
+        {
+          "sku": "video_tokens",
+          "raw_value": "0.0000035",
+          "amount": 3.5e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 3.5e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_without_audio",
+          "raw_value": "0.0000035",
+          "amount": 3.5e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 3.5e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": "without_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_with_video_input",
+          "raw_value": "0.0000021",
+          "amount": 2.1e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 2.1e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "video_tokens": "0.0000035",
+        "video_tokens_without_audio": "0.0000035",
+        "video_tokens_with_video_input": "0.0000021"
+      },
+      "sku_count": 3,
+      "resolved_sku_count": 3,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": null,
+        "usd": null,
+        "basis": null,
+        "basis_sku": null
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_video_token"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "video_tokens",
+        "video_tokens_with_video_input",
+        "video_tokens_without_audio"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "bytedance/seedance-2.0-mini",
+      "canonical_slug": "bytedance/seedance-2.0-mini-20260811",
+      "hugging_face_id": null,
+      "name": "ByteDance: Seedance 2.0 Mini",
+      "created": 1786552600,
+      "description": "Seedance 2.0 Mini is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video with image, video, and audio inputs. It...",
+      "supported_resolutions": [
+        "480p",
+        "720p"
+      ],
+      "supported_aspect_ratios": [
+        "1:1",
+        "3:4",
+        "9:16",
+        "4:3",
+        "16:9",
+        "21:9",
+        "9:21"
+      ],
+      "supported_sizes": [
+        "480x480",
+        "480x640",
+        "480x854",
+        "640x480",
+        "854x480",
+        "1120x480",
+        "720x720",
+        "720x960",
+        "720x1280",
+        "720x1680",
+        "960x720",
+        "1280x720",
+        "1680x720"
+      ],
+      "supported_durations": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "video_tokens": "0.0000035",
+        "video_tokens_without_audio": "0.0000035",
+        "video_tokens_with_video_input": "0.0000021"
+      },
+      "allowed_passthrough_parameters": [
+        "watermark",
+        "req_key",
+        "return_last_frame"
+      ]
+    }
+  },
+  {
+    "model_id": "bytedance/seedance-2.5",
+    "canonical_slug": "bytedance/seedance-2.5-20260807",
+    "model_name": "ByteDance: Seedance 2.5",
+    "provider": "bytedance",
+    "model_type": "video",
+    "description": "Seedance 2.5 is a video generation model from ByteDance. It is suited for long-form storytelling, multimodal reference-based generation, video editing, and video extension. It supports first-frame and first-and-last-frame control, up...",
+    "created": 1786141253,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "480p",
+      "720p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "4:3",
+      "1:1",
+      "3:4",
+      "9:16",
+      "21:9"
+    ],
+    "supported_sizes": [
+      "854x480",
+      "752x560",
+      "640x640",
+      "560x752",
+      "480x854",
+      "992x432",
+      "1280x720",
+      "1112x834",
+      "960x960",
+      "834x1112",
+      "720x1280",
+      "1470x630"
+    ],
+    "supported_durations": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "watermark",
+      "req_key",
+      "output_format"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": false,
+    "pricing_unit": null,
+    "comparable_price": null,
+    "comparable_price_basis": null,
+    "pricing": {
+      "skus": [
+        {
+          "sku": "video_tokens",
+          "raw_value": "0.0000107",
+          "amount": 1.07e-05,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 1.07e-05,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_without_audio",
+          "raw_value": "0.0000107",
+          "amount": 1.07e-05,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 1.07e-05,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": "without_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_with_video_input",
+          "raw_value": "0.0000064",
+          "amount": 6.4e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 6.4e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "video_tokens": "0.0000107",
+        "video_tokens_without_audio": "0.0000107",
+        "video_tokens_with_video_input": "0.0000064"
+      },
+      "sku_count": 3,
+      "resolved_sku_count": 3,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": null,
+        "usd": null,
+        "basis": null,
+        "basis_sku": null
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_video_token"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "video_tokens",
+        "video_tokens_with_video_input",
+        "video_tokens_without_audio"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "bytedance/seedance-2.5",
+      "canonical_slug": "bytedance/seedance-2.5-20260807",
+      "hugging_face_id": null,
+      "name": "ByteDance: Seedance 2.5",
+      "created": 1786141253,
+      "description": "Seedance 2.5 is a video generation model from ByteDance. It is suited for long-form storytelling, multimodal reference-based generation, video editing, and video extension. It supports first-frame and first-and-last-frame control, up...",
+      "supported_resolutions": [
+        "480p",
+        "720p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "4:3",
+        "1:1",
+        "3:4",
+        "9:16",
+        "21:9"
+      ],
+      "supported_sizes": [
+        "854x480",
+        "752x560",
+        "640x640",
+        "560x752",
+        "480x854",
+        "992x432",
+        "1280x720",
+        "1112x834",
+        "960x960",
+        "834x1112",
+        "720x1280",
+        "1470x630"
+      ],
+      "supported_durations": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "video_tokens": "0.0000107",
+        "video_tokens_without_audio": "0.0000107",
+        "video_tokens_with_video_input": "0.0000064"
+      },
+      "allowed_passthrough_parameters": [
+        "watermark",
+        "req_key",
+        "output_format"
+      ]
+    }
+  },
+  {
+    "model_id": "black-forest-labs/flux-3-video",
+    "canonical_slug": "black-forest-labs/flux-3-video-20260804",
+    "model_name": "Black Forest Labs: FLUX.3 Video",
+    "provider": "black-forest-labs",
+    "model_type": "video",
+    "description": "FLUX.3 Video is a video generation model from Black Forest Labs. It supports text-to-video, image-guided generation with opening and closing keyframes, and video continuation workflows, making it suited for controlled...",
+    "created": 1785858831,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "720p",
+      "1080p"
+    ],
+    "supported_aspect_ratios": [
+      "21:9",
+      "16:9",
+      "4:3",
+      "1:1",
+      "3:4",
+      "9:16"
+    ],
+    "supported_sizes": null,
+    "supported_durations": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": false,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "safety_tolerance",
+      "version"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.17,
+    "comparable_price_basis": "plain_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "cents_per_second_output",
+          "raw_value": "17",
+          "amount": 17.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.17,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "cents_per_second_output_720p",
+          "raw_value": "17",
+          "amount": 17.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.17,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": "720p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "cents_per_second_output_1080p",
+          "raw_value": "29",
+          "amount": 29.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.29,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": "1080p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "cents_per_second_video_continuation_720p",
+          "raw_value": "41",
+          "amount": 41.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.41000000000000003,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": "720p",
+          "audio_variant": null,
+          "operation": "video_continuation",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "cents_per_second_video_continuation_1080p",
+          "raw_value": "53",
+          "amount": 53.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.53,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": "1080p",
+          "audio_variant": null,
+          "operation": "video_continuation",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "cents_per_second_output": "17",
+        "cents_per_second_output_720p": "17",
+        "cents_per_second_output_1080p": "29",
+        "cents_per_second_video_continuation_720p": "41",
+        "cents_per_second_video_continuation_1080p": "53"
+      },
+      "sku_count": 5,
+      "resolved_sku_count": 5,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.17,
+        "basis": "plain_rate",
+        "basis_sku": "cents_per_second_output"
+      },
+      "usd_per_second_by_resolution": {
+        "default": 0.17,
+        "720p": 0.17,
+        "1080p": 0.29
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "cents_per_second"
+      ],
+      "unit_conversions_applied": [
+        "cents_per_second_output",
+        "cents_per_second_output_1080p",
+        "cents_per_second_output_720p",
+        "cents_per_second_video_continuation_1080p",
+        "cents_per_second_video_continuation_720p"
+      ],
+      "currency_assumptions": []
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "black-forest-labs/flux-3-video",
+      "canonical_slug": "black-forest-labs/flux-3-video-20260804",
+      "hugging_face_id": null,
+      "name": "Black Forest Labs: FLUX.3 Video",
+      "created": 1785858831,
+      "description": "FLUX.3 Video is a video generation model from Black Forest Labs. It supports text-to-video, image-guided generation with opening and closing keyframes, and video continuation workflows, making it suited for controlled...",
+      "supported_resolutions": [
+        "720p",
+        "1080p"
+      ],
+      "supported_aspect_ratios": [
+        "21:9",
+        "16:9",
+        "4:3",
+        "1:1",
+        "3:4",
+        "9:16"
+      ],
+      "supported_sizes": null,
+      "supported_durations": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": false,
+      "pricing_skus": {
+        "cents_per_second_output": "17",
+        "cents_per_second_output_720p": "17",
+        "cents_per_second_output_1080p": "29",
+        "cents_per_second_video_continuation_720p": "41",
+        "cents_per_second_video_continuation_1080p": "53"
+      },
+      "allowed_passthrough_parameters": [
+        "safety_tolerance",
+        "version"
+      ]
+    }
+  },
+  {
+    "model_id": "minimax/hailuo-3",
+    "canonical_slug": "minimax/hailuo-03-20260730",
+    "model_name": "MiniMax: H3",
+    "provider": "minimax",
+    "model_type": "video",
+    "description": "MiniMax H3 is a lightweight, open-weights video generation model from MiniMax. It is designed for precise multimodal editing and controlled content generation, including instruction-guided edits, text and brand rendering, and...",
+    "created": 1785366648,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "2K"
+    ],
+    "supported_aspect_ratios": [
+      "21:9",
+      "16:9",
+      "4:3",
+      "1:1",
+      "3:4",
+      "9:16"
+    ],
+    "supported_sizes": null,
+    "supported_durations": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": false,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "aigc_watermark"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.13,
+    "comparable_price_basis": "plain_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds",
+          "raw_value": "0.13",
+          "amount": 0.13,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.13,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "reference_images",
+          "raw_value": "0.04",
+          "amount": 0.04,
+          "currency": "usd",
+          "quantity": "image",
+          "unit_family": "usd_per_image",
+          "usd_amount": 0.04,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": "reference_image",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds": "0.13",
+        "reference_images": "0.04"
+      },
+      "sku_count": 2,
+      "resolved_sku_count": 2,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.13,
+        "basis": "plain_rate",
+        "basis_sku": "duration_seconds"
+      },
+      "usd_per_second_by_resolution": {
+        "default": 0.13
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_image",
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds",
+        "reference_images"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "minimax/hailuo-3",
+      "canonical_slug": "minimax/hailuo-03-20260730",
+      "hugging_face_id": null,
+      "name": "MiniMax: H3",
+      "created": 1785366648,
+      "description": "MiniMax H3 is a lightweight, open-weights video generation model from MiniMax. It is designed for precise multimodal editing and controlled content generation, including instruction-guided edits, text and brand rendering, and...",
+      "supported_resolutions": [
+        "2K"
+      ],
+      "supported_aspect_ratios": [
+        "21:9",
+        "16:9",
+        "4:3",
+        "1:1",
+        "3:4",
+        "9:16"
+      ],
+      "supported_sizes": null,
+      "supported_durations": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": false,
+      "pricing_skus": {
+        "duration_seconds": "0.13",
+        "reference_images": "0.04"
+      },
+      "allowed_passthrough_parameters": [
+        "aigc_watermark"
+      ]
+    }
+  },
+  {
+    "model_id": "runway/aleph-2",
+    "canonical_slug": "runway/aleph-2-20260729",
+    "model_name": "Runway: Aleph 2.0",
+    "provider": "runway",
+    "model_type": "video",
+    "description": "Runway Aleph 2.0 is an in-context video editing model from Runway. It applies text instructions and keyframe-guided edits across existing footage while preserving details that are not meant to change....",
+    "created": 1785339484,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": null,
+    "supported_aspect_ratios": [
+      "16:9",
+      "4:3",
+      "3:2",
+      "1:1",
+      "2:3",
+      "3:4",
+      "9:16",
+      "21:9"
+    ],
+    "supported_sizes": null,
+    "supported_durations": null,
+    "supported_frame_images": null,
+    "generate_audio": false,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "contentModeration",
+      "keyframes"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.28,
+    "comparable_price_basis": "plain_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "cents_per_second_output",
+          "raw_value": "28",
+          "amount": 28.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.28,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "minimum_cents_per_generation",
+          "raw_value": "56",
+          "amount": 56.0,
+          "currency": "cents",
+          "quantity": "generation",
+          "unit_family": "cents_per_generation",
+          "usd_amount": 0.56,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": true,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "cents_per_second_output": "28",
+        "minimum_cents_per_generation": "56"
+      },
+      "sku_count": 2,
+      "resolved_sku_count": 2,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.28,
+        "basis": "plain_rate",
+        "basis_sku": "cents_per_second_output"
+      },
+      "usd_per_second_by_resolution": {
+        "default": 0.28
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "cents_per_generation",
+        "cents_per_second"
+      ],
+      "unit_conversions_applied": [
+        "cents_per_second_output",
+        "minimum_cents_per_generation"
+      ],
+      "currency_assumptions": []
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "runway/aleph-2",
+      "canonical_slug": "runway/aleph-2-20260729",
+      "hugging_face_id": null,
+      "name": "Runway: Aleph 2.0",
+      "created": 1785339484,
+      "description": "Runway Aleph 2.0 is an in-context video editing model from Runway. It applies text instructions and keyframe-guided edits across existing footage while preserving details that are not meant to change....",
+      "supported_resolutions": null,
+      "supported_aspect_ratios": [
+        "16:9",
+        "4:3",
+        "3:2",
+        "1:1",
+        "2:3",
+        "3:4",
+        "9:16",
+        "21:9"
+      ],
+      "supported_sizes": null,
+      "supported_durations": null,
+      "supported_frame_images": null,
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": false,
+      "seed": true,
+      "pricing_skus": {
+        "cents_per_second_output": "28",
+        "minimum_cents_per_generation": "56"
+      },
+      "allowed_passthrough_parameters": [
+        "contentModeration",
+        "keyframes"
+      ]
+    }
+  },
+  {
+    "model_id": "runway/gen-4.5",
+    "canonical_slug": "runway/gen-4.5-20260729",
+    "model_name": "Runway: Gen-4.5",
+    "provider": "runway",
+    "model_type": "video",
+    "description": "Runway Gen-4.5 is a video generation model from Runway for text-to-video and image-to-video workflows. It is designed for cinematic scene creation with strong motion quality, visual fidelity, and prompt adherence....",
+    "created": 1785339483,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "720p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16"
+    ],
+    "supported_sizes": [
+      "1280x720",
+      "720x1280"
+    ],
+    "supported_durations": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "supported_frame_images": [
+      "first_frame"
+    ],
+    "generate_audio": false,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "contentModeration"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.12,
+    "comparable_price_basis": "plain_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "cents_per_second_output",
+          "raw_value": "12",
+          "amount": 12.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.12,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "cents_per_second_output": "12"
+      },
+      "sku_count": 1,
+      "resolved_sku_count": 1,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.12,
+        "basis": "plain_rate",
+        "basis_sku": "cents_per_second_output"
+      },
+      "usd_per_second_by_resolution": {
+        "default": 0.12
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "cents_per_second"
+      ],
+      "unit_conversions_applied": [
+        "cents_per_second_output"
+      ],
+      "currency_assumptions": []
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "runway/gen-4.5",
+      "canonical_slug": "runway/gen-4.5-20260729",
+      "hugging_face_id": null,
+      "name": "Runway: Gen-4.5",
+      "created": 1785339483,
+      "description": "Runway Gen-4.5 is a video generation model from Runway for text-to-video and image-to-video workflows. It is designed for cinematic scene creation with strong motion quality, visual fidelity, and prompt adherence....",
+      "supported_resolutions": [
+        "720p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16"
+      ],
+      "supported_sizes": [
+        "1280x720",
+        "720x1280"
+      ],
+      "supported_durations": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "supported_frame_images": [
+        "first_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": false,
+      "seed": true,
+      "pricing_skus": {
+        "cents_per_second_output": "12"
+      },
+      "allowed_passthrough_parameters": [
+        "contentModeration"
+      ]
+    }
+  },
+  {
+    "model_id": "x-ai/grok-imagine-video-1.5",
+    "canonical_slug": "x-ai/grok-imagine-video-1.5-20260719",
+    "model_name": "SpaceXAI: Grok Imagine Video 1.5",
+    "provider": "x-ai",
+    "model_type": "video",
+    "description": "Grok Imagine Video 1.5 is a video generation model from SpaceXAI. It creates videos from text prompts, with an optional starting image to guide the scene. It can direct subject...",
+    "created": 1784548100,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "480p",
+      "720p",
+      "1080p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16",
+      "1:1",
+      "4:3",
+      "3:4",
+      "3:2",
+      "2:3"
+    ],
+    "supported_sizes": null,
+    "supported_durations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "supported_frame_images": [
+      "first_frame"
+    ],
+    "generate_audio": null,
+    "seed": null,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.14,
+    "comparable_price_basis": "720p_tier",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "cents_per_image_input",
+          "raw_value": "1",
+          "amount": 1.0,
+          "currency": "cents",
+          "quantity": "image",
+          "unit_family": "cents_per_image",
+          "usd_amount": 0.01,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": "image_input",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "cents_per_video_output_second_480p",
+          "raw_value": "8",
+          "amount": 8.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.08,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": "480p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "cents_per_video_output_second_720p",
+          "raw_value": "14",
+          "amount": 14.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.14,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": "720p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "cents_per_video_output_second_1080p",
+          "raw_value": "25",
+          "amount": 25.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.25,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": "1080p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "cents_per_image_input": "1",
+        "cents_per_video_output_second_480p": "8",
+        "cents_per_video_output_second_720p": "14",
+        "cents_per_video_output_second_1080p": "25"
+      },
+      "sku_count": 4,
+      "resolved_sku_count": 4,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.14,
+        "basis": "720p_tier",
+        "basis_sku": "cents_per_video_output_second_720p"
+      },
+      "usd_per_second_by_resolution": {
+        "480p": 0.08,
+        "720p": 0.14,
+        "1080p": 0.25
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "cents_per_image",
+        "cents_per_second"
+      ],
+      "unit_conversions_applied": [
+        "cents_per_image_input",
+        "cents_per_video_output_second_1080p",
+        "cents_per_video_output_second_480p",
+        "cents_per_video_output_second_720p"
+      ],
+      "currency_assumptions": []
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "x-ai/grok-imagine-video-1.5",
+      "canonical_slug": "x-ai/grok-imagine-video-1.5-20260719",
+      "hugging_face_id": null,
+      "name": "SpaceXAI: Grok Imagine Video 1.5",
+      "created": 1784548100,
+      "description": "Grok Imagine Video 1.5 is a video generation model from SpaceXAI. It creates videos from text prompts, with an optional starting image to guide the scene. It can direct subject...",
+      "supported_resolutions": [
+        "480p",
+        "720p",
+        "1080p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16",
+        "1:1",
+        "4:3",
+        "3:4",
+        "3:2",
+        "2:3"
+      ],
+      "supported_sizes": null,
+      "supported_durations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "supported_frame_images": [
+        "first_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": null,
+      "seed": null,
+      "pricing_skus": {
+        "cents_per_image_input": "1",
+        "cents_per_video_output_second_480p": "8",
+        "cents_per_video_output_second_720p": "14",
+        "cents_per_video_output_second_1080p": "25"
+      },
+      "allowed_passthrough_parameters": []
+    }
+  },
+  {
+    "model_id": "alibaba/happyhorse-1.1",
+    "canonical_slug": "alibaba/happyhorse-1.1-20260624",
+    "model_name": "Alibaba: HappyHorse 1.1",
+    "provider": "alibaba",
+    "model_type": "video",
+    "description": "HappyHorse 1.1 is a video generation model from Alibaba. It generates short videos from a text prompt, a single starting image, or a set of reference images, with output up...",
+    "created": 1782269643,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "720p",
+      "1080p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16",
+      "1:1",
+      "4:3",
+      "3:4",
+      "21:9",
+      "9:21"
+    ],
+    "supported_sizes": [
+      "1280x720",
+      "720x1280",
+      "720x720",
+      "960x720",
+      "720x960",
+      "1680x720",
+      "720x1680",
+      "1920x1080",
+      "1080x1920",
+      "1080x1080",
+      "1440x1080",
+      "1080x1440",
+      "2520x1080",
+      "1080x2520"
+    ],
+    "supported_durations": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "supported_frame_images": [
+      "first_frame"
+    ],
+    "generate_audio": null,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.0988,
+    "comparable_price_basis": "720p_tier",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds_720p",
+          "raw_value": "0.0988",
+          "amount": 0.0988,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.0988,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "720p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_1080p",
+          "raw_value": "0.1278",
+          "amount": 0.1278,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.1278,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "1080p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds_720p": "0.0988",
+        "duration_seconds_1080p": "0.1278"
+      },
+      "sku_count": 2,
+      "resolved_sku_count": 2,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.0988,
+        "basis": "720p_tier",
+        "basis_sku": "duration_seconds_720p"
+      },
+      "usd_per_second_by_resolution": {
+        "720p": 0.0988,
+        "1080p": 0.1278
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds_1080p",
+        "duration_seconds_720p"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "alibaba/happyhorse-1.1",
+      "canonical_slug": "alibaba/happyhorse-1.1-20260624",
+      "hugging_face_id": null,
+      "name": "Alibaba: HappyHorse 1.1",
+      "created": 1782269643,
+      "description": "HappyHorse 1.1 is a video generation model from Alibaba. It generates short videos from a text prompt, a single starting image, or a set of reference images, with output up...",
+      "supported_resolutions": [
+        "720p",
+        "1080p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16",
+        "1:1",
+        "4:3",
+        "3:4",
+        "21:9",
+        "9:21"
+      ],
+      "supported_sizes": [
+        "1280x720",
+        "720x1280",
+        "720x720",
+        "960x720",
+        "720x960",
+        "1680x720",
+        "720x1680",
+        "1920x1080",
+        "1080x1920",
+        "1080x1080",
+        "1440x1080",
+        "1080x1440",
+        "2520x1080",
+        "1080x2520"
+      ],
+      "supported_durations": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "supported_frame_images": [
+        "first_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": null,
+      "seed": true,
+      "pricing_skus": {
+        "duration_seconds_720p": "0.0988",
+        "duration_seconds_1080p": "0.1278"
+      },
+      "allowed_passthrough_parameters": []
+    }
+  },
+  {
+    "model_id": "alibaba/happyhorse-1.0",
+    "canonical_slug": "alibaba/happyhorse-1.0-20260624",
+    "model_name": "Alibaba: HappyHorse 1.0",
+    "provider": "alibaba",
+    "model_type": "video",
+    "description": "HappyHorse 1.0 is a video generation model from Alibaba. It generates short videos from a text prompt, a single starting image, or a set of reference images, with output up...",
+    "created": 1782260324,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "720p",
+      "1080p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16",
+      "1:1",
+      "4:3",
+      "3:4",
+      "21:9",
+      "9:21"
+    ],
+    "supported_sizes": [
+      "1280x720",
+      "720x1280",
+      "720x720",
+      "960x720",
+      "720x960",
+      "1680x720",
+      "720x1680",
+      "1920x1080",
+      "1080x1920",
+      "1080x1080",
+      "1440x1080",
+      "1080x1440",
+      "2520x1080",
+      "1080x2520"
+    ],
+    "supported_durations": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "supported_frame_images": [
+      "first_frame"
+    ],
+    "generate_audio": null,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.0988,
+    "comparable_price_basis": "720p_tier",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds_720p",
+          "raw_value": "0.0988",
+          "amount": 0.0988,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.0988,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "720p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_1080p",
+          "raw_value": "0.1694",
+          "amount": 0.1694,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.1694,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "1080p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds_720p": "0.0988",
+        "duration_seconds_1080p": "0.1694"
+      },
+      "sku_count": 2,
+      "resolved_sku_count": 2,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.0988,
+        "basis": "720p_tier",
+        "basis_sku": "duration_seconds_720p"
+      },
+      "usd_per_second_by_resolution": {
+        "720p": 0.0988,
+        "1080p": 0.1694
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds_1080p",
+        "duration_seconds_720p"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "alibaba/happyhorse-1.0",
+      "canonical_slug": "alibaba/happyhorse-1.0-20260624",
+      "hugging_face_id": null,
+      "name": "Alibaba: HappyHorse 1.0",
+      "created": 1782260324,
+      "description": "HappyHorse 1.0 is a video generation model from Alibaba. It generates short videos from a text prompt, a single starting image, or a set of reference images, with output up...",
+      "supported_resolutions": [
+        "720p",
+        "1080p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16",
+        "1:1",
+        "4:3",
+        "3:4",
+        "21:9",
+        "9:21"
+      ],
+      "supported_sizes": [
+        "1280x720",
+        "720x1280",
+        "720x720",
+        "960x720",
+        "720x960",
+        "1680x720",
+        "720x1680",
+        "1920x1080",
+        "1080x1920",
+        "1080x1080",
+        "1440x1080",
+        "1080x1440",
+        "2520x1080",
+        "1080x2520"
+      ],
+      "supported_durations": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "supported_frame_images": [
+        "first_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": null,
+      "seed": true,
+      "pricing_skus": {
+        "duration_seconds_720p": "0.0988",
+        "duration_seconds_1080p": "0.1694"
+      },
+      "allowed_passthrough_parameters": []
+    }
+  },
+  {
+    "model_id": "x-ai/grok-imagine-video",
+    "canonical_slug": "x-ai/grok-imagine-video-20260512",
+    "model_name": "SpaceXAI: Grok Imagine Video",
+    "provider": "x-ai",
+    "model_type": "video",
+    "description": "Grok Imagine Video is SpaceXAI's fast, text-, image-, and reference-conditioned video generation model. It produces short videos (1\u201315 seconds, 24 fps) at 480p or 720p across seven aspect ratios -...",
+    "created": 1779117586,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "480p",
+      "720p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16",
+      "1:1",
+      "4:3",
+      "3:4",
+      "3:2",
+      "2:3"
+    ],
+    "supported_sizes": [
+      "854x480",
+      "1280x720",
+      "480x854",
+      "720x1280",
+      "480x480",
+      "720x720",
+      "640x480",
+      "960x720",
+      "480x640",
+      "720x960",
+      "720x480",
+      "1080x720",
+      "480x720",
+      "720x1080"
+    ],
+    "supported_durations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "supported_frame_images": [
+      "first_frame"
+    ],
+    "generate_audio": null,
+    "seed": null,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.07,
+    "comparable_price_basis": "720p_tier",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "cents_per_image_input",
+          "raw_value": "0.2",
+          "amount": 0.2,
+          "currency": "cents",
+          "quantity": "image",
+          "unit_family": "cents_per_image",
+          "usd_amount": 0.002,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": "image_input",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "cents_per_video_output_second_480p",
+          "raw_value": "5",
+          "amount": 5.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.05,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": "480p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "cents_per_video_output_second_720p",
+          "raw_value": "7",
+          "amount": 7.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.07,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": "720p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "cents_per_image_input": "0.2",
+        "cents_per_video_output_second_480p": "5",
+        "cents_per_video_output_second_720p": "7"
+      },
+      "sku_count": 3,
+      "resolved_sku_count": 3,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.07,
+        "basis": "720p_tier",
+        "basis_sku": "cents_per_video_output_second_720p"
+      },
+      "usd_per_second_by_resolution": {
+        "480p": 0.05,
+        "720p": 0.07
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "cents_per_image",
+        "cents_per_second"
+      ],
+      "unit_conversions_applied": [
+        "cents_per_image_input",
+        "cents_per_video_output_second_480p",
+        "cents_per_video_output_second_720p"
+      ],
+      "currency_assumptions": []
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "x-ai/grok-imagine-video",
+      "canonical_slug": "x-ai/grok-imagine-video-20260512",
+      "hugging_face_id": null,
+      "name": "SpaceXAI: Grok Imagine Video",
+      "created": 1779117586,
+      "description": "Grok Imagine Video is SpaceXAI's fast, text-, image-, and reference-conditioned video generation model. It produces short videos (1\u201315 seconds, 24 fps) at 480p or 720p across seven aspect ratios -...",
+      "supported_resolutions": [
+        "480p",
+        "720p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16",
+        "1:1",
+        "4:3",
+        "3:4",
+        "3:2",
+        "2:3"
+      ],
+      "supported_sizes": [
+        "854x480",
+        "1280x720",
+        "480x854",
+        "720x1280",
+        "480x480",
+        "720x720",
+        "640x480",
+        "960x720",
+        "480x640",
+        "720x960",
+        "720x480",
+        "1080x720",
+        "480x720",
+        "720x1080"
+      ],
+      "supported_durations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "supported_frame_images": [
+        "first_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": null,
+      "seed": null,
+      "pricing_skus": {
+        "cents_per_image_input": "0.2",
+        "cents_per_video_output_second_480p": "5",
+        "cents_per_video_output_second_720p": "7"
+      },
+      "allowed_passthrough_parameters": []
+    }
+  },
+  {
+    "model_id": "kwaivgi/kling-v3.0-pro",
+    "canonical_slug": "kwaivgi/kling-v3.0-pro-20260429",
+    "model_name": "Kling: Video v3.0 Pro",
+    "provider": "kwaivgi",
+    "model_type": "video",
+    "description": "Kling v3.0 Pro is Kuaishou's premium video generation model, offering higher visual quality than the Standard tier. It supports text-to-video and image-to-video workflows, with first-frame and last-frame control for precise...",
+    "created": 1777496206,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "720p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16",
+      "1:1"
+    ],
+    "supported_sizes": [
+      "1280x720",
+      "720x1280",
+      "720x720"
+    ],
+    "supported_durations": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": false,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "negative_prompt",
+      "cfg_scale"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.112,
+    "comparable_price_basis": "plain_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds",
+          "raw_value": "0.112",
+          "amount": 0.112,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.112,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_with_audio",
+          "raw_value": "0.168",
+          "amount": 0.168,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.168,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": "with_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "text_to_video_duration_seconds_480p",
+          "raw_value": "0.112",
+          "amount": 0.112,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.112,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "480p",
+          "audio_variant": null,
+          "operation": "text_to_video",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "text_to_video_duration_seconds_720p",
+          "raw_value": "0.112",
+          "amount": 0.112,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.112,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "720p",
+          "audio_variant": null,
+          "operation": "text_to_video",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "image_to_video_duration_seconds_720p",
+          "raw_value": "0.112",
+          "amount": 0.112,
+          "currency": "usd",
+          "quantity": "image",
+          "unit_family": "usd_per_image",
+          "usd_amount": 0.112,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "720p",
+          "audio_variant": null,
+          "operation": "image_to_video",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "text_to_video_duration_seconds_1080p",
+          "raw_value": "0.112",
+          "amount": 0.112,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.112,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "1080p",
+          "audio_variant": null,
+          "operation": "text_to_video",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "image_to_video_duration_seconds_1080p",
+          "raw_value": "0.112",
+          "amount": 0.112,
+          "currency": "usd",
+          "quantity": "image",
+          "unit_family": "usd_per_image",
+          "usd_amount": 0.112,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "1080p",
+          "audio_variant": null,
+          "operation": "image_to_video",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds": "0.112",
+        "duration_seconds_with_audio": "0.168",
+        "text_to_video_duration_seconds_480p": "0.112",
+        "text_to_video_duration_seconds_720p": "0.112",
+        "image_to_video_duration_seconds_720p": "0.112",
+        "text_to_video_duration_seconds_1080p": "0.112",
+        "image_to_video_duration_seconds_1080p": "0.112"
+      },
+      "sku_count": 7,
+      "resolved_sku_count": 7,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.112,
+        "basis": "plain_rate",
+        "basis_sku": "duration_seconds"
+      },
+      "usd_per_second_by_resolution": {
+        "default": 0.112
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_image",
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds",
+        "duration_seconds_with_audio",
+        "image_to_video_duration_seconds_1080p",
+        "image_to_video_duration_seconds_720p",
+        "text_to_video_duration_seconds_1080p",
+        "text_to_video_duration_seconds_480p",
+        "text_to_video_duration_seconds_720p"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "kwaivgi/kling-v3.0-pro",
+      "canonical_slug": "kwaivgi/kling-v3.0-pro-20260429",
+      "hugging_face_id": null,
+      "name": "Kling: Video v3.0 Pro",
+      "created": 1777496206,
+      "description": "Kling v3.0 Pro is Kuaishou's premium video generation model, offering higher visual quality than the Standard tier. It supports text-to-video and image-to-video workflows, with first-frame and last-frame control for precise...",
+      "supported_resolutions": [
+        "720p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "supported_sizes": [
+        "1280x720",
+        "720x1280",
+        "720x720"
+      ],
+      "supported_durations": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": false,
+      "pricing_skus": {
+        "duration_seconds": "0.112",
+        "duration_seconds_with_audio": "0.168",
+        "text_to_video_duration_seconds_480p": "0.112",
+        "text_to_video_duration_seconds_720p": "0.112",
+        "image_to_video_duration_seconds_720p": "0.112",
+        "text_to_video_duration_seconds_1080p": "0.112",
+        "image_to_video_duration_seconds_1080p": "0.112"
+      },
+      "allowed_passthrough_parameters": [
+        "negative_prompt",
+        "cfg_scale"
+      ]
+    }
+  },
+  {
+    "model_id": "kwaivgi/kling-v3.0-std",
+    "canonical_slug": "kwaivgi/kling-v3.0-std-20260429",
+    "model_name": "Kling: Video v3.0 Standard",
+    "provider": "kwaivgi",
+    "model_type": "video",
+    "description": "Kling v3.0 Standard is a video generation model from Kuaishou. It supports text-to-video and image-to-video workflows, with first-frame and last-frame control for guided scene composition. Clips range from 3 to...",
+    "created": 1777496205,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "720p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16",
+      "1:1"
+    ],
+    "supported_sizes": [
+      "1280x720",
+      "720x1280",
+      "720x720"
+    ],
+    "supported_durations": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": false,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "negative_prompt",
+      "cfg_scale"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.084,
+    "comparable_price_basis": "plain_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds",
+          "raw_value": "0.084",
+          "amount": 0.084,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.084,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_with_audio",
+          "raw_value": "0.126",
+          "amount": 0.126,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.126,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": "with_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "text_to_video_duration_seconds_480p",
+          "raw_value": "0.084",
+          "amount": 0.084,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.084,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "480p",
+          "audio_variant": null,
+          "operation": "text_to_video",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "text_to_video_duration_seconds_720p",
+          "raw_value": "0.084",
+          "amount": 0.084,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.084,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "720p",
+          "audio_variant": null,
+          "operation": "text_to_video",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "image_to_video_duration_seconds_720p",
+          "raw_value": "0.084",
+          "amount": 0.084,
+          "currency": "usd",
+          "quantity": "image",
+          "unit_family": "usd_per_image",
+          "usd_amount": 0.084,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "720p",
+          "audio_variant": null,
+          "operation": "image_to_video",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "text_to_video_duration_seconds_1080p",
+          "raw_value": "0.084",
+          "amount": 0.084,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.084,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "1080p",
+          "audio_variant": null,
+          "operation": "text_to_video",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "image_to_video_duration_seconds_1080p",
+          "raw_value": "0.084",
+          "amount": 0.084,
+          "currency": "usd",
+          "quantity": "image",
+          "unit_family": "usd_per_image",
+          "usd_amount": 0.084,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "1080p",
+          "audio_variant": null,
+          "operation": "image_to_video",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds": "0.084",
+        "duration_seconds_with_audio": "0.126",
+        "text_to_video_duration_seconds_480p": "0.084",
+        "text_to_video_duration_seconds_720p": "0.084",
+        "image_to_video_duration_seconds_720p": "0.084",
+        "text_to_video_duration_seconds_1080p": "0.084",
+        "image_to_video_duration_seconds_1080p": "0.084"
+      },
+      "sku_count": 7,
+      "resolved_sku_count": 7,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.084,
+        "basis": "plain_rate",
+        "basis_sku": "duration_seconds"
+      },
+      "usd_per_second_by_resolution": {
+        "default": 0.084
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_image",
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds",
+        "duration_seconds_with_audio",
+        "image_to_video_duration_seconds_1080p",
+        "image_to_video_duration_seconds_720p",
+        "text_to_video_duration_seconds_1080p",
+        "text_to_video_duration_seconds_480p",
+        "text_to_video_duration_seconds_720p"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "kwaivgi/kling-v3.0-std",
+      "canonical_slug": "kwaivgi/kling-v3.0-std-20260429",
+      "hugging_face_id": null,
+      "name": "Kling: Video v3.0 Standard",
+      "created": 1777496205,
+      "description": "Kling v3.0 Standard is a video generation model from Kuaishou. It supports text-to-video and image-to-video workflows, with first-frame and last-frame control for guided scene composition. Clips range from 3 to...",
+      "supported_resolutions": [
+        "720p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "supported_sizes": [
+        "1280x720",
+        "720x1280",
+        "720x720"
+      ],
+      "supported_durations": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": false,
+      "pricing_skus": {
+        "duration_seconds": "0.084",
+        "duration_seconds_with_audio": "0.126",
+        "text_to_video_duration_seconds_480p": "0.084",
+        "text_to_video_duration_seconds_720p": "0.084",
+        "image_to_video_duration_seconds_720p": "0.084",
+        "text_to_video_duration_seconds_1080p": "0.084",
+        "image_to_video_duration_seconds_1080p": "0.084"
+      },
+      "allowed_passthrough_parameters": [
+        "negative_prompt",
+        "cfg_scale"
+      ]
+    }
+  },
+  {
+    "model_id": "google/veo-3.1-fast",
+    "canonical_slug": "google/veo-3.1-fast-20260320",
+    "model_name": "Google: Veo 3.1 Fast",
+    "provider": "google",
+    "model_type": "video",
+    "description": "Google's mid-tier video generation model balancing speed and quality. Veo 3.1 Fast generates high-quality video from text or image prompts with native synchronized audio, offering faster turnaround than Veo 3.1...",
+    "created": 1776994666,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "720p",
+      "1080p",
+      "4K"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16"
+    ],
+    "supported_sizes": [
+      "1280x720",
+      "1080x1920",
+      "1920x1080",
+      "720x1280",
+      "3840x2160",
+      "2160x3840"
+    ],
+    "supported_durations": [
+      4,
+      6,
+      8
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "personGeneration",
+      "aspectRatio",
+      "negativePrompt",
+      "conditioningScale",
+      "enhancePrompt"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.1,
+    "comparable_price_basis": "audio_qualified_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds_with_audio",
+          "raw_value": "0.12",
+          "amount": 0.12,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.12,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": "with_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_with_audio_4k",
+          "raw_value": "0.30",
+          "amount": 0.3,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.3,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "4k",
+          "audio_variant": "with_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_without_audio",
+          "raw_value": "0.10",
+          "amount": 0.1,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.1,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": "without_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_with_audio_720p",
+          "raw_value": "0.10",
+          "amount": 0.1,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.1,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "720p",
+          "audio_variant": "with_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_without_audio_4k",
+          "raw_value": "0.25",
+          "amount": 0.25,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.25,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "4k",
+          "audio_variant": "without_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_without_audio_720p",
+          "raw_value": "0.08",
+          "amount": 0.08,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.08,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "720p",
+          "audio_variant": "without_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds_with_audio": "0.12",
+        "duration_seconds_with_audio_4k": "0.30",
+        "duration_seconds_without_audio": "0.10",
+        "duration_seconds_with_audio_720p": "0.10",
+        "duration_seconds_without_audio_4k": "0.25",
+        "duration_seconds_without_audio_720p": "0.08"
+      },
+      "sku_count": 6,
+      "resolved_sku_count": 6,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.1,
+        "basis": "audio_qualified_rate",
+        "basis_sku": "duration_seconds_without_audio"
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds_with_audio",
+        "duration_seconds_with_audio_4k",
+        "duration_seconds_with_audio_720p",
+        "duration_seconds_without_audio",
+        "duration_seconds_without_audio_4k",
+        "duration_seconds_without_audio_720p"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "google/veo-3.1-fast",
+      "canonical_slug": "google/veo-3.1-fast-20260320",
+      "hugging_face_id": null,
+      "name": "Google: Veo 3.1 Fast",
+      "created": 1776994666,
+      "description": "Google's mid-tier video generation model balancing speed and quality. Veo 3.1 Fast generates high-quality video from text or image prompts with native synchronized audio, offering faster turnaround than Veo 3.1...",
+      "supported_resolutions": [
+        "720p",
+        "1080p",
+        "4K"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16"
+      ],
+      "supported_sizes": [
+        "1280x720",
+        "1080x1920",
+        "1920x1080",
+        "720x1280",
+        "3840x2160",
+        "2160x3840"
+      ],
+      "supported_durations": [
+        4,
+        6,
+        8
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "duration_seconds_with_audio": "0.12",
+        "duration_seconds_with_audio_4k": "0.30",
+        "duration_seconds_without_audio": "0.10",
+        "duration_seconds_with_audio_720p": "0.10",
+        "duration_seconds_without_audio_4k": "0.25",
+        "duration_seconds_without_audio_720p": "0.08"
+      },
+      "allowed_passthrough_parameters": [
+        "personGeneration",
+        "aspectRatio",
+        "negativePrompt",
+        "conditioningScale",
+        "enhancePrompt"
+      ]
+    }
+  },
+  {
+    "model_id": "google/veo-3.1-lite",
+    "canonical_slug": "google/veo-3.1-lite-20260331",
+    "model_name": "Google: Veo 3.1 Lite",
+    "provider": "google",
+    "model_type": "video",
+    "description": "Google's most cost-effective video generation model, designed for high-volume applications and rapid iteration. Veo 3.1 Lite generates 720p and 1080p video from text or image prompts with native synchronized audio...",
+    "created": 1776978818,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "720p",
+      "1080p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16"
+    ],
+    "supported_sizes": [
+      "1280x720",
+      "720x1280",
+      "1920x1080",
+      "1080x1920"
+    ],
+    "supported_durations": [
+      8,
+      4,
+      6
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "personGeneration",
+      "aspectRatio",
+      "negativePrompt",
+      "conditioningScale",
+      "enhancePrompt"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.05,
+    "comparable_price_basis": "audio_qualified_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds_with_audio",
+          "raw_value": "0.08",
+          "amount": 0.08,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.08,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": "with_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_without_audio",
+          "raw_value": "0.05",
+          "amount": 0.05,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.05,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": "without_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_with_audio_720p",
+          "raw_value": "0.05",
+          "amount": 0.05,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.05,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "720p",
+          "audio_variant": "with_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_without_audio_720p",
+          "raw_value": "0.03",
+          "amount": 0.03,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.03,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "720p",
+          "audio_variant": "without_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds_with_audio": "0.08",
+        "duration_seconds_without_audio": "0.05",
+        "duration_seconds_with_audio_720p": "0.05",
+        "duration_seconds_without_audio_720p": "0.03"
+      },
+      "sku_count": 4,
+      "resolved_sku_count": 4,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.05,
+        "basis": "audio_qualified_rate",
+        "basis_sku": "duration_seconds_without_audio"
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds_with_audio",
+        "duration_seconds_with_audio_720p",
+        "duration_seconds_without_audio",
+        "duration_seconds_without_audio_720p"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "google/veo-3.1-lite",
+      "canonical_slug": "google/veo-3.1-lite-20260331",
+      "hugging_face_id": null,
+      "name": "Google: Veo 3.1 Lite",
+      "created": 1776978818,
+      "description": "Google's most cost-effective video generation model, designed for high-volume applications and rapid iteration. Veo 3.1 Lite generates 720p and 1080p video from text or image prompts with native synchronized audio...",
+      "supported_resolutions": [
+        "720p",
+        "1080p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16"
+      ],
+      "supported_sizes": [
+        "1280x720",
+        "720x1280",
+        "1920x1080",
+        "1080x1920"
+      ],
+      "supported_durations": [
+        8,
+        4,
+        6
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "duration_seconds_with_audio": "0.08",
+        "duration_seconds_without_audio": "0.05",
+        "duration_seconds_with_audio_720p": "0.05",
+        "duration_seconds_without_audio_720p": "0.03"
+      },
+      "allowed_passthrough_parameters": [
+        "personGeneration",
+        "aspectRatio",
+        "negativePrompt",
+        "conditioningScale",
+        "enhancePrompt"
+      ]
+    }
+  },
+  {
+    "model_id": "kwaivgi/kling-video-o1",
+    "canonical_slug": "kwaivgi/kling-video-o1-20260420",
+    "model_name": "Kling: Video O1",
+    "provider": "kwaivgi",
+    "model_type": "video",
+    "description": "Kling Video O1 is a video generation model from Kuaishou. It supports text and image inputs with video output, enabling text-to-video and image-to-video workflows. It is suited for cinematic content...",
+    "created": 1776704777,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "720p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16",
+      "1:1"
+    ],
+    "supported_sizes": [
+      "1280x720",
+      "720x1280",
+      "720x720"
+    ],
+    "supported_durations": [
+      5,
+      10
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": false,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "negative_prompt"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.112,
+    "comparable_price_basis": "plain_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds",
+          "raw_value": "0.1120",
+          "amount": 0.112,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.112,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds": "0.1120"
+      },
+      "sku_count": 1,
+      "resolved_sku_count": 1,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.112,
+        "basis": "plain_rate",
+        "basis_sku": "duration_seconds"
+      },
+      "usd_per_second_by_resolution": {
+        "default": 0.112
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "kwaivgi/kling-video-o1",
+      "canonical_slug": "kwaivgi/kling-video-o1-20260420",
+      "hugging_face_id": null,
+      "name": "Kling: Video O1",
+      "created": 1776704777,
+      "description": "Kling Video O1 is a video generation model from Kuaishou. It supports text and image inputs with video output, enabling text-to-video and image-to-video workflows. It is suited for cinematic content...",
+      "supported_resolutions": [
+        "720p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "supported_sizes": [
+        "1280x720",
+        "720x1280",
+        "720x720"
+      ],
+      "supported_durations": [
+        5,
+        10
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": false,
+      "pricing_skus": {
+        "duration_seconds": "0.1120"
+      },
+      "allowed_passthrough_parameters": [
+        "negative_prompt"
+      ]
+    }
+  },
+  {
+    "model_id": "minimax/hailuo-2.3",
+    "canonical_slug": "minimax/hailuo-2.3-20260420",
+    "model_name": "MiniMax: Hailuo 2.3",
+    "provider": "minimax",
+    "model_type": "video",
+    "description": "Hailuo 2.3 is a video generation model from MiniMax. It accepts text prompts and reference images as input and generates video output, supporting both text-to-video and image-to-video workflows. It is...",
+    "created": 1776702740,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "1080p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9"
+    ],
+    "supported_sizes": [
+      "1920x1080"
+    ],
+    "supported_durations": [
+      6,
+      10
+    ],
+    "supported_frame_images": [
+      "first_frame"
+    ],
+    "generate_audio": false,
+    "seed": null,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "prompt_optimizer",
+      "fast_pretreatment"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.0817,
+    "comparable_price_basis": "plain_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds",
+          "raw_value": "0.0817",
+          "amount": 0.0817,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.0817,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds": "0.0817"
+      },
+      "sku_count": 1,
+      "resolved_sku_count": 1,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.0817,
+        "basis": "plain_rate",
+        "basis_sku": "duration_seconds"
+      },
+      "usd_per_second_by_resolution": {
+        "default": 0.0817
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "minimax/hailuo-2.3",
+      "canonical_slug": "minimax/hailuo-2.3-20260420",
+      "hugging_face_id": null,
+      "name": "MiniMax: Hailuo 2.3",
+      "created": 1776702740,
+      "description": "Hailuo 2.3 is a video generation model from MiniMax. It accepts text prompts and reference images as input and generates video output, supporting both text-to-video and image-to-video workflows. It is...",
+      "supported_resolutions": [
+        "1080p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9"
+      ],
+      "supported_sizes": [
+        "1920x1080"
+      ],
+      "supported_durations": [
+        6,
+        10
+      ],
+      "supported_frame_images": [
+        "first_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": false,
+      "seed": null,
+      "pricing_skus": {
+        "duration_seconds": "0.0817"
+      },
+      "allowed_passthrough_parameters": [
+        "prompt_optimizer",
+        "fast_pretreatment"
+      ]
+    }
+  },
+  {
+    "model_id": "alibaba/wan-2.7",
+    "canonical_slug": "alibaba/wan-2.7-20260414",
+    "model_name": "Alibaba: Wan 2.7",
+    "provider": "alibaba",
+    "model_type": "video",
+    "description": "Wan 2.7 is a video generation model from Alibaba. It supports text-to-video, image-to-video with first and last frame control, and reference-to-video, where multiple reference images guide the style and content...",
+    "created": 1776211362,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "720p",
+      "1080p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16",
+      "1:1",
+      "4:3",
+      "3:4"
+    ],
+    "supported_sizes": [
+      "1280x720",
+      "720x1280",
+      "1920x1080",
+      "1080x1920",
+      "720x720",
+      "1080x1080",
+      "960x720",
+      "720x960",
+      "1440x1080",
+      "1080x1440"
+    ],
+    "supported_durations": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "negative_prompt",
+      "prompt_extend",
+      "audio",
+      "ratio",
+      "last_image",
+      "video",
+      "videos",
+      "images"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.1,
+    "comparable_price_basis": "plain_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds",
+          "raw_value": "0.1",
+          "amount": 0.1,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.1,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds": "0.1"
+      },
+      "sku_count": 1,
+      "resolved_sku_count": 1,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.1,
+        "basis": "plain_rate",
+        "basis_sku": "duration_seconds"
+      },
+      "usd_per_second_by_resolution": {
+        "default": 0.1
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "alibaba/wan-2.7",
+      "canonical_slug": "alibaba/wan-2.7-20260414",
+      "hugging_face_id": null,
+      "name": "Alibaba: Wan 2.7",
+      "created": 1776211362,
+      "description": "Wan 2.7 is a video generation model from Alibaba. It supports text-to-video, image-to-video with first and last frame control, and reference-to-video, where multiple reference images guide the style and content...",
+      "supported_resolutions": [
+        "720p",
+        "1080p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16",
+        "1:1",
+        "4:3",
+        "3:4"
+      ],
+      "supported_sizes": [
+        "1280x720",
+        "720x1280",
+        "1920x1080",
+        "1080x1920",
+        "720x720",
+        "1080x1080",
+        "960x720",
+        "720x960",
+        "1440x1080",
+        "1080x1440"
+      ],
+      "supported_durations": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "duration_seconds": "0.1"
+      },
+      "allowed_passthrough_parameters": [
+        "negative_prompt",
+        "prompt_extend",
+        "audio",
+        "ratio",
+        "last_image",
+        "video",
+        "videos",
+        "images"
+      ]
+    }
+  },
+  {
+    "model_id": "bytedance/seedance-2.0",
+    "canonical_slug": "bytedance/seedance-2.0-20260414",
+    "model_name": "ByteDance: Seedance 2.0",
+    "provider": "bytedance",
+    "model_type": "video",
+    "description": "Seedance 2.0 is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It is particularly strong at preserving character consistency,...",
+    "created": 1776211362,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "480p",
+      "720p",
+      "1080p",
+      "4K"
+    ],
+    "supported_aspect_ratios": [
+      "1:1",
+      "3:4",
+      "9:16",
+      "4:3",
+      "16:9",
+      "21:9",
+      "9:21"
+    ],
+    "supported_sizes": [
+      "480x480",
+      "480x640",
+      "480x854",
+      "640x480",
+      "854x480",
+      "1120x480",
+      "720x720",
+      "720x960",
+      "720x1280",
+      "720x1680",
+      "960x720",
+      "1280x720",
+      "1680x720",
+      "1080x1080",
+      "1080x1440",
+      "1080x1920",
+      "1440x1080",
+      "1920x1080",
+      "2520x1080",
+      "3840x2160",
+      "2160x3840",
+      "2160x2160",
+      "2880x2160",
+      "2160x2880",
+      "5040x2160"
+    ],
+    "supported_durations": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "watermark",
+      "req_key"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": false,
+    "pricing_unit": null,
+    "comparable_price": null,
+    "comparable_price_basis": null,
+    "pricing": {
+      "skus": [
+        {
+          "sku": "video_tokens",
+          "raw_value": "0.000007",
+          "amount": 7e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 7e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_4k",
+          "raw_value": "0.000004",
+          "amount": 4e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 4e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "4k",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_1080p",
+          "raw_value": "0.0000077",
+          "amount": 7.7e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 7.7e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "1080p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_without_audio",
+          "raw_value": "0.000007",
+          "amount": 7e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 7e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": "without_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_with_video_input",
+          "raw_value": "0.0000043",
+          "amount": 4.3e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 4.3e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_4k_with_video_input",
+          "raw_value": "0.0000024",
+          "amount": 2.4e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 2.4e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "4k",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_1080p_with_video_input",
+          "raw_value": "0.0000047",
+          "amount": 4.7e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 4.7e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "1080p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "video_tokens": "0.000007",
+        "video_tokens_4k": "0.000004",
+        "video_tokens_1080p": "0.0000077",
+        "video_tokens_without_audio": "0.000007",
+        "video_tokens_with_video_input": "0.0000043",
+        "video_tokens_4k_with_video_input": "0.0000024",
+        "video_tokens_1080p_with_video_input": "0.0000047"
+      },
+      "sku_count": 7,
+      "resolved_sku_count": 7,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": null,
+        "usd": null,
+        "basis": null,
+        "basis_sku": null
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_video_token"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "video_tokens",
+        "video_tokens_1080p",
+        "video_tokens_1080p_with_video_input",
+        "video_tokens_4k",
+        "video_tokens_4k_with_video_input",
+        "video_tokens_with_video_input",
+        "video_tokens_without_audio"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "bytedance/seedance-2.0",
+      "canonical_slug": "bytedance/seedance-2.0-20260414",
+      "hugging_face_id": null,
+      "name": "ByteDance: Seedance 2.0",
+      "created": 1776211362,
+      "description": "Seedance 2.0 is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It is particularly strong at preserving character consistency,...",
+      "supported_resolutions": [
+        "480p",
+        "720p",
+        "1080p",
+        "4K"
+      ],
+      "supported_aspect_ratios": [
+        "1:1",
+        "3:4",
+        "9:16",
+        "4:3",
+        "16:9",
+        "21:9",
+        "9:21"
+      ],
+      "supported_sizes": [
+        "480x480",
+        "480x640",
+        "480x854",
+        "640x480",
+        "854x480",
+        "1120x480",
+        "720x720",
+        "720x960",
+        "720x1280",
+        "720x1680",
+        "960x720",
+        "1280x720",
+        "1680x720",
+        "1080x1080",
+        "1080x1440",
+        "1080x1920",
+        "1440x1080",
+        "1920x1080",
+        "2520x1080",
+        "3840x2160",
+        "2160x3840",
+        "2160x2160",
+        "2880x2160",
+        "2160x2880",
+        "5040x2160"
+      ],
+      "supported_durations": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "video_tokens": "0.000007",
+        "video_tokens_4k": "0.000004",
+        "video_tokens_1080p": "0.0000077",
+        "video_tokens_without_audio": "0.000007",
+        "video_tokens_with_video_input": "0.0000043",
+        "video_tokens_4k_with_video_input": "0.0000024",
+        "video_tokens_1080p_with_video_input": "0.0000047"
+      },
+      "allowed_passthrough_parameters": [
+        "watermark",
+        "req_key"
+      ]
+    }
+  },
+  {
+    "model_id": "bytedance/seedance-2.0-fast",
+    "canonical_slug": "bytedance/seedance-2.0-fast-20260414",
+    "model_name": "ByteDance: Seedance 2.0 Fast",
+    "provider": "bytedance",
+    "model_type": "video",
+    "description": "Seedance 2.0 Fast is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It prioritizes generation speed and lower cost...",
+    "created": 1776211362,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "480p",
+      "720p"
+    ],
+    "supported_aspect_ratios": [
+      "1:1",
+      "3:4",
+      "9:16",
+      "4:3",
+      "16:9",
+      "21:9",
+      "9:21"
+    ],
+    "supported_sizes": [
+      "480x480",
+      "480x640",
+      "480x854",
+      "640x480",
+      "854x480",
+      "1120x480",
+      "720x720",
+      "720x960",
+      "720x1280",
+      "720x1680",
+      "960x720",
+      "1280x720",
+      "1680x720"
+    ],
+    "supported_durations": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "watermark",
+      "req_key"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": false,
+    "pricing_unit": null,
+    "comparable_price": null,
+    "comparable_price_basis": null,
+    "pricing": {
+      "skus": [
+        {
+          "sku": "video_tokens",
+          "raw_value": "0.0000042",
+          "amount": 4.2e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 4.2e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_without_audio",
+          "raw_value": "0.0000042",
+          "amount": 4.2e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 4.2e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": "without_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_with_video_input",
+          "raw_value": "0.000002475",
+          "amount": 2.475e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 2.475e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "video_tokens": "0.0000042",
+        "video_tokens_without_audio": "0.0000042",
+        "video_tokens_with_video_input": "0.000002475"
+      },
+      "sku_count": 3,
+      "resolved_sku_count": 3,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": null,
+        "usd": null,
+        "basis": null,
+        "basis_sku": null
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_video_token"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "video_tokens",
+        "video_tokens_with_video_input",
+        "video_tokens_without_audio"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "bytedance/seedance-2.0-fast",
+      "canonical_slug": "bytedance/seedance-2.0-fast-20260414",
+      "hugging_face_id": null,
+      "name": "ByteDance: Seedance 2.0 Fast",
+      "created": 1776211362,
+      "description": "Seedance 2.0 Fast is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It prioritizes generation speed and lower cost...",
+      "supported_resolutions": [
+        "480p",
+        "720p"
+      ],
+      "supported_aspect_ratios": [
+        "1:1",
+        "3:4",
+        "9:16",
+        "4:3",
+        "16:9",
+        "21:9",
+        "9:21"
+      ],
+      "supported_sizes": [
+        "480x480",
+        "480x640",
+        "480x854",
+        "640x480",
+        "854x480",
+        "1120x480",
+        "720x720",
+        "720x960",
+        "720x1280",
+        "720x1680",
+        "960x720",
+        "1280x720",
+        "1680x720"
+      ],
+      "supported_durations": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "video_tokens": "0.0000042",
+        "video_tokens_without_audio": "0.0000042",
+        "video_tokens_with_video_input": "0.000002475"
+      },
+      "allowed_passthrough_parameters": [
+        "watermark",
+        "req_key"
+      ]
+    }
+  },
+  {
+    "model_id": "alibaba/wan-2.6",
+    "canonical_slug": "alibaba/wan-2.6-20260327",
+    "model_name": "Alibaba: Wan 2.6",
+    "provider": "alibaba",
+    "model_type": "video",
+    "description": "Alibaba's most advanced video generation model, supporting over 10 visual creation capabilities in a unified system. Wan 2.6 generates 1080p video at 24fps from text, images, reference videos, or audio,...",
+    "created": 1774659190,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "720p",
+      "1080p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16"
+    ],
+    "supported_sizes": [
+      "1280x720",
+      "1080x1920",
+      "720x1280",
+      "1920x1080"
+    ],
+    "supported_durations": [
+      5,
+      10
+    ],
+    "supported_frame_images": [
+      "first_frame"
+    ],
+    "generate_audio": true,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "negative_prompt",
+      "enable_prompt_expansion",
+      "shot_type",
+      "audio",
+      "size"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.08,
+    "comparable_price_basis": "720p_tier_with_operation",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "text_to_video_duration_seconds_480p",
+          "raw_value": "0.04",
+          "amount": 0.04,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.04,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "480p",
+          "audio_variant": null,
+          "operation": "text_to_video",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "text_to_video_duration_seconds_720p",
+          "raw_value": "0.08",
+          "amount": 0.08,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.08,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "720p",
+          "audio_variant": null,
+          "operation": "text_to_video",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "image_to_video_duration_seconds_720p",
+          "raw_value": "0.10",
+          "amount": 0.1,
+          "currency": "usd",
+          "quantity": "image",
+          "unit_family": "usd_per_image",
+          "usd_amount": 0.1,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "720p",
+          "audio_variant": null,
+          "operation": "image_to_video",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "text_to_video_duration_seconds_1080p",
+          "raw_value": "0.12",
+          "amount": 0.12,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.12,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "1080p",
+          "audio_variant": null,
+          "operation": "text_to_video",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "image_to_video_duration_seconds_1080p",
+          "raw_value": "0.15",
+          "amount": 0.15,
+          "currency": "usd",
+          "quantity": "image",
+          "unit_family": "usd_per_image",
+          "usd_amount": 0.15,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "1080p",
+          "audio_variant": null,
+          "operation": "image_to_video",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "text_to_video_duration_seconds_480p": "0.04",
+        "text_to_video_duration_seconds_720p": "0.08",
+        "image_to_video_duration_seconds_720p": "0.10",
+        "text_to_video_duration_seconds_1080p": "0.12",
+        "image_to_video_duration_seconds_1080p": "0.15"
+      },
+      "sku_count": 5,
+      "resolved_sku_count": 5,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.08,
+        "basis": "720p_tier_with_operation",
+        "basis_sku": "text_to_video_duration_seconds_720p"
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_image",
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "image_to_video_duration_seconds_1080p",
+        "image_to_video_duration_seconds_720p",
+        "text_to_video_duration_seconds_1080p",
+        "text_to_video_duration_seconds_480p",
+        "text_to_video_duration_seconds_720p"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "alibaba/wan-2.6",
+      "canonical_slug": "alibaba/wan-2.6-20260327",
+      "hugging_face_id": null,
+      "name": "Alibaba: Wan 2.6",
+      "created": 1774659190,
+      "description": "Alibaba's most advanced video generation model, supporting over 10 visual creation capabilities in a unified system. Wan 2.6 generates 1080p video at 24fps from text, images, reference videos, or audio,...",
+      "supported_resolutions": [
+        "720p",
+        "1080p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16"
+      ],
+      "supported_sizes": [
+        "1280x720",
+        "1080x1920",
+        "720x1280",
+        "1920x1080"
+      ],
+      "supported_durations": [
+        5,
+        10
+      ],
+      "supported_frame_images": [
+        "first_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "text_to_video_duration_seconds_480p": "0.04",
+        "text_to_video_duration_seconds_720p": "0.08",
+        "image_to_video_duration_seconds_720p": "0.10",
+        "text_to_video_duration_seconds_1080p": "0.12",
+        "image_to_video_duration_seconds_1080p": "0.15"
+      },
+      "allowed_passthrough_parameters": [
+        "negative_prompt",
+        "enable_prompt_expansion",
+        "shot_type",
+        "audio",
+        "size"
+      ]
+    }
+  },
+  {
+    "model_id": "bytedance/seedance-1-5-pro",
+    "canonical_slug": "bytedance/seedance-1-5-pro-20260320",
+    "model_name": "ByteDance: Seedance 1.5 Pro",
+    "provider": "bytedance",
+    "model_type": "video",
+    "description": "ByteDance's next-generation audio-visual generation model with a 4.5B parameter Dual-Branch Diffusion Transformer architecture. Seedance 1.5 Pro generates video and audio simultaneously in a single unified pass \u2014 eliminating the timing...",
+    "created": 1774277608,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "480p",
+      "720p",
+      "1080p"
+    ],
+    "supported_aspect_ratios": [
+      "1:1",
+      "3:4",
+      "9:16",
+      "9:21",
+      "4:3",
+      "16:9",
+      "21:9"
+    ],
+    "supported_sizes": [
+      "480x480",
+      "480x640",
+      "480x854",
+      "480x1120",
+      "640x480",
+      "720x720",
+      "720x960",
+      "720x1280",
+      "720x1680",
+      "854x480",
+      "960x720",
+      "1080x1080",
+      "1080x1440",
+      "1080x1920",
+      "1080x2520",
+      "1120x480",
+      "1280x720",
+      "1440x1080",
+      "1680x720",
+      "1920x1080",
+      "2520x1080"
+    ],
+    "supported_durations": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "watermark",
+      "req_key"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": false,
+    "pricing_unit": null,
+    "comparable_price": null,
+    "comparable_price_basis": null,
+    "pricing": {
+      "skus": [
+        {
+          "sku": "video_tokens",
+          "raw_value": "0.0000024",
+          "amount": 2.4e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 2.4e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_without_audio",
+          "raw_value": "0.0000012",
+          "amount": 1.2e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 1.2e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": "without_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "video_tokens": "0.0000024",
+        "video_tokens_without_audio": "0.0000012"
+      },
+      "sku_count": 2,
+      "resolved_sku_count": 2,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": null,
+        "usd": null,
+        "basis": null,
+        "basis_sku": null
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_video_token"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "video_tokens",
+        "video_tokens_without_audio"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "bytedance/seedance-1-5-pro",
+      "canonical_slug": "bytedance/seedance-1-5-pro-20260320",
+      "hugging_face_id": null,
+      "name": "ByteDance: Seedance 1.5 Pro",
+      "created": 1774277608,
+      "description": "ByteDance's next-generation audio-visual generation model with a 4.5B parameter Dual-Branch Diffusion Transformer architecture. Seedance 1.5 Pro generates video and audio simultaneously in a single unified pass \u2014 eliminating the timing...",
+      "supported_resolutions": [
+        "480p",
+        "720p",
+        "1080p"
+      ],
+      "supported_aspect_ratios": [
+        "1:1",
+        "3:4",
+        "9:16",
+        "9:21",
+        "4:3",
+        "16:9",
+        "21:9"
+      ],
+      "supported_sizes": [
+        "480x480",
+        "480x640",
+        "480x854",
+        "480x1120",
+        "640x480",
+        "720x720",
+        "720x960",
+        "720x1280",
+        "720x1680",
+        "854x480",
+        "960x720",
+        "1080x1080",
+        "1080x1440",
+        "1080x1920",
+        "1080x2520",
+        "1120x480",
+        "1280x720",
+        "1440x1080",
+        "1680x720",
+        "1920x1080",
+        "2520x1080"
+      ],
+      "supported_durations": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "video_tokens": "0.0000024",
+        "video_tokens_without_audio": "0.0000012"
+      },
+      "allowed_passthrough_parameters": [
+        "watermark",
+        "req_key"
+      ]
+    }
+  },
+  {
+    "model_id": "openai/sora-2-pro",
+    "canonical_slug": "openai/sora-2-pro-20260320",
+    "model_name": "OpenAI: Sora 2 Pro",
+    "provider": "openai",
+    "model_type": "video",
+    "description": "OpenAI's flagship video generation model, delivering production-quality video with physics-accurate motion, synchronized audio, and world-state persistence across shots. Sora 2 Pro follows intricate multi-shot instructions while maintaining consistent spatial relationships...",
+    "created": 1774277521,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "720p",
+      "1080p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16"
+    ],
+    "supported_sizes": [
+      "1280x720",
+      "1080x1920",
+      "1920x1080",
+      "720x1280"
+    ],
+    "supported_durations": [
+      4,
+      8,
+      12,
+      16,
+      20
+    ],
+    "supported_frame_images": null,
+    "generate_audio": true,
+    "seed": false,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "quality",
+      "style"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.3,
+    "comparable_price_basis": "720p_tier",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds_720p",
+          "raw_value": "0.30",
+          "amount": 0.3,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.3,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "720p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_1024p",
+          "raw_value": "0.50",
+          "amount": 0.5,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.5,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "1024p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_1080p",
+          "raw_value": "0.50",
+          "amount": 0.5,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.5,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "1080p",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds_720p": "0.30",
+        "duration_seconds_1024p": "0.50",
+        "duration_seconds_1080p": "0.50"
+      },
+      "sku_count": 3,
+      "resolved_sku_count": 3,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.3,
+        "basis": "720p_tier",
+        "basis_sku": "duration_seconds_720p"
+      },
+      "usd_per_second_by_resolution": {
+        "720p": 0.3,
+        "1024p": 0.5,
+        "1080p": 0.5
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds_1024p",
+        "duration_seconds_1080p",
+        "duration_seconds_720p"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "openai/sora-2-pro",
+      "canonical_slug": "openai/sora-2-pro-20260320",
+      "hugging_face_id": null,
+      "name": "OpenAI: Sora 2 Pro",
+      "created": 1774277521,
+      "description": "OpenAI's flagship video generation model, delivering production-quality video with physics-accurate motion, synchronized audio, and world-state persistence across shots. Sora 2 Pro follows intricate multi-shot instructions while maintaining consistent spatial relationships...",
+      "supported_resolutions": [
+        "720p",
+        "1080p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16"
+      ],
+      "supported_sizes": [
+        "1280x720",
+        "1080x1920",
+        "1920x1080",
+        "720x1280"
+      ],
+      "supported_durations": [
+        4,
+        8,
+        12,
+        16,
+        20
+      ],
+      "supported_frame_images": null,
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": false,
+      "pricing_skus": {
+        "duration_seconds_720p": "0.30",
+        "duration_seconds_1024p": "0.50",
+        "duration_seconds_1080p": "0.50"
+      },
+      "allowed_passthrough_parameters": [
+        "quality",
+        "style"
+      ]
+    }
+  },
+  {
+    "model_id": "google/veo-3.1",
+    "canonical_slug": "google/veo-3.1-20260320",
+    "model_name": "Google: Veo 3.1",
+    "provider": "google",
+    "model_type": "video",
+    "description": "Google's state-of-the-art video generation model, built for maximum visual fidelity in final production cuts. Veo 3.1 generates high-quality 1080p video from text or image prompts with native synchronized audio \u2014...",
+    "created": 1774277148,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "720p",
+      "1080p",
+      "4K"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16"
+    ],
+    "supported_sizes": [
+      "1280x720",
+      "1080x1920",
+      "1920x1080",
+      "720x1280",
+      "3840x2160",
+      "2160x3840"
+    ],
+    "supported_durations": [
+      4,
+      6,
+      8
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "personGeneration",
+      "aspectRatio",
+      "negativePrompt",
+      "conditioningScale",
+      "enhancePrompt"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.2,
+    "comparable_price_basis": "audio_qualified_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds_with_audio",
+          "raw_value": "0.40",
+          "amount": 0.4,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.4,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": "with_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_with_audio_4k",
+          "raw_value": "0.60",
+          "amount": 0.6,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.6,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "4k",
+          "audio_variant": "with_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_without_audio",
+          "raw_value": "0.20",
+          "amount": 0.2,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.2,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": "without_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "duration_seconds_without_audio_4k",
+          "raw_value": "0.40",
+          "amount": 0.4,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.4,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": "4k",
+          "audio_variant": "without_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds_with_audio": "0.40",
+        "duration_seconds_with_audio_4k": "0.60",
+        "duration_seconds_without_audio": "0.20",
+        "duration_seconds_without_audio_4k": "0.40"
+      },
+      "sku_count": 4,
+      "resolved_sku_count": 4,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.2,
+        "basis": "audio_qualified_rate",
+        "basis_sku": "duration_seconds_without_audio"
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds_with_audio",
+        "duration_seconds_with_audio_4k",
+        "duration_seconds_without_audio",
+        "duration_seconds_without_audio_4k"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-09-24T23:03:24.524369+00:00",
+    "raw": {
+      "id": "google/veo-3.1",
+      "canonical_slug": "google/veo-3.1-20260320",
+      "hugging_face_id": null,
+      "name": "Google: Veo 3.1",
+      "created": 1774277148,
+      "description": "Google's state-of-the-art video generation model, built for maximum visual fidelity in final production cuts. Veo 3.1 generates high-quality 1080p video from text or image prompts with native synchronized audio \u2014...",
+      "supported_resolutions": [
+        "720p",
+        "1080p",
+        "4K"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16"
+      ],
+      "supported_sizes": [
+        "1280x720",
+        "1080x1920",
+        "1920x1080",
+        "720x1280",
+        "3840x2160",
+        "2160x3840"
+      ],
+      "supported_durations": [
+        4,
+        6,
+        8
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "duration_seconds_with_audio": "0.40",
+        "duration_seconds_with_audio_4k": "0.60",
+        "duration_seconds_without_audio": "0.20",
+        "duration_seconds_without_audio_4k": "0.40"
+      },
+      "allowed_passthrough_parameters": [
+        "personGeneration",
+        "aspectRatio",
+        "negativePrompt",
+        "conditioningScale",
+        "enhancePrompt"
+      ]
+    }
+  }
+]
