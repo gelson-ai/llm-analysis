@@ -1,7 +1,7 @@
 {
   "version": 1,
   "timezone": "Asia/Manila",
-  "updated_at": "2026-09-24T23:26:00.294226+00:00",
+  "updated_at": "2026-09-28T02:48:53.131396+00:00",
   "weeks": {
     "2026-09-07_2026-09-13": {
       "week_start": "2026-09-07",
@@ -535,6 +535,182 @@
             "score": 41.0,
             "blended_price": 0.07,
             "value": 585.7143
+          },
+          "current_leader_differs": false,
+          "revision_count": 0
+        }
+      }
+    },
+    "2026-09-28_2026-10-04": {
+      "week_start": "2026-09-28",
+      "week_end": "2026-10-04",
+      "week_label": "Mon 28 Sep - Sun 4 Oct 2026",
+      "iso_week": "2026-W40",
+      "picks": {
+        "intelligence": {
+          "metric": "intelligence",
+          "metric_label": "AA Intelligence Index",
+          "model_id": "inclusionai/ling-3.0-flash-vl",
+          "model_name": "inclusionAI: Ling 3.0 Flash VL",
+          "provider": "inclusionai",
+          "score": 24.6,
+          "blended_price": 0.03115,
+          "value": 789.7271,
+          "context_length": 262144,
+          "recorded_at": "2026-09-28T02:48:53.131396+00:00",
+          "recorded_local": "2026-09-28T10:48:53.131396+08:00",
+          "recorded_label": "Mon 28 Sep 2026, 10:48 PHT",
+          "data_retrieved_at": "2026-09-28T02:48:52.245591+00:00",
+          "locked_by": "refresh",
+          "contenders": [
+            {
+              "rank": 1,
+              "model_id": "inclusionai/ling-3.0-flash-vl",
+              "model_name": "inclusionAI: Ling 3.0 Flash VL",
+              "provider": "inclusionai",
+              "score": 24.6,
+              "blended_price": 0.03115,
+              "value": 789.7271
+            },
+            {
+              "rank": 2,
+              "model_id": "z-ai/glm-5.3-flash:batch",
+              "model_name": "Z.ai: GLM 5.3 Flash (batch)",
+              "provider": "z-ai",
+              "score": 41.8,
+              "blended_price": 0.095,
+              "value": 440.0
+            },
+            {
+              "rank": 3,
+              "model_id": "openai/gpt-6-luna:batch",
+              "model_name": "OpenAI: GPT-6 Luna (batch)",
+              "provider": "openai",
+              "score": 37.3,
+              "blended_price": 0.1,
+              "value": 373.0
+            }
+          ],
+          "revisions": [],
+          "current_leader": {
+            "model_id": "inclusionai/ling-3.0-flash-vl",
+            "model_name": "inclusionAI: Ling 3.0 Flash VL",
+            "provider": "inclusionai",
+            "score": 24.6,
+            "blended_price": 0.03115,
+            "value": 789.7271
+          },
+          "current_leader_differs": false,
+          "revision_count": 0
+        },
+        "coding": {
+          "metric": "coding",
+          "metric_label": "AA Coding Index",
+          "model_id": "inclusionai/ling-3.0-flash-vl",
+          "model_name": "inclusionAI: Ling 3.0 Flash VL",
+          "provider": "inclusionai",
+          "score": 57.0,
+          "blended_price": 0.03115,
+          "value": 1829.8555,
+          "context_length": 262144,
+          "recorded_at": "2026-09-28T02:48:53.131396+00:00",
+          "recorded_local": "2026-09-28T10:48:53.131396+08:00",
+          "recorded_label": "Mon 28 Sep 2026, 10:48 PHT",
+          "data_retrieved_at": "2026-09-28T02:48:52.245591+00:00",
+          "locked_by": "refresh",
+          "contenders": [
+            {
+              "rank": 1,
+              "model_id": "inclusionai/ling-3.0-flash-vl",
+              "model_name": "inclusionAI: Ling 3.0 Flash VL",
+              "provider": "inclusionai",
+              "score": 57.0,
+              "blended_price": 0.03115,
+              "value": 1829.8555
+            },
+            {
+              "rank": 2,
+              "model_id": "inclusionai/ling-3.0-flash",
+              "model_name": "inclusionAI: Ling 3.0 Flash",
+              "provider": "inclusionai",
+              "score": 50.6,
+              "blended_price": 0.0315,
+              "value": 1606.3492
+            },
+            {
+              "rank": 3,
+              "model_id": "z-ai/glm-5.3-flash:batch",
+              "model_name": "Z.ai: GLM 5.3 Flash (batch)",
+              "provider": "z-ai",
+              "score": 71.5,
+              "blended_price": 0.095,
+              "value": 752.6316
+            }
+          ],
+          "revisions": [],
+          "current_leader": {
+            "model_id": "inclusionai/ling-3.0-flash-vl",
+            "model_name": "inclusionAI: Ling 3.0 Flash VL",
+            "provider": "inclusionai",
+            "score": 57.0,
+            "blended_price": 0.03115,
+            "value": 1829.8555
+          },
+          "current_leader_differs": false,
+          "revision_count": 0
+        },
+        "agentic": {
+          "metric": "agentic",
+          "metric_label": "AA Agentic Index",
+          "model_id": "inclusionai/ling-3.0-flash-vl",
+          "model_name": "inclusionAI: Ling 3.0 Flash VL",
+          "provider": "inclusionai",
+          "score": 28.7,
+          "blended_price": 0.03115,
+          "value": 921.3483,
+          "context_length": 262144,
+          "recorded_at": "2026-09-28T02:48:53.131396+00:00",
+          "recorded_local": "2026-09-28T10:48:53.131396+08:00",
+          "recorded_label": "Mon 28 Sep 2026, 10:48 PHT",
+          "data_retrieved_at": "2026-09-28T02:48:52.245591+00:00",
+          "locked_by": "refresh",
+          "contenders": [
+            {
+              "rank": 1,
+              "model_id": "inclusionai/ling-3.0-flash-vl",
+              "model_name": "inclusionAI: Ling 3.0 Flash VL",
+              "provider": "inclusionai",
+              "score": 28.7,
+              "blended_price": 0.03115,
+              "value": 921.3483
+            },
+            {
+              "rank": 2,
+              "model_id": "z-ai/glm-5.3-flash:batch",
+              "model_name": "Z.ai: GLM 5.3 Flash (batch)",
+              "provider": "z-ai",
+              "score": 50.9,
+              "blended_price": 0.095,
+              "value": 535.7895
+            },
+            {
+              "rank": 3,
+              "model_id": "deepseek/deepseek-v4-flash-0731",
+              "model_name": "DeepSeek: DeepSeek V4 Flash 0731",
+              "provider": "deepseek",
+              "score": 41.0,
+              "blended_price": 0.09575,
+              "value": 428.1984
+            }
+          ],
+          "revisions": [],
+          "current_leader": {
+            "model_id": "inclusionai/ling-3.0-flash-vl",
+            "model_name": "inclusionAI: Ling 3.0 Flash VL",
+            "provider": "inclusionai",
+            "score": 28.7,
+            "blended_price": 0.03115,
+            "value": 921.3483
           },
           "current_leader_differs": false,
           "revision_count": 0

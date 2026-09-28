@@ -1,0 +1,32 @@
+{
+  "issue_count": 4,
+  "error_count": 0,
+  "warning_count": 1,
+  "info_count": 3,
+  "issues": [
+    {
+      "severity": "warning",
+      "issue": "video_model_without_comparable_rate",
+      "count": 6,
+      "detail": "6 video model(s) publish pricing that cannot be normalised to USD per output second: ['black-forest-labs/flux-video-upscale', 'bytedance/seedance-2.0-mini', 'bytedance/seedance-2.5', 'bytedance/seedance-2.0', 'bytedance/seedance-2.0-fast', 'bytedance/seedance-1-5-pro']. Their catalogue rate stays blank; value ranking still uses their observed benchmark cost."
+    },
+    {
+      "severity": "info",
+      "issue": "video_models_without_benchmark_rows",
+      "count": 5,
+      "detail": "5 catalogue model(s) have no judged benchmark row and are listed as unrated: ['black-forest-labs/flux-video-edit', 'black-forest-labs/flux-video-upscale', 'heygen/avatar-iv', 'minimax/hailuo-2.3', 'runway/aleph-2']"
+    },
+    {
+      "severity": "info",
+      "issue": "resolution_varies_within_a_model",
+      "count": 16,
+      "detail": "16 model(s) generated at more than one output resolution across the benchmark pages: ['alibaba/happyhorse-1.0', 'alibaba/happyhorse-1.1', 'alibaba/wan-2.6', 'alibaba/wan-2.7', 'alibaba/wan-3.0', 'alibaba/wan-3.0-prime', 'bytedance/seedance-1-5-pro', 'bytedance/seedance-2.0', 'bytedance/seedance-2.0-fast', 'bytedance/seedance-2.0-mini', 'bytedance/seedance-2.5', 'kwaivgi/kling-v3.0-pro', 'kwaivgi/kling-v3.0-std', 'kwaivgi/kling-video-o1', 'minimax/hailuo-3', 'minimax/hailuo-3-max']. Observed cost and the catalogue rate basis both move with resolution, so cross-model cost comparison is only meaningful alongside the stated rate basis."
+    },
+    {
+      "severity": "info",
+      "issue": "output_resolutions_observed",
+      "count": 8,
+      "detail": "Generated resolutions observed across the benchmark pages: ['1280x704', '1280x720', '1344x768', '1440x1440', '1920x1080', '2560x1440', '768x768', '960x960']"
+    }
+  ]
+}
