@@ -1,7 +1,7 @@
 {
   "version": 1,
   "timezone": "Asia/Manila",
-  "updated_at": "2026-09-30T17:43:46.325426+00:00",
+  "updated_at": "2026-10-05T03:18:06.025623+00:00",
   "weeks": {
     "2026-09-21_2026-09-27": {
       "week_start": "2026-09-21",
@@ -111,6 +111,86 @@
           "recorded_at": "2026-09-28T02:49:33.796469+00:00",
           "recorded_label": "Mon 28 Sep 2026, 10:49 PHT",
           "data_retrieved_at": "2026-09-28T02:49:27.075169+00:00",
+          "locked_by": "refresh_video",
+          "contenders": [
+            {
+              "rank": 1,
+              "model_id": "bytedance/seedance-2.0-mini",
+              "model_name": "ByteDance: Seedance 2.0 Mini",
+              "provider": "bytedance",
+              "value": 2.9647,
+              "pass_rate": 0.711538,
+              "avg_cost_usd": 0.24,
+              "prompts": 11,
+              "checks_total": 52
+            },
+            {
+              "rank": 2,
+              "model_id": "google/veo-3.1-lite",
+              "model_name": "Google: Veo 3.1 Lite",
+              "provider": "google",
+              "value": 1.5865,
+              "pass_rate": 0.634615,
+              "avg_cost_usd": 0.4,
+              "prompts": 11,
+              "checks_total": 52
+            },
+            {
+              "rank": 3,
+              "model_id": "bytedance/seedance-1-5-pro",
+              "model_name": "ByteDance: Seedance 1.5 Pro",
+              "provider": "bytedance",
+              "value": 1.3367,
+              "pass_rate": 0.561404,
+              "avg_cost_usd": 0.42,
+              "prompts": 12,
+              "checks_total": 57
+            }
+          ],
+          "revisions": [],
+          "current_leader": {
+            "model_id": "bytedance/seedance-2.0-mini",
+            "model_name": "ByteDance: Seedance 2.0 Mini",
+            "provider": "bytedance",
+            "value": 2.9647,
+            "pass_rate": 0.711538,
+            "avg_cost_usd": 0.24,
+            "prompts": 11,
+            "checks_total": 52
+          },
+          "current_leader_differs": false,
+          "revision_count": 0
+        }
+      }
+    },
+    "2026-10-05_2026-10-11": {
+      "week_start": "2026-10-05",
+      "week_end": "2026-10-11",
+      "week_label": "Mon 5 Oct - Sun 11 Oct 2026",
+      "iso_week": "2026-W41",
+      "picks": {
+        "value": {
+          "metric": "value",
+          "metric_label": "Value (pass rate / benchmark cost per clip)",
+          "model_id": "bytedance/seedance-2.0-mini",
+          "model_name": "ByteDance: Seedance 2.0 Mini",
+          "provider": "bytedance",
+          "value": 2.9647,
+          "pass_rate": 0.711538,
+          "avg_cost_usd": 0.24,
+          "prompts": 11,
+          "checks_total": 52,
+          "output_resolutions": [
+            "1280x720",
+            "960x960"
+          ],
+          "has_catalog_rate": false,
+          "comparable_price": null,
+          "comparable_price_basis": null,
+          "mean_generation_seconds": 138.6,
+          "recorded_at": "2026-10-05T03:18:06.025623+00:00",
+          "recorded_label": "Mon 5 Oct 2026, 11:18 PHT",
+          "data_retrieved_at": "2026-10-05T03:18:00.800613+00:00",
           "locked_by": "refresh_video",
           "contenders": [
             {

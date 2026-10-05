@@ -1,22 +1,22 @@
 OpenRouter Model Evaluation Data Collection
 ============================================
 Retrieved:
-  Models: 464
-  Models with pricing: 458
-  Models with benchmarks: 255
+  Models: 466
+  Models with pricing: 459
+  Models with benchmarks: 256
 
 Priority benchmark coverage:
   AA Intelligence Index
-    Models: 146
-    Coverage: 31.47%
+    Models: 147
+    Coverage: 31.55%
   AA Coding Index
     Models: 177
-    Coverage: 38.15%
+    Coverage: 37.98%
   AA Agentic Index
-    Models: 139
-    Coverage: 29.96%
+    Models: 141
+    Coverage: 30.26%
 
 Potential ranking candidates: 0
-Missing benchmark data: 209
+Missing benchmark data: 210
 
 Data quality: 0 error(s), 1 warning(s), 2 info item(s).

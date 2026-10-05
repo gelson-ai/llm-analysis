@@ -1,7 +1,7 @@
 {
   "version": 1,
   "timezone": "Asia/Manila",
-  "updated_at": "2026-09-30T17:43:40.748352+00:00",
+  "updated_at": "2026-10-05T03:18:00.562325+00:00",
   "weeks": {
     "2026-09-21_2026-09-27": {
       "week_start": "2026-09-21",
@@ -101,6 +101,79 @@
           "recorded_at": "2026-09-28T02:49:26.842926+00:00",
           "recorded_label": "Mon 28 Sep 2026, 10:49 PHT",
           "data_retrieved_at": "2026-09-28T02:48:53.380998+00:00",
+          "locked_by": "refresh_media",
+          "contenders": [
+            {
+              "rank": 1,
+              "model_id": "meta/muse-image",
+              "model_name": "Meta: Muse Image",
+              "provider": "meta",
+              "value": 87.5,
+              "pass_rate": 0.875,
+              "avg_cost_usd": 0.01,
+              "prompts": 15
+            },
+            {
+              "rank": 2,
+              "model_id": "krea/krea-2-medium-turbo",
+              "model_name": "Krea: Krea 2 Medium Turbo",
+              "provider": "krea",
+              "value": 51.9774,
+              "pass_rate": 0.779661,
+              "avg_cost_usd": 0.015,
+              "prompts": 14
+            },
+            {
+              "rank": 3,
+              "model_id": "openai/gpt-image-2",
+              "model_name": "OpenAI: GPT Image 2",
+              "provider": "openai",
+              "value": 39.1714,
+              "pass_rate": 0.881356,
+              "avg_cost_usd": 0.0225,
+              "prompts": 14
+            }
+          ],
+          "revisions": [],
+          "current_leader": {
+            "model_id": "meta/muse-image",
+            "model_name": "Meta: Muse Image",
+            "provider": "meta",
+            "value": 87.5,
+            "pass_rate": 0.875,
+            "avg_cost_usd": 0.01,
+            "prompts": 15
+          },
+          "current_leader_differs": false,
+          "revision_count": 0
+        }
+      }
+    },
+    "2026-10-05_2026-10-11": {
+      "week_start": "2026-10-05",
+      "week_end": "2026-10-11",
+      "week_label": "Mon 5 Oct - Sun 11 Oct 2026",
+      "iso_week": "2026-W41",
+      "picks": {
+        "value": {
+          "metric": "value",
+          "metric_label": "Value (pass rate / benchmark cost)",
+          "model_id": "meta/muse-image",
+          "model_name": "Meta: Muse Image",
+          "provider": "meta",
+          "value": 87.5,
+          "pass_rate": 0.875,
+          "avg_cost_usd": 0.01,
+          "prompts": 15,
+          "output_resolutions": [
+            "1600x1600"
+          ],
+          "duration_ms_mean": 19148.6,
+          "design_arena": false,
+          "has_catalog_rate": false,
+          "recorded_at": "2026-10-05T03:18:00.562325+00:00",
+          "recorded_label": "Mon 5 Oct 2026, 11:18 PHT",
+          "data_retrieved_at": "2026-10-05T03:17:27.412844+00:00",
           "locked_by": "refresh_media",
           "contenders": [
             {

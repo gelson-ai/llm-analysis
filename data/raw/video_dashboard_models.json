@@ -1,6 +1,54 @@
 {
   "data": [
     {
+      "id": "heygen/heygen-video-1",
+      "canonical_slug": "heygen/heygen-video-1-20260930",
+      "hugging_face_id": null,
+      "name": "HeyGen: HeyGen Video",
+      "created": 1790798684,
+      "description": "HeyGen Video is a general-purpose video generation model from HeyGen. It renders short clips with synthesized audio (dialogue, ambience, and sound effects) in a single call, working from a text...",
+      "supported_resolutions": [
+        "480p",
+        "768p"
+      ],
+      "supported_aspect_ratios": [
+        "21:9",
+        "16:9",
+        "4:3",
+        "1:1",
+        "3:4",
+        "9:16"
+      ],
+      "supported_sizes": null,
+      "supported_durations": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "supported_frame_images": [
+        "first_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": false,
+      "seed": true,
+      "pricing_skus": {
+        "duration_seconds_480p": "0.02",
+        "duration_seconds_768p": "0.03",
+        "reference_duration_seconds_480p": "0.04",
+        "reference_duration_seconds_768p": "0.06"
+      },
+      "allowed_passthrough_parameters": []
+    },
+    {
       "id": "black-forest-labs/flux-video-edit",
       "canonical_slug": "black-forest-labs/flux-video-edit-20260910",
       "hugging_face_id": null,
@@ -1142,53 +1190,45 @@
       ]
     },
     {
-      "id": "bytedance/seedance-2.0-fast",
-      "canonical_slug": "bytedance/seedance-2.0-fast-20260414",
+      "id": "alibaba/wan-2.7",
+      "canonical_slug": "alibaba/wan-2.7-20260414",
       "hugging_face_id": null,
-      "name": "ByteDance: Seedance 2.0 Fast",
+      "name": "Alibaba: Wan 2.7",
       "created": 1776211362,
-      "description": "Seedance 2.0 Fast is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It prioritizes generation speed and lower cost...",
+      "description": "Wan 2.7 is a video generation model from Alibaba. It supports text-to-video, image-to-video with first and last frame control, and reference-to-video, where multiple reference images guide the style and content...",
       "supported_resolutions": [
-        "480p",
-        "720p"
+        "720p",
+        "1080p"
       ],
       "supported_aspect_ratios": [
-        "1:1",
-        "3:4",
-        "9:16",
-        "4:3",
         "16:9",
-        "21:9",
-        "9:21"
+        "9:16",
+        "1:1",
+        "4:3",
+        "3:4"
       ],
       "supported_sizes": [
-        "480x480",
-        "480x640",
-        "480x854",
-        "640x480",
-        "854x480",
-        "1120x480",
-        "720x720",
-        "720x960",
-        "720x1280",
-        "720x1680",
-        "960x720",
         "1280x720",
-        "1680x720"
+        "720x1280",
+        "1920x1080",
+        "1080x1920",
+        "720x720",
+        "1080x1080",
+        "960x720",
+        "720x960",
+        "1440x1080",
+        "1080x1440"
       ],
       "supported_durations": [
+        2,
+        3,
         4,
         5,
         6,
         7,
         8,
         9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15
+        10
       ],
       "supported_frame_images": [
         "first_frame",
@@ -1199,13 +1239,17 @@
       "generate_audio": true,
       "seed": true,
       "pricing_skus": {
-        "video_tokens": "0.0000042",
-        "video_tokens_without_audio": "0.0000042",
-        "video_tokens_with_video_input": "0.000002475"
+        "duration_seconds": "0.1"
       },
       "allowed_passthrough_parameters": [
-        "watermark",
-        "req_key"
+        "negative_prompt",
+        "prompt_extend",
+        "audio",
+        "ratio",
+        "last_image",
+        "video",
+        "videos",
+        "images"
       ]
     },
     {
@@ -1294,45 +1338,53 @@
       ]
     },
     {
-      "id": "alibaba/wan-2.7",
-      "canonical_slug": "alibaba/wan-2.7-20260414",
+      "id": "bytedance/seedance-2.0-fast",
+      "canonical_slug": "bytedance/seedance-2.0-fast-20260414",
       "hugging_face_id": null,
-      "name": "Alibaba: Wan 2.7",
+      "name": "ByteDance: Seedance 2.0 Fast",
       "created": 1776211362,
-      "description": "Wan 2.7 is a video generation model from Alibaba. It supports text-to-video, image-to-video with first and last frame control, and reference-to-video, where multiple reference images guide the style and content...",
+      "description": "Seedance 2.0 Fast is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It prioritizes generation speed and lower cost...",
       "supported_resolutions": [
-        "720p",
-        "1080p"
+        "480p",
+        "720p"
       ],
       "supported_aspect_ratios": [
-        "16:9",
-        "9:16",
         "1:1",
+        "3:4",
+        "9:16",
         "4:3",
-        "3:4"
+        "16:9",
+        "21:9",
+        "9:21"
       ],
       "supported_sizes": [
-        "1280x720",
-        "720x1280",
-        "1920x1080",
-        "1080x1920",
+        "480x480",
+        "480x640",
+        "480x854",
+        "640x480",
+        "854x480",
+        "1120x480",
         "720x720",
-        "1080x1080",
-        "960x720",
         "720x960",
-        "1440x1080",
-        "1080x1440"
+        "720x1280",
+        "720x1680",
+        "960x720",
+        "1280x720",
+        "1680x720"
       ],
       "supported_durations": [
-        2,
-        3,
         4,
         5,
         6,
         7,
         8,
         9,
-        10
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
       "supported_frame_images": [
         "first_frame",
@@ -1343,17 +1395,13 @@
       "generate_audio": true,
       "seed": true,
       "pricing_skus": {
-        "duration_seconds": "0.1"
+        "video_tokens": "0.0000042",
+        "video_tokens_without_audio": "0.0000042",
+        "video_tokens_with_video_input": "0.000002475"
       },
       "allowed_passthrough_parameters": [
-        "negative_prompt",
-        "prompt_extend",
-        "audio",
-        "ratio",
-        "last_image",
-        "video",
-        "videos",
-        "images"
+        "watermark",
+        "req_key"
       ]
     },
     {
