@@ -1,7 +1,7 @@
 {
   "version": 1,
   "timezone": "Asia/Manila",
-  "updated_at": "2026-10-05T03:18:06.025623+00:00",
+  "updated_at": "2026-10-09T16:10:12.037012+00:00",
   "weeks": {
     "2026-09-21_2026-09-27": {
       "week_start": "2026-09-21",
@@ -232,11 +232,11 @@
             "model_id": "bytedance/seedance-2.0-mini",
             "model_name": "ByteDance: Seedance 2.0 Mini",
             "provider": "bytedance",
-            "value": 2.9647,
-            "pass_rate": 0.711538,
+            "value": 2.9088,
+            "pass_rate": 0.698113,
             "avg_cost_usd": 0.24,
             "prompts": 11,
-            "checks_total": 52
+            "checks_total": 53
           },
           "current_leader_differs": false,
           "revision_count": 0

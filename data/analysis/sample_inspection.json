@@ -1,8 +1,8 @@
 [
   {
     "model_id": "qwen/qwen3-8b",
-    "status": "present",
-    "note": "found in raw inventory"
+    "status": "MISSING",
+    "note": "not found in this run's OpenRouter inventory - check whether it was renamed, deprecated, or the fetch is incomplete"
   },
   {
     "model_id": "name-contains:solar pro 4",
