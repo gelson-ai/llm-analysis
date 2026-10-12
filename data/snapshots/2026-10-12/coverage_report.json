@@ -1,0 +1,205 @@
+{
+  "model_inventory": {
+    "total_models": 458,
+    "models_with_pricing": 451,
+    "models_without_pricing": 7,
+    "models_with_benchmark_data": 298,
+    "models_without_benchmark_data": 160
+  },
+  "benchmark_coverage": [
+    {
+      "benchmark_name": "AA Intelligence Index",
+      "category": "uncategorized",
+      "number_of_models": 284,
+      "percentage_of_model_inventory": 62.01
+    },
+    {
+      "benchmark_name": "AA Coding Index",
+      "category": "coding",
+      "number_of_models": 169,
+      "percentage_of_model_inventory": 36.9
+    },
+    {
+      "benchmark_name": "Design Arena: models/website",
+      "category": "uncategorized",
+      "number_of_models": 166,
+      "percentage_of_model_inventory": 36.24
+    },
+    {
+      "benchmark_name": "Design Arena: models/codecategories",
+      "category": "uncategorized",
+      "number_of_models": 159,
+      "percentage_of_model_inventory": 34.72
+    },
+    {
+      "benchmark_name": "Design Arena: models/gamedev",
+      "category": "uncategorized",
+      "number_of_models": 159,
+      "percentage_of_model_inventory": 34.72
+    },
+    {
+      "benchmark_name": "Design Arena: models/dataviz",
+      "category": "uncategorized",
+      "number_of_models": 153,
+      "percentage_of_model_inventory": 33.41
+    },
+    {
+      "benchmark_name": "Design Arena: models/uicomponent",
+      "category": "uncategorized",
+      "number_of_models": 149,
+      "percentage_of_model_inventory": 32.53
+    },
+    {
+      "benchmark_name": "Design Arena: models/3d",
+      "category": "uncategorized",
+      "number_of_models": 148,
+      "percentage_of_model_inventory": 32.31
+    },
+    {
+      "benchmark_name": "AA Agentic Index",
+      "category": "uncategorized",
+      "number_of_models": 130,
+      "percentage_of_model_inventory": 28.38
+    },
+    {
+      "benchmark_name": "Design Arena: models/svg",
+      "category": "uncategorized",
+      "number_of_models": 110,
+      "percentage_of_model_inventory": 24.02
+    },
+    {
+      "benchmark_name": "Design Arena: models/asciiart",
+      "category": "uncategorized",
+      "number_of_models": 92,
+      "percentage_of_model_inventory": 20.09
+    },
+    {
+      "benchmark_name": "Design Arena: agents/mobileapps",
+      "category": "uncategorized",
+      "number_of_models": 64,
+      "percentage_of_model_inventory": 13.97
+    },
+    {
+      "benchmark_name": "Design Arena: agents/webapps",
+      "category": "uncategorized",
+      "number_of_models": 62,
+      "percentage_of_model_inventory": 13.54
+    },
+    {
+      "benchmark_name": "Design Arena: agents/fullstack",
+      "category": "uncategorized",
+      "number_of_models": 61,
+      "percentage_of_model_inventory": 13.32
+    },
+    {
+      "benchmark_name": "Design Arena: agents/androidnative",
+      "category": "uncategorized",
+      "number_of_models": 54,
+      "percentage_of_model_inventory": 11.79
+    },
+    {
+      "benchmark_name": "Design Arena: agents/godotgamedev",
+      "category": "uncategorized",
+      "number_of_models": 50,
+      "percentage_of_model_inventory": 10.92
+    },
+    {
+      "benchmark_name": "Design Arena: agents/python-pptxslides",
+      "category": "uncategorized",
+      "number_of_models": 40,
+      "percentage_of_model_inventory": 8.73
+    },
+    {
+      "benchmark_name": "Design Arena: agents/agenticgamedev",
+      "category": "uncategorized",
+      "number_of_models": 37,
+      "percentage_of_model_inventory": 8.08
+    },
+    {
+      "benchmark_name": "Design Arena: agents/htmlslides",
+      "category": "uncategorized",
+      "number_of_models": 33,
+      "percentage_of_model_inventory": 7.21
+    },
+    {
+      "benchmark_name": "Design Arena: agents/agentichtmlslides",
+      "category": "uncategorized",
+      "number_of_models": 15,
+      "percentage_of_model_inventory": 3.28
+    },
+    {
+      "benchmark_name": "Design Arena: agents/agenticslides(html)",
+      "category": "uncategorized",
+      "number_of_models": 15,
+      "percentage_of_model_inventory": 3.28
+    },
+    {
+      "benchmark_name": "Design Arena: agents/agenticslides",
+      "category": "uncategorized",
+      "number_of_models": 15,
+      "percentage_of_model_inventory": 3.28
+    },
+    {
+      "benchmark_name": "Design Arena: agents/agenticslides(python-pptx)",
+      "category": "uncategorized",
+      "number_of_models": 15,
+      "percentage_of_model_inventory": 3.28
+    },
+    {
+      "benchmark_name": "Design Arena: agents/pptxslides",
+      "category": "uncategorized",
+      "number_of_models": 13,
+      "percentage_of_model_inventory": 2.84
+    },
+    {
+      "benchmark_name": "Design Arena: models/graphicdesign",
+      "category": "uncategorized",
+      "number_of_models": 5,
+      "percentage_of_model_inventory": 1.09
+    },
+    {
+      "benchmark_name": "Design Arena: models/image",
+      "category": "uncategorized",
+      "number_of_models": 5,
+      "percentage_of_model_inventory": 1.09
+    },
+    {
+      "benchmark_name": "Design Arena: models/logo",
+      "category": "uncategorized",
+      "number_of_models": 5,
+      "percentage_of_model_inventory": 1.09
+    },
+    {
+      "benchmark_name": "Design Arena: models/imageediting",
+      "category": "uncategorized",
+      "number_of_models": 1,
+      "percentage_of_model_inventory": 0.22
+    }
+  ],
+  "priority_benchmark_coverage": {
+    "AA Intelligence Index": {
+      "benchmark_name": "AA Intelligence Index",
+      "category": "uncategorized",
+      "number_of_models": 284,
+      "percentage_of_model_inventory": 62.01
+    },
+    "AA Coding Index": {
+      "benchmark_name": "AA Coding Index",
+      "category": "coding",
+      "number_of_models": 169,
+      "percentage_of_model_inventory": 36.9
+    },
+    "AA Agentic Index": {
+      "benchmark_name": "AA Agentic Index",
+      "category": "uncategorized",
+      "number_of_models": 130,
+      "percentage_of_model_inventory": 28.38
+    }
+  },
+  "potential_ranking_candidates": {
+    "count": 0,
+    "model_ids": [],
+    "requires": "priced + at least one benchmark in each of: reasoning, general_knowledge, instruction_following"
+  },
+  "missing_benchmark_data_count": 160
+}

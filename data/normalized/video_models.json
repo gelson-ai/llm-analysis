@@ -175,7 +175,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "x-ai/grok-imagine-video-1.5-lite",
       "canonical_slug": "x-ai/grok-imagine-video-1.5-lite-20261001",
@@ -441,7 +441,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "heygen/heygen-video-1",
       "canonical_slug": "heygen/heygen-video-1-20260930",
@@ -584,7 +584,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "black-forest-labs/flux-video-edit",
       "canonical_slug": "black-forest-labs/flux-video-edit-20260910",
@@ -762,7 +762,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "minimax/hailuo-3-max",
       "canonical_slug": "minimax/hailuo-3-max-20260901",
@@ -982,7 +982,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "alibaba/wan-3.0-prime",
       "canonical_slug": "alibaba/wan-3.0-prime-20260827",
@@ -1217,7 +1217,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "alibaba/wan-3.0",
       "canonical_slug": "alibaba/wan-3.0-20260824",
@@ -1387,7 +1387,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "heygen/avatar-iv",
       "canonical_slug": "heygen/avatar-iv-20260625",
@@ -1538,7 +1538,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "black-forest-labs/flux-video-upscale",
       "canonical_slug": "black-forest-labs/flux-video-upscale-20260819",
@@ -1737,7 +1737,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "bytedance/seedance-2.0-mini",
       "canonical_slug": "bytedance/seedance-2.0-mini-20260811",
@@ -1987,7 +1987,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "bytedance/seedance-2.5",
       "canonical_slug": "bytedance/seedance-2.5-20260807",
@@ -2267,7 +2267,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "black-forest-labs/flux-3-video",
       "canonical_slug": "black-forest-labs/flux-3-video-20260804",
@@ -2459,7 +2459,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "minimax/hailuo-3",
       "canonical_slug": "minimax/hailuo-03-20260730",
@@ -2627,7 +2627,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "runway/aleph-2",
       "canonical_slug": "runway/aleph-2-20260729",
@@ -2771,7 +2771,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "runway/gen-4.5",
       "canonical_slug": "runway/gen-4.5-20260729",
@@ -2992,7 +2992,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "x-ai/grok-imagine-video-1.5",
       "canonical_slug": "x-ai/grok-imagine-video-1.5-20260719",
@@ -3196,7 +3196,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "alibaba/happyhorse-1.1",
       "canonical_slug": "alibaba/happyhorse-1.1-20260624",
@@ -3410,7 +3410,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "alibaba/happyhorse-1.0",
       "canonical_slug": "alibaba/happyhorse-1.0-20260624",
@@ -3646,7 +3646,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "x-ai/grok-imagine-video",
       "canonical_slug": "x-ai/grok-imagine-video-20260512",
@@ -3946,7 +3946,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "kwaivgi/kling-v3.0-pro",
       "canonical_slug": "kwaivgi/kling-v3.0-pro-20260429",
@@ -4236,7 +4236,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "kwaivgi/kling-v3.0-std",
       "canonical_slug": "kwaivgi/kling-v3.0-std-20260429",
@@ -4501,7 +4501,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "google/veo-3.1-fast",
       "canonical_slug": "google/veo-3.1-fast-20260320",
@@ -4721,7 +4721,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "google/veo-3.1-lite",
       "canonical_slug": "google/veo-3.1-lite-20260331",
@@ -4875,7 +4875,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "kwaivgi/kling-video-o1",
       "canonical_slug": "kwaivgi/kling-video-o1-20260420",
@@ -5016,7 +5016,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "minimax/hailuo-2.3",
       "canonical_slug": "minimax/hailuo-2.3-20260420",
@@ -5309,7 +5309,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "bytedance/seedance-2.0",
       "canonical_slug": "bytedance/seedance-2.0-20260414",
@@ -5393,6 +5393,199 @@
       "allowed_passthrough_parameters": [
         "watermark",
         "req_key"
+      ]
+    }
+  },
+  {
+    "model_id": "alibaba/wan-2.7",
+    "canonical_slug": "alibaba/wan-2.7-20260414",
+    "model_name": "Alibaba: Wan 2.7",
+    "provider": "alibaba",
+    "model_type": "video",
+    "description": "Wan 2.7 is a video generation model from Alibaba. It supports text-to-video, image-to-video with first and last frame control, and reference-to-video, where multiple reference images guide the style and content...",
+    "created": 1776211362,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "720p",
+      "1080p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16",
+      "1:1",
+      "4:3",
+      "3:4"
+    ],
+    "supported_sizes": [
+      "1280x720",
+      "720x1280",
+      "1920x1080",
+      "1080x1920",
+      "720x720",
+      "1080x1080",
+      "960x720",
+      "720x960",
+      "1440x1080",
+      "1080x1440"
+    ],
+    "supported_durations": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "negative_prompt",
+      "prompt_extend",
+      "audio",
+      "ratio",
+      "last_image",
+      "video",
+      "videos",
+      "images"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.1,
+    "comparable_price_basis": "plain_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds",
+          "raw_value": "0.1",
+          "amount": 0.1,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.1,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds": "0.1"
+      },
+      "sku_count": 1,
+      "resolved_sku_count": 1,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.1,
+        "basis": "plain_rate",
+        "basis_sku": "duration_seconds"
+      },
+      "usd_per_second_by_resolution": {
+        "default": 0.1
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "raw": {
+      "id": "alibaba/wan-2.7",
+      "canonical_slug": "alibaba/wan-2.7-20260414",
+      "hugging_face_id": null,
+      "name": "Alibaba: Wan 2.7",
+      "created": 1776211362,
+      "description": "Wan 2.7 is a video generation model from Alibaba. It supports text-to-video, image-to-video with first and last frame control, and reference-to-video, where multiple reference images guide the style and content...",
+      "supported_resolutions": [
+        "720p",
+        "1080p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16",
+        "1:1",
+        "4:3",
+        "3:4"
+      ],
+      "supported_sizes": [
+        "1280x720",
+        "720x1280",
+        "1920x1080",
+        "1080x1920",
+        "720x720",
+        "1080x1080",
+        "960x720",
+        "720x960",
+        "1440x1080",
+        "1080x1440"
+      ],
+      "supported_durations": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "duration_seconds": "0.1"
+      },
+      "allowed_passthrough_parameters": [
+        "negative_prompt",
+        "prompt_extend",
+        "audio",
+        "ratio",
+        "last_image",
+        "video",
+        "videos",
+        "images"
       ]
     }
   },
@@ -5562,7 +5755,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "bytedance/seedance-2.0-fast",
       "canonical_slug": "bytedance/seedance-2.0-fast-20260414",
@@ -5628,199 +5821,6 @@
       "allowed_passthrough_parameters": [
         "watermark",
         "req_key"
-      ]
-    }
-  },
-  {
-    "model_id": "alibaba/wan-2.7",
-    "canonical_slug": "alibaba/wan-2.7-20260414",
-    "model_name": "Alibaba: Wan 2.7",
-    "provider": "alibaba",
-    "model_type": "video",
-    "description": "Wan 2.7 is a video generation model from Alibaba. It supports text-to-video, image-to-video with first and last frame control, and reference-to-video, where multiple reference images guide the style and content...",
-    "created": 1776211362,
-    "hugging_face_id": null,
-    "architecture": {
-      "modality": null,
-      "input_modalities": null,
-      "output_modalities": [
-        "video"
-      ],
-      "synthesized": true
-    },
-    "input_modalities": null,
-    "output_modalities": [
-      "video"
-    ],
-    "supported_parameters": null,
-    "supports_streaming": null,
-    "endpoints_url": null,
-    "supported_resolutions": [
-      "720p",
-      "1080p"
-    ],
-    "supported_aspect_ratios": [
-      "16:9",
-      "9:16",
-      "1:1",
-      "4:3",
-      "3:4"
-    ],
-    "supported_sizes": [
-      "1280x720",
-      "720x1280",
-      "1920x1080",
-      "1080x1920",
-      "720x720",
-      "1080x1080",
-      "960x720",
-      "720x960",
-      "1440x1080",
-      "1080x1440"
-    ],
-    "supported_durations": [
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ],
-    "supported_frame_images": [
-      "first_frame",
-      "last_frame"
-    ],
-    "generate_audio": true,
-    "seed": true,
-    "upscale_factor": null,
-    "creativity": null,
-    "allowed_passthrough_parameters": [
-      "negative_prompt",
-      "prompt_extend",
-      "audio",
-      "ratio",
-      "last_image",
-      "video",
-      "videos",
-      "images"
-    ],
-    "has_any_price": true,
-    "has_valid_pricing": true,
-    "pricing_unit": "usd_per_second",
-    "comparable_price": 0.1,
-    "comparable_price_basis": "plain_rate",
-    "pricing": {
-      "skus": [
-        {
-          "sku": "duration_seconds",
-          "raw_value": "0.1",
-          "amount": 0.1,
-          "currency": "usd",
-          "quantity": "second",
-          "unit_family": "usd_per_second",
-          "usd_amount": 0.1,
-          "conversion_applied": false,
-          "currency_assumed": true,
-          "resolution_variant": null,
-          "audio_variant": null,
-          "operation": null,
-          "is_minimum": false,
-          "is_negative": false,
-          "is_parseable": true
-        }
-      ],
-      "raw_pricing_skus": {
-        "duration_seconds": "0.1"
-      },
-      "sku_count": 1,
-      "resolved_sku_count": 1,
-      "unresolved_sku_keys": [],
-      "has_any_price": true,
-      "comparable_price": {
-        "unit": "usd_per_second",
-        "usd": 0.1,
-        "basis": "plain_rate",
-        "basis_sku": "duration_seconds"
-      },
-      "usd_per_second_by_resolution": {
-        "default": 0.1
-      },
-      "usd_per_image_by_resolution": {},
-      "unit_families": [
-        "usd_per_second"
-      ],
-      "unit_conversions_applied": [],
-      "currency_assumptions": [
-        "duration_seconds"
-      ]
-    },
-    "endpoint_pricing": null,
-    "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
-    "raw": {
-      "id": "alibaba/wan-2.7",
-      "canonical_slug": "alibaba/wan-2.7-20260414",
-      "hugging_face_id": null,
-      "name": "Alibaba: Wan 2.7",
-      "created": 1776211362,
-      "description": "Wan 2.7 is a video generation model from Alibaba. It supports text-to-video, image-to-video with first and last frame control, and reference-to-video, where multiple reference images guide the style and content...",
-      "supported_resolutions": [
-        "720p",
-        "1080p"
-      ],
-      "supported_aspect_ratios": [
-        "16:9",
-        "9:16",
-        "1:1",
-        "4:3",
-        "3:4"
-      ],
-      "supported_sizes": [
-        "1280x720",
-        "720x1280",
-        "1920x1080",
-        "1080x1920",
-        "720x720",
-        "1080x1080",
-        "960x720",
-        "720x960",
-        "1440x1080",
-        "1080x1440"
-      ],
-      "supported_durations": [
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
-      "supported_frame_images": [
-        "first_frame",
-        "last_frame"
-      ],
-      "upscale_factor": null,
-      "creativity": null,
-      "generate_audio": true,
-      "seed": true,
-      "pricing_skus": {
-        "duration_seconds": "0.1"
-      },
-      "allowed_passthrough_parameters": [
-        "negative_prompt",
-        "prompt_extend",
-        "audio",
-        "ratio",
-        "last_image",
-        "video",
-        "videos",
-        "images"
       ]
     }
   },
@@ -6007,7 +6007,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "alibaba/wan-2.6",
       "canonical_slug": "alibaba/wan-2.6-20260327",
@@ -6209,7 +6209,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "bytedance/seedance-1-5-pro",
       "canonical_slug": "bytedance/seedance-1-5-pro-20260320",
@@ -6451,7 +6451,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-09T16:09:19.773546+00:00",
+    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
     "raw": {
       "id": "google/veo-3.1",
       "canonical_slug": "google/veo-3.1-20260320",

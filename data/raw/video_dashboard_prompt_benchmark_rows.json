@@ -1,5 +1,5 @@
 {
-  "retrieved_at": "2026-10-09T16:10:04.946924+00:00",
+  "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
   "rows": [
     {
       "raw_model_slug": "alibaba/happyhorse-1.1-20260624",
@@ -6052,63 +6052,63 @@
   ],
   "page_fingerprints": {
     "/benchmarks/media/videos/traffic-light": {
-      "sha256": "4a60d53be098349c732f938a6fac80cae9393d3ae81ca5438544318d1a744309",
-      "bytes": 660501,
+      "sha256": "2ca0acd963f1c0db84f8c35de25386bbc5f4d4775531c7031f136e29ebf9d531",
+      "bytes": 656278,
       "attempts": 1
     },
     "/benchmarks/media/videos/five-candles": {
-      "sha256": "9bd4e305a165c50d0aafb457e485fcf64d83da02424c5038163d0ea859006d65",
-      "bytes": 659093,
+      "sha256": "e0df5aabba11f6c1625f398fedd3fe9e50c2e627f0f43c4f29670a69a9fcbb04",
+      "bytes": 654870,
       "attempts": 1
     },
     "/benchmarks/media/videos/wrong-way-escalator": {
-      "sha256": "dcc9fd2f4df4b7841f27d0244eed5e5fdae1ccd74ae047b677f6b63c5b728d77",
-      "bytes": 661066,
+      "sha256": "fcc30523e18772b44d93c46b21bb136b78fa5d7ae722ddb611b6e1e00e02245c",
+      "bytes": 656843,
       "attempts": 1
     },
     "/benchmarks/media/videos/frozen-crowd": {
-      "sha256": "6a2927a76b66574de2fe04231e1ddd58fc12d48d946d5f08c0a5ac5565ac8f4e",
-      "bytes": 659045,
+      "sha256": "a068ff52f63b8ac8d30e78e314cdc134095e679911ba97b6b7cbd20bd9d212df",
+      "bytes": 654822,
       "attempts": 1
     },
     "/benchmarks/media/videos/sign-stays-readable": {
-      "sha256": "13b70c4a324353015cbaec967915f7f4f2366b509cd4575a635a8e3d19bddcc7",
-      "bytes": 660238,
+      "sha256": "68fa1bbae9748eee0d774f466a09d24714406de4a0cab1126b927280d7f063f5",
+      "bytes": 656015,
       "attempts": 1
     },
     "/benchmarks/media/videos/glass-of-water": {
-      "sha256": "2661f2fa5d104f4202aa413091c46f57d96346babdc2053ed118bc05cf0d8f87",
-      "bytes": 660330,
+      "sha256": "550b2b7400fc484983001c0e912c9d90f950c026865ad90cd51b4b1df9280184",
+      "bytes": 656107,
       "attempts": 1
     },
     "/benchmarks/media/videos/domino-run": {
-      "sha256": "bf113364e3ea79572aa80f0c433be4accc2ea3f69a2d26d5ac76f9e606879918",
-      "bytes": 660336,
+      "sha256": "3378fc1ad75d852f23d718a6e3dc55915bf5d13ce671970123ea7b3e842d888c",
+      "bytes": 656113,
       "attempts": 1
     },
     "/benchmarks/media/videos/mirror-walk": {
-      "sha256": "b252772ca4ad94fd5df29660a42e6cbaf171c9b003cbddd6020afb111528a172",
-      "bytes": 659617,
+      "sha256": "dbfba0df654dbd1a48fa3491e823628337986a6680eb382abd91864698365379",
+      "bytes": 655394,
       "attempts": 1
     },
     "/benchmarks/media/videos/behind-the-pillar": {
-      "sha256": "5bbaa83e75a70d65066776b5a3d6129c316dac6d995f14051fad44a1f4841d91",
-      "bytes": 660883,
+      "sha256": "dc02490fa4fcb1b3246c89ec14fc8631b13e0e4bab7817cc35af1ef7ac9c310c",
+      "bytes": 656660,
       "attempts": 1
     },
     "/benchmarks/media/videos/steaming-mug": {
-      "sha256": "b8abfc8ea2366a8432928062eb94e1cc4f3eba959a43af3d0ac01422765333b3",
-      "bytes": 652398,
+      "sha256": "bbde858e9e9202cb5d31798b696e229027b73f102e1a4cd8fc885038a8fc55ff",
+      "bytes": 648175,
       "attempts": 1
     },
     "/benchmarks/media/videos/walk-out": {
-      "sha256": "8591fa84b01f710d346c5850603da1a886534d88cae0537faa56fa5e6d0a5040",
-      "bytes": 548240,
+      "sha256": "87c656b04458e1d3b4a5f103e51405eff60d158d1b0d83afa364620e321c74d9",
+      "bytes": 544017,
       "attempts": 1
     },
     "/benchmarks/media/videos/continuous-shot": {
-      "sha256": "38111b4ac79077d9943088103edbdd0bcbcd9a881eb66da44b7340f3185da7b1",
-      "bytes": 662606,
+      "sha256": "da9591311d8777adbcbf92d082dabfa50bfccba7a1799c09160e652d573a1d21",
+      "bytes": 658383,
       "attempts": 1
     }
   },
