@@ -227,8 +227,10 @@ SCATTER_EDITS = [
         "scatter svg",
     ),
     (
-        '  const svg=byId("imageScatter");if(!svg||!plotted.length)return;',
-        '  const svg=byId("videoScatter");if(!svg||!plotted.length)return;',
+        '  const svg=byId("imageScatter");if(!svg)return;\n'
+        '  if(!plotted.length){setText("scatterCaption","No rankable model in this snapshot, so there is nothing to plot.");return}',
+        '  const svg=byId("videoScatter");if(!svg)return;\n'
+        '  if(!plotted.length){setText("scatterCaption","No rankable model in this snapshot, so there is nothing to plot.");return}',
         "scatter lookup",
     ),
     (
@@ -585,7 +587,7 @@ PRICING_ROW_JS = """  setHtml("pricingBody",ordered.map(row=>{
       +`<td>${row.max_duration_seconds==null?'<span class="num-dim">—</span>':esc(row.max_duration_seconds+"s")}</td>`
       +`<td>${audio}</td>`
       +`<td class="name-cell num-dim">${frames}</td></tr>`;
-  }).join(""));"""
+  }).join("")||'<tr><td colspan="11" class="num-dim">No catalogue rows in this snapshot.</td></tr>');"""
 
 
 def derive(source: str) -> str:

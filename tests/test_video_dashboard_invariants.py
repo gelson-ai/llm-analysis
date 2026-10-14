@@ -244,3 +244,28 @@ def test_two_builds_agree_once_the_build_timestamp_is_masked(tmp_path, monkeypat
 
     assert first == second
     assert builder.build_payload()["generated_at"] is not None
+
+
+# ---------------------------------------------------------------------------
+# the video page carries the same per-category empty states
+# ---------------------------------------------------------------------------
+def test_the_video_page_carries_the_same_empty_states_as_the_image_page():
+    """Every empty-state message added to the image template must survive the
+    derivation. The wording is category-neutral on purpose, so it carries with
+    no anchor; if a message ever stops being carried, this fails rather than the
+    video page quietly rendering a blank chart again."""
+    image = read(IMAGE_TEMPLATE_PATH)
+    video = read(VIDEO_TEMPLATE_PATH)
+    for message in ("there is nothing to chart", "there is nothing to plot",
+                    "No catalogue rows in this snapshot."):
+        assert message in image, f"the image template lost its empty state: {message!r}"
+        assert message in video, f"the derived video template lost: {message!r}"
+    # The video page's own stand-in for the arena panel has its own empty row.
+    assert "No judged prompt rows in this snapshot." in video
+
+
+def test_the_committed_video_page_carries_its_empty_states():
+    html = read(builder.OUTPUT_PATH)
+    assert "there is nothing to chart" in html, "the video value-leader chart is blank"
+    assert "there is nothing to plot" in html, "the video scatter is blank"
+    assert "No judged prompt rows in this snapshot." in html
