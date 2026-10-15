@@ -438,3 +438,58 @@ def test_image_build_uses_the_media_snapshot_root_which_is_not_the_chat_one():
     # only looks at direct children of data/snapshots/ named <date>/<date>-N.
     assert build_image_dashboard.SNAPSHOTS_DIR != settings.SNAPSHOTS_DIR
     assert settings.SNAPSHOTS_DIR not in build_image_dashboard.SNAPSHOTS_DIR.parents
+
+
+# ---------------------------------------------------------------------------
+# per-category loading / error / empty states
+# ---------------------------------------------------------------------------
+def test_the_shared_shell_renders_a_per_category_status():
+    """Each category must report its OWN loading, error and freshness state.
+
+    The dashboard used to surface one global `#refreshStatus` line, which reads
+    as "no per-category state". The shell now builds one row per NAV_TABS entry
+    from the same /api/status payload the global line already used, so all three
+    states exist per category without any page-level markup or new CSS.
+    """
+    source = read(DASHBOARD_DIR / "web_assets" / "shell.js")
+    code = re.sub(r"/\*.*?\*/", "", source, flags=re.S)  # comments may say anything
+
+    assert "refreshTargets" in code, "the shell no longer renders a per-category status list"
+    assert "renderTargets" in code
+    assert "job.targets" in code, "the per-target outcomes are no longer read"
+    assert 'image: "media"' in code, "the image tab is no longer mapped to the media target"
+    # Both backend shapes must stay readable: serve.py returns media/video beside
+    # `data`, the Cloudflare Worker nests them inside `data`.
+    assert "chat[key]" in code and "status[key]" in code, (
+        "the shell must read both the nested (Worker) and flat (serve.py) shapes"
+    )
+
+
+def test_every_built_page_carries_the_per_category_status_renderer():
+    for built in (build_dashboard.OUTPUT_PATH, build_image_dashboard.OUTPUT_PATH,
+                  build_video_dashboard.OUTPUT_PATH):
+        html = read(built)
+        # The shell builds the list in the DOM, so the marker is its JS form.
+        assert 'targetsEl.id = "refreshTargets"' in html, f"{built.name} is stale - rebuild it"
+        assert "const TARGET_KEY =" in html, f"{built.name} is stale - rebuild it"
+
+
+def test_the_chat_category_has_explicit_empty_states():
+    """A category with no applicable data must SAY so, not render NaN or a blank
+    table. The KPI band used to divide by zero and the table had no message."""
+    chat = read(CHAT_TEMPLATE_PATH)
+    assert "no models loaded" in chat, "the KPI band can still render NaN% on an empty snapshot"
+    assert "No models match the current filters." in chat, "the reference table has no empty row"
+    assert "No model data is available in this snapshot." in chat
+    # renderQuality used to throw when the quality report lacked its keys, which
+    # halted every render after it.
+    assert "(quality&&quality.issues)" in chat
+    assert "(coverage&&coverage.priority_benchmark_coverage)" in chat
+
+
+def test_the_image_category_has_explicit_empty_states():
+    image = read(IMAGE_TEMPLATE_PATH)
+    assert "there is nothing to chart" in image, "the value-leader chart is still silently blank"
+    assert "there is nothing to plot" in image, "the scatter is still silently blank"
+    assert "No Design Arena rows in this snapshot." in image, "the arena table is still blank"
+    assert "No catalogue rows in this snapshot." in image, "the pricing table is still blank"

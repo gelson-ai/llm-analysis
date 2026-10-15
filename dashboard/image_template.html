@@ -680,7 +680,8 @@ const WEEKLY=PAYLOAD.weekly||{},WEEKPICK=(WEEKLY.picks||{}).value||null;
 
 // ------------------------------------------------------------ value leaders --
 (()=>{
-  const svg=byId("valueBars");if(!svg||!ranked.length)return;
+  const svg=byId("valueBars");if(!svg)return;
+  if(!ranked.length){setText("leaderCaption","No rankable model in this snapshot, so there is nothing to chart.");return}
   const top=ranked.slice(0,CONST.top_n_bars||12),leader=top[0].value;
   setText("leaderCaption",`Top ${top.length} of ${ranked.length} rankable models by value, each bar scaled to the leader.`);
   // RESERVE is space for the value label that sits after the longest bar
@@ -703,7 +704,8 @@ const WEEKLY=PAYLOAD.weekly||{},WEEKPICK=(WEEKLY.picks||{}).value||null;
 
 // ----------------------------------------------------------------- scatter --
 (()=>{
-  const svg=byId("imageScatter");if(!svg||!plotted.length)return;
+  const svg=byId("imageScatter");if(!svg)return;
+  if(!plotted.length){setText("scatterCaption","No rankable model in this snapshot, so there is nothing to plot.");return}
   // The section heading already names both axes, so only the x axis is
   // labelled here - a y-axis title collides with the 100% tick label.
   const W=1100,H=470,M={l:74,r:34,t:24,b:76};
@@ -773,6 +775,7 @@ const WEEKLY=PAYLOAD.weekly||{},WEEKPICK=(WEEKLY.picks||{}).value||null;
     ["Elo","Win rate"].forEach(text=>{const cell=document.createElement("th");cell.textContent=text;subhead.appendChild(cell)});
   });
   const body=byId("arenaBody");if(!body)return;
+  if(!(ARENA.models||[]).length){const tr=document.createElement("tr"),td=document.createElement("td");td.colSpan=1+((ARENA.categories||[]).length*2);td.className="num-dim";td.textContent="No Design Arena rows in this snapshot.";tr.appendChild(td);body.appendChild(tr)}
   (ARENA.models||[]).forEach(model=>{
     const row=ROWS.find(r=>r.model_id===model.model_id);
     const name=row?row.model_name:model.model_name;
@@ -887,7 +890,8 @@ const WEEKLY=PAYLOAD.weekly||{},WEEKPICK=(WEEKLY.picks||{}).value||null;
 
 // -------------------------------------------------------- pricing breakdown --
 (()=>{
-  setText("pricingCount",`${ROWS.length} rows.`);
+  setText("pricingCount",ROWS.length?`${ROWS.length} rows.`:"No catalogue rows in this snapshot.");
+  if(!ROWS.length){setHtml("pricingBody",'<tr><td colspan="11" class="num-dim">No catalogue rows in this snapshot.</td></tr>');return}
   const ordered=ROWS.slice().sort((a,b)=>{
     if(a.value==null&&b.value==null)return (a.model_id||"").localeCompare(b.model_id||"");
     if(a.value==null)return 1;if(b.value==null)return -1;return b.value-a.value;
