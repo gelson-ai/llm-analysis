@@ -8,7 +8,7 @@
       "severity": "warning",
       "issue": "video_model_without_comparable_rate",
       "count": 6,
-      "detail": "6 video model(s) publish pricing that cannot be normalised to USD per output second: ['black-forest-labs/flux-video-upscale', 'bytedance/seedance-2.0-mini', 'bytedance/seedance-2.5', 'bytedance/seedance-2.0', 'bytedance/seedance-2.0-fast', 'bytedance/seedance-1-5-pro']. Their catalogue rate stays blank; value ranking still uses their observed benchmark cost."
+      "detail": "6 video model(s) publish pricing that cannot be normalised to USD per output second: ['black-forest-labs/flux-video-upscale', 'bytedance/seedance-2.0-mini', 'bytedance/seedance-2.5', 'bytedance/seedance-2.0-fast', 'bytedance/seedance-2.0', 'bytedance/seedance-1-5-pro']. Their catalogue rate stays blank; value ranking still uses their observed benchmark cost."
     },
     {
       "severity": "warning",

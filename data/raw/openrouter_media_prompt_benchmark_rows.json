@@ -1,5 +1,5 @@
 {
-  "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+  "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
   "rows": [
     {
       "raw_model_slug": "google/gemini-3.1-flash-image-preview-20260226",
@@ -8822,6 +8822,27 @@
       "source_url": "https://openrouter.ai/benchmarks/media/images/times-square"
     },
     {
+      "raw_model_slug": "krea/k3-edit-20260914",
+      "checks_passed": 2,
+      "checks_total": 3,
+      "checks_source": "aria-label",
+      "cost_usd": 0.01,
+      "generation_seconds": 12.3,
+      "model_name": "K3 Edit",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/krea/k3-edit-20260914/b98f6167-759e-43f8-8bd8-813bbba87228/original-0.png",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/krea/k3-edit-20260914/b98f6167-759e-43f8-8bd8-813bbba87228/thumb-0.webp",
+      "asset_media_type": "image/png",
+      "output_width": 1184,
+      "output_height": 880,
+      "duration_ms": 12324,
+      "media_type": "image",
+      "prompt_slug": "minimal-diff",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/minimal-diff"
+    },
+    {
       "raw_model_slug": "openai/gpt-image-2",
       "checks_passed": 2,
       "checks_total": 3,
@@ -10082,6 +10103,27 @@
       "source_url": "https://openrouter.ai/benchmarks/media/images/object-removal"
     },
     {
+      "raw_model_slug": "krea/k3-edit-20260914",
+      "checks_passed": 3,
+      "checks_total": 4,
+      "checks_source": "aria-label",
+      "cost_usd": 0.01,
+      "generation_seconds": 11.2,
+      "model_name": "K3 Edit",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/krea/k3-edit-20260914/f4817d65-ec5f-4088-b8ab-d13dbbc6b472/original-0.png",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/krea/k3-edit-20260914/f4817d65-ec5f-4088-b8ab-d13dbbc6b472/thumb-0.webp",
+      "asset_media_type": "image/png",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 11245,
+      "media_type": "image",
+      "prompt_slug": "object-removal",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/object-removal"
+    },
+    {
       "raw_model_slug": "qwen/qwen-image-3-pro-20260805",
       "checks_passed": 3,
       "checks_total": 4,
@@ -11069,6 +11111,27 @@
       "source_url": "https://openrouter.ai/benchmarks/media/images/person-removal"
     },
     {
+      "raw_model_slug": "krea/k3-edit-20260914",
+      "checks_passed": 3,
+      "checks_total": 5,
+      "checks_source": "aria-label",
+      "cost_usd": 0.01,
+      "generation_seconds": 9.0,
+      "model_name": "K3 Edit",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/krea/k3-edit-20260914/8312e930-38c9-4788-8971-1354de0cffa9/original-0.png",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/krea/k3-edit-20260914/8312e930-38c9-4788-8971-1354de0cffa9/thumb-0.webp",
+      "asset_media_type": "image/png",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 9046,
+      "media_type": "image",
+      "prompt_slug": "person-removal",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/person-removal"
+    },
+    {
       "raw_model_slug": "krea/krea-2-medium-20260720",
       "checks_passed": 3,
       "checks_total": 5,
@@ -11673,6 +11736,27 @@
       "output_width": 1024,
       "output_height": 1024,
       "duration_ms": 18395,
+      "media_type": "image",
+      "prompt_slug": "product-placement",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/product-placement"
+    },
+    {
+      "raw_model_slug": "krea/k3-edit-20260914",
+      "checks_passed": 4,
+      "checks_total": 4,
+      "checks_source": "aria-label",
+      "cost_usd": 0.01,
+      "generation_seconds": 11.2,
+      "model_name": "K3 Edit",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/krea/k3-edit-20260914/90e19bf7-e200-49a5-b797-a8c7d462c2f9/original-0.png",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/krea/k3-edit-20260914/90e19bf7-e200-49a5-b797-a8c7d462c2f9/thumb-0.webp",
+      "asset_media_type": "image/png",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 11206,
       "media_type": "image",
       "prompt_slug": "product-placement",
       "source_url": "https://openrouter.ai/benchmarks/media/images/product-placement"
@@ -12408,6 +12492,27 @@
       "output_width": 1024,
       "output_height": 1024,
       "duration_ms": 22881,
+      "media_type": "image",
+      "prompt_slug": "composite-refs",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/composite-refs"
+    },
+    {
+      "raw_model_slug": "krea/k3-edit-20260914",
+      "checks_passed": 4,
+      "checks_total": 5,
+      "checks_source": "aria-label",
+      "cost_usd": 0.01,
+      "generation_seconds": 24.2,
+      "model_name": "K3 Edit",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 3,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/krea/k3-edit-20260914/5f4a7fda-081f-4022-81f9-fa74ef020519/original-0.png",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/krea/k3-edit-20260914/5f4a7fda-081f-4022-81f9-fa74ef020519/thumb-0.webp",
+      "asset_media_type": "image/png",
+      "output_width": 1184,
+      "output_height": 880,
+      "duration_ms": 24202,
       "media_type": "image",
       "prompt_slug": "composite-refs",
       "source_url": "https://openrouter.ai/benchmarks/media/images/composite-refs"
@@ -18463,143 +18568,143 @@
   ],
   "page_fingerprints": {
     "/benchmarks/media/images/full-glass": {
-      "sha256": "fdf0de52feab0e62ad49eb73179cc3b5f414a6f67cf3e32a53591de328fd2e78",
-      "bytes": 932018,
+      "sha256": "20c35b0fa744b7ab6505e2064c7eac80ece4d49634aacec90c62925157b95b4d",
+      "bytes": 929499,
       "attempts": 1
     },
     "/benchmarks/media/images/portraits": {
-      "sha256": "ac60ad5267bf071fcc4d9e90b27e4aeab5b5c1d0dc5507345770fbd5e57b5c7d",
-      "bytes": 1695099,
+      "sha256": "ec419b0d547ca9b75231edbf62f51cc5c2583316a75637d0d33e01487338b593",
+      "bytes": 1761248,
       "attempts": 1
     },
     "/benchmarks/media/images/closed-umbrellas": {
-      "sha256": "020ec8e60342f3ff359edc8ef418836fae12737431b55784ae7ebf4dee441682",
-      "bytes": 933310,
+      "sha256": "3ffefbc19670b33b5d2fc918d9bf483fc6f5790c447e7a1dcaf5618889a96e9f",
+      "bytes": 930787,
       "attempts": 1
     },
     "/benchmarks/media/images/three-fingers": {
-      "sha256": "877fe81d2d05ba0df84fa233869e45dec9f2d68ab7b147aa33e5459c636ca6b5",
-      "bytes": 917917,
+      "sha256": "34f98c9043a6a814526599feaa64fc8cd7fcc9f9378b54cf7a26353dcd4511c3",
+      "bytes": 915379,
       "attempts": 1
     },
     "/benchmarks/media/images/cards-dice": {
-      "sha256": "9298f01a4af3795c2a23871c0df0c906bfc32b37447b94d0025525b1ff22f838",
-      "bytes": 984820,
+      "sha256": "26c9d15b8a9b2d421217bc7b6c7fe1aa54d2b63ea5e46d491069cb495a210c05",
+      "bytes": 986130,
       "attempts": 1
     },
     "/benchmarks/media/images/long-exact-string": {
-      "sha256": "aeca793c8de3dda8efa9fbe0cca74498d36fb86b11540c89fded01b23c0839d3",
-      "bytes": 914749,
+      "sha256": "d5b3fa5d00042b3658ad1569fbfefecfb9d017639e113a3fc18be29f6a820f06",
+      "bytes": 912237,
       "attempts": 1
     },
     "/benchmarks/media/images/multiple-languages": {
-      "sha256": "1fdc0d862e10577b2d2cb2121c1a44fa14616572162a21d732493ab0648dfbe4",
-      "bytes": 922107,
+      "sha256": "0eeb847e6bdfd992abf393f5e036a47dd8bc59de9e2f92f71f82998cc14e1fe1",
+      "bytes": 919605,
       "attempts": 1
     },
     "/benchmarks/media/images/occlusion": {
-      "sha256": "487785e7e1f63f849bfca45aca3cc58319ea53c7333e406f5c4b2f01ce24ae7e",
-      "bytes": 917707,
+      "sha256": "b6d9873921709d68e893aa69fb0b66dcf9271eafe0bd0ea445defec1dc4398cf",
+      "bytes": 915129,
       "attempts": 1
     },
     "/benchmarks/media/images/mirror": {
-      "sha256": "ef84c15d65a932026b66a8b3ba53a9825283d7f8c06a21b6aa30b5c87b984931",
-      "bytes": 918096,
+      "sha256": "937fc7e44fde7f981f5c9287b6bbebe4af6b6fb6f29aac18363923c91ce45355",
+      "bytes": 915488,
       "attempts": 1
     },
     "/benchmarks/media/images/plain-zebra": {
-      "sha256": "0181cbecd6ca291942628ca83feb8c299a80517329492b6ddd2d2795cfb8cb53",
-      "bytes": 917430,
+      "sha256": "7b50ae0ee2ea277998e574ad708258b423a563669d704eb04a3ee170cf92361a",
+      "bytes": 914872,
       "attempts": 1
     },
     "/benchmarks/media/images/times-square": {
-      "sha256": "4d964fbfba1ce2b395a43d9e8cf05d918cd9f6212ce06e7b403c08022a09d173",
-      "bytes": 918021,
+      "sha256": "c220cd8a5ed5e2c90c2cbc86ff2abe3f9cfd41e4f15302abf5df7bf0eb10f2cd",
+      "bytes": 915472,
       "attempts": 1
     },
     "/benchmarks/media/images/minimal-diff": {
-      "sha256": "7dd5001da61815e591a15d7bc7ad20d4a6d2fe67f0ee5a3fd11f937571c97a94",
-      "bytes": 937961,
+      "sha256": "bce66f60cfbec1a750007f8e93617328d98d2dc6030090684e4f9470d9404fac",
+      "bytes": 950814,
       "attempts": 1
     },
     "/benchmarks/media/images/object-removal": {
-      "sha256": "183070432d6207d6abf9fdd5d59cef43bd2278dbb998b1f1ccd203a72be0e577",
-      "bytes": 940057,
+      "sha256": "61e8c5ef4f9c36fa60904de7fcc7c809c8ee1b2187cf29d1000ead4d109e7372",
+      "bytes": 952965,
       "attempts": 1
     },
     "/benchmarks/media/images/person-removal": {
-      "sha256": "769e9d1e3741eb5ee91be1b0dc7df1b52d663f3f95847f774883271d62425dd5",
-      "bytes": 943566,
+      "sha256": "68447e4d398536b7a1244fe7b11bfd94871c6b27197cac4952e0244be4834f43",
+      "bytes": 956544,
       "attempts": 1
     },
     "/benchmarks/media/images/product-placement": {
-      "sha256": "4e8b9185c37ac38af7601a4f906d6b5939e2b186bc5ec273316da9f1a3c62eb1",
-      "bytes": 941997,
+      "sha256": "c17825a8d0c0533a71d06b3a74c566c48391d1a1785faab0a49f9f800f1c7be8",
+      "bytes": 954956,
       "attempts": 1
     },
     "/benchmarks/media/images/composite-refs": {
-      "sha256": "27f16e12c7fbeb193df4be896bccca7b44a0dfebb84f9f06aee08872611c04c0",
-      "bytes": 843732,
+      "sha256": "29d6522fbe0bf69dbf11e0cfd8f25e5d30c12611857637482cabd586d4b48aa2",
+      "bytes": 863479,
       "attempts": 1
     },
     "/benchmarks/media/videos/traffic-light": {
-      "sha256": "b7330e64ee677fa411453230be2a90801c1b7877af15f81905c69577fdf9b113",
-      "bytes": 656278,
+      "sha256": "411b97fa85f536391f06387c8365d4e0a3f308a00c7cb47a3a8cdf0b3673d0dc",
+      "bytes": 594998,
       "attempts": 1
     },
     "/benchmarks/media/videos/five-candles": {
-      "sha256": "60091e45f562a350eca590681008ddbe60ebadbf84185ff5cb35961f60925f30",
-      "bytes": 654870,
+      "sha256": "01eeab24e148d7abe528ddd5e4e6ac5f76cc5daedfc54030b23b0ce867407ecc",
+      "bytes": 593500,
       "attempts": 1
     },
     "/benchmarks/media/videos/wrong-way-escalator": {
-      "sha256": "446066bce0a8ab0f317038b783f4f1edf81d5c3b68b2ad3fb3c775a92d64a457",
-      "bytes": 656843,
+      "sha256": "2098593cad00360b47354688bfd0ce93c447f09f08206ce031b8563e97d7a908",
+      "bytes": 595550,
       "attempts": 1
     },
     "/benchmarks/media/videos/frozen-crowd": {
-      "sha256": "3d09566b0533089918680398732a7dd05f5e6c5f2a633627fb7008b8dc806f8a",
-      "bytes": 654822,
+      "sha256": "ffdc11ec9935ee7f8edb945161dc263b8d5fb018944b7f4bef5c59383362675d",
+      "bytes": 593542,
       "attempts": 1
     },
     "/benchmarks/media/videos/sign-stays-readable": {
-      "sha256": "9492233e0e8071214fa5cd892b6709b126846ceef634779c66a1df6adf1abca9",
-      "bytes": 656015,
+      "sha256": "4e8cbd2c33e012c18bf0b5fa78521d6c618870c71473ec2a344df8e087daa910",
+      "bytes": 594722,
       "attempts": 1
     },
     "/benchmarks/media/videos/glass-of-water": {
-      "sha256": "1f485dd177b463dff344c31b97a4e6cc4461c5cbcdd4dac2cdfe08b115026e4d",
-      "bytes": 656107,
+      "sha256": "904139255aa712eee4241509185ac74da55fbe5391c12f1022d7b954f5ac1536",
+      "bytes": 594606,
       "attempts": 1
     },
     "/benchmarks/media/videos/domino-run": {
-      "sha256": "e410084cef00cabe704042947a11aafde9695b28e8eff4efe3c2d217944b0df4",
-      "bytes": 656113,
+      "sha256": "b29f932c4eb338fc08ed9fd903166b71b00a6b9987d0ac366af55dd812864954",
+      "bytes": 594625,
       "attempts": 1
     },
     "/benchmarks/media/videos/mirror-walk": {
-      "sha256": "7109556ac320e4459aae691d27c009b1acefc0a210b65b1587909dd7322cb633",
-      "bytes": 655394,
+      "sha256": "608571f55031d4ccb00076150ca1e865b47eb6988f1d77e22a181e3bc102fd22",
+      "bytes": 593906,
       "attempts": 1
     },
     "/benchmarks/media/videos/behind-the-pillar": {
-      "sha256": "f20207366bf963b18f0be995c508cbb4548c06632fba3446b421a6cad5515951",
-      "bytes": 656660,
+      "sha256": "e4d9e9879e128c48337546375a3ac5d3a36aa24f916ca3a8e34070816ef88ae8",
+      "bytes": 595159,
       "attempts": 1
     },
     "/benchmarks/media/videos/steaming-mug": {
-      "sha256": "0b6e2cd3d7f6e13a2ac6cce4920326b5ed0563e8fe926f9db0777af78c9db028",
-      "bytes": 648175,
+      "sha256": "a9ce58f48b96fb31ed1ec7f58dd10313f5df7a6684504d09e8da464897418b20",
+      "bytes": 586804,
       "attempts": 1
     },
     "/benchmarks/media/videos/walk-out": {
-      "sha256": "5685d5c2dd3dca80ba898edcbe2ba0ec6c00722f8928574e5968f3d69b06f8d6",
-      "bytes": 544017,
+      "sha256": "b5952d2c430bfaf5f017b2b6e3c2e79c897ab8f4e8ac8e96f9df741f32c4d6cc",
+      "bytes": 481537,
       "attempts": 1
     },
     "/benchmarks/media/videos/continuous-shot": {
-      "sha256": "23bb68c7e846463c533162792d9a7d48ed739a6e76fefb71ad44e27571809b6e",
-      "bytes": 658383,
+      "sha256": "0a57ab35fe1f3a7b5f8ef8c17dfa50ccbd89d029fbad10a1d56f3609c36db4cf",
+      "bytes": 596972,
       "attempts": 1
     }
   },

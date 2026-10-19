@@ -1,5 +1,1167 @@
 [
   {
+    "model_id": "qwen/qwen-image-2.1-turbo",
+    "canonical_slug": null,
+    "model_name": "Qwen: Qwen Image 2.1 Turbo",
+    "provider": "qwen",
+    "model_type": "image",
+    "description": "Qwen Image 2.1 Turbo is the fast, lower-cost tier of the Qwen Image 2.1 series from Qwen, for image generation and editing where throughput and price matter more than peak...",
+    "created": 1792194104,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "image"
+      ],
+      "synthesized": false
+    },
+    "input_modalities": [
+      "text",
+      "image"
+    ],
+    "output_modalities": [
+      "image"
+    ],
+    "supported_parameters": {
+      "resolution": {
+        "type": "enum",
+        "values": [
+          "1K",
+          "2K"
+        ]
+      },
+      "aspect_ratio": {
+        "type": "enum",
+        "values": [
+          "1:1",
+          "1:2",
+          "1:4",
+          "2:1",
+          "2:3",
+          "3:2",
+          "3:4",
+          "4:1",
+          "4:3",
+          "4:5",
+          "5:4",
+          "9:16",
+          "16:9"
+        ]
+      },
+      "n": {
+        "type": "range",
+        "min": 1,
+        "max": 6
+      },
+      "input_references": {
+        "type": "range",
+        "min": 0,
+        "max": 4
+      },
+      "seed": {
+        "type": "boolean"
+      }
+    },
+    "supports_streaming": false,
+    "endpoints_url": "/api/v1/images/models/qwen/qwen-image-2.1-turbo/endpoints",
+    "supported_resolutions": null,
+    "supported_aspect_ratios": null,
+    "supported_sizes": null,
+    "supported_durations": null,
+    "supported_frame_images": null,
+    "generate_audio": null,
+    "seed": null,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": null,
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_image",
+    "comparable_price": 0.0184,
+    "comparable_price_basis": "cheapest_variant_tier",
+    "pricing": {
+      "skus": [],
+      "raw_pricing_skus": null,
+      "sku_count": 0,
+      "resolved_sku_count": 0,
+      "unresolved_sku_keys": [],
+      "has_any_price": false,
+      "comparable_price": {
+        "unit": null,
+        "usd": null,
+        "basis": null,
+        "basis_sku": null
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [],
+      "unit_conversions_applied": [],
+      "currency_assumptions": []
+    },
+    "endpoint_pricing": {
+      "model_id": "qwen/qwen-image-2.1-turbo",
+      "endpoint_count": 1,
+      "endpoints": [
+        {
+          "provider_name": "Alibaba Cloud Int.",
+          "provider_slug": "alibaba",
+          "provider_tag": "alibaba",
+          "supports_streaming": false,
+          "allowed_passthrough_parameters": [],
+          "pricing_lines": [
+            {
+              "billable": "input_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": null,
+              "raw_cost_usd": 0,
+              "usd_amount": 0.0,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "1k",
+              "raw_cost_usd": 0.0184,
+              "usd_amount": 0.0184,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "2k",
+              "raw_cost_usd": 0.0184,
+              "usd_amount": 0.0184,
+              "is_negative": false,
+              "is_parseable": true
+            }
+          ],
+          "has_any_price": true
+        }
+      ],
+      "pricing_line_count": 3,
+      "resolved_pricing_line_count": 3,
+      "unparseable_pricing_line_count": 0,
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_image",
+        "usd": 0.0184,
+        "basis": "cheapest_variant_tier",
+        "basis_sku": "output_image/image@1k"
+      },
+      "usd_per_image_by_variant": {
+        "1k": 0.0184,
+        "2k": 0.0184
+      },
+      "usd_per_megapixel_by_variant": {},
+      "usd_per_token_by_variant": {},
+      "providers_without_pricing": [],
+      "raw_endpoints_payload": {
+        "id": "qwen/qwen-image-2.1-turbo",
+        "endpoints": [
+          {
+            "provider_name": "Alibaba Cloud Int.",
+            "provider_slug": "alibaba",
+            "provider_tag": "alibaba",
+            "supported_parameters": {
+              "resolution": {
+                "type": "enum",
+                "values": [
+                  "1K",
+                  "2K"
+                ]
+              },
+              "aspect_ratio": {
+                "type": "enum",
+                "values": [
+                  "1:1",
+                  "1:2",
+                  "1:4",
+                  "2:1",
+                  "2:3",
+                  "3:2",
+                  "3:4",
+                  "4:1",
+                  "4:3",
+                  "4:5",
+                  "5:4",
+                  "9:16",
+                  "16:9"
+                ]
+              },
+              "n": {
+                "type": "range",
+                "min": 1,
+                "max": 6
+              },
+              "input_references": {
+                "type": "range",
+                "min": 0,
+                "max": 4
+              },
+              "seed": {
+                "type": "boolean"
+              }
+            },
+            "allowed_passthrough_parameters": [],
+            "supports_streaming": false,
+            "pricing": [
+              {
+                "billable": "input_image",
+                "unit": "image",
+                "cost_usd": 0
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.0184,
+                "variant": "1k"
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.0184,
+                "variant": "2k"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "raw_source": "openrouter:/api/v1/images/models",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
+    "raw": {
+      "id": "qwen/qwen-image-2.1-turbo",
+      "name": "Qwen: Qwen Image 2.1 Turbo",
+      "description": "Qwen Image 2.1 Turbo is the fast, lower-cost tier of the Qwen Image 2.1 series from Qwen, for image generation and editing where throughput and price matter more than peak...",
+      "created": 1792194104,
+      "architecture": {
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "image"
+        ]
+      },
+      "supported_parameters": {
+        "resolution": {
+          "type": "enum",
+          "values": [
+            "1K",
+            "2K"
+          ]
+        },
+        "aspect_ratio": {
+          "type": "enum",
+          "values": [
+            "1:1",
+            "1:2",
+            "1:4",
+            "2:1",
+            "2:3",
+            "3:2",
+            "3:4",
+            "4:1",
+            "4:3",
+            "4:5",
+            "5:4",
+            "9:16",
+            "16:9"
+          ]
+        },
+        "n": {
+          "type": "range",
+          "min": 1,
+          "max": 6
+        },
+        "input_references": {
+          "type": "range",
+          "min": 0,
+          "max": 4
+        },
+        "seed": {
+          "type": "boolean"
+        }
+      },
+      "supports_streaming": false,
+      "endpoints": "/api/v1/images/models/qwen/qwen-image-2.1-turbo/endpoints"
+    }
+  },
+  {
+    "model_id": "qwen/qwen-image-2.1-pro",
+    "canonical_slug": null,
+    "model_name": "Qwen: Qwen Image 2.1 Pro",
+    "provider": "qwen",
+    "model_type": "image",
+    "description": "Qwen Image 2.1 Pro is an image generation and editing model from Qwen, the higher-quality tier of the Qwen Image 2.1 series. Choose it over Qwen Image 2.1 Turbo when...",
+    "created": 1792194075,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "image"
+      ],
+      "synthesized": false
+    },
+    "input_modalities": [
+      "text",
+      "image"
+    ],
+    "output_modalities": [
+      "image"
+    ],
+    "supported_parameters": {
+      "resolution": {
+        "type": "enum",
+        "values": [
+          "1K",
+          "2K"
+        ]
+      },
+      "aspect_ratio": {
+        "type": "enum",
+        "values": [
+          "1:1",
+          "1:2",
+          "1:4",
+          "2:1",
+          "2:3",
+          "3:2",
+          "3:4",
+          "4:1",
+          "4:3",
+          "4:5",
+          "5:4",
+          "9:16",
+          "16:9"
+        ]
+      },
+      "n": {
+        "type": "range",
+        "min": 1,
+        "max": 6
+      },
+      "input_references": {
+        "type": "range",
+        "min": 0,
+        "max": 4
+      },
+      "seed": {
+        "type": "boolean"
+      }
+    },
+    "supports_streaming": false,
+    "endpoints_url": "/api/v1/images/models/qwen/qwen-image-2.1-pro/endpoints",
+    "supported_resolutions": null,
+    "supported_aspect_ratios": null,
+    "supported_sizes": null,
+    "supported_durations": null,
+    "supported_frame_images": null,
+    "generate_audio": null,
+    "seed": null,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": null,
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_image",
+    "comparable_price": 0.046,
+    "comparable_price_basis": "cheapest_variant_tier",
+    "pricing": {
+      "skus": [],
+      "raw_pricing_skus": null,
+      "sku_count": 0,
+      "resolved_sku_count": 0,
+      "unresolved_sku_keys": [],
+      "has_any_price": false,
+      "comparable_price": {
+        "unit": null,
+        "usd": null,
+        "basis": null,
+        "basis_sku": null
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [],
+      "unit_conversions_applied": [],
+      "currency_assumptions": []
+    },
+    "endpoint_pricing": {
+      "model_id": "qwen/qwen-image-2.1-pro",
+      "endpoint_count": 1,
+      "endpoints": [
+        {
+          "provider_name": "Alibaba Cloud Int.",
+          "provider_slug": "alibaba",
+          "provider_tag": "alibaba",
+          "supports_streaming": false,
+          "allowed_passthrough_parameters": [],
+          "pricing_lines": [
+            {
+              "billable": "input_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": null,
+              "raw_cost_usd": 0,
+              "usd_amount": 0.0,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "1k",
+              "raw_cost_usd": 0.046,
+              "usd_amount": 0.046,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "2k",
+              "raw_cost_usd": 0.046,
+              "usd_amount": 0.046,
+              "is_negative": false,
+              "is_parseable": true
+            }
+          ],
+          "has_any_price": true
+        }
+      ],
+      "pricing_line_count": 3,
+      "resolved_pricing_line_count": 3,
+      "unparseable_pricing_line_count": 0,
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_image",
+        "usd": 0.046,
+        "basis": "cheapest_variant_tier",
+        "basis_sku": "output_image/image@1k"
+      },
+      "usd_per_image_by_variant": {
+        "1k": 0.046,
+        "2k": 0.046
+      },
+      "usd_per_megapixel_by_variant": {},
+      "usd_per_token_by_variant": {},
+      "providers_without_pricing": [],
+      "raw_endpoints_payload": {
+        "id": "qwen/qwen-image-2.1-pro",
+        "endpoints": [
+          {
+            "provider_name": "Alibaba Cloud Int.",
+            "provider_slug": "alibaba",
+            "provider_tag": "alibaba",
+            "supported_parameters": {
+              "resolution": {
+                "type": "enum",
+                "values": [
+                  "1K",
+                  "2K"
+                ]
+              },
+              "aspect_ratio": {
+                "type": "enum",
+                "values": [
+                  "1:1",
+                  "1:2",
+                  "1:4",
+                  "2:1",
+                  "2:3",
+                  "3:2",
+                  "3:4",
+                  "4:1",
+                  "4:3",
+                  "4:5",
+                  "5:4",
+                  "9:16",
+                  "16:9"
+                ]
+              },
+              "n": {
+                "type": "range",
+                "min": 1,
+                "max": 6
+              },
+              "input_references": {
+                "type": "range",
+                "min": 0,
+                "max": 4
+              },
+              "seed": {
+                "type": "boolean"
+              }
+            },
+            "allowed_passthrough_parameters": [],
+            "supports_streaming": false,
+            "pricing": [
+              {
+                "billable": "input_image",
+                "unit": "image",
+                "cost_usd": 0
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.046,
+                "variant": "1k"
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.046,
+                "variant": "2k"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "raw_source": "openrouter:/api/v1/images/models",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
+    "raw": {
+      "id": "qwen/qwen-image-2.1-pro",
+      "name": "Qwen: Qwen Image 2.1 Pro",
+      "description": "Qwen Image 2.1 Pro is an image generation and editing model from Qwen, the higher-quality tier of the Qwen Image 2.1 series. Choose it over Qwen Image 2.1 Turbo when...",
+      "created": 1792194075,
+      "architecture": {
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "image"
+        ]
+      },
+      "supported_parameters": {
+        "resolution": {
+          "type": "enum",
+          "values": [
+            "1K",
+            "2K"
+          ]
+        },
+        "aspect_ratio": {
+          "type": "enum",
+          "values": [
+            "1:1",
+            "1:2",
+            "1:4",
+            "2:1",
+            "2:3",
+            "3:2",
+            "3:4",
+            "4:1",
+            "4:3",
+            "4:5",
+            "5:4",
+            "9:16",
+            "16:9"
+          ]
+        },
+        "n": {
+          "type": "range",
+          "min": 1,
+          "max": 6
+        },
+        "input_references": {
+          "type": "range",
+          "min": 0,
+          "max": 4
+        },
+        "seed": {
+          "type": "boolean"
+        }
+      },
+      "supports_streaming": false,
+      "endpoints": "/api/v1/images/models/qwen/qwen-image-2.1-pro/endpoints"
+    }
+  },
+  {
+    "model_id": "krea/k3-edit",
+    "canonical_slug": null,
+    "model_name": "Krea: K3 Edit",
+    "provider": "krea",
+    "model_type": "image",
+    "description": "Krea K3 Edit is an image-to-image editing model from Krea. It takes one to eight reference images plus a text prompt and returns a single edited image, following instructions that...",
+    "created": 1792103728,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "image"
+      ],
+      "synthesized": false
+    },
+    "input_modalities": [
+      "text",
+      "image"
+    ],
+    "output_modalities": [
+      "image"
+    ],
+    "supported_parameters": {
+      "resolution": {
+        "type": "enum",
+        "values": [
+          "1K",
+          "2K"
+        ]
+      },
+      "aspect_ratio": {
+        "type": "enum",
+        "values": [
+          "1:1",
+          "4:3",
+          "3:2",
+          "16:9",
+          "4:5",
+          "2:3",
+          "9:16"
+        ]
+      },
+      "input_references": {
+        "type": "range",
+        "min": 1,
+        "max": 8
+      },
+      "seed": {
+        "type": "boolean"
+      }
+    },
+    "supports_streaming": false,
+    "endpoints_url": "/api/v1/images/models/krea/k3-edit/endpoints",
+    "supported_resolutions": null,
+    "supported_aspect_ratios": null,
+    "supported_sizes": null,
+    "supported_durations": null,
+    "supported_frame_images": null,
+    "generate_audio": null,
+    "seed": null,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": null,
+    "has_any_price": false,
+    "has_valid_pricing": false,
+    "pricing_unit": null,
+    "comparable_price": null,
+    "comparable_price_basis": null,
+    "pricing": {
+      "skus": [],
+      "raw_pricing_skus": null,
+      "sku_count": 0,
+      "resolved_sku_count": 0,
+      "unresolved_sku_keys": [],
+      "has_any_price": false,
+      "comparable_price": {
+        "unit": null,
+        "usd": null,
+        "basis": null,
+        "basis_sku": null
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [],
+      "unit_conversions_applied": [],
+      "currency_assumptions": []
+    },
+    "endpoint_pricing": {
+      "model_id": "krea/k3-edit",
+      "endpoint_count": 1,
+      "endpoints": [
+        {
+          "provider_name": "Krea",
+          "provider_slug": "krea",
+          "provider_tag": "krea",
+          "supports_streaming": false,
+          "allowed_passthrough_parameters": [
+            "preserve_references",
+            "skip_prompt_expansion",
+            "thinking_mode"
+          ],
+          "pricing_lines": [],
+          "has_any_price": false
+        }
+      ],
+      "pricing_line_count": 0,
+      "resolved_pricing_line_count": 0,
+      "unparseable_pricing_line_count": 0,
+      "has_any_price": false,
+      "comparable_price": {
+        "unit": null,
+        "usd": null,
+        "basis": null,
+        "basis_sku": null
+      },
+      "usd_per_image_by_variant": {},
+      "usd_per_megapixel_by_variant": {},
+      "usd_per_token_by_variant": {},
+      "providers_without_pricing": [
+        "krea"
+      ],
+      "raw_endpoints_payload": {
+        "id": "krea/k3-edit",
+        "endpoints": [
+          {
+            "provider_name": "Krea",
+            "provider_slug": "krea",
+            "provider_tag": "krea",
+            "supported_parameters": {
+              "resolution": {
+                "type": "enum",
+                "values": [
+                  "1K",
+                  "2K"
+                ]
+              },
+              "aspect_ratio": {
+                "type": "enum",
+                "values": [
+                  "1:1",
+                  "4:3",
+                  "3:2",
+                  "16:9",
+                  "4:5",
+                  "2:3",
+                  "9:16"
+                ]
+              },
+              "input_references": {
+                "type": "range",
+                "min": 1,
+                "max": 8
+              },
+              "seed": {
+                "type": "boolean"
+              }
+            },
+            "allowed_passthrough_parameters": [
+              "preserve_references",
+              "skip_prompt_expansion",
+              "thinking_mode"
+            ],
+            "supports_streaming": false,
+            "pricing": []
+          }
+        ]
+      }
+    },
+    "raw_source": "openrouter:/api/v1/images/models",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
+    "raw": {
+      "id": "krea/k3-edit",
+      "name": "Krea: K3 Edit",
+      "description": "Krea K3 Edit is an image-to-image editing model from Krea. It takes one to eight reference images plus a text prompt and returns a single edited image, following instructions that...",
+      "created": 1792103728,
+      "architecture": {
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "image"
+        ]
+      },
+      "supported_parameters": {
+        "resolution": {
+          "type": "enum",
+          "values": [
+            "1K",
+            "2K"
+          ]
+        },
+        "aspect_ratio": {
+          "type": "enum",
+          "values": [
+            "1:1",
+            "4:3",
+            "3:2",
+            "16:9",
+            "4:5",
+            "2:3",
+            "9:16"
+          ]
+        },
+        "input_references": {
+          "type": "range",
+          "min": 1,
+          "max": 8
+        },
+        "seed": {
+          "type": "boolean"
+        }
+      },
+      "supports_streaming": false,
+      "endpoints": "/api/v1/images/models/krea/k3-edit/endpoints"
+    }
+  },
+  {
+    "model_id": "black-forest-labs/flux-3-image-klein",
+    "canonical_slug": null,
+    "model_name": "Black Forest Labs: FLUX 3 Image Klein",
+    "provider": "black-forest-labs",
+    "model_type": "image",
+    "description": "FLUX 3 Image Klein is an open-weights image generation and editing model from Black Forest Labs. It is suited for text-to-image, multi-reference editing that keeps characters and subjects consistent across...",
+    "created": 1792083863,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "image"
+      ],
+      "synthesized": false
+    },
+    "input_modalities": [
+      "text",
+      "image"
+    ],
+    "output_modalities": [
+      "image"
+    ],
+    "supported_parameters": {
+      "resolution": {
+        "type": "enum",
+        "values": [
+          "768",
+          "1K",
+          "1.5K",
+          "2K",
+          "4K"
+        ]
+      },
+      "aspect_ratio": {
+        "type": "enum",
+        "values": [
+          "21:9",
+          "2:1",
+          "16:9",
+          "3:2",
+          "7:5",
+          "4:3",
+          "5:4",
+          "1:1",
+          "4:5",
+          "3:4",
+          "5:7",
+          "2:3",
+          "9:16",
+          "1:2",
+          "9:21",
+          "auto"
+        ]
+      },
+      "n": {
+        "type": "range",
+        "min": 1,
+        "max": 1
+      },
+      "input_references": {
+        "type": "range",
+        "min": 0,
+        "max": 10
+      }
+    },
+    "supports_streaming": false,
+    "endpoints_url": "/api/v1/images/models/black-forest-labs/flux-3-image-klein/endpoints",
+    "supported_resolutions": null,
+    "supported_aspect_ratios": null,
+    "supported_sizes": null,
+    "supported_durations": null,
+    "supported_frame_images": null,
+    "generate_audio": null,
+    "seed": null,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": null,
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_image",
+    "comparable_price": 0.008,
+    "comparable_price_basis": "cheapest_variant_tier",
+    "pricing": {
+      "skus": [],
+      "raw_pricing_skus": null,
+      "sku_count": 0,
+      "resolved_sku_count": 0,
+      "unresolved_sku_keys": [],
+      "has_any_price": false,
+      "comparable_price": {
+        "unit": null,
+        "usd": null,
+        "basis": null,
+        "basis_sku": null
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [],
+      "unit_conversions_applied": [],
+      "currency_assumptions": []
+    },
+    "endpoint_pricing": {
+      "model_id": "black-forest-labs/flux-3-image-klein",
+      "endpoint_count": 1,
+      "endpoints": [
+        {
+          "provider_name": "Black Forest Labs",
+          "provider_slug": "black-forest-labs",
+          "provider_tag": "black-forest-labs",
+          "supports_streaming": false,
+          "allowed_passthrough_parameters": [
+            "safety_tolerance"
+          ],
+          "pricing_lines": [
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "768",
+              "raw_cost_usd": 0.008,
+              "usd_amount": 0.008,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "1k",
+              "raw_cost_usd": 0.009,
+              "usd_amount": 0.009,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "1.5k",
+              "raw_cost_usd": 0.011,
+              "usd_amount": 0.011,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "2k",
+              "raw_cost_usd": 0.014,
+              "usd_amount": 0.014,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "4k",
+              "raw_cost_usd": 0.036,
+              "usd_amount": 0.036,
+              "is_negative": false,
+              "is_parseable": true
+            }
+          ],
+          "has_any_price": true
+        }
+      ],
+      "pricing_line_count": 5,
+      "resolved_pricing_line_count": 5,
+      "unparseable_pricing_line_count": 0,
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_image",
+        "usd": 0.008,
+        "basis": "cheapest_variant_tier",
+        "basis_sku": "output_image/image@768"
+      },
+      "usd_per_image_by_variant": {
+        "768": 0.008,
+        "1k": 0.009,
+        "1.5k": 0.011,
+        "2k": 0.014,
+        "4k": 0.036
+      },
+      "usd_per_megapixel_by_variant": {},
+      "usd_per_token_by_variant": {},
+      "providers_without_pricing": [],
+      "raw_endpoints_payload": {
+        "id": "black-forest-labs/flux-3-image-klein",
+        "endpoints": [
+          {
+            "provider_name": "Black Forest Labs",
+            "provider_slug": "black-forest-labs",
+            "provider_tag": "black-forest-labs",
+            "supported_parameters": {
+              "resolution": {
+                "type": "enum",
+                "values": [
+                  "768",
+                  "1K",
+                  "1.5K",
+                  "2K",
+                  "4K"
+                ]
+              },
+              "aspect_ratio": {
+                "type": "enum",
+                "values": [
+                  "21:9",
+                  "2:1",
+                  "16:9",
+                  "3:2",
+                  "7:5",
+                  "4:3",
+                  "5:4",
+                  "1:1",
+                  "4:5",
+                  "3:4",
+                  "5:7",
+                  "2:3",
+                  "9:16",
+                  "1:2",
+                  "9:21",
+                  "auto"
+                ]
+              },
+              "n": {
+                "type": "range",
+                "min": 1,
+                "max": 1
+              },
+              "input_references": {
+                "type": "range",
+                "min": 0,
+                "max": 10
+              }
+            },
+            "allowed_passthrough_parameters": [
+              "safety_tolerance"
+            ],
+            "supports_streaming": false,
+            "pricing": [
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.008,
+                "variant": "768"
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.009,
+                "variant": "1k"
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.011,
+                "variant": "1.5k"
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.014,
+                "variant": "2k"
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.036,
+                "variant": "4k"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "raw_source": "openrouter:/api/v1/images/models",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
+    "raw": {
+      "id": "black-forest-labs/flux-3-image-klein",
+      "name": "Black Forest Labs: FLUX 3 Image Klein",
+      "description": "FLUX 3 Image Klein is an open-weights image generation and editing model from Black Forest Labs. It is suited for text-to-image, multi-reference editing that keeps characters and subjects consistent across...",
+      "created": 1792083863,
+      "architecture": {
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "image"
+        ]
+      },
+      "supported_parameters": {
+        "resolution": {
+          "type": "enum",
+          "values": [
+            "768",
+            "1K",
+            "1.5K",
+            "2K",
+            "4K"
+          ]
+        },
+        "aspect_ratio": {
+          "type": "enum",
+          "values": [
+            "21:9",
+            "2:1",
+            "16:9",
+            "3:2",
+            "7:5",
+            "4:3",
+            "5:4",
+            "1:1",
+            "4:5",
+            "3:4",
+            "5:7",
+            "2:3",
+            "9:16",
+            "1:2",
+            "9:21",
+            "auto"
+          ]
+        },
+        "n": {
+          "type": "range",
+          "min": 1,
+          "max": 1
+        },
+        "input_references": {
+          "type": "range",
+          "min": 0,
+          "max": 10
+        }
+      },
+      "supports_streaming": false,
+      "endpoints": "/api/v1/images/models/black-forest-labs/flux-3-image-klein/endpoints"
+    }
+  },
+  {
     "model_id": "google/gemini-nano-banana-2.1",
     "canonical_slug": null,
     "model_name": "Google: Nano Banana 2.1",
@@ -208,7 +1370,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "google/gemini-nano-banana-2.1",
       "name": "Google: Nano Banana 2.1",
@@ -482,7 +1644,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "tencent/hy-image-v3.5-preview",
       "name": "Tencent: Hy Image 3.5 Preview",
@@ -776,7 +1938,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "bytedance-seed/seedream-5-0-flash",
       "name": "ByteDance Seed: Seedream 5.0 Flash",
@@ -843,7 +2005,7 @@
   {
     "model_id": "black-forest-labs/flux-3-image",
     "canonical_slug": null,
-    "model_name": "Black Forest Labs: FLUX.3 Image",
+    "model_name": "Black Forest Labs: FLUX 3 Image",
     "provider": "black-forest-labs",
     "model_type": "image",
     "description": "FLUX.3 Image is Black Forest Labs' flagship image generation and editing model. It handles text-to-image and multi-reference editing with up to 10 input images, and renders at fixed resolution tiers...",
@@ -1124,10 +2286,10 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "black-forest-labs/flux-3-image",
-      "name": "Black Forest Labs: FLUX.3 Image",
+      "name": "Black Forest Labs: FLUX 3 Image",
       "description": "FLUX.3 Image is Black Forest Labs' flagship image generation and editing model. It handles text-to-image and multi-reference editing with up to 10 input images, and renders at fixed resolution tiers...",
       "created": 1790885807,
       "architecture": {
@@ -1184,231 +2346,6 @@
       },
       "supports_streaming": false,
       "endpoints": "/api/v1/images/models/black-forest-labs/flux-3-image/endpoints"
-    }
-  },
-  {
-    "model_id": "inclusionai/ming-image-0.1-design-layer",
-    "canonical_slug": null,
-    "model_name": "inclusionAI: Ming Image 0.1 Design Layer",
-    "provider": "inclusionai",
-    "model_type": "image",
-    "description": "Ming Image 0.1 Design Layer is an image-to-image model from inclusionAI that decomposes a flattened design image into separate RGBA layers, such as a background layer and foreground elements, and...",
-    "created": 1790201839,
-    "hugging_face_id": null,
-    "architecture": {
-      "modality": null,
-      "input_modalities": [
-        "text",
-        "image"
-      ],
-      "output_modalities": [
-        "image"
-      ],
-      "synthesized": false
-    },
-    "input_modalities": [
-      "text",
-      "image"
-    ],
-    "output_modalities": [
-      "image"
-    ],
-    "supported_parameters": {
-      "output_format": {
-        "type": "enum",
-        "values": [
-          "png",
-          "webp"
-        ]
-      },
-      "n": {
-        "type": "range",
-        "min": 1,
-        "max": 1
-      },
-      "input_references": {
-        "type": "range",
-        "min": 1,
-        "max": 1
-      },
-      "size": {
-        "type": "boolean"
-      }
-    },
-    "supports_streaming": false,
-    "endpoints_url": "/api/v1/images/models/inclusionai/ming-image-0.1-design-layer/endpoints",
-    "supported_resolutions": null,
-    "supported_aspect_ratios": null,
-    "supported_sizes": null,
-    "supported_durations": null,
-    "supported_frame_images": null,
-    "generate_audio": null,
-    "seed": null,
-    "upscale_factor": null,
-    "creativity": null,
-    "allowed_passthrough_parameters": null,
-    "has_any_price": true,
-    "has_valid_pricing": true,
-    "pricing_unit": "usd_per_token",
-    "comparable_price": 0.0,
-    "comparable_price_basis": "plain_output_token_rate",
-    "pricing": {
-      "skus": [],
-      "raw_pricing_skus": null,
-      "sku_count": 0,
-      "resolved_sku_count": 0,
-      "unresolved_sku_keys": [],
-      "has_any_price": false,
-      "comparable_price": {
-        "unit": null,
-        "usd": null,
-        "basis": null,
-        "basis_sku": null
-      },
-      "usd_per_second_by_resolution": {},
-      "usd_per_image_by_resolution": {},
-      "unit_families": [],
-      "unit_conversions_applied": [],
-      "currency_assumptions": []
-    },
-    "endpoint_pricing": {
-      "model_id": "inclusionai/ming-image-0.1-design-layer",
-      "endpoint_count": 1,
-      "endpoints": [
-        {
-          "provider_name": "NovitaAI",
-          "provider_slug": "novita",
-          "provider_tag": "novita",
-          "supports_streaming": false,
-          "allowed_passthrough_parameters": [],
-          "pricing_lines": [
-            {
-              "billable": "input_image",
-              "unit": "token",
-              "unit_family": "usd_per_token",
-              "variant": null,
-              "raw_cost_usd": 0,
-              "usd_amount": 0.0,
-              "is_negative": false,
-              "is_parseable": true
-            },
-            {
-              "billable": "output_image",
-              "unit": "token",
-              "unit_family": "usd_per_token",
-              "variant": null,
-              "raw_cost_usd": 0,
-              "usd_amount": 0.0,
-              "is_negative": false,
-              "is_parseable": true
-            }
-          ],
-          "has_any_price": true
-        }
-      ],
-      "pricing_line_count": 2,
-      "resolved_pricing_line_count": 2,
-      "unparseable_pricing_line_count": 0,
-      "has_any_price": true,
-      "comparable_price": {
-        "unit": "usd_per_token",
-        "usd": 0.0,
-        "basis": "plain_output_token_rate",
-        "basis_sku": "output_image/token"
-      },
-      "usd_per_image_by_variant": {},
-      "usd_per_megapixel_by_variant": {},
-      "usd_per_token_by_variant": {
-        "default": 0.0
-      },
-      "providers_without_pricing": [],
-      "raw_endpoints_payload": {
-        "id": "inclusionai/ming-image-0.1-design-layer",
-        "endpoints": [
-          {
-            "provider_name": "NovitaAI",
-            "provider_slug": "novita",
-            "provider_tag": "novita",
-            "supported_parameters": {
-              "output_format": {
-                "type": "enum",
-                "values": [
-                  "png",
-                  "webp"
-                ]
-              },
-              "n": {
-                "type": "range",
-                "min": 1,
-                "max": 1
-              },
-              "input_references": {
-                "type": "range",
-                "min": 1,
-                "max": 1
-              },
-              "size": {
-                "type": "boolean"
-              }
-            },
-            "allowed_passthrough_parameters": [],
-            "supports_streaming": false,
-            "pricing": [
-              {
-                "billable": "input_image",
-                "unit": "token",
-                "cost_usd": 0
-              },
-              {
-                "billable": "output_image",
-                "unit": "token",
-                "cost_usd": 0
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
-    "raw": {
-      "id": "inclusionai/ming-image-0.1-design-layer",
-      "name": "inclusionAI: Ming Image 0.1 Design Layer",
-      "description": "Ming Image 0.1 Design Layer is an image-to-image model from inclusionAI that decomposes a flattened design image into separate RGBA layers, such as a background layer and foreground elements, and...",
-      "created": 1790201839,
-      "architecture": {
-        "input_modalities": [
-          "text",
-          "image"
-        ],
-        "output_modalities": [
-          "image"
-        ]
-      },
-      "supported_parameters": {
-        "output_format": {
-          "type": "enum",
-          "values": [
-            "png",
-            "webp"
-          ]
-        },
-        "n": {
-          "type": "range",
-          "min": 1,
-          "max": 1
-        },
-        "input_references": {
-          "type": "range",
-          "min": 1,
-          "max": 1
-        },
-        "size": {
-          "type": "boolean"
-        }
-      },
-      "supports_streaming": false,
-      "endpoints": "/api/v1/images/models/inclusionai/ming-image-0.1-design-layer/endpoints"
     }
   },
   {
@@ -1574,7 +2511,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "recraft/recraft-v4.1-flash",
       "name": "Recraft: Recraft V4.1 Flash",
@@ -1608,231 +2545,6 @@
       },
       "supports_streaming": false,
       "endpoints": "/api/v1/images/models/recraft/recraft-v4.1-flash/endpoints"
-    }
-  },
-  {
-    "model_id": "inclusionai/ming-image-0.1-design",
-    "canonical_slug": null,
-    "model_name": "inclusionAI: Ming Image 0.1 Design",
-    "provider": "inclusionai",
-    "model_type": "image",
-    "description": "Ming Image 0.1 Design is a text-to-image model from inclusionAI aimed at graphic-design output, with an emphasis on legible text rendering inside the generated image. It generates from a prompt...",
-    "created": 1790095711,
-    "hugging_face_id": null,
-    "architecture": {
-      "modality": null,
-      "input_modalities": [
-        "text"
-      ],
-      "output_modalities": [
-        "image"
-      ],
-      "synthesized": false
-    },
-    "input_modalities": [
-      "text"
-    ],
-    "output_modalities": [
-      "image"
-    ],
-    "supported_parameters": {
-      "output_format": {
-        "type": "enum",
-        "values": [
-          "png",
-          "jpeg",
-          "webp"
-        ]
-      },
-      "n": {
-        "type": "range",
-        "min": 1,
-        "max": 1
-      },
-      "input_references": {
-        "type": "range",
-        "min": 0,
-        "max": 0
-      },
-      "size": {
-        "type": "boolean"
-      }
-    },
-    "supports_streaming": false,
-    "endpoints_url": "/api/v1/images/models/inclusionai/ming-image-0.1-design/endpoints",
-    "supported_resolutions": null,
-    "supported_aspect_ratios": null,
-    "supported_sizes": null,
-    "supported_durations": null,
-    "supported_frame_images": null,
-    "generate_audio": null,
-    "seed": null,
-    "upscale_factor": null,
-    "creativity": null,
-    "allowed_passthrough_parameters": null,
-    "has_any_price": true,
-    "has_valid_pricing": true,
-    "pricing_unit": "usd_per_token",
-    "comparable_price": 0.0,
-    "comparable_price_basis": "plain_output_token_rate",
-    "pricing": {
-      "skus": [],
-      "raw_pricing_skus": null,
-      "sku_count": 0,
-      "resolved_sku_count": 0,
-      "unresolved_sku_keys": [],
-      "has_any_price": false,
-      "comparable_price": {
-        "unit": null,
-        "usd": null,
-        "basis": null,
-        "basis_sku": null
-      },
-      "usd_per_second_by_resolution": {},
-      "usd_per_image_by_resolution": {},
-      "unit_families": [],
-      "unit_conversions_applied": [],
-      "currency_assumptions": []
-    },
-    "endpoint_pricing": {
-      "model_id": "inclusionai/ming-image-0.1-design",
-      "endpoint_count": 1,
-      "endpoints": [
-        {
-          "provider_name": "NovitaAI",
-          "provider_slug": "novita",
-          "provider_tag": "novita",
-          "supports_streaming": false,
-          "allowed_passthrough_parameters": [],
-          "pricing_lines": [
-            {
-              "billable": "input_image",
-              "unit": "token",
-              "unit_family": "usd_per_token",
-              "variant": null,
-              "raw_cost_usd": 0,
-              "usd_amount": 0.0,
-              "is_negative": false,
-              "is_parseable": true
-            },
-            {
-              "billable": "output_image",
-              "unit": "token",
-              "unit_family": "usd_per_token",
-              "variant": null,
-              "raw_cost_usd": 0,
-              "usd_amount": 0.0,
-              "is_negative": false,
-              "is_parseable": true
-            }
-          ],
-          "has_any_price": true
-        }
-      ],
-      "pricing_line_count": 2,
-      "resolved_pricing_line_count": 2,
-      "unparseable_pricing_line_count": 0,
-      "has_any_price": true,
-      "comparable_price": {
-        "unit": "usd_per_token",
-        "usd": 0.0,
-        "basis": "plain_output_token_rate",
-        "basis_sku": "output_image/token"
-      },
-      "usd_per_image_by_variant": {},
-      "usd_per_megapixel_by_variant": {},
-      "usd_per_token_by_variant": {
-        "default": 0.0
-      },
-      "providers_without_pricing": [],
-      "raw_endpoints_payload": {
-        "id": "inclusionai/ming-image-0.1-design",
-        "endpoints": [
-          {
-            "provider_name": "NovitaAI",
-            "provider_slug": "novita",
-            "provider_tag": "novita",
-            "supported_parameters": {
-              "output_format": {
-                "type": "enum",
-                "values": [
-                  "png",
-                  "jpeg",
-                  "webp"
-                ]
-              },
-              "n": {
-                "type": "range",
-                "min": 1,
-                "max": 1
-              },
-              "input_references": {
-                "type": "range",
-                "min": 0,
-                "max": 0
-              },
-              "size": {
-                "type": "boolean"
-              }
-            },
-            "allowed_passthrough_parameters": [],
-            "supports_streaming": false,
-            "pricing": [
-              {
-                "billable": "input_image",
-                "unit": "token",
-                "cost_usd": 0
-              },
-              {
-                "billable": "output_image",
-                "unit": "token",
-                "cost_usd": 0
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
-    "raw": {
-      "id": "inclusionai/ming-image-0.1-design",
-      "name": "inclusionAI: Ming Image 0.1 Design",
-      "description": "Ming Image 0.1 Design is a text-to-image model from inclusionAI aimed at graphic-design output, with an emphasis on legible text rendering inside the generated image. It generates from a prompt...",
-      "created": 1790095711,
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "image"
-        ]
-      },
-      "supported_parameters": {
-        "output_format": {
-          "type": "enum",
-          "values": [
-            "png",
-            "jpeg",
-            "webp"
-          ]
-        },
-        "n": {
-          "type": "range",
-          "min": 1,
-          "max": 1
-        },
-        "input_references": {
-          "type": "range",
-          "min": 0,
-          "max": 0
-        },
-        "size": {
-          "type": "boolean"
-        }
-      },
-      "supports_streaming": false,
-      "endpoints": "/api/v1/images/models/inclusionai/ming-image-0.1-design/endpoints"
     }
   },
   {
@@ -2094,7 +2806,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "openai/gpt-image-2.5-sunburst",
       "name": "OpenAI: GPT Image 2.5 Sunburst",
@@ -2422,7 +3134,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "openai/gpt-image-2.5-flare",
       "name": "OpenAI: GPT Image 2.5 Flare",
@@ -2700,7 +3412,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "microsoft/mai-image-2.6",
       "name": "Microsoft AI: MAI-Image-2.6",
@@ -2953,7 +3665,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "microsoft/mai-image-2.6-flash",
       "name": "Microsoft AI: MAI-Image-2.6 Flash",
@@ -3085,7 +3797,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "meta/muse-image",
       "name": "Meta: Muse Image",
@@ -3313,7 +4025,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "recraft/recraft-v4-styles-pro",
       "name": "Recraft: Recraft V4 Styles Pro",
@@ -3581,7 +4293,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "recraft/recraft-v4-styles-vector",
       "name": "Recraft: Recraft V4 Styles Vector",
@@ -3855,7 +4567,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "recraft/recraft-v4-styles-pro-vector",
       "name": "Recraft: Recraft V4 Styles Pro Vector",
@@ -4117,7 +4829,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "recraft/recraft-v4-styles",
       "name": "Recraft: Recraft V4 Styles",
@@ -4395,7 +5107,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "bytedance-seed/seedream-5-0-lite",
       "name": "ByteDance Seed: Seedream 5.0 Lite",
@@ -4706,7 +5418,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "bytedance-seed/seedream-5-0-pro",
       "name": "ByteDance Seed: Seedream 5.0 Pro",
@@ -5052,7 +5764,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "x-ai/grok-imagine-image-2.0",
       "name": "xAI: Grok Imagine Image 2.0",
@@ -5354,7 +6066,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "qwen/qwen-image-3-pro",
       "name": "Qwen: Qwen Image 3 Pro",
@@ -5651,7 +6363,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "qwen/qwen-image-3",
       "name": "Qwen: Qwen Image 3",
@@ -5915,7 +6627,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "microsoft/mai-image-2.5-pro",
       "name": "Microsoft AI: MAI-Image-2.5 Pro",
@@ -6141,7 +6853,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "krea/krea-2-large",
       "name": "Krea: Krea 2 Large",
@@ -6370,7 +7082,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "krea/krea-2-medium",
       "name": "Krea: Krea 2 Medium",
@@ -6599,7 +7311,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "krea/krea-2-medium-turbo",
       "name": "Krea: Krea 2 Medium Turbo",
@@ -6926,7 +7638,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "google/gemini-3.1-flash-lite-image",
       "name": "Google: Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
@@ -7236,7 +7948,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "openai/gpt-image-2",
       "name": "OpenAI: GPT Image 2",
@@ -7547,7 +8259,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "openai/gpt-image-1-mini",
       "name": "OpenAI: GPT Image 1 Mini",
@@ -7854,7 +8566,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "openai/gpt-image-1",
       "name": "OpenAI: GPT Image 1",
@@ -8000,7 +8712,7 @@
     "has_any_price": true,
     "has_valid_pricing": true,
     "pricing_unit": "usd_per_token",
-    "comparable_price": 6e-05,
+    "comparable_price": 6.6e-05,
     "comparable_price_basis": "plain_output_token_rate",
     "pricing": {
       "skus": [],
@@ -8023,8 +8735,30 @@
     },
     "endpoint_pricing": {
       "model_id": "google/gemini-3.1-flash-image",
-      "endpoint_count": 2,
+      "endpoint_count": 3,
       "endpoints": [
+        {
+          "provider_name": "Google Vertex",
+          "provider_slug": "google-vertex/us",
+          "provider_tag": "google-vertex/us",
+          "supports_streaming": false,
+          "allowed_passthrough_parameters": [
+            "cachedContent"
+          ],
+          "pricing_lines": [
+            {
+              "billable": "output_image",
+              "unit": "token",
+              "unit_family": "usd_per_token",
+              "variant": null,
+              "raw_cost_usd": 6.6e-05,
+              "usd_amount": 6.6e-05,
+              "is_negative": false,
+              "is_parseable": true
+            }
+          ],
+          "has_any_price": true
+        },
         {
           "provider_name": "Google AI Studio",
           "provider_slug": "google-ai-studio",
@@ -8070,25 +8804,81 @@
           "has_any_price": true
         }
       ],
-      "pricing_line_count": 2,
-      "resolved_pricing_line_count": 2,
+      "pricing_line_count": 3,
+      "resolved_pricing_line_count": 3,
       "unparseable_pricing_line_count": 0,
       "has_any_price": true,
       "comparable_price": {
         "unit": "usd_per_token",
-        "usd": 6e-05,
+        "usd": 6.6e-05,
         "basis": "plain_output_token_rate",
         "basis_sku": "output_image/token"
       },
       "usd_per_image_by_variant": {},
       "usd_per_megapixel_by_variant": {},
       "usd_per_token_by_variant": {
-        "default": 6e-05
+        "default": 6.6e-05
       },
       "providers_without_pricing": [],
       "raw_endpoints_payload": {
         "id": "google/gemini-3.1-flash-image",
         "endpoints": [
+          {
+            "provider_name": "Google Vertex",
+            "provider_slug": "google-vertex/us",
+            "provider_tag": "google-vertex/us",
+            "supported_parameters": {
+              "resolution": {
+                "type": "enum",
+                "values": [
+                  "512",
+                  "1K",
+                  "2K",
+                  "4K"
+                ]
+              },
+              "aspect_ratio": {
+                "type": "enum",
+                "values": [
+                  "1:1",
+                  "1:4",
+                  "1:8",
+                  "2:3",
+                  "3:2",
+                  "3:4",
+                  "4:1",
+                  "4:3",
+                  "4:5",
+                  "5:4",
+                  "8:1",
+                  "9:16",
+                  "16:9",
+                  "21:9"
+                ]
+              },
+              "n": {
+                "type": "range",
+                "min": 1,
+                "max": 1
+              },
+              "input_references": {
+                "type": "range",
+                "min": 0,
+                "max": 14
+              }
+            },
+            "allowed_passthrough_parameters": [
+              "cachedContent"
+            ],
+            "supports_streaming": false,
+            "pricing": [
+              {
+                "billable": "output_image",
+                "unit": "token",
+                "cost_usd": 6.6e-05
+              }
+            ]
+          },
           {
             "provider_name": "Google AI Studio",
             "provider_slug": "google-ai-studio",
@@ -8205,7 +8995,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "google/gemini-3.1-flash-image",
       "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image)",
@@ -8568,7 +9358,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "google/gemini-3-pro-image",
       "name": "Google: Nano Banana Pro (Gemini 3 Pro Image)",
@@ -8886,7 +9676,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "sourceful/riverflow-v2.5-pro",
       "name": "Sourceful: Riverflow V2.5 Pro",
@@ -9195,7 +9985,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "sourceful/riverflow-v2.5-fast",
       "name": "Sourceful: Riverflow V2.5 Fast",
@@ -9466,7 +10256,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "microsoft/mai-image-2.5",
       "name": "Microsoft AI: MAI-Image-2.5",
@@ -9744,7 +10534,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "x-ai/grok-imagine-image-quality",
       "name": "SpaceXAI: Grok Imagine Image Quality",
@@ -9992,7 +10782,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "recraft/recraft-v4.1-pro-vector",
       "name": "Recraft: Recraft V4.1 Pro Vector",
@@ -10231,7 +11021,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "recraft/recraft-v4.1-vector",
       "name": "Recraft: Recraft V4.1 Vector",
@@ -10458,7 +11248,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "recraft/recraft-v4.1-utility-pro",
       "name": "Recraft: Recraft V4.1 Utility Pro",
@@ -10679,7 +11469,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "recraft/recraft-v4.1-utility",
       "name": "Recraft: Recraft V4.1 Utility",
@@ -10900,7 +11690,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "recraft/recraft-v4.1-pro",
       "name": "Recraft: Recraft V4.1 Pro",
@@ -11121,7 +11911,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "recraft/recraft-v4.1",
       "name": "Recraft: Recraft V4.1",
@@ -11354,7 +12144,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "recraft/recraft-v4-pro-vector",
       "name": "Recraft: Recraft V4 Pro Vector",
@@ -11593,7 +12383,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "recraft/recraft-v4-vector",
       "name": "Recraft: Recraft V4 Vector",
@@ -11820,7 +12610,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "recraft/recraft-v4-pro",
       "name": "Recraft: Recraft V4 Pro",
@@ -12041,7 +12831,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "recraft/recraft-v4",
       "name": "Recraft: Recraft V4",
@@ -12262,7 +13052,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "recraft/recraft-v3",
       "name": "Recraft: Recraft V3",
@@ -12546,7 +13336,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "openai/gpt-5.4-image-2",
       "name": "OpenAI: GPT-5.4 Image 2",
@@ -12825,7 +13615,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "google/gemini-3.1-flash-image-preview",
       "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image Preview)",
@@ -13146,7 +13936,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "sourceful/riverflow-v2-pro",
       "name": "Sourceful: Riverflow V2 Pro",
@@ -13443,7 +14233,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "sourceful/riverflow-v2-fast",
       "name": "Sourceful: Riverflow V2 Fast",
@@ -13701,7 +14491,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "black-forest-labs/flux.2-klein-4b",
       "name": "Black Forest Labs: FLUX.2 Klein 4B",
@@ -13988,7 +14778,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "bytedance-seed/seedream-4.5",
       "name": "ByteDance Seed: Seedream 4.5",
@@ -14258,7 +15048,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "black-forest-labs/flux.2-max",
       "name": "Black Forest Labs: FLUX.2 Max",
@@ -14533,7 +15323,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "black-forest-labs/flux.2-flex",
       "name": "Black Forest Labs: FLUX.2 Flex",
@@ -14793,7 +15583,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "black-forest-labs/flux.2-pro",
       "name": "Black Forest Labs: FLUX.2 Pro",
@@ -15152,7 +15942,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "google/gemini-3-pro-image-preview",
       "name": "Google: Nano Banana Pro (Gemini 3 Pro Image Preview)",
@@ -15441,7 +16231,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "openai/gpt-5-image-mini",
       "name": "OpenAI: GPT-5 Image Mini",
@@ -15739,7 +16529,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "openai/gpt-5-image",
       "name": "OpenAI: GPT-5 Image",
@@ -16003,7 +16793,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-12T03:32:06.665581+00:00",
+    "retrieved_at": "2026-10-19T02:36:06.081822+00:00",
     "raw": {
       "id": "google/gemini-2.5-flash-image",
       "name": "Google: Nano Banana (Gemini 2.5 Flash Image)",

@@ -1,6 +1,226 @@
 {
   "data": [
     {
+      "id": "qwen/qwen-image-2.1-turbo",
+      "name": "Qwen: Qwen Image 2.1 Turbo",
+      "description": "Qwen Image 2.1 Turbo is the fast, lower-cost tier of the Qwen Image 2.1 series from Qwen, for image generation and editing where throughput and price matter more than peak...",
+      "created": 1792194104,
+      "architecture": {
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "image"
+        ]
+      },
+      "supported_parameters": {
+        "resolution": {
+          "type": "enum",
+          "values": [
+            "1K",
+            "2K"
+          ]
+        },
+        "aspect_ratio": {
+          "type": "enum",
+          "values": [
+            "1:1",
+            "1:2",
+            "1:4",
+            "2:1",
+            "2:3",
+            "3:2",
+            "3:4",
+            "4:1",
+            "4:3",
+            "4:5",
+            "5:4",
+            "9:16",
+            "16:9"
+          ]
+        },
+        "n": {
+          "type": "range",
+          "min": 1,
+          "max": 6
+        },
+        "input_references": {
+          "type": "range",
+          "min": 0,
+          "max": 4
+        },
+        "seed": {
+          "type": "boolean"
+        }
+      },
+      "supports_streaming": false,
+      "endpoints": "/api/v1/images/models/qwen/qwen-image-2.1-turbo/endpoints"
+    },
+    {
+      "id": "qwen/qwen-image-2.1-pro",
+      "name": "Qwen: Qwen Image 2.1 Pro",
+      "description": "Qwen Image 2.1 Pro is an image generation and editing model from Qwen, the higher-quality tier of the Qwen Image 2.1 series. Choose it over Qwen Image 2.1 Turbo when...",
+      "created": 1792194075,
+      "architecture": {
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "image"
+        ]
+      },
+      "supported_parameters": {
+        "resolution": {
+          "type": "enum",
+          "values": [
+            "1K",
+            "2K"
+          ]
+        },
+        "aspect_ratio": {
+          "type": "enum",
+          "values": [
+            "1:1",
+            "1:2",
+            "1:4",
+            "2:1",
+            "2:3",
+            "3:2",
+            "3:4",
+            "4:1",
+            "4:3",
+            "4:5",
+            "5:4",
+            "9:16",
+            "16:9"
+          ]
+        },
+        "n": {
+          "type": "range",
+          "min": 1,
+          "max": 6
+        },
+        "input_references": {
+          "type": "range",
+          "min": 0,
+          "max": 4
+        },
+        "seed": {
+          "type": "boolean"
+        }
+      },
+      "supports_streaming": false,
+      "endpoints": "/api/v1/images/models/qwen/qwen-image-2.1-pro/endpoints"
+    },
+    {
+      "id": "krea/k3-edit",
+      "name": "Krea: K3 Edit",
+      "description": "Krea K3 Edit is an image-to-image editing model from Krea. It takes one to eight reference images plus a text prompt and returns a single edited image, following instructions that...",
+      "created": 1792103728,
+      "architecture": {
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "image"
+        ]
+      },
+      "supported_parameters": {
+        "resolution": {
+          "type": "enum",
+          "values": [
+            "1K",
+            "2K"
+          ]
+        },
+        "aspect_ratio": {
+          "type": "enum",
+          "values": [
+            "1:1",
+            "4:3",
+            "3:2",
+            "16:9",
+            "4:5",
+            "2:3",
+            "9:16"
+          ]
+        },
+        "input_references": {
+          "type": "range",
+          "min": 1,
+          "max": 8
+        },
+        "seed": {
+          "type": "boolean"
+        }
+      },
+      "supports_streaming": false,
+      "endpoints": "/api/v1/images/models/krea/k3-edit/endpoints"
+    },
+    {
+      "id": "black-forest-labs/flux-3-image-klein",
+      "name": "Black Forest Labs: FLUX 3 Image Klein",
+      "description": "FLUX 3 Image Klein is an open-weights image generation and editing model from Black Forest Labs. It is suited for text-to-image, multi-reference editing that keeps characters and subjects consistent across...",
+      "created": 1792083863,
+      "architecture": {
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "image"
+        ]
+      },
+      "supported_parameters": {
+        "resolution": {
+          "type": "enum",
+          "values": [
+            "768",
+            "1K",
+            "1.5K",
+            "2K",
+            "4K"
+          ]
+        },
+        "aspect_ratio": {
+          "type": "enum",
+          "values": [
+            "21:9",
+            "2:1",
+            "16:9",
+            "3:2",
+            "7:5",
+            "4:3",
+            "5:4",
+            "1:1",
+            "4:5",
+            "3:4",
+            "5:7",
+            "2:3",
+            "9:16",
+            "1:2",
+            "9:21",
+            "auto"
+          ]
+        },
+        "n": {
+          "type": "range",
+          "min": 1,
+          "max": 1
+        },
+        "input_references": {
+          "type": "range",
+          "min": 0,
+          "max": 10
+        }
+      },
+      "supports_streaming": false,
+      "endpoints": "/api/v1/images/models/black-forest-labs/flux-3-image-klein/endpoints"
+    },
+    {
       "id": "google/gemini-nano-banana-2.1",
       "name": "Google: Nano Banana 2.1",
       "description": "Nano Banana 2.1 (Gemini Nano Banana 2.1) is Google's image generation and editing model on the Flash tier, succeeding Nano Banana 2 and Nano Banana Pro. It improves product recontextualization,...",
@@ -183,7 +403,7 @@
     },
     {
       "id": "black-forest-labs/flux-3-image",
-      "name": "Black Forest Labs: FLUX.3 Image",
+      "name": "Black Forest Labs: FLUX 3 Image",
       "description": "FLUX.3 Image is Black Forest Labs' flagship image generation and editing model. It handles text-to-image and multi-reference editing with up to 10 input images, and renders at fixed resolution tiers...",
       "created": 1790885807,
       "architecture": {
@@ -242,45 +462,6 @@
       "endpoints": "/api/v1/images/models/black-forest-labs/flux-3-image/endpoints"
     },
     {
-      "id": "inclusionai/ming-image-0.1-design-layer",
-      "name": "inclusionAI: Ming Image 0.1 Design Layer",
-      "description": "Ming Image 0.1 Design Layer is an image-to-image model from inclusionAI that decomposes a flattened design image into separate RGBA layers, such as a background layer and foreground elements, and...",
-      "created": 1790201839,
-      "architecture": {
-        "input_modalities": [
-          "text",
-          "image"
-        ],
-        "output_modalities": [
-          "image"
-        ]
-      },
-      "supported_parameters": {
-        "output_format": {
-          "type": "enum",
-          "values": [
-            "png",
-            "webp"
-          ]
-        },
-        "n": {
-          "type": "range",
-          "min": 1,
-          "max": 1
-        },
-        "input_references": {
-          "type": "range",
-          "min": 1,
-          "max": 1
-        },
-        "size": {
-          "type": "boolean"
-        }
-      },
-      "supports_streaming": false,
-      "endpoints": "/api/v1/images/models/inclusionai/ming-image-0.1-design-layer/endpoints"
-    },
-    {
       "id": "recraft/recraft-v4.1-flash",
       "name": "Recraft: Recraft V4.1 Flash",
       "description": "Recraft V4.1 Flash is a text-to-image model from Recraft, the speed and cost tier of the V4.1 family. It generates ~1K raster images in about 1.5 seconds end to end,...",
@@ -313,45 +494,6 @@
       },
       "supports_streaming": false,
       "endpoints": "/api/v1/images/models/recraft/recraft-v4.1-flash/endpoints"
-    },
-    {
-      "id": "inclusionai/ming-image-0.1-design",
-      "name": "inclusionAI: Ming Image 0.1 Design",
-      "description": "Ming Image 0.1 Design is a text-to-image model from inclusionAI aimed at graphic-design output, with an emphasis on legible text rendering inside the generated image. It generates from a prompt...",
-      "created": 1790095711,
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "image"
-        ]
-      },
-      "supported_parameters": {
-        "output_format": {
-          "type": "enum",
-          "values": [
-            "png",
-            "jpeg",
-            "webp"
-          ]
-        },
-        "n": {
-          "type": "range",
-          "min": 1,
-          "max": 1
-        },
-        "input_references": {
-          "type": "range",
-          "min": 0,
-          "max": 0
-        },
-        "size": {
-          "type": "boolean"
-        }
-      },
-      "supports_streaming": false,
-      "endpoints": "/api/v1/images/models/inclusionai/ming-image-0.1-design/endpoints"
     },
     {
       "id": "openai/gpt-image-2.5-sunburst",

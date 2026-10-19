@@ -175,7 +175,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "x-ai/grok-imagine-video-1.5-lite",
       "canonical_slug": "x-ai/grok-imagine-video-1.5-lite-20261001",
@@ -301,12 +301,12 @@
       "skus": [
         {
           "sku": "duration_seconds_2k",
-          "raw_value": "0.09",
-          "amount": 0.09,
+          "raw_value": "0.1",
+          "amount": 0.1,
           "currency": "usd",
           "quantity": "second",
           "unit_family": "usd_per_second",
-          "usd_amount": 0.09,
+          "usd_amount": 0.1,
           "conversion_applied": false,
           "currency_assumed": true,
           "resolution_variant": "2k",
@@ -335,17 +335,34 @@
         },
         {
           "sku": "duration_seconds_768p",
-          "raw_value": "0.03",
-          "amount": 0.03,
+          "raw_value": "0.036",
+          "amount": 0.036,
           "currency": "usd",
           "quantity": "second",
           "unit_family": "usd_per_second",
-          "usd_amount": 0.03,
+          "usd_amount": 0.036,
           "conversion_applied": false,
           "currency_assumed": true,
           "resolution_variant": "768p",
           "audio_variant": null,
           "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "reference_input_images",
+          "raw_value": "0.04",
+          "amount": 0.04,
+          "currency": "usd",
+          "quantity": "image",
+          "unit_family": "usd_per_image",
+          "usd_amount": 0.04,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": "reference_image",
           "is_minimum": false,
           "is_negative": false,
           "is_parseable": true
@@ -369,12 +386,12 @@
         },
         {
           "sku": "reference_duration_seconds_480p",
-          "raw_value": "0.04",
-          "amount": 0.04,
+          "raw_value": "0.07",
+          "amount": 0.07,
           "currency": "usd",
           "quantity": "second",
           "unit_family": "usd_per_second",
-          "usd_amount": 0.04,
+          "usd_amount": 0.07,
           "conversion_applied": false,
           "currency_assumed": true,
           "resolution_variant": "480p",
@@ -386,12 +403,12 @@
         },
         {
           "sku": "reference_duration_seconds_768p",
-          "raw_value": "0.06",
-          "amount": 0.06,
+          "raw_value": "0.1",
+          "amount": 0.1,
           "currency": "usd",
           "quantity": "second",
           "unit_family": "usd_per_second",
-          "usd_amount": 0.06,
+          "usd_amount": 0.1,
           "conversion_applied": false,
           "currency_assumed": true,
           "resolution_variant": "768p",
@@ -403,15 +420,16 @@
         }
       ],
       "raw_pricing_skus": {
-        "duration_seconds_2k": "0.09",
+        "duration_seconds_2k": "0.1",
         "duration_seconds_480p": "0.02",
-        "duration_seconds_768p": "0.03",
+        "duration_seconds_768p": "0.036",
+        "reference_input_images": "0.04",
         "reference_duration_seconds_2k": "0.18",
-        "reference_duration_seconds_480p": "0.04",
-        "reference_duration_seconds_768p": "0.06"
+        "reference_duration_seconds_480p": "0.07",
+        "reference_duration_seconds_768p": "0.1"
       },
-      "sku_count": 6,
-      "resolved_sku_count": 6,
+      "sku_count": 7,
+      "resolved_sku_count": 7,
       "unresolved_sku_keys": [],
       "has_any_price": true,
       "comparable_price": {
@@ -421,12 +439,13 @@
         "basis_sku": "duration_seconds_480p"
       },
       "usd_per_second_by_resolution": {
-        "2k": 0.09,
+        "2k": 0.1,
         "480p": 0.02,
-        "768p": 0.03
+        "768p": 0.036
       },
       "usd_per_image_by_resolution": {},
       "unit_families": [
+        "usd_per_image",
         "usd_per_second"
       ],
       "unit_conversions_applied": [],
@@ -436,12 +455,13 @@
         "duration_seconds_768p",
         "reference_duration_seconds_2k",
         "reference_duration_seconds_480p",
-        "reference_duration_seconds_768p"
+        "reference_duration_seconds_768p",
+        "reference_input_images"
       ]
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "heygen/heygen-video-1",
       "canonical_slug": "heygen/heygen-video-1-20260930",
@@ -484,12 +504,13 @@
       "generate_audio": false,
       "seed": true,
       "pricing_skus": {
-        "duration_seconds_2k": "0.09",
+        "duration_seconds_2k": "0.1",
         "duration_seconds_480p": "0.02",
-        "duration_seconds_768p": "0.03",
+        "duration_seconds_768p": "0.036",
+        "reference_input_images": "0.04",
         "reference_duration_seconds_2k": "0.18",
-        "reference_duration_seconds_480p": "0.04",
-        "reference_duration_seconds_768p": "0.06"
+        "reference_duration_seconds_480p": "0.07",
+        "reference_duration_seconds_768p": "0.1"
       },
       "allowed_passthrough_parameters": [
         "prompt_enhancement"
@@ -584,7 +605,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "black-forest-labs/flux-video-edit",
       "canonical_slug": "black-forest-labs/flux-video-edit-20260910",
@@ -762,7 +783,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "minimax/hailuo-3-max",
       "canonical_slug": "minimax/hailuo-3-max-20260901",
@@ -883,7 +904,8 @@
       30
     ],
     "supported_frame_images": [
-      "first_frame"
+      "first_frame",
+      "last_frame"
     ],
     "generate_audio": true,
     "seed": true,
@@ -982,7 +1004,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "alibaba/wan-3.0-prime",
       "canonical_slug": "alibaba/wan-3.0-prime-20260827",
@@ -1035,7 +1057,8 @@
         30
       ],
       "supported_frame_images": [
-        "first_frame"
+        "first_frame",
+        "last_frame"
       ],
       "upscale_factor": null,
       "creativity": null,
@@ -1118,7 +1141,8 @@
       30
     ],
     "supported_frame_images": [
-      "first_frame"
+      "first_frame",
+      "last_frame"
     ],
     "generate_audio": true,
     "seed": true,
@@ -1217,7 +1241,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "alibaba/wan-3.0",
       "canonical_slug": "alibaba/wan-3.0-20260824",
@@ -1270,7 +1294,8 @@
         30
       ],
       "supported_frame_images": [
-        "first_frame"
+        "first_frame",
+        "last_frame"
       ],
       "upscale_factor": null,
       "creativity": null,
@@ -1387,7 +1412,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "heygen/avatar-iv",
       "canonical_slug": "heygen/avatar-iv-20260625",
@@ -1478,12 +1503,12 @@
       "skus": [
         {
           "sku": "cents_per_megapixel_second_precise",
-          "raw_value": "7.5",
-          "amount": 7.5,
+          "raw_value": "3.5",
+          "amount": 3.5,
           "currency": "cents",
           "quantity": "megapixel_second",
           "unit_family": "cents_per_megapixel_second",
-          "usd_amount": 0.075,
+          "usd_amount": 0.035,
           "conversion_applied": true,
           "currency_assumed": false,
           "resolution_variant": null,
@@ -1495,12 +1520,12 @@
         },
         {
           "sku": "cents_per_megapixel_second_creative",
-          "raw_value": "10.5",
-          "amount": 10.5,
+          "raw_value": "5",
+          "amount": 5.0,
           "currency": "cents",
           "quantity": "megapixel_second",
           "unit_family": "cents_per_megapixel_second",
-          "usd_amount": 0.105,
+          "usd_amount": 0.05,
           "conversion_applied": true,
           "currency_assumed": false,
           "resolution_variant": null,
@@ -1512,8 +1537,8 @@
         }
       ],
       "raw_pricing_skus": {
-        "cents_per_megapixel_second_precise": "7.5",
-        "cents_per_megapixel_second_creative": "10.5"
+        "cents_per_megapixel_second_precise": "3.5",
+        "cents_per_megapixel_second_creative": "5"
       },
       "sku_count": 2,
       "resolved_sku_count": 2,
@@ -1538,7 +1563,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "black-forest-labs/flux-video-upscale",
       "canonical_slug": "black-forest-labs/flux-video-upscale-20260819",
@@ -1562,8 +1587,8 @@
       "generate_audio": false,
       "seed": false,
       "pricing_skus": {
-        "cents_per_megapixel_second_precise": "7.5",
-        "cents_per_megapixel_second_creative": "10.5"
+        "cents_per_megapixel_second_precise": "3.5",
+        "cents_per_megapixel_second_creative": "5"
       },
       "allowed_passthrough_parameters": [
         "safety_tolerance"
@@ -1737,7 +1762,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "bytedance/seedance-2.0-mini",
       "canonical_slug": "bytedance/seedance-2.0-mini-20260811",
@@ -1987,7 +2012,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "bytedance/seedance-2.5",
       "canonical_slug": "bytedance/seedance-2.5-20260807",
@@ -2073,7 +2098,7 @@
   {
     "model_id": "black-forest-labs/flux-3-video",
     "canonical_slug": "black-forest-labs/flux-3-video-20260804",
-    "model_name": "Black Forest Labs: FLUX.3 Video",
+    "model_name": "Black Forest Labs: FLUX 3 Video",
     "provider": "black-forest-labs",
     "model_type": "video",
     "description": "FLUX.3 Video is a video generation model from Black Forest Labs. It supports text-to-video, image-guided generation with opening and closing keyframes, and video continuation workflows, making it suited for controlled...",
@@ -2096,7 +2121,9 @@
     "endpoints_url": null,
     "supported_resolutions": [
       "720p",
-      "1080p"
+      "1080p",
+      "2K",
+      "4K"
     ],
     "supported_aspect_ratios": [
       "21:9",
@@ -2162,6 +2189,40 @@
           "is_parseable": true
         },
         {
+          "sku": "cents_per_second_output_2k",
+          "raw_value": "28",
+          "amount": 28.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.28,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": "2k",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "cents_per_second_output_4k",
+          "raw_value": "41",
+          "amount": 41.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.41000000000000003,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": "4k",
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
           "sku": "cents_per_second_output_720p",
           "raw_value": "17",
           "amount": 17.0,
@@ -2191,6 +2252,40 @@
           "resolution_variant": "1080p",
           "audio_variant": null,
           "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "cents_per_second_video_continuation_2k",
+          "raw_value": "31",
+          "amount": 31.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.31,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": "2k",
+          "audio_variant": null,
+          "operation": "video_continuation",
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "cents_per_second_video_continuation_4k",
+          "raw_value": "45",
+          "amount": 45.0,
+          "currency": "cents",
+          "quantity": "second",
+          "unit_family": "cents_per_second",
+          "usd_amount": 0.45,
+          "conversion_applied": true,
+          "currency_assumed": false,
+          "resolution_variant": "4k",
+          "audio_variant": null,
+          "operation": "video_continuation",
           "is_minimum": false,
           "is_negative": false,
           "is_parseable": true
@@ -2232,13 +2327,17 @@
       ],
       "raw_pricing_skus": {
         "cents_per_second_output": "17",
+        "cents_per_second_output_2k": "28",
+        "cents_per_second_output_4k": "41",
         "cents_per_second_output_720p": "17",
         "cents_per_second_output_1080p": "29",
+        "cents_per_second_video_continuation_2k": "31",
+        "cents_per_second_video_continuation_4k": "45",
         "cents_per_second_video_continuation_720p": "41",
         "cents_per_second_video_continuation_1080p": "53"
       },
-      "sku_count": 5,
-      "resolved_sku_count": 5,
+      "sku_count": 9,
+      "resolved_sku_count": 9,
       "unresolved_sku_keys": [],
       "has_any_price": true,
       "comparable_price": {
@@ -2249,6 +2348,8 @@
       },
       "usd_per_second_by_resolution": {
         "default": 0.17,
+        "2k": 0.28,
+        "4k": 0.41000000000000003,
         "720p": 0.17,
         "1080p": 0.29
       },
@@ -2259,25 +2360,31 @@
       "unit_conversions_applied": [
         "cents_per_second_output",
         "cents_per_second_output_1080p",
+        "cents_per_second_output_2k",
+        "cents_per_second_output_4k",
         "cents_per_second_output_720p",
         "cents_per_second_video_continuation_1080p",
+        "cents_per_second_video_continuation_2k",
+        "cents_per_second_video_continuation_4k",
         "cents_per_second_video_continuation_720p"
       ],
       "currency_assumptions": []
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "black-forest-labs/flux-3-video",
       "canonical_slug": "black-forest-labs/flux-3-video-20260804",
       "hugging_face_id": null,
-      "name": "Black Forest Labs: FLUX.3 Video",
+      "name": "Black Forest Labs: FLUX 3 Video",
       "created": 1785858831,
       "description": "FLUX.3 Video is a video generation model from Black Forest Labs. It supports text-to-video, image-guided generation with opening and closing keyframes, and video continuation workflows, making it suited for controlled...",
       "supported_resolutions": [
         "720p",
-        "1080p"
+        "1080p",
+        "2K",
+        "4K"
       ],
       "supported_aspect_ratios": [
         "21:9",
@@ -2316,8 +2423,12 @@
       "seed": false,
       "pricing_skus": {
         "cents_per_second_output": "17",
+        "cents_per_second_output_2k": "28",
+        "cents_per_second_output_4k": "41",
         "cents_per_second_output_720p": "17",
         "cents_per_second_output_1080p": "29",
+        "cents_per_second_video_continuation_2k": "31",
+        "cents_per_second_video_continuation_4k": "45",
         "cents_per_second_video_continuation_720p": "41",
         "cents_per_second_video_continuation_1080p": "53"
       },
@@ -2459,7 +2570,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "minimax/hailuo-3",
       "canonical_slug": "minimax/hailuo-03-20260730",
@@ -2627,7 +2738,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "runway/aleph-2",
       "canonical_slug": "runway/aleph-2-20260729",
@@ -2771,7 +2882,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "runway/gen-4.5",
       "canonical_slug": "runway/gen-4.5-20260729",
@@ -2992,7 +3103,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "x-ai/grok-imagine-video-1.5",
       "canonical_slug": "x-ai/grok-imagine-video-1.5-20260719",
@@ -3196,7 +3307,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "alibaba/happyhorse-1.1",
       "canonical_slug": "alibaba/happyhorse-1.1-20260624",
@@ -3410,7 +3521,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "alibaba/happyhorse-1.0",
       "canonical_slug": "alibaba/happyhorse-1.0-20260624",
@@ -3646,7 +3757,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "x-ai/grok-imagine-video",
       "canonical_slug": "x-ai/grok-imagine-video-20260512",
@@ -3946,7 +4057,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "kwaivgi/kling-v3.0-pro",
       "canonical_slug": "kwaivgi/kling-v3.0-pro-20260429",
@@ -4236,7 +4347,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "kwaivgi/kling-v3.0-std",
       "canonical_slug": "kwaivgi/kling-v3.0-std-20260429",
@@ -4501,7 +4612,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "google/veo-3.1-fast",
       "canonical_slug": "google/veo-3.1-fast-20260320",
@@ -4721,7 +4832,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "google/veo-3.1-lite",
       "canonical_slug": "google/veo-3.1-lite-20260331",
@@ -4875,7 +4986,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "kwaivgi/kling-video-o1",
       "canonical_slug": "kwaivgi/kling-video-o1-20260420",
@@ -5016,7 +5127,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "minimax/hailuo-2.3",
       "canonical_slug": "minimax/hailuo-2.3-20260420",
@@ -5050,6 +5161,434 @@
       "allowed_passthrough_parameters": [
         "prompt_optimizer",
         "fast_pretreatment"
+      ]
+    }
+  },
+  {
+    "model_id": "alibaba/wan-2.7",
+    "canonical_slug": "alibaba/wan-2.7-20260414",
+    "model_name": "Alibaba: Wan 2.7",
+    "provider": "alibaba",
+    "model_type": "video",
+    "description": "Wan 2.7 is a video generation model from Alibaba. It supports text-to-video, image-to-video with first and last frame control, and reference-to-video, where multiple reference images guide the style and content...",
+    "created": 1776211362,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "720p",
+      "1080p"
+    ],
+    "supported_aspect_ratios": [
+      "16:9",
+      "9:16",
+      "1:1",
+      "4:3",
+      "3:4"
+    ],
+    "supported_sizes": [
+      "1280x720",
+      "720x1280",
+      "1920x1080",
+      "1080x1920",
+      "720x720",
+      "1080x1080",
+      "960x720",
+      "720x960",
+      "1440x1080",
+      "1080x1440"
+    ],
+    "supported_durations": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "negative_prompt",
+      "prompt_extend",
+      "audio",
+      "ratio",
+      "last_image",
+      "video",
+      "videos",
+      "images"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_second",
+    "comparable_price": 0.1,
+    "comparable_price_basis": "plain_rate",
+    "pricing": {
+      "skus": [
+        {
+          "sku": "duration_seconds",
+          "raw_value": "0.1",
+          "amount": 0.1,
+          "currency": "usd",
+          "quantity": "second",
+          "unit_family": "usd_per_second",
+          "usd_amount": 0.1,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "duration_seconds": "0.1"
+      },
+      "sku_count": 1,
+      "resolved_sku_count": 1,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_second",
+        "usd": 0.1,
+        "basis": "plain_rate",
+        "basis_sku": "duration_seconds"
+      },
+      "usd_per_second_by_resolution": {
+        "default": 0.1
+      },
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_second"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "duration_seconds"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "raw": {
+      "id": "alibaba/wan-2.7",
+      "canonical_slug": "alibaba/wan-2.7-20260414",
+      "hugging_face_id": null,
+      "name": "Alibaba: Wan 2.7",
+      "created": 1776211362,
+      "description": "Wan 2.7 is a video generation model from Alibaba. It supports text-to-video, image-to-video with first and last frame control, and reference-to-video, where multiple reference images guide the style and content...",
+      "supported_resolutions": [
+        "720p",
+        "1080p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16",
+        "1:1",
+        "4:3",
+        "3:4"
+      ],
+      "supported_sizes": [
+        "1280x720",
+        "720x1280",
+        "1920x1080",
+        "1080x1920",
+        "720x720",
+        "1080x1080",
+        "960x720",
+        "720x960",
+        "1440x1080",
+        "1080x1440"
+      ],
+      "supported_durations": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "duration_seconds": "0.1"
+      },
+      "allowed_passthrough_parameters": [
+        "negative_prompt",
+        "prompt_extend",
+        "audio",
+        "ratio",
+        "last_image",
+        "video",
+        "videos",
+        "images"
+      ]
+    }
+  },
+  {
+    "model_id": "bytedance/seedance-2.0-fast",
+    "canonical_slug": "bytedance/seedance-2.0-fast-20260414",
+    "model_name": "ByteDance: Seedance 2.0 Fast",
+    "provider": "bytedance",
+    "model_type": "video",
+    "description": "Seedance 2.0 Fast is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It prioritizes generation speed and lower cost...",
+    "created": 1776211362,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "480p",
+      "720p"
+    ],
+    "supported_aspect_ratios": [
+      "1:1",
+      "3:4",
+      "9:16",
+      "4:3",
+      "16:9",
+      "21:9",
+      "9:21"
+    ],
+    "supported_sizes": [
+      "480x480",
+      "480x640",
+      "480x854",
+      "640x480",
+      "854x480",
+      "1120x480",
+      "720x720",
+      "720x960",
+      "720x1280",
+      "720x1680",
+      "960x720",
+      "1280x720",
+      "1680x720"
+    ],
+    "supported_durations": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "watermark",
+      "req_key"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": false,
+    "pricing_unit": null,
+    "comparable_price": null,
+    "comparable_price_basis": null,
+    "pricing": {
+      "skus": [
+        {
+          "sku": "video_tokens",
+          "raw_value": "0.0000042",
+          "amount": 4.2e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 4.2e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_without_audio",
+          "raw_value": "0.0000042",
+          "amount": 4.2e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 4.2e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": "without_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_with_video_input",
+          "raw_value": "0.000002475",
+          "amount": 2.475e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 2.475e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "video_tokens": "0.0000042",
+        "video_tokens_without_audio": "0.0000042",
+        "video_tokens_with_video_input": "0.000002475"
+      },
+      "sku_count": 3,
+      "resolved_sku_count": 3,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": null,
+        "usd": null,
+        "basis": null,
+        "basis_sku": null
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_video_token"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "video_tokens",
+        "video_tokens_with_video_input",
+        "video_tokens_without_audio"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "raw": {
+      "id": "bytedance/seedance-2.0-fast",
+      "canonical_slug": "bytedance/seedance-2.0-fast-20260414",
+      "hugging_face_id": null,
+      "name": "ByteDance: Seedance 2.0 Fast",
+      "created": 1776211362,
+      "description": "Seedance 2.0 Fast is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It prioritizes generation speed and lower cost...",
+      "supported_resolutions": [
+        "480p",
+        "720p"
+      ],
+      "supported_aspect_ratios": [
+        "1:1",
+        "3:4",
+        "9:16",
+        "4:3",
+        "16:9",
+        "21:9",
+        "9:21"
+      ],
+      "supported_sizes": [
+        "480x480",
+        "480x640",
+        "480x854",
+        "640x480",
+        "854x480",
+        "1120x480",
+        "720x720",
+        "720x960",
+        "720x1280",
+        "720x1680",
+        "960x720",
+        "1280x720",
+        "1680x720"
+      ],
+      "supported_durations": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "video_tokens": "0.0000042",
+        "video_tokens_without_audio": "0.0000042",
+        "video_tokens_with_video_input": "0.000002475"
+      },
+      "allowed_passthrough_parameters": [
+        "watermark",
+        "req_key"
       ]
     }
   },
@@ -5309,7 +5848,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "bytedance/seedance-2.0",
       "canonical_slug": "bytedance/seedance-2.0-20260414",
@@ -5389,434 +5928,6 @@
         "video_tokens_with_video_input": "0.0000043",
         "video_tokens_4k_with_video_input": "0.0000024",
         "video_tokens_1080p_with_video_input": "0.0000047"
-      },
-      "allowed_passthrough_parameters": [
-        "watermark",
-        "req_key"
-      ]
-    }
-  },
-  {
-    "model_id": "alibaba/wan-2.7",
-    "canonical_slug": "alibaba/wan-2.7-20260414",
-    "model_name": "Alibaba: Wan 2.7",
-    "provider": "alibaba",
-    "model_type": "video",
-    "description": "Wan 2.7 is a video generation model from Alibaba. It supports text-to-video, image-to-video with first and last frame control, and reference-to-video, where multiple reference images guide the style and content...",
-    "created": 1776211362,
-    "hugging_face_id": null,
-    "architecture": {
-      "modality": null,
-      "input_modalities": null,
-      "output_modalities": [
-        "video"
-      ],
-      "synthesized": true
-    },
-    "input_modalities": null,
-    "output_modalities": [
-      "video"
-    ],
-    "supported_parameters": null,
-    "supports_streaming": null,
-    "endpoints_url": null,
-    "supported_resolutions": [
-      "720p",
-      "1080p"
-    ],
-    "supported_aspect_ratios": [
-      "16:9",
-      "9:16",
-      "1:1",
-      "4:3",
-      "3:4"
-    ],
-    "supported_sizes": [
-      "1280x720",
-      "720x1280",
-      "1920x1080",
-      "1080x1920",
-      "720x720",
-      "1080x1080",
-      "960x720",
-      "720x960",
-      "1440x1080",
-      "1080x1440"
-    ],
-    "supported_durations": [
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ],
-    "supported_frame_images": [
-      "first_frame",
-      "last_frame"
-    ],
-    "generate_audio": true,
-    "seed": true,
-    "upscale_factor": null,
-    "creativity": null,
-    "allowed_passthrough_parameters": [
-      "negative_prompt",
-      "prompt_extend",
-      "audio",
-      "ratio",
-      "last_image",
-      "video",
-      "videos",
-      "images"
-    ],
-    "has_any_price": true,
-    "has_valid_pricing": true,
-    "pricing_unit": "usd_per_second",
-    "comparable_price": 0.1,
-    "comparable_price_basis": "plain_rate",
-    "pricing": {
-      "skus": [
-        {
-          "sku": "duration_seconds",
-          "raw_value": "0.1",
-          "amount": 0.1,
-          "currency": "usd",
-          "quantity": "second",
-          "unit_family": "usd_per_second",
-          "usd_amount": 0.1,
-          "conversion_applied": false,
-          "currency_assumed": true,
-          "resolution_variant": null,
-          "audio_variant": null,
-          "operation": null,
-          "is_minimum": false,
-          "is_negative": false,
-          "is_parseable": true
-        }
-      ],
-      "raw_pricing_skus": {
-        "duration_seconds": "0.1"
-      },
-      "sku_count": 1,
-      "resolved_sku_count": 1,
-      "unresolved_sku_keys": [],
-      "has_any_price": true,
-      "comparable_price": {
-        "unit": "usd_per_second",
-        "usd": 0.1,
-        "basis": "plain_rate",
-        "basis_sku": "duration_seconds"
-      },
-      "usd_per_second_by_resolution": {
-        "default": 0.1
-      },
-      "usd_per_image_by_resolution": {},
-      "unit_families": [
-        "usd_per_second"
-      ],
-      "unit_conversions_applied": [],
-      "currency_assumptions": [
-        "duration_seconds"
-      ]
-    },
-    "endpoint_pricing": null,
-    "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
-    "raw": {
-      "id": "alibaba/wan-2.7",
-      "canonical_slug": "alibaba/wan-2.7-20260414",
-      "hugging_face_id": null,
-      "name": "Alibaba: Wan 2.7",
-      "created": 1776211362,
-      "description": "Wan 2.7 is a video generation model from Alibaba. It supports text-to-video, image-to-video with first and last frame control, and reference-to-video, where multiple reference images guide the style and content...",
-      "supported_resolutions": [
-        "720p",
-        "1080p"
-      ],
-      "supported_aspect_ratios": [
-        "16:9",
-        "9:16",
-        "1:1",
-        "4:3",
-        "3:4"
-      ],
-      "supported_sizes": [
-        "1280x720",
-        "720x1280",
-        "1920x1080",
-        "1080x1920",
-        "720x720",
-        "1080x1080",
-        "960x720",
-        "720x960",
-        "1440x1080",
-        "1080x1440"
-      ],
-      "supported_durations": [
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
-      "supported_frame_images": [
-        "first_frame",
-        "last_frame"
-      ],
-      "upscale_factor": null,
-      "creativity": null,
-      "generate_audio": true,
-      "seed": true,
-      "pricing_skus": {
-        "duration_seconds": "0.1"
-      },
-      "allowed_passthrough_parameters": [
-        "negative_prompt",
-        "prompt_extend",
-        "audio",
-        "ratio",
-        "last_image",
-        "video",
-        "videos",
-        "images"
-      ]
-    }
-  },
-  {
-    "model_id": "bytedance/seedance-2.0-fast",
-    "canonical_slug": "bytedance/seedance-2.0-fast-20260414",
-    "model_name": "ByteDance: Seedance 2.0 Fast",
-    "provider": "bytedance",
-    "model_type": "video",
-    "description": "Seedance 2.0 Fast is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It prioritizes generation speed and lower cost...",
-    "created": 1776211362,
-    "hugging_face_id": null,
-    "architecture": {
-      "modality": null,
-      "input_modalities": null,
-      "output_modalities": [
-        "video"
-      ],
-      "synthesized": true
-    },
-    "input_modalities": null,
-    "output_modalities": [
-      "video"
-    ],
-    "supported_parameters": null,
-    "supports_streaming": null,
-    "endpoints_url": null,
-    "supported_resolutions": [
-      "480p",
-      "720p"
-    ],
-    "supported_aspect_ratios": [
-      "1:1",
-      "3:4",
-      "9:16",
-      "4:3",
-      "16:9",
-      "21:9",
-      "9:21"
-    ],
-    "supported_sizes": [
-      "480x480",
-      "480x640",
-      "480x854",
-      "640x480",
-      "854x480",
-      "1120x480",
-      "720x720",
-      "720x960",
-      "720x1280",
-      "720x1680",
-      "960x720",
-      "1280x720",
-      "1680x720"
-    ],
-    "supported_durations": [
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15
-    ],
-    "supported_frame_images": [
-      "first_frame",
-      "last_frame"
-    ],
-    "generate_audio": true,
-    "seed": true,
-    "upscale_factor": null,
-    "creativity": null,
-    "allowed_passthrough_parameters": [
-      "watermark",
-      "req_key"
-    ],
-    "has_any_price": true,
-    "has_valid_pricing": false,
-    "pricing_unit": null,
-    "comparable_price": null,
-    "comparable_price_basis": null,
-    "pricing": {
-      "skus": [
-        {
-          "sku": "video_tokens",
-          "raw_value": "0.0000042",
-          "amount": 4.2e-06,
-          "currency": "usd",
-          "quantity": "video_token",
-          "unit_family": "usd_per_video_token",
-          "usd_amount": 4.2e-06,
-          "conversion_applied": false,
-          "currency_assumed": true,
-          "resolution_variant": null,
-          "audio_variant": null,
-          "operation": null,
-          "is_minimum": false,
-          "is_negative": false,
-          "is_parseable": true
-        },
-        {
-          "sku": "video_tokens_without_audio",
-          "raw_value": "0.0000042",
-          "amount": 4.2e-06,
-          "currency": "usd",
-          "quantity": "video_token",
-          "unit_family": "usd_per_video_token",
-          "usd_amount": 4.2e-06,
-          "conversion_applied": false,
-          "currency_assumed": true,
-          "resolution_variant": null,
-          "audio_variant": "without_audio",
-          "operation": null,
-          "is_minimum": false,
-          "is_negative": false,
-          "is_parseable": true
-        },
-        {
-          "sku": "video_tokens_with_video_input",
-          "raw_value": "0.000002475",
-          "amount": 2.475e-06,
-          "currency": "usd",
-          "quantity": "video_token",
-          "unit_family": "usd_per_video_token",
-          "usd_amount": 2.475e-06,
-          "conversion_applied": false,
-          "currency_assumed": true,
-          "resolution_variant": null,
-          "audio_variant": null,
-          "operation": null,
-          "is_minimum": false,
-          "is_negative": false,
-          "is_parseable": true
-        }
-      ],
-      "raw_pricing_skus": {
-        "video_tokens": "0.0000042",
-        "video_tokens_without_audio": "0.0000042",
-        "video_tokens_with_video_input": "0.000002475"
-      },
-      "sku_count": 3,
-      "resolved_sku_count": 3,
-      "unresolved_sku_keys": [],
-      "has_any_price": true,
-      "comparable_price": {
-        "unit": null,
-        "usd": null,
-        "basis": null,
-        "basis_sku": null
-      },
-      "usd_per_second_by_resolution": {},
-      "usd_per_image_by_resolution": {},
-      "unit_families": [
-        "usd_per_video_token"
-      ],
-      "unit_conversions_applied": [],
-      "currency_assumptions": [
-        "video_tokens",
-        "video_tokens_with_video_input",
-        "video_tokens_without_audio"
-      ]
-    },
-    "endpoint_pricing": null,
-    "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
-    "raw": {
-      "id": "bytedance/seedance-2.0-fast",
-      "canonical_slug": "bytedance/seedance-2.0-fast-20260414",
-      "hugging_face_id": null,
-      "name": "ByteDance: Seedance 2.0 Fast",
-      "created": 1776211362,
-      "description": "Seedance 2.0 Fast is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It prioritizes generation speed and lower cost...",
-      "supported_resolutions": [
-        "480p",
-        "720p"
-      ],
-      "supported_aspect_ratios": [
-        "1:1",
-        "3:4",
-        "9:16",
-        "4:3",
-        "16:9",
-        "21:9",
-        "9:21"
-      ],
-      "supported_sizes": [
-        "480x480",
-        "480x640",
-        "480x854",
-        "640x480",
-        "854x480",
-        "1120x480",
-        "720x720",
-        "720x960",
-        "720x1280",
-        "720x1680",
-        "960x720",
-        "1280x720",
-        "1680x720"
-      ],
-      "supported_durations": [
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15
-      ],
-      "supported_frame_images": [
-        "first_frame",
-        "last_frame"
-      ],
-      "upscale_factor": null,
-      "creativity": null,
-      "generate_audio": true,
-      "seed": true,
-      "pricing_skus": {
-        "video_tokens": "0.0000042",
-        "video_tokens_without_audio": "0.0000042",
-        "video_tokens_with_video_input": "0.000002475"
       },
       "allowed_passthrough_parameters": [
         "watermark",
@@ -6007,7 +6118,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "alibaba/wan-2.6",
       "canonical_slug": "alibaba/wan-2.6-20260327",
@@ -6209,7 +6320,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "bytedance/seedance-1-5-pro",
       "canonical_slug": "bytedance/seedance-1-5-pro-20260320",
@@ -6451,7 +6562,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
     "raw": {
       "id": "google/veo-3.1",
       "canonical_slug": "google/veo-3.1-20260320",
