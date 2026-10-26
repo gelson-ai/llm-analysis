@@ -14,7 +14,7 @@
       "severity": "info",
       "issue": "price_data_without_comparable_rate",
       "count": 6,
-      "detail": "6 media model(s) publish a price but not in a unit that can be compared across models (e.g. priced only per video token, per megapixel-second, or with a per-generation minimum): ['black-forest-labs/flux-video-upscale', 'bytedance/seedance-2.0-mini', 'bytedance/seedance-2.5', 'bytedance/seedance-2.0-fast', 'bytedance/seedance-2.0', 'bytedance/seedance-1-5-pro']. They are NOT unpriced - see 'has_any_price' vs 'has_valid_pricing' on each record."
+      "detail": "6 media model(s) publish a price but not in a unit that can be compared across models (e.g. priced only per video token, per megapixel-second, or with a per-generation minimum): ['black-forest-labs/flux-video-upscale', 'bytedance/seedance-2.0-mini', 'bytedance/seedance-2.5', 'bytedance/seedance-2.0', 'bytedance/seedance-2.0-fast', 'bytedance/seedance-1-5-pro']. They are NOT unpriced - see 'has_any_price' vs 'has_valid_pricing' on each record."
     },
     {
       "severity": "info",
@@ -25,14 +25,14 @@
     {
       "severity": "info",
       "issue": "prompt_benchmarks_collected",
-      "count": 884,
-      "detail": "884 prompt-benchmark row(s) parsed from 28 page(s); 67 distinct model(s) matched to the catalog. Correctness values are per-prompt judged pass counts, not a global score."
+      "count": 1095,
+      "detail": "1095 prompt-benchmark row(s) parsed from 28 page(s); 80 distinct model(s) matched to the catalog. Correctness values are per-prompt judged pass counts, not a global score."
     },
     {
       "severity": "info",
       "issue": "prompt_benchmark_page_skipped",
       "count": 1,
-      "detail": "/benchmarks/media/images/portraits was skipped: no_judged_checks. The page publishes 216 result-row block(s) of generated assets but no judged pass count anywhere, so there is nothing to score. Its rows are excluded from both the pass-rate and the cost averages, which keeps this dataset's rule that price and performance come from the same rows."
+      "detail": "/benchmarks/media/images/portraits was skipped: no_judged_checks. The page publishes 224 result-row block(s) of generated assets but no judged pass count anywhere, so there is nothing to score. Its rows are excluded from both the pass-rate and the cost averages, which keeps this dataset's rule that price and performance come from the same rows."
     },
     {
       "severity": "warning",

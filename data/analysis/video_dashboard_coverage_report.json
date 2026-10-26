@@ -1,5 +1,5 @@
 {
-  "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+  "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
   "model_inventory": {
     "total_models": 30,
     "provider_count": 9,
@@ -8,7 +8,7 @@
     "price_resolution_rate": 80.0,
     "models_with_any_price_data": 30,
     "models_with_price_data_but_no_comparable_rate": 6,
-    "models_with_benchmark_rows": 24,
+    "models_with_benchmark_rows": 25,
     "unit_families_present": [
       "cents_per_generation",
       "cents_per_image",
@@ -35,12 +35,11 @@
     }
   },
   "unrated": {
-    "count": 6,
+    "count": 5,
     "model_ids": [
       "black-forest-labs/flux-video-edit",
       "black-forest-labs/flux-video-upscale",
       "heygen/avatar-iv",
-      "heygen/heygen-video-1",
       "minimax/hailuo-2.3",
       "runway/aleph-2"
     ],
@@ -61,8 +60,8 @@
   "evidence_gate": {
     "min_prompts": 8,
     "min_checks": 40,
-    "models_measured": 24,
-    "models_passing": 24,
+    "models_measured": 25,
+    "models_passing": 25,
     "models_failing": []
   },
   "prompt_benchmark_coverage": {
@@ -73,23 +72,23 @@
     "pages_skipped": [],
     "pages_skipped_count": 0,
     "prompt_page_count": 12,
-    "rows": 288,
+    "rows": 314,
     "rows_per_prompt": {
-      "traffic-light": 25,
-      "five-candles": 24,
-      "wrong-way-escalator": 25,
-      "frozen-crowd": 25,
-      "sign-stays-readable": 25,
-      "glass-of-water": 25,
-      "domino-run": 25,
-      "mirror-walk": 25,
-      "behind-the-pillar": 25,
-      "steaming-mug": 24,
-      "walk-out": 14,
-      "continuous-shot": 26
+      "traffic-light": 27,
+      "five-candles": 27,
+      "wrong-way-escalator": 27,
+      "frozen-crowd": 27,
+      "sign-stays-readable": 27,
+      "glass-of-water": 27,
+      "domino-run": 27,
+      "mirror-walk": 27,
+      "behind-the-pillar": 27,
+      "steaming-mug": 26,
+      "walk-out": 18,
+      "continuous-shot": 27
     },
-    "distinct_models_in_benchmarks": 26,
-    "models_matched_to_inventory": 24,
+    "distinct_models_in_benchmarks": 27,
+    "models_matched_to_inventory": 25,
     "models_unmatched": 2,
     "unmatched_model_slugs": [
       "google/gemini-omni-1.1-flash-20260911",
@@ -98,7 +97,7 @@
     "rows_missing_cost": 0,
     "rows_missing_generation_time": 0,
     "correctness_extraction_sources": {
-      "aria-label": 288
+      "aria-label": 314
     },
     "conflicting_row_values": 0,
     "note": "A pass rate is the share of judged checks a model passed across the prompts it was benchmarked on. Checks are POOLED (total passes over total attempts), not averaged per prompt, and OpenRouter judges a different number of checks per prompt - so a pooled rate summarises a model's whole benchmark run and is not a like-for-like comparison within any single prompt."
@@ -135,7 +134,7 @@
       "duration_seconds_1080p": "0.1694",
       "video_tokens": "0.0000024",
       "video_tokens_without_audio": "0.0000012",
-      "video_tokens_with_video_input": "0.0000043",
+      "video_tokens_with_video_input": "0.000002475",
       "reference_images": "0.04",
       "duration_seconds_with_audio": "0.40",
       "text_to_video_duration_seconds_480p": "0.04",

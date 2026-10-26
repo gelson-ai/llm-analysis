@@ -1,7 +1,7 @@
 {
   "version": 1,
   "timezone": "Asia/Manila",
-  "updated_at": "2026-10-19T02:36:43.550689+00:00",
+  "updated_at": "2026-10-26T02:31:29.172194+00:00",
   "weeks": {
     "2026-09-21_2026-09-27": {
       "week_start": "2026-09-21",
@@ -362,6 +362,79 @@
             "pass_rate": 0.875,
             "avg_cost_usd": 0.01,
             "prompts": 15
+          },
+          "current_leader_differs": false,
+          "revision_count": 0
+        }
+      }
+    },
+    "2026-10-26_2026-11-01": {
+      "week_start": "2026-10-26",
+      "week_end": "2026-11-01",
+      "week_label": "Mon 26 Oct - Sun 1 Nov 2026",
+      "iso_week": "2026-W44",
+      "picks": {
+        "value": {
+          "metric": "value",
+          "metric_label": "Value (pass rate / benchmark cost)",
+          "model_id": "recraft/recraft-v4.1-flash",
+          "model_name": "Recraft: Recraft V4.1 Flash",
+          "provider": "recraft",
+          "value": 96.3456,
+          "pass_rate": 0.674419,
+          "avg_cost_usd": 0.007,
+          "prompts": 10,
+          "output_resolutions": [
+            "1024x1024"
+          ],
+          "duration_ms_mean": 1490.9,
+          "design_arena": false,
+          "has_catalog_rate": true,
+          "recorded_at": "2026-10-26T02:31:29.172194+00:00",
+          "recorded_label": "Mon 26 Oct 2026, 10:31 PHT",
+          "data_retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+          "locked_by": "refresh_media",
+          "contenders": [
+            {
+              "rank": 1,
+              "model_id": "recraft/recraft-v4.1-flash",
+              "model_name": "Recraft: Recraft V4.1 Flash",
+              "provider": "recraft",
+              "value": 96.3456,
+              "pass_rate": 0.674419,
+              "avg_cost_usd": 0.007,
+              "prompts": 10
+            },
+            {
+              "rank": 2,
+              "model_id": "meta/muse-image",
+              "model_name": "Meta: Muse Image",
+              "provider": "meta",
+              "value": 87.5,
+              "pass_rate": 0.875,
+              "avg_cost_usd": 0.01,
+              "prompts": 15
+            },
+            {
+              "rank": 3,
+              "model_id": "black-forest-labs/flux-3-image-klein",
+              "model_name": "Black Forest Labs: FLUX 3 Image Klein",
+              "provider": "black-forest-labs",
+              "value": 83.3333,
+              "pass_rate": 0.75,
+              "avg_cost_usd": 0.009,
+              "prompts": 15
+            }
+          ],
+          "revisions": [],
+          "current_leader": {
+            "model_id": "recraft/recraft-v4.1-flash",
+            "model_name": "Recraft: Recraft V4.1 Flash",
+            "provider": "recraft",
+            "value": 96.3456,
+            "pass_rate": 0.674419,
+            "avg_cost_usd": 0.007,
+            "prompts": 10
           },
           "current_leader_differs": false,
           "revision_count": 0

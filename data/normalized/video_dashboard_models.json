@@ -175,7 +175,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "x-ai/grok-imagine-video-1.5-lite",
       "canonical_slug": "x-ai/grok-imagine-video-1.5-lite-20261001",
@@ -461,7 +461,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "heygen/heygen-video-1",
       "canonical_slug": "heygen/heygen-video-1-20260930",
@@ -605,7 +605,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "black-forest-labs/flux-video-edit",
       "canonical_slug": "black-forest-labs/flux-video-edit-20260910",
@@ -783,7 +783,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "minimax/hailuo-3-max",
       "canonical_slug": "minimax/hailuo-3-max-20260901",
@@ -1004,7 +1004,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "alibaba/wan-3.0-prime",
       "canonical_slug": "alibaba/wan-3.0-prime-20260827",
@@ -1241,7 +1241,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "alibaba/wan-3.0",
       "canonical_slug": "alibaba/wan-3.0-20260824",
@@ -1412,7 +1412,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "heygen/avatar-iv",
       "canonical_slug": "heygen/avatar-iv-20260625",
@@ -1563,7 +1563,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "black-forest-labs/flux-video-upscale",
       "canonical_slug": "black-forest-labs/flux-video-upscale-20260819",
@@ -1762,7 +1762,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "bytedance/seedance-2.0-mini",
       "canonical_slug": "bytedance/seedance-2.0-mini-20260811",
@@ -2012,7 +2012,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "bytedance/seedance-2.5",
       "canonical_slug": "bytedance/seedance-2.5-20260807",
@@ -2372,7 +2372,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "black-forest-labs/flux-3-video",
       "canonical_slug": "black-forest-labs/flux-3-video-20260804",
@@ -2570,7 +2570,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "minimax/hailuo-3",
       "canonical_slug": "minimax/hailuo-03-20260730",
@@ -2738,7 +2738,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "runway/aleph-2",
       "canonical_slug": "runway/aleph-2-20260729",
@@ -2882,7 +2882,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "runway/gen-4.5",
       "canonical_slug": "runway/gen-4.5-20260729",
@@ -3103,7 +3103,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "x-ai/grok-imagine-video-1.5",
       "canonical_slug": "x-ai/grok-imagine-video-1.5-20260719",
@@ -3307,7 +3307,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "alibaba/happyhorse-1.1",
       "canonical_slug": "alibaba/happyhorse-1.1-20260624",
@@ -3521,7 +3521,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "alibaba/happyhorse-1.0",
       "canonical_slug": "alibaba/happyhorse-1.0-20260624",
@@ -3757,7 +3757,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "x-ai/grok-imagine-video",
       "canonical_slug": "x-ai/grok-imagine-video-20260512",
@@ -4057,7 +4057,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "kwaivgi/kling-v3.0-pro",
       "canonical_slug": "kwaivgi/kling-v3.0-pro-20260429",
@@ -4347,7 +4347,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "kwaivgi/kling-v3.0-std",
       "canonical_slug": "kwaivgi/kling-v3.0-std-20260429",
@@ -4612,7 +4612,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "google/veo-3.1-fast",
       "canonical_slug": "google/veo-3.1-fast-20260320",
@@ -4832,7 +4832,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "google/veo-3.1-lite",
       "canonical_slug": "google/veo-3.1-lite-20260331",
@@ -4986,7 +4986,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "kwaivgi/kling-video-o1",
       "canonical_slug": "kwaivgi/kling-video-o1-20260420",
@@ -5127,7 +5127,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "minimax/hailuo-2.3",
       "canonical_slug": "minimax/hailuo-2.3-20260420",
@@ -5292,7 +5292,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "alibaba/wan-2.7",
       "canonical_slug": "alibaba/wan-2.7-20260414",
@@ -5354,241 +5354,6 @@
         "video",
         "videos",
         "images"
-      ]
-    }
-  },
-  {
-    "model_id": "bytedance/seedance-2.0-fast",
-    "canonical_slug": "bytedance/seedance-2.0-fast-20260414",
-    "model_name": "ByteDance: Seedance 2.0 Fast",
-    "provider": "bytedance",
-    "model_type": "video",
-    "description": "Seedance 2.0 Fast is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It prioritizes generation speed and lower cost...",
-    "created": 1776211362,
-    "hugging_face_id": null,
-    "architecture": {
-      "modality": null,
-      "input_modalities": null,
-      "output_modalities": [
-        "video"
-      ],
-      "synthesized": true
-    },
-    "input_modalities": null,
-    "output_modalities": [
-      "video"
-    ],
-    "supported_parameters": null,
-    "supports_streaming": null,
-    "endpoints_url": null,
-    "supported_resolutions": [
-      "480p",
-      "720p"
-    ],
-    "supported_aspect_ratios": [
-      "1:1",
-      "3:4",
-      "9:16",
-      "4:3",
-      "16:9",
-      "21:9",
-      "9:21"
-    ],
-    "supported_sizes": [
-      "480x480",
-      "480x640",
-      "480x854",
-      "640x480",
-      "854x480",
-      "1120x480",
-      "720x720",
-      "720x960",
-      "720x1280",
-      "720x1680",
-      "960x720",
-      "1280x720",
-      "1680x720"
-    ],
-    "supported_durations": [
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15
-    ],
-    "supported_frame_images": [
-      "first_frame",
-      "last_frame"
-    ],
-    "generate_audio": true,
-    "seed": true,
-    "upscale_factor": null,
-    "creativity": null,
-    "allowed_passthrough_parameters": [
-      "watermark",
-      "req_key"
-    ],
-    "has_any_price": true,
-    "has_valid_pricing": false,
-    "pricing_unit": null,
-    "comparable_price": null,
-    "comparable_price_basis": null,
-    "pricing": {
-      "skus": [
-        {
-          "sku": "video_tokens",
-          "raw_value": "0.0000042",
-          "amount": 4.2e-06,
-          "currency": "usd",
-          "quantity": "video_token",
-          "unit_family": "usd_per_video_token",
-          "usd_amount": 4.2e-06,
-          "conversion_applied": false,
-          "currency_assumed": true,
-          "resolution_variant": null,
-          "audio_variant": null,
-          "operation": null,
-          "is_minimum": false,
-          "is_negative": false,
-          "is_parseable": true
-        },
-        {
-          "sku": "video_tokens_without_audio",
-          "raw_value": "0.0000042",
-          "amount": 4.2e-06,
-          "currency": "usd",
-          "quantity": "video_token",
-          "unit_family": "usd_per_video_token",
-          "usd_amount": 4.2e-06,
-          "conversion_applied": false,
-          "currency_assumed": true,
-          "resolution_variant": null,
-          "audio_variant": "without_audio",
-          "operation": null,
-          "is_minimum": false,
-          "is_negative": false,
-          "is_parseable": true
-        },
-        {
-          "sku": "video_tokens_with_video_input",
-          "raw_value": "0.000002475",
-          "amount": 2.475e-06,
-          "currency": "usd",
-          "quantity": "video_token",
-          "unit_family": "usd_per_video_token",
-          "usd_amount": 2.475e-06,
-          "conversion_applied": false,
-          "currency_assumed": true,
-          "resolution_variant": null,
-          "audio_variant": null,
-          "operation": null,
-          "is_minimum": false,
-          "is_negative": false,
-          "is_parseable": true
-        }
-      ],
-      "raw_pricing_skus": {
-        "video_tokens": "0.0000042",
-        "video_tokens_without_audio": "0.0000042",
-        "video_tokens_with_video_input": "0.000002475"
-      },
-      "sku_count": 3,
-      "resolved_sku_count": 3,
-      "unresolved_sku_keys": [],
-      "has_any_price": true,
-      "comparable_price": {
-        "unit": null,
-        "usd": null,
-        "basis": null,
-        "basis_sku": null
-      },
-      "usd_per_second_by_resolution": {},
-      "usd_per_image_by_resolution": {},
-      "unit_families": [
-        "usd_per_video_token"
-      ],
-      "unit_conversions_applied": [],
-      "currency_assumptions": [
-        "video_tokens",
-        "video_tokens_with_video_input",
-        "video_tokens_without_audio"
-      ]
-    },
-    "endpoint_pricing": null,
-    "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
-    "raw": {
-      "id": "bytedance/seedance-2.0-fast",
-      "canonical_slug": "bytedance/seedance-2.0-fast-20260414",
-      "hugging_face_id": null,
-      "name": "ByteDance: Seedance 2.0 Fast",
-      "created": 1776211362,
-      "description": "Seedance 2.0 Fast is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It prioritizes generation speed and lower cost...",
-      "supported_resolutions": [
-        "480p",
-        "720p"
-      ],
-      "supported_aspect_ratios": [
-        "1:1",
-        "3:4",
-        "9:16",
-        "4:3",
-        "16:9",
-        "21:9",
-        "9:21"
-      ],
-      "supported_sizes": [
-        "480x480",
-        "480x640",
-        "480x854",
-        "640x480",
-        "854x480",
-        "1120x480",
-        "720x720",
-        "720x960",
-        "720x1280",
-        "720x1680",
-        "960x720",
-        "1280x720",
-        "1680x720"
-      ],
-      "supported_durations": [
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15
-      ],
-      "supported_frame_images": [
-        "first_frame",
-        "last_frame"
-      ],
-      "upscale_factor": null,
-      "creativity": null,
-      "generate_audio": true,
-      "seed": true,
-      "pricing_skus": {
-        "video_tokens": "0.0000042",
-        "video_tokens_without_audio": "0.0000042",
-        "video_tokens_with_video_input": "0.000002475"
-      },
-      "allowed_passthrough_parameters": [
-        "watermark",
-        "req_key"
       ]
     }
   },
@@ -5848,7 +5613,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "bytedance/seedance-2.0",
       "canonical_slug": "bytedance/seedance-2.0-20260414",
@@ -5928,6 +5693,241 @@
         "video_tokens_with_video_input": "0.0000043",
         "video_tokens_4k_with_video_input": "0.0000024",
         "video_tokens_1080p_with_video_input": "0.0000047"
+      },
+      "allowed_passthrough_parameters": [
+        "watermark",
+        "req_key"
+      ]
+    }
+  },
+  {
+    "model_id": "bytedance/seedance-2.0-fast",
+    "canonical_slug": "bytedance/seedance-2.0-fast-20260414",
+    "model_name": "ByteDance: Seedance 2.0 Fast",
+    "provider": "bytedance",
+    "model_type": "video",
+    "description": "Seedance 2.0 Fast is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It prioritizes generation speed and lower cost...",
+    "created": 1776211362,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": null,
+      "output_modalities": [
+        "video"
+      ],
+      "synthesized": true
+    },
+    "input_modalities": null,
+    "output_modalities": [
+      "video"
+    ],
+    "supported_parameters": null,
+    "supports_streaming": null,
+    "endpoints_url": null,
+    "supported_resolutions": [
+      "480p",
+      "720p"
+    ],
+    "supported_aspect_ratios": [
+      "1:1",
+      "3:4",
+      "9:16",
+      "4:3",
+      "16:9",
+      "21:9",
+      "9:21"
+    ],
+    "supported_sizes": [
+      "480x480",
+      "480x640",
+      "480x854",
+      "640x480",
+      "854x480",
+      "1120x480",
+      "720x720",
+      "720x960",
+      "720x1280",
+      "720x1680",
+      "960x720",
+      "1280x720",
+      "1680x720"
+    ],
+    "supported_durations": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "supported_frame_images": [
+      "first_frame",
+      "last_frame"
+    ],
+    "generate_audio": true,
+    "seed": true,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": [
+      "watermark",
+      "req_key"
+    ],
+    "has_any_price": true,
+    "has_valid_pricing": false,
+    "pricing_unit": null,
+    "comparable_price": null,
+    "comparable_price_basis": null,
+    "pricing": {
+      "skus": [
+        {
+          "sku": "video_tokens",
+          "raw_value": "0.0000042",
+          "amount": 4.2e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 4.2e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_without_audio",
+          "raw_value": "0.0000042",
+          "amount": 4.2e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 4.2e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": "without_audio",
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        },
+        {
+          "sku": "video_tokens_with_video_input",
+          "raw_value": "0.000002475",
+          "amount": 2.475e-06,
+          "currency": "usd",
+          "quantity": "video_token",
+          "unit_family": "usd_per_video_token",
+          "usd_amount": 2.475e-06,
+          "conversion_applied": false,
+          "currency_assumed": true,
+          "resolution_variant": null,
+          "audio_variant": null,
+          "operation": null,
+          "is_minimum": false,
+          "is_negative": false,
+          "is_parseable": true
+        }
+      ],
+      "raw_pricing_skus": {
+        "video_tokens": "0.0000042",
+        "video_tokens_without_audio": "0.0000042",
+        "video_tokens_with_video_input": "0.000002475"
+      },
+      "sku_count": 3,
+      "resolved_sku_count": 3,
+      "unresolved_sku_keys": [],
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": null,
+        "usd": null,
+        "basis": null,
+        "basis_sku": null
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [
+        "usd_per_video_token"
+      ],
+      "unit_conversions_applied": [],
+      "currency_assumptions": [
+        "video_tokens",
+        "video_tokens_with_video_input",
+        "video_tokens_without_audio"
+      ]
+    },
+    "endpoint_pricing": null,
+    "raw_source": "openrouter:/api/v1/videos/models",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
+    "raw": {
+      "id": "bytedance/seedance-2.0-fast",
+      "canonical_slug": "bytedance/seedance-2.0-fast-20260414",
+      "hugging_face_id": null,
+      "name": "ByteDance: Seedance 2.0 Fast",
+      "created": 1776211362,
+      "description": "Seedance 2.0 Fast is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It prioritizes generation speed and lower cost...",
+      "supported_resolutions": [
+        "480p",
+        "720p"
+      ],
+      "supported_aspect_ratios": [
+        "1:1",
+        "3:4",
+        "9:16",
+        "4:3",
+        "16:9",
+        "21:9",
+        "9:21"
+      ],
+      "supported_sizes": [
+        "480x480",
+        "480x640",
+        "480x854",
+        "640x480",
+        "854x480",
+        "1120x480",
+        "720x720",
+        "720x960",
+        "720x1280",
+        "720x1680",
+        "960x720",
+        "1280x720",
+        "1680x720"
+      ],
+      "supported_durations": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "video_tokens": "0.0000042",
+        "video_tokens_without_audio": "0.0000042",
+        "video_tokens_with_video_input": "0.000002475"
       },
       "allowed_passthrough_parameters": [
         "watermark",
@@ -6118,7 +6118,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "alibaba/wan-2.6",
       "canonical_slug": "alibaba/wan-2.6-20260327",
@@ -6320,7 +6320,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "bytedance/seedance-1-5-pro",
       "canonical_slug": "bytedance/seedance-1-5-pro-20260320",
@@ -6562,7 +6562,7 @@
     },
     "endpoint_pricing": null,
     "raw_source": "openrouter:/api/v1/videos/models",
-    "retrieved_at": "2026-10-19T02:36:43.691692+00:00",
+    "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
     "raw": {
       "id": "google/veo-3.1",
       "canonical_slug": "google/veo-3.1-20260320",

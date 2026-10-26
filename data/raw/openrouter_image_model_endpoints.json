@@ -1545,7 +1545,7 @@
             "input_references": {
               "type": "range",
               "min": 0,
-              "max": 4
+              "max": 3
             },
             "seed": {
               "type": "boolean"
@@ -1623,7 +1623,7 @@
             "input_references": {
               "type": "range",
               "min": 0,
-              "max": 4
+              "max": 3
             },
             "seed": {
               "type": "boolean"

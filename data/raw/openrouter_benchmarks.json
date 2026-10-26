@@ -31,11 +31,11 @@
     }
   ],
   "field_scan": {
-    "models_sampled": 471,
+    "models_sampled": 467,
     "matched_key_paths": {
-      "benchmarks": 304,
-      "benchmarks.artificial_analysis": 289,
-      "benchmarks.artificial_analysis.intelligence_index": 289
+      "benchmarks": 303,
+      "benchmarks.artificial_analysis": 286,
+      "benchmarks.artificial_analysis.intelligence_index": 286
     },
     "conclusion": "Found candidate benchmark-shaped fields - inspect matched_key_paths and the raw model objects manually before building a parser around them."
   }

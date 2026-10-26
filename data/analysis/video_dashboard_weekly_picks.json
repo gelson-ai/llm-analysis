@@ -1,7 +1,7 @@
 {
   "version": 1,
   "timezone": "Asia/Manila",
-  "updated_at": "2026-10-19T02:36:49.387879+00:00",
+  "updated_at": "2026-10-26T02:31:34.308141+00:00",
   "weeks": {
     "2026-09-21_2026-09-27": {
       "week_start": "2026-09-21",
@@ -397,6 +397,86 @@
             "avg_cost_usd": 0.24,
             "prompts": 11,
             "checks_total": 53
+          },
+          "current_leader_differs": false,
+          "revision_count": 0
+        }
+      }
+    },
+    "2026-10-26_2026-11-01": {
+      "week_start": "2026-10-26",
+      "week_end": "2026-11-01",
+      "week_label": "Mon 26 Oct - Sun 1 Nov 2026",
+      "iso_week": "2026-W44",
+      "picks": {
+        "value": {
+          "metric": "value",
+          "metric_label": "Value (pass rate / benchmark cost per clip)",
+          "model_id": "heygen/heygen-video-1",
+          "model_name": "HeyGen: HeyGen Video",
+          "provider": "heygen",
+          "value": 4.9058,
+          "pass_rate": 0.793103,
+          "avg_cost_usd": 0.161667,
+          "prompts": 12,
+          "checks_total": 58,
+          "output_resolutions": [
+            "1344x768",
+            "768x768"
+          ],
+          "has_catalog_rate": true,
+          "comparable_price": 0.02,
+          "comparable_price_basis": "lowest_published_tier",
+          "mean_generation_seconds": 30.2,
+          "recorded_at": "2026-10-26T02:31:34.308141+00:00",
+          "recorded_label": "Mon 26 Oct 2026, 10:31 PHT",
+          "data_retrieved_at": "2026-10-26T02:31:29.369431+00:00",
+          "locked_by": "refresh_video",
+          "contenders": [
+            {
+              "rank": 1,
+              "model_id": "heygen/heygen-video-1",
+              "model_name": "HeyGen: HeyGen Video",
+              "provider": "heygen",
+              "value": 4.9058,
+              "pass_rate": 0.793103,
+              "avg_cost_usd": 0.161667,
+              "prompts": 12,
+              "checks_total": 58
+            },
+            {
+              "rank": 2,
+              "model_id": "bytedance/seedance-2.0-mini",
+              "model_name": "ByteDance: Seedance 2.0 Mini",
+              "provider": "bytedance",
+              "value": 2.9088,
+              "pass_rate": 0.698113,
+              "avg_cost_usd": 0.24,
+              "prompts": 11,
+              "checks_total": 53
+            },
+            {
+              "rank": 3,
+              "model_id": "x-ai/grok-imagine-video-1.5-lite",
+              "model_name": "SpaceXAI: Grok Imagine Video 1.5 Lite",
+              "provider": "x-ai",
+              "value": 2.7412,
+              "pass_rate": 0.660377,
+              "avg_cost_usd": 0.240909,
+              "prompts": 11,
+              "checks_total": 53
+            }
+          ],
+          "revisions": [],
+          "current_leader": {
+            "model_id": "heygen/heygen-video-1",
+            "model_name": "HeyGen: HeyGen Video",
+            "provider": "heygen",
+            "value": 4.9058,
+            "pass_rate": 0.793103,
+            "avg_cost_usd": 0.161667,
+            "prompts": 12,
+            "checks_total": 58
           },
           "current_leader_differs": false,
           "revision_count": 0
