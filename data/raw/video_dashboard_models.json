@@ -96,12 +96,13 @@
       "generate_audio": false,
       "seed": true,
       "pricing_skus": {
-        "duration_seconds_2k": "0.09",
+        "duration_seconds_2k": "0.1",
         "duration_seconds_480p": "0.02",
-        "duration_seconds_768p": "0.03",
+        "duration_seconds_768p": "0.036",
+        "reference_input_images": "0.04",
         "reference_duration_seconds_2k": "0.18",
-        "reference_duration_seconds_480p": "0.04",
-        "reference_duration_seconds_768p": "0.06"
+        "reference_duration_seconds_480p": "0.07",
+        "reference_duration_seconds_768p": "0.1"
       },
       "allowed_passthrough_parameters": [
         "prompt_enhancement"
@@ -232,7 +233,8 @@
         30
       ],
       "supported_frame_images": [
-        "first_frame"
+        "first_frame",
+        "last_frame"
       ],
       "upscale_factor": null,
       "creativity": null,
@@ -297,7 +299,8 @@
         30
       ],
       "supported_frame_images": [
-        "first_frame"
+        "first_frame",
+        "last_frame"
       ],
       "upscale_factor": null,
       "creativity": null,
@@ -371,8 +374,8 @@
       "generate_audio": false,
       "seed": false,
       "pricing_skus": {
-        "cents_per_megapixel_second_precise": "7.5",
-        "cents_per_megapixel_second_creative": "10.5"
+        "cents_per_megapixel_second_precise": "3.5",
+        "cents_per_megapixel_second_creative": "5"
       },
       "allowed_passthrough_parameters": [
         "safety_tolerance"
@@ -531,12 +534,14 @@
       "id": "black-forest-labs/flux-3-video",
       "canonical_slug": "black-forest-labs/flux-3-video-20260804",
       "hugging_face_id": null,
-      "name": "Black Forest Labs: FLUX.3 Video",
+      "name": "Black Forest Labs: FLUX 3 Video",
       "created": 1785858831,
       "description": "FLUX.3 Video is a video generation model from Black Forest Labs. It supports text-to-video, image-guided generation with opening and closing keyframes, and video continuation workflows, making it suited for controlled...",
       "supported_resolutions": [
         "720p",
-        "1080p"
+        "1080p",
+        "2K",
+        "4K"
       ],
       "supported_aspect_ratios": [
         "21:9",
@@ -575,8 +580,12 @@
       "seed": false,
       "pricing_skus": {
         "cents_per_second_output": "17",
+        "cents_per_second_output_2k": "28",
+        "cents_per_second_output_4k": "41",
         "cents_per_second_output_720p": "17",
         "cents_per_second_output_1080p": "29",
+        "cents_per_second_video_continuation_2k": "31",
+        "cents_per_second_video_continuation_4k": "45",
         "cents_per_second_video_continuation_720p": "41",
         "cents_per_second_video_continuation_1080p": "53"
       },
@@ -1249,6 +1258,69 @@
       ]
     },
     {
+      "id": "alibaba/wan-2.7",
+      "canonical_slug": "alibaba/wan-2.7-20260414",
+      "hugging_face_id": null,
+      "name": "Alibaba: Wan 2.7",
+      "created": 1776211362,
+      "description": "Wan 2.7 is a video generation model from Alibaba. It supports text-to-video, image-to-video with first and last frame control, and reference-to-video, where multiple reference images guide the style and content...",
+      "supported_resolutions": [
+        "720p",
+        "1080p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9",
+        "9:16",
+        "1:1",
+        "4:3",
+        "3:4"
+      ],
+      "supported_sizes": [
+        "1280x720",
+        "720x1280",
+        "1920x1080",
+        "1080x1920",
+        "720x720",
+        "1080x1080",
+        "960x720",
+        "720x960",
+        "1440x1080",
+        "1080x1440"
+      ],
+      "supported_durations": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "duration_seconds": "0.1"
+      },
+      "allowed_passthrough_parameters": [
+        "negative_prompt",
+        "prompt_extend",
+        "audio",
+        "ratio",
+        "last_image",
+        "video",
+        "videos",
+        "images"
+      ]
+    },
+    {
       "id": "bytedance/seedance-2.0",
       "canonical_slug": "bytedance/seedance-2.0-20260414",
       "hugging_face_id": null,
@@ -1331,69 +1403,6 @@
       "allowed_passthrough_parameters": [
         "watermark",
         "req_key"
-      ]
-    },
-    {
-      "id": "alibaba/wan-2.7",
-      "canonical_slug": "alibaba/wan-2.7-20260414",
-      "hugging_face_id": null,
-      "name": "Alibaba: Wan 2.7",
-      "created": 1776211362,
-      "description": "Wan 2.7 is a video generation model from Alibaba. It supports text-to-video, image-to-video with first and last frame control, and reference-to-video, where multiple reference images guide the style and content...",
-      "supported_resolutions": [
-        "720p",
-        "1080p"
-      ],
-      "supported_aspect_ratios": [
-        "16:9",
-        "9:16",
-        "1:1",
-        "4:3",
-        "3:4"
-      ],
-      "supported_sizes": [
-        "1280x720",
-        "720x1280",
-        "1920x1080",
-        "1080x1920",
-        "720x720",
-        "1080x1080",
-        "960x720",
-        "720x960",
-        "1440x1080",
-        "1080x1440"
-      ],
-      "supported_durations": [
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
-      "supported_frame_images": [
-        "first_frame",
-        "last_frame"
-      ],
-      "upscale_factor": null,
-      "creativity": null,
-      "generate_audio": true,
-      "seed": true,
-      "pricing_skus": {
-        "duration_seconds": "0.1"
-      },
-      "allowed_passthrough_parameters": [
-        "negative_prompt",
-        "prompt_extend",
-        "audio",
-        "ratio",
-        "last_image",
-        "video",
-        "videos",
-        "images"
       ]
     },
     {

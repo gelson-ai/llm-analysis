@@ -7,8 +7,8 @@
     {
       "severity": "info",
       "issue": "no_pricing_skus",
-      "count": 59,
-      "detail": "59 media model(s) publish no pricing_skus at all (expected for every image model - image pricing lives in the per-model endpoints record instead; sample: ['google/gemini-nano-banana-2.1', 'tencent/hy-image-v3.5-preview', 'bytedance-seed/seedream-5-0-flash', 'black-forest-labs/flux-3-image', 'inclusionai/ming-image-0.1-design-layer', 'recraft/recraft-v4.1-flash', 'inclusionai/ming-image-0.1-design', 'openai/gpt-image-2.5-sunburst', 'openai/gpt-image-2.5-flare', 'microsoft/mai-image-2.6'])"
+      "count": 61,
+      "detail": "61 media model(s) publish no pricing_skus at all (expected for every image model - image pricing lives in the per-model endpoints record instead; sample: ['qwen/qwen-image-2.1-turbo', 'qwen/qwen-image-2.1-pro', 'krea/k3-edit', 'black-forest-labs/flux-3-image-klein', 'google/gemini-nano-banana-2.1', 'tencent/hy-image-v3.5-preview', 'bytedance-seed/seedream-5-0-flash', 'black-forest-labs/flux-3-image', 'recraft/recraft-v4.1-flash', 'openai/gpt-image-2.5-sunburst'])"
     },
     {
       "severity": "info",
@@ -19,20 +19,20 @@
     {
       "severity": "info",
       "issue": "image_endpoint_pricing_missing",
-      "count": 4,
-      "detail": "4 image model(s) returned an endpoints record with no usable price: ['krea/krea-2-large', 'krea/krea-2-medium', 'krea/krea-2-medium-turbo', 'meta/muse-image']"
+      "count": 5,
+      "detail": "5 image model(s) returned an endpoints record with no usable price: ['krea/k3-edit', 'krea/krea-2-large', 'krea/krea-2-medium', 'krea/krea-2-medium-turbo', 'meta/muse-image']"
     },
     {
       "severity": "info",
       "issue": "prompt_benchmarks_collected",
-      "count": 879,
-      "detail": "879 prompt-benchmark row(s) parsed from 28 page(s); 66 distinct model(s) matched to the catalog. Correctness values are per-prompt judged pass counts, not a global score."
+      "count": 1095,
+      "detail": "1095 prompt-benchmark row(s) parsed from 28 page(s); 80 distinct model(s) matched to the catalog. Correctness values are per-prompt judged pass counts, not a global score."
     },
     {
       "severity": "info",
       "issue": "prompt_benchmark_page_skipped",
       "count": 1,
-      "detail": "/benchmarks/media/images/portraits was skipped: no_judged_checks. The page publishes 196 result-row block(s) of generated assets but no judged pass count anywhere, so there is nothing to score. Its rows are excluded from both the pass-rate and the cost averages, which keeps this dataset's rule that price and performance come from the same rows."
+      "detail": "/benchmarks/media/images/portraits was skipped: no_judged_checks. The page publishes 224 result-row block(s) of generated assets but no judged pass count anywhere, so there is nothing to score. Its rows are excluded from both the pass-rate and the cost averages, which keeps this dataset's rule that price and performance come from the same rows."
     },
     {
       "severity": "warning",
@@ -55,14 +55,14 @@
     {
       "severity": "info",
       "issue": "unit_conversion_applied",
-      "count": 12,
-      "detail": "12 cent-denominated SKU key(s) were converted to USD by dividing by 100: ['cents_per_image_input', 'cents_per_megapixel_second_creative', 'cents_per_megapixel_second_precise', 'cents_per_second_output', 'cents_per_second_output_1080p', 'cents_per_second_output_720p', 'cents_per_second_video_continuation_1080p', 'cents_per_second_video_continuation_720p', 'cents_per_video_output_second_1080p', 'cents_per_video_output_second_480p', 'cents_per_video_output_second_720p', 'minimum_cents_per_generation']"
+      "count": 16,
+      "detail": "16 cent-denominated SKU key(s) were converted to USD by dividing by 100: ['cents_per_image_input', 'cents_per_megapixel_second_creative', 'cents_per_megapixel_second_precise', 'cents_per_second_output', 'cents_per_second_output_1080p', 'cents_per_second_output_2k', 'cents_per_second_output_4k', 'cents_per_second_output_720p', 'cents_per_second_video_continuation_1080p', 'cents_per_second_video_continuation_2k', 'cents_per_second_video_continuation_4k', 'cents_per_second_video_continuation_720p', 'cents_per_video_output_second_1080p', 'cents_per_video_output_second_480p', 'cents_per_video_output_second_720p', 'minimum_cents_per_generation']"
     },
     {
       "severity": "info",
       "issue": "currency_assumed_usd",
-      "count": 28,
-      "detail": "28 SKU key(s) carry no explicit currency marker and were assumed to be USD (all bare keys observed live are USD): ['duration_seconds', 'duration_seconds_1080p', 'duration_seconds_2k', 'duration_seconds_480p', 'duration_seconds_720p', 'duration_seconds_768p', 'duration_seconds_with_audio', 'duration_seconds_with_audio_4k', 'duration_seconds_with_audio_720p', 'duration_seconds_without_audio', 'duration_seconds_without_audio_4k', 'duration_seconds_without_audio_720p', 'image_to_video_duration_seconds_1080p', 'image_to_video_duration_seconds_720p', 'reference_duration_seconds_2k', 'reference_duration_seconds_480p', 'reference_duration_seconds_768p', 'reference_images', 'text_to_video_duration_seconds_1080p', 'text_to_video_duration_seconds_480p', 'text_to_video_duration_seconds_720p', 'video_tokens', 'video_tokens_1080p', 'video_tokens_1080p_with_video_input', 'video_tokens_4k', 'video_tokens_4k_with_video_input', 'video_tokens_with_video_input', 'video_tokens_without_audio']"
+      "count": 29,
+      "detail": "29 SKU key(s) carry no explicit currency marker and were assumed to be USD (all bare keys observed live are USD): ['duration_seconds', 'duration_seconds_1080p', 'duration_seconds_2k', 'duration_seconds_480p', 'duration_seconds_720p', 'duration_seconds_768p', 'duration_seconds_with_audio', 'duration_seconds_with_audio_4k', 'duration_seconds_with_audio_720p', 'duration_seconds_without_audio', 'duration_seconds_without_audio_4k', 'duration_seconds_without_audio_720p', 'image_to_video_duration_seconds_1080p', 'image_to_video_duration_seconds_720p', 'reference_duration_seconds_2k', 'reference_duration_seconds_480p', 'reference_duration_seconds_768p', 'reference_images', 'reference_input_images', 'text_to_video_duration_seconds_1080p', 'text_to_video_duration_seconds_480p', 'text_to_video_duration_seconds_720p', 'video_tokens', 'video_tokens_1080p', 'video_tokens_1080p_with_video_input', 'video_tokens_4k', 'video_tokens_4k_with_video_input', 'video_tokens_with_video_input', 'video_tokens_without_audio']"
     }
   ]
 }

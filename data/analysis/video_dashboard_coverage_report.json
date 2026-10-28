@@ -1,5 +1,5 @@
 {
-  "retrieved_at": "2026-10-12T03:32:40.001714+00:00",
+  "retrieved_at": "2026-10-26T02:31:29.369431+00:00",
   "model_inventory": {
     "total_models": 30,
     "provider_count": 9,
@@ -8,7 +8,7 @@
     "price_resolution_rate": 80.0,
     "models_with_any_price_data": 30,
     "models_with_price_data_but_no_comparable_rate": 6,
-    "models_with_benchmark_rows": 24,
+    "models_with_benchmark_rows": 25,
     "unit_families_present": [
       "cents_per_generation",
       "cents_per_image",
@@ -35,12 +35,11 @@
     }
   },
   "unrated": {
-    "count": 6,
+    "count": 5,
     "model_ids": [
       "black-forest-labs/flux-video-edit",
       "black-forest-labs/flux-video-upscale",
       "heygen/avatar-iv",
-      "heygen/heygen-video-1",
       "minimax/hailuo-2.3",
       "runway/aleph-2"
     ],
@@ -61,8 +60,8 @@
   "evidence_gate": {
     "min_prompts": 8,
     "min_checks": 40,
-    "models_measured": 24,
-    "models_passing": 24,
+    "models_measured": 25,
+    "models_passing": 25,
     "models_failing": []
   },
   "prompt_benchmark_coverage": {
@@ -73,23 +72,23 @@
     "pages_skipped": [],
     "pages_skipped_count": 0,
     "prompt_page_count": 12,
-    "rows": 288,
+    "rows": 314,
     "rows_per_prompt": {
-      "traffic-light": 25,
-      "five-candles": 24,
-      "wrong-way-escalator": 25,
-      "frozen-crowd": 25,
-      "sign-stays-readable": 25,
-      "glass-of-water": 25,
-      "domino-run": 25,
-      "mirror-walk": 25,
-      "behind-the-pillar": 25,
-      "steaming-mug": 24,
-      "walk-out": 14,
-      "continuous-shot": 26
+      "traffic-light": 27,
+      "five-candles": 27,
+      "wrong-way-escalator": 27,
+      "frozen-crowd": 27,
+      "sign-stays-readable": 27,
+      "glass-of-water": 27,
+      "domino-run": 27,
+      "mirror-walk": 27,
+      "behind-the-pillar": 27,
+      "steaming-mug": 26,
+      "walk-out": 18,
+      "continuous-shot": 27
     },
-    "distinct_models_in_benchmarks": 26,
-    "models_matched_to_inventory": 24,
+    "distinct_models_in_benchmarks": 27,
+    "models_matched_to_inventory": 25,
     "models_unmatched": 2,
     "unmatched_model_slugs": [
       "google/gemini-omni-1.1-flash-20260911",
@@ -98,7 +97,7 @@
     "rows_missing_cost": 0,
     "rows_missing_generation_time": 0,
     "correctness_extraction_sources": {
-      "aria-label": 288
+      "aria-label": 314
     },
     "conflicting_row_values": 0,
     "note": "A pass rate is the share of judged checks a model passed across the prompts it was benchmarked on. Checks are POOLED (total passes over total attempts), not averaged per prompt, and OpenRouter judges a different number of checks per prompt - so a pooled rate summarises a model's whole benchmark run and is not a like-for-like comparison within any single prompt."
@@ -110,21 +109,26 @@
       "cents_per_video_output_second_720p": "7 -> 0.07 USD",
       "cents_per_video_output_second_1080p": "25 -> 0.25 USD",
       "cents_per_second_output": "12 -> 0.12 USD",
-      "cents_per_megapixel_second_precise": "7.5 -> 0.075 USD",
-      "cents_per_megapixel_second_creative": "10.5 -> 0.105 USD",
+      "cents_per_megapixel_second_precise": "3.5 -> 0.035 USD",
+      "cents_per_megapixel_second_creative": "5 -> 0.05 USD",
+      "cents_per_second_output_2k": "28 -> 0.28 USD",
+      "cents_per_second_output_4k": "41 -> 0.41000000000000003 USD",
       "cents_per_second_output_720p": "17 -> 0.17 USD",
       "cents_per_second_output_1080p": "29 -> 0.29 USD",
+      "cents_per_second_video_continuation_2k": "31 -> 0.31 USD",
+      "cents_per_second_video_continuation_4k": "45 -> 0.45 USD",
       "cents_per_second_video_continuation_720p": "41 -> 0.41000000000000003 USD",
       "cents_per_second_video_continuation_1080p": "53 -> 0.53 USD",
       "minimum_cents_per_generation": "56 -> 0.56 USD"
     },
     "currency_assumed": {
-      "duration_seconds_2k": "0.09",
+      "duration_seconds_2k": "0.1",
       "duration_seconds_480p": "0.05",
       "duration_seconds_768p": "0.08",
+      "reference_input_images": "0.04",
       "reference_duration_seconds_2k": "0.18",
-      "reference_duration_seconds_480p": "0.04",
-      "reference_duration_seconds_768p": "0.06",
+      "reference_duration_seconds_480p": "0.07",
+      "reference_duration_seconds_768p": "0.1",
       "duration_seconds": "0.1",
       "duration_seconds_720p": "0.0988",
       "duration_seconds_1080p": "0.1694",
