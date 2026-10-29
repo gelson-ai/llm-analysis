@@ -320,7 +320,10 @@
           .json()
           // A non-JSON error page (a proxy 502, say) must not become the
           // exception that hides the status code.
-          .catch(() => ({}))
+          .catch((err) => {
+            if (response.ok) throw err;
+            return {};
+          })
           .then((data) => {
             if (!response.ok) {
               const err = new Error("the status request did not succeed");
