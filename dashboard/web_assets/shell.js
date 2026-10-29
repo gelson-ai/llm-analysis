@@ -95,6 +95,36 @@
   };
 
   /* --------------------------------------------------------------------- *
+   * failed status reads
+   *
+   * fetch() RESOLVES for 4xx/5xx, and BOTH backends answer a failure with a
+   * JSON body ({"ok":false,"error":...}), so an unchecked .json() fed an
+   * error payload into the renderer as if it were a status: categories with no
+   * block read "status unavailable", the chat block read as stale, and the
+   * idle path then cleared the global line - hiding the very failure that
+   * caused it. Every response is therefore checked explicitly, and the body of
+   * a non-OK response is never treated as a status.
+   * --------------------------------------------------------------------- */
+  const httpFailure = (response, data) => {
+    const detail = (data && (data.message || data.error)) || "";
+    return {
+      status: response.status,
+      // Global line: the CHECK failed, so nothing is claimed about the data.
+      global:
+        "Could not check dashboard status (HTTP " + response.status + ")" +
+        (detail ? ": " + detail : ""),
+      // Per-category text, used only where no earlier state is known.
+      row: "unavailable — HTTP " + response.status,
+    };
+  };
+
+  // No response at all (offline, DNS, CORS): there is no HTTP status to quote.
+  const UNREACHABLE = {
+    global: "Cannot reach the refresh service. Please try again shortly.",
+    row: "unavailable — service unreachable",
+  };
+
+  /* --------------------------------------------------------------------- *
    * per-category status
    *
    * One row per dashboard category (Text/LLM, Image, Video) so a refresh
@@ -154,7 +184,10 @@
     return Math.round(hours / 24) + "d ago";
   };
 
-  const renderTargets = (job, status) => {
+  // `failure` is set when the status endpoint itself could not be read. It
+  // only affects rows with NO known state: a category that was already known
+  // good keeps its row, so a transient 5xx cannot falsely repaint it red.
+  const renderTargets = (job, status, failure) => {
     const outcomes = job && job.targets ? job.targets : null;
     const running = Boolean(job) && (job.state === "running" || job.state === "starting");
     targetsEl.textContent = "";
@@ -188,7 +221,13 @@
         text = "a refresh was already running";
       } else {
         const fresh = freshFor(status, key);
-        if (!fresh) {
+        if (!fresh && failure) {
+          // Nothing is known about this category and the status endpoint is
+          // failing, so say THAT instead of the misleading "status
+          // unavailable" (which reads as "this backend does not report it").
+          kind = "error";
+          text = failure.row;
+        } else if (!fresh) {
           kind = "unknown";
           text = "status unavailable";
         } else if (fresh.stale || fresh.age_hours == null) {
@@ -245,6 +284,16 @@
     timer = setInterval(poll, ms);
   };
 
+  // One place for "we could not read the status": stop polling, hand the button
+  // back, re-render (known-good rows survive) and leave a message on the global
+  // line. Deliberately never calls setStatus("").
+  const reportStatusFailure = (failure) => {
+    stopPolling();
+    refreshBtn.disabled = false;
+    renderTargets(null, lastStatus, failure);
+    setStatus(failure.global);
+  };
+
   // refresh_all.py returns one outcome per target, so a single click can say
   // "Chat: updated. Image: failed - <reason>". `job.targets` is the contract on
   // BOTH backends: dashboard/serve.py lifts it from its own job result, and the
@@ -266,8 +315,27 @@
 
   function poll() {
     fetch(REFRESH_API + "/status", { cache: "no-store" })
-      .then((r) => r.json())
+      .then((response) =>
+        response
+          .json()
+          // A non-JSON error page (a proxy 502, say) must not become the
+          // exception that hides the status code.
+          .catch((err) => {
+            if (response.ok) throw err;
+            return {};
+          })
+          .then((data) => {
+            if (!response.ok) {
+              const err = new Error("the status request did not succeed");
+              err.failure = httpFailure(response, data);
+              throw err;
+            }
+            return data;
+          }),
+      )
       .then((data) => {
+        // Only a 2xx body ever reaches here, so the cache can never hold an
+        // error payload either.
         lastStatus = data;
         const job = data.job || {};
         const retry = job.retry_after_seconds || 0;
@@ -307,11 +375,11 @@
         refreshBtn.disabled = false;
         setStatus("");
       })
-      .catch(() => {
-        stopPolling();
-        refreshBtn.disabled = false;
-        renderTargets(null, lastStatus);
-        setStatus("Cannot reach the refresh service. Please try again shortly.");
+      .catch((err) => {
+        // A server that ANSWERED with a non-OK status is not the same as an
+        // unreachable service, and neither may fall through to the success
+        // path (which would clear the line).
+        reportStatusFailure((err && err.failure) || UNREACHABLE);
       });
   }
 
@@ -336,24 +404,38 @@
           poll();
           return;
         }
+        // 409 and 429 are handled above on purpose: they mean "not now", not
+        // "the request failed". Everything else that is not ok is explicit
+        // here - 500/502 included - instead of relying on whatever the body
+        // happened to contain.
+        if (!response.ok) {
+          stopPolling();
+          refreshBtn.disabled = false;
+          // The DATA is fine; the REQUEST failed. Each category keeps its own
+          // freshness rather than being painted as broken.
+          renderTargets(null, lastStatus);
+          if (response.status === 401) {
+            setStatus("This server requires a refresh token (start it with --token).");
+          } else if (response.status === 403) {
+            setStatus("Blocked: the request did not come from this dashboard.");
+          } else {
+            setStatus(
+              data.message ||
+                data.error ||
+                "Refresh failed (HTTP " + response.status + ").",
+            );
+          }
+          return;
+        }
         stopPolling();
         refreshBtn.disabled = false;
         renderTargets(null, lastStatus);
-        if (response.status === 401) {
-          setStatus("This server requires a refresh token (start it with --token).");
-          return;
-        }
-        if (response.status === 403) {
-          setStatus("Blocked: the request did not come from this dashboard.");
-          return;
-        }
         setStatus(data.message || data.error || "Refresh failed.");
       })
       .catch(() => {
-        stopPolling();
-        refreshBtn.disabled = false;
-        renderTargets(null, lastStatus);
-        setStatus("Cannot reach the refresh service. Please try again shortly.");
+        // Same treatment as an unreachable /status: the data is untouched, so
+        // the categories keep their last-known state and only the line reports.
+        reportStatusFailure(UNREACHABLE);
       });
   });
 
