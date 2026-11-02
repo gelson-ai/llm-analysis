@@ -1,5 +1,5 @@
 {
-  "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+  "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
   "rows": [
     {
       "raw_model_slug": "google/gemini-3.1-flash-image-preview-20260226",
@@ -863,6 +863,27 @@
       "source_url": "https://openrouter.ai/benchmarks/media/images/full-glass"
     },
     {
+      "raw_model_slug": "sourceful/riverflow-v2.6-pro-20261029",
+      "checks_passed": 3,
+      "checks_total": 4,
+      "checks_source": "aria-label",
+      "cost_usd": 0.15,
+      "generation_seconds": 70.4,
+      "model_name": "Riverflow V2.6 Pro",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/2c802462-44c2-4fed-9c3a-a54f7e34b2cc/original-0.webp",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/2c802462-44c2-4fed-9c3a-a54f7e34b2cc/thumb-0.webp",
+      "asset_media_type": "image/webp",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 70361,
+      "media_type": "image",
+      "prompt_slug": "full-glass",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/full-glass"
+    },
+    {
       "raw_model_slug": "sourceful/riverflow-v2-fast-20260130",
       "checks_passed": 3,
       "checks_total": 4,
@@ -1677,6 +1698,27 @@
       "output_width": 1024,
       "output_height": 1024,
       "duration_ms": 46786,
+      "media_type": "image",
+      "prompt_slug": "closed-umbrellas",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/closed-umbrellas"
+    },
+    {
+      "raw_model_slug": "sourceful/riverflow-v2.6-pro-20261029",
+      "checks_passed": 2,
+      "checks_total": 4,
+      "checks_source": "aria-label",
+      "cost_usd": 0.16,
+      "generation_seconds": 77.4,
+      "model_name": "Riverflow V2.6 Pro",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/4e437e3e-ba7c-4829-9363-ce12e949441e/original-0.webp",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/4e437e3e-ba7c-4829-9363-ce12e949441e/thumb-0.webp",
+      "asset_media_type": "image/webp",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 77418,
       "media_type": "image",
       "prompt_slug": "closed-umbrellas",
       "source_url": "https://openrouter.ai/benchmarks/media/images/closed-umbrellas"
@@ -2685,6 +2727,27 @@
       "output_width": 1024,
       "output_height": 1024,
       "duration_ms": 148158,
+      "media_type": "image",
+      "prompt_slug": "three-fingers",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/three-fingers"
+    },
+    {
+      "raw_model_slug": "sourceful/riverflow-v2.6-pro-20261029",
+      "checks_passed": 4,
+      "checks_total": 4,
+      "checks_source": "aria-label",
+      "cost_usd": 0.16,
+      "generation_seconds": 72.3,
+      "model_name": "Riverflow V2.6 Pro",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/ba805835-b948-448e-bb9d-20b8ce03b689/original-0.webp",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/ba805835-b948-448e-bb9d-20b8ce03b689/thumb-0.webp",
+      "asset_media_type": "image/webp",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 72269,
       "media_type": "image",
       "prompt_slug": "three-fingers",
       "source_url": "https://openrouter.ai/benchmarks/media/images/three-fingers"
@@ -4076,6 +4139,27 @@
       "source_url": "https://openrouter.ai/benchmarks/media/images/cards-dice"
     },
     {
+      "raw_model_slug": "sourceful/riverflow-v2.6-pro-20261029",
+      "checks_passed": 6,
+      "checks_total": 6,
+      "checks_source": "aria-label",
+      "cost_usd": 0.16,
+      "generation_seconds": 74.1,
+      "model_name": "Riverflow V2.6 Pro",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 2,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/3cd83dfe-6c08-4736-a202-c164d5b7c7e5/original-0.webp",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/3cd83dfe-6c08-4736-a202-c164d5b7c7e5/thumb-0.webp",
+      "asset_media_type": "image/webp",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 74106,
+      "media_type": "image",
+      "prompt_slug": "cards-dice",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/cards-dice"
+    },
+    {
       "raw_model_slug": "sourceful/riverflow-v2-pro-20260130",
       "checks_passed": 6,
       "checks_total": 6,
@@ -5399,6 +5483,27 @@
       "source_url": "https://openrouter.ai/benchmarks/media/images/long-exact-string"
     },
     {
+      "raw_model_slug": "sourceful/riverflow-v2.6-pro-20261029",
+      "checks_passed": 2,
+      "checks_total": 3,
+      "checks_source": "aria-label",
+      "cost_usd": 0.18,
+      "generation_seconds": 70.9,
+      "model_name": "Riverflow V2.6 Pro",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/b0c1166e-1f63-4040-bae5-41f82eeedae1/original-0.webp",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/b0c1166e-1f63-4040-bae5-41f82eeedae1/thumb-0.webp",
+      "asset_media_type": "image/webp",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 70916,
+      "media_type": "image",
+      "prompt_slug": "long-exact-string",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/long-exact-string"
+    },
+    {
       "raw_model_slug": "sourceful/riverflow-v2-fast-20260130",
       "checks_passed": 2,
       "checks_total": 3,
@@ -6045,6 +6150,27 @@
       "output_width": 1024,
       "output_height": 1024,
       "duration_ms": 146756,
+      "media_type": "image",
+      "prompt_slug": "multiple-languages",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/multiple-languages"
+    },
+    {
+      "raw_model_slug": "sourceful/riverflow-v2.6-pro-20261029",
+      "checks_passed": 6,
+      "checks_total": 6,
+      "checks_source": "aria-label",
+      "cost_usd": 0.18,
+      "generation_seconds": 65.0,
+      "model_name": "Riverflow V2.6 Pro",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/894c3ce4-e788-4364-a315-2e55ab529747/original-0.webp",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/894c3ce4-e788-4364-a315-2e55ab529747/thumb-0.webp",
+      "asset_media_type": "image/webp",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 64965,
       "media_type": "image",
       "prompt_slug": "multiple-languages",
       "source_url": "https://openrouter.ai/benchmarks/media/images/multiple-languages"
@@ -6969,6 +7095,27 @@
       "output_width": 1024,
       "output_height": 1024,
       "duration_ms": 141765,
+      "media_type": "image",
+      "prompt_slug": "occlusion",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/occlusion"
+    },
+    {
+      "raw_model_slug": "sourceful/riverflow-v2.6-pro-20261029",
+      "checks_passed": 4,
+      "checks_total": 4,
+      "checks_source": "aria-label",
+      "cost_usd": 0.16,
+      "generation_seconds": 79.8,
+      "model_name": "Riverflow V2.6 Pro",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/878bc67c-3966-4a82-ada4-0489b1e70847/original-0.webp",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/878bc67c-3966-4a82-ada4-0489b1e70847/thumb-0.webp",
+      "asset_media_type": "image/webp",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 79844,
       "media_type": "image",
       "prompt_slug": "occlusion",
       "source_url": "https://openrouter.ai/benchmarks/media/images/occlusion"
@@ -8334,6 +8481,27 @@
       "output_width": 1024,
       "output_height": 1024,
       "duration_ms": 152683,
+      "media_type": "image",
+      "prompt_slug": "mirror",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/mirror"
+    },
+    {
+      "raw_model_slug": "sourceful/riverflow-v2.6-pro-20261029",
+      "checks_passed": 3,
+      "checks_total": 4,
+      "checks_source": "aria-label",
+      "cost_usd": 0.16,
+      "generation_seconds": 75.6,
+      "model_name": "Riverflow V2.6 Pro",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/cfc42792-ff40-4c4f-9a9e-8274985e2e9e/original-0.webp",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/cfc42792-ff40-4c4f-9a9e-8274985e2e9e/thumb-0.webp",
+      "asset_media_type": "image/webp",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 75563,
       "media_type": "image",
       "prompt_slug": "mirror",
       "source_url": "https://openrouter.ai/benchmarks/media/images/mirror"
@@ -9767,6 +9935,27 @@
       "source_url": "https://openrouter.ai/benchmarks/media/images/plain-zebra"
     },
     {
+      "raw_model_slug": "sourceful/riverflow-v2.6-pro-20261029",
+      "checks_passed": 2,
+      "checks_total": 4,
+      "checks_source": "aria-label",
+      "cost_usd": 0.15,
+      "generation_seconds": 72.7,
+      "model_name": "Riverflow V2.6 Pro",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/1dcc4c22-ae61-4912-bb71-b79a69167d88/original-0.webp",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/1dcc4c22-ae61-4912-bb71-b79a69167d88/thumb-0.webp",
+      "asset_media_type": "image/webp",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 72726,
+      "media_type": "image",
+      "prompt_slug": "plain-zebra",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/plain-zebra"
+    },
+    {
       "raw_model_slug": "sourceful/riverflow-v2-fast-20260130",
       "checks_passed": 2,
       "checks_total": 4,
@@ -9993,6 +10182,27 @@
       "output_width": 1024,
       "output_height": 1024,
       "duration_ms": 157369,
+      "media_type": "image",
+      "prompt_slug": "times-square",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/times-square"
+    },
+    {
+      "raw_model_slug": "sourceful/riverflow-v2.6-pro-20261029",
+      "checks_passed": 4,
+      "checks_total": 4,
+      "checks_source": "aria-label",
+      "cost_usd": 0.36,
+      "generation_seconds": 155.9,
+      "model_name": "Riverflow V2.6 Pro",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/0c349c1c-17bc-4385-8bd7-70cc3821a816/original-0.webp",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/0c349c1c-17bc-4385-8bd7-70cc3821a816/thumb-0.webp",
+      "asset_media_type": "image/webp",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 155868,
       "media_type": "image",
       "prompt_slug": "times-square",
       "source_url": "https://openrouter.ai/benchmarks/media/images/times-square"
@@ -10980,6 +11190,27 @@
       "output_width": 2048,
       "output_height": 2048,
       "duration_ms": 25589,
+      "media_type": "image",
+      "prompt_slug": "minimal-diff",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/minimal-diff"
+    },
+    {
+      "raw_model_slug": "sourceful/riverflow-v2.6-pro-20261029",
+      "checks_passed": 2,
+      "checks_total": 3,
+      "checks_source": "aria-label",
+      "cost_usd": 0.2,
+      "generation_seconds": 74.9,
+      "model_name": "Riverflow V2.6 Pro",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/efc93e5a-69d3-419e-a069-c3fedcfe744e/original-0.webp",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/efc93e5a-69d3-419e-a069-c3fedcfe744e/thumb-0.webp",
+      "asset_media_type": "image/webp",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 74915,
       "media_type": "image",
       "prompt_slug": "minimal-diff",
       "source_url": "https://openrouter.ai/benchmarks/media/images/minimal-diff"
@@ -12413,6 +12644,27 @@
       "source_url": "https://openrouter.ai/benchmarks/media/images/object-removal"
     },
     {
+      "raw_model_slug": "sourceful/riverflow-v2.6-pro-20261029",
+      "checks_passed": 4,
+      "checks_total": 4,
+      "checks_source": "aria-label",
+      "cost_usd": 0.2,
+      "generation_seconds": 74.0,
+      "model_name": "Riverflow V2.6 Pro",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/e85ab76f-df0e-48a4-b4e3-e4f4a24ee93e/original-0.webp",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/e85ab76f-df0e-48a4-b4e3-e4f4a24ee93e/thumb-0.webp",
+      "asset_media_type": "image/webp",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 73973,
+      "media_type": "image",
+      "prompt_slug": "object-removal",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/object-removal"
+    },
+    {
       "raw_model_slug": "sourceful/riverflow-v2-pro-20260130",
       "checks_passed": 4,
       "checks_total": 4,
@@ -13626,6 +13878,27 @@
       "output_width": 1024,
       "output_height": 1024,
       "duration_ms": 211263,
+      "media_type": "image",
+      "prompt_slug": "person-removal",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/person-removal"
+    },
+    {
+      "raw_model_slug": "sourceful/riverflow-v2.6-pro-20261029",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "checks_source": "aria-label",
+      "cost_usd": 0.21,
+      "generation_seconds": 86.8,
+      "model_name": "Riverflow V2.6 Pro",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/f7ae5dfd-e9bd-4ad9-854c-991677403a12/original-0.webp",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/f7ae5dfd-e9bd-4ad9-854c-991677403a12/thumb-0.webp",
+      "asset_media_type": "image/webp",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 86766,
       "media_type": "image",
       "prompt_slug": "person-removal",
       "source_url": "https://openrouter.ai/benchmarks/media/images/person-removal"
@@ -14933,6 +15206,27 @@
       "source_url": "https://openrouter.ai/benchmarks/media/images/product-placement"
     },
     {
+      "raw_model_slug": "sourceful/riverflow-v2.6-pro-20261029",
+      "checks_passed": 4,
+      "checks_total": 4,
+      "checks_source": "aria-label",
+      "cost_usd": 0.17,
+      "generation_seconds": 157.3,
+      "model_name": "Riverflow V2.6 Pro",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 1,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/038793d8-8422-49c1-a9ba-4e2a7e9c45f9/original-0.webp",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/038793d8-8422-49c1-a9ba-4e2a7e9c45f9/thumb-0.webp",
+      "asset_media_type": "image/webp",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 157262,
+      "media_type": "image",
+      "prompt_slug": "product-placement",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/product-placement"
+    },
+    {
       "raw_model_slug": "sourceful/riverflow-v2-fast-20260130",
       "checks_passed": 4,
       "checks_total": 4,
@@ -15831,6 +16125,27 @@
       "output_width": 1024,
       "output_height": 1024,
       "duration_ms": 181681,
+      "media_type": "image",
+      "prompt_slug": "composite-refs",
+      "source_url": "https://openrouter.ai/benchmarks/media/images/composite-refs"
+    },
+    {
+      "raw_model_slug": "sourceful/riverflow-v2.6-pro-20261029",
+      "checks_passed": 5,
+      "checks_total": 5,
+      "checks_source": "aria-label",
+      "cost_usd": 0.46,
+      "generation_seconds": 177.0,
+      "model_name": "Riverflow V2.6 Pro",
+      "duplicate_blocks": 2,
+      "conflicting_values": false,
+      "asset_count": 3,
+      "asset_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/f32d96b3-7b2e-4445-8dae-600406dd5ef1/original-0.webp",
+      "thumbnail_url": "https://model-assets.openrouter.ai/model-examples/sourceful/riverflow-v2.6-pro-20261029/f32d96b3-7b2e-4445-8dae-600406dd5ef1/thumb-0.webp",
+      "asset_media_type": "image/webp",
+      "output_width": 1024,
+      "output_height": 1024,
+      "duration_ms": 176978,
       "media_type": "image",
       "prompt_slug": "composite-refs",
       "source_url": "https://openrouter.ai/benchmarks/media/images/composite-refs"
@@ -22999,143 +23314,143 @@
   ],
   "page_fingerprints": {
     "/benchmarks/media/images/full-glass": {
-      "sha256": "ee309f105a0fe41394de4bf9bda4b3ac605422f9b74df480f781ffd72d8955e4",
-      "bytes": 984062,
+      "sha256": "966036019b87d2b1c91e2c30ce0a2c259845257c1e4707f5ec595ede02b02b9b",
+      "bytes": 1012376,
       "attempts": 1
     },
     "/benchmarks/media/images/portraits": {
-      "sha256": "86ca869f791839232c0f1496fda5f5f4b3e16c112f8ffea7fdb9a433a5f3a40e",
-      "bytes": 1985189,
+      "sha256": "1f733ce97d96852033bc7d824f15b353b9f08ddf9a4dbcb8ceefb13a54061e78",
+      "bytes": 2034086,
       "attempts": 1
     },
     "/benchmarks/media/images/closed-umbrellas": {
-      "sha256": "cb6f1124dc92b063f27b4831b85c6001b1b7e92fae8f71e8eb826405da2312e0",
-      "bytes": 985349,
+      "sha256": "058d81181555b7f1db1263a235926b712bb768571346f6679c359d1c621f1a3d",
+      "bytes": 1013665,
       "attempts": 1
     },
     "/benchmarks/media/images/three-fingers": {
-      "sha256": "df454d76d825e52fedf7dce64c6be9fea06ae25717822ed0d93b5632bc76a690",
-      "bytes": 984883,
+      "sha256": "916cbd04bcde2d834a89b340661e128dd4b90023ea07705f8ac5f411d8591caa",
+      "bytes": 1013214,
       "attempts": 1
     },
     "/benchmarks/media/images/cards-dice": {
-      "sha256": "0bc2a680306b5aade57d669a05e8e6979a58802205653093ad1db48f7303a62e",
-      "bytes": 1066850,
+      "sha256": "7bab5895a9fee14763b41fdef44db923d580a2c3921da8de4f9121224ade3ee2",
+      "bytes": 1096763,
       "attempts": 1
     },
     "/benchmarks/media/images/long-exact-string": {
-      "sha256": "08dfbc3a810fe9ec950a10183cbac4e56e0a763b16efc5365e0adaaf7c84294f",
-      "bytes": 980914,
+      "sha256": "649a8f6251c13257bb9481aa311f9871ffc6ce2064035ae9efe6e53aecdef649",
+      "bytes": 1009162,
       "attempts": 1
     },
     "/benchmarks/media/images/multiple-languages": {
-      "sha256": "c31cbe1747e62fcf93232c0cc3dc379094815b338d41f03ac051a899f2edbe6f",
-      "bytes": 989741,
+      "sha256": "3b47b52bce0c38ac203fc6d946c6ed90d38f1ef809e1b423eb25562d8851556d",
+      "bytes": 1018140,
       "attempts": 1
     },
     "/benchmarks/media/images/occlusion": {
-      "sha256": "066ce32e4ee497320986f9321bd9ecbc86bcc997f2e3363723c6b2e0342a1c70",
-      "bytes": 984332,
+      "sha256": "491a22c6ac0e5b24189044a0fbce35dbc5f820d400d26df295a954d6e6dfea44",
+      "bytes": 1012630,
       "attempts": 1
     },
     "/benchmarks/media/images/mirror": {
-      "sha256": "b9ee7dd8f59bb294f20a8a3472fdb59b78bf1a2e5fd89a861018bdcd7f3745b8",
-      "bytes": 984989,
+      "sha256": "4642b0b828209484484ffb637bf4270f7a2f0c49d13a7f94a4697f5a6dbdc4ca",
+      "bytes": 1013309,
       "attempts": 1
     },
     "/benchmarks/media/images/plain-zebra": {
-      "sha256": "0b24974b7d50d41c6d4014cbb08468ac3839ca197a5568415442a2ec52446991",
-      "bytes": 984275,
+      "sha256": "a00b135d6ce23044ca240f23a7eda1d0b51937190acc9eb93aac8aff0fb6e948",
+      "bytes": 1012590,
       "attempts": 1
     },
     "/benchmarks/media/images/times-square": {
-      "sha256": "62a5d5c24ccd53357c41dec2e3d45fce2103eee844d6c5b95aeb3bbc33fdc449",
-      "bytes": 984955,
+      "sha256": "634d403dfa137a89e42db3816fa12011ff1f716e4b5d32585e35545830c93918",
+      "bytes": 1013288,
       "attempts": 1
     },
     "/benchmarks/media/images/minimal-diff": {
-      "sha256": "9f83ec40213b140d8388b4965c7ab5a6172368c7feda60064d9ba2608da87753",
-      "bytes": 1021039,
+      "sha256": "7d440f75756ec12da8fed2551333c8355ecc452b69f668d86285412b8dcd5d9e",
+      "bytes": 1049405,
       "attempts": 1
     },
     "/benchmarks/media/images/object-removal": {
-      "sha256": "49dbcc46cb55a004e287333510595bb3e9351fd0e3e1d2a5cd8c98ddd3478f60",
-      "bytes": 1023677,
+      "sha256": "bd859d1e93edabf8e91f9928d714b89da679441980f3a05e8a12711c5af7ef82",
+      "bytes": 1052093,
       "attempts": 1
     },
     "/benchmarks/media/images/person-removal": {
-      "sha256": "fb172304ffec647d313b296c56358b56a3625a7701e72ddf0bb4b0d16867382b",
-      "bytes": 1028043,
+      "sha256": "599fc5da26b7c97413b49a94fd687de809ab1ad8affbfd8ae1fa06388df94d84",
+      "bytes": 1056541,
       "attempts": 1
     },
     "/benchmarks/media/images/product-placement": {
-      "sha256": "34689c247eb6245e669298c59d587617f7b61ccbafc234dbf757165c227cec38",
-      "bytes": 1025820,
+      "sha256": "78662276fa075216acfe8baacceac96b750887447fcac9e5eb7aec5d0bffacbe",
+      "bytes": 1054255,
       "attempts": 1
     },
     "/benchmarks/media/images/composite-refs": {
-      "sha256": "c4a18e24437fe7303bf07f37c7872e7bcf2bccb9160e4085920d75926e4441ae",
-      "bytes": 1047021,
+      "sha256": "93a59b77d1db20dc6ea4f7f3ca20f868f0eef0c18e1535709b9a8bafb5bf257c",
+      "bytes": 1077976,
       "attempts": 1
     },
     "/benchmarks/media/videos/traffic-light": {
-      "sha256": "fbe54ff84f1bc026b57609dc2bd7763b92d9795090f9f4089735cc4e4aadcff1",
-      "bytes": 593803,
+      "sha256": "66edba6d9aea1a160043ef61a72a24195ec0cbcfb273fe6a8860e76159a40e04",
+      "bytes": 603055,
       "attempts": 1
     },
     "/benchmarks/media/videos/five-candles": {
-      "sha256": "b11e1ff340c01330547478c72f33dd92fef13a82fed26128c9b32a0b724a3020",
-      "bytes": 593705,
+      "sha256": "ef675583742dca00eb22a36d03bda237742e12243181ebdab21147ffa4e35c01",
+      "bytes": 602957,
       "attempts": 1
     },
     "/benchmarks/media/videos/wrong-way-escalator": {
-      "sha256": "a758cd1c1037dc9760c61bb6d8bb7431c6f0d777bbbf8b7ae542c8458b6d71fa",
-      "bytes": 594385,
+      "sha256": "f7a3eec606a376c762432b9d8730a6e4a1d56acc8956f374a64ada65ed5eab98",
+      "bytes": 603637,
       "attempts": 1
     },
     "/benchmarks/media/videos/frozen-crowd": {
-      "sha256": "5da52609e6bc21f1be3ffac9552b0b6136a82b550ddf294937b48210ddd4a45f",
-      "bytes": 592254,
+      "sha256": "86cca63640984ffc8937f91beab380472206a5744b3314a661a26bba5291902c",
+      "bytes": 601506,
       "attempts": 1
     },
     "/benchmarks/media/videos/sign-stays-readable": {
-      "sha256": "3b14b0bbc750bba5ee81815247ee499ffb4adecc38464c6d44c7e9ab7ff7c8b0",
-      "bytes": 593490,
+      "sha256": "6358dfa87e2221995a8c28710e19cd44b28a7e6661f210478ec215df2570792d",
+      "bytes": 602742,
       "attempts": 1
     },
     "/benchmarks/media/videos/glass-of-water": {
-      "sha256": "d847b2df74713cd17cd819771f20e4b63f2c2e86f7361b829aa84096b922399e",
-      "bytes": 593430,
+      "sha256": "9117dd544768c6eaa53accc8de1e8d158e3f29e2c6a54dc2708d2129598a10fd",
+      "bytes": 602736,
       "attempts": 1
     },
     "/benchmarks/media/videos/domino-run": {
-      "sha256": "b915d01a720025da7463166c8b8d7595a3a2506becbe1f9a56726afb280eea60",
-      "bytes": 593422,
+      "sha256": "0cddddab95afb94c45890fd92814ff56186dac3fa9f515937a8d04710f5e8110",
+      "bytes": 602674,
       "attempts": 1
     },
     "/benchmarks/media/videos/mirror-walk": {
-      "sha256": "8a8db73f19d6e0644b090c123614b3cce7de2999911cc82c0116fd4b697a77ac",
-      "bytes": 592658,
+      "sha256": "8b21e826c2e9e8a652aeba09abd17c48e20a038519eb2b2458970fe76b45b63c",
+      "bytes": 601910,
       "attempts": 1
     },
     "/benchmarks/media/videos/behind-the-pillar": {
-      "sha256": "02b1e63afed7321ffc45ce1aaddfe3d5ec5eac6339a2891b871befcd738ec62e",
-      "bytes": 593988,
+      "sha256": "fe7e4362d530c4aa2e575abcf9eb701b84935955c74daad900e368f8d8878e31",
+      "bytes": 603240,
       "attempts": 1
     },
     "/benchmarks/media/videos/steaming-mug": {
-      "sha256": "06cc76f2892c6595343aa690907332da1f974c8225b8275efbcc8e9cbf22b077",
-      "bytes": 585571,
+      "sha256": "d7fa47d4d144be7cda3afffc281bc4feb2697dea132ad01fb76256b3e1b5ad84",
+      "bytes": 609556,
       "attempts": 1
     },
     "/benchmarks/media/videos/walk-out": {
-      "sha256": "efe06d98c393580b9dd222e7258e1d1232cdf6422d22994e5fc1085f26e57012",
-      "bytes": 483348,
+      "sha256": "30e9c12caf577d52ea4ff909510defcd38cdb0a7f27dbdf505b18ce7d2bb093f",
+      "bytes": 492600,
       "attempts": 1
     },
     "/benchmarks/media/videos/continuous-shot": {
-      "sha256": "aee4a6dacbbe454d68f0018d25add0c6623fa3887cccabaa3b72fd276285c4e1",
-      "bytes": 594437,
+      "sha256": "137dd6ebeb6a949742ca5aee0698a2a2ab130e8f42f68b92be5f6ccfefb07844",
+      "bytes": 603689,
       "attempts": 1
     }
   },

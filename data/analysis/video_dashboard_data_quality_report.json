@@ -8,7 +8,7 @@
       "severity": "warning",
       "issue": "video_model_without_comparable_rate",
       "count": 6,
-      "detail": "6 video model(s) publish pricing that cannot be normalised to USD per output second: ['black-forest-labs/flux-video-upscale', 'bytedance/seedance-2.0-mini', 'bytedance/seedance-2.5', 'bytedance/seedance-2.0', 'bytedance/seedance-2.0-fast', 'bytedance/seedance-1-5-pro']. Their catalogue rate stays blank; value ranking still uses their observed benchmark cost."
+      "detail": "6 video model(s) publish pricing that cannot be normalised to USD per output second: ['black-forest-labs/flux-video-upscale', 'bytedance/seedance-2.0-mini', 'bytedance/seedance-2.5', 'bytedance/seedance-2.0-fast', 'bytedance/seedance-2.0', 'bytedance/seedance-1-5-pro']. Their catalogue rate stays blank; value ranking still uses their observed benchmark cost."
     },
     {
       "severity": "warning",
@@ -19,8 +19,8 @@
     {
       "severity": "info",
       "issue": "video_models_without_benchmark_rows",
-      "count": 5,
-      "detail": "5 catalogue model(s) have no judged benchmark row and are listed as unrated: ['black-forest-labs/flux-video-edit', 'black-forest-labs/flux-video-upscale', 'heygen/avatar-iv', 'minimax/hailuo-2.3', 'runway/aleph-2']"
+      "count": 6,
+      "detail": "6 catalogue model(s) have no judged benchmark row and are listed as unrated: ['black-forest-labs/flux-video-edit', 'black-forest-labs/flux-video-upscale', 'heygen/avatar-iv', 'minimax/hailuo-2.3', 'runway/aleph-2', 'tbc/mischief-1']"
     },
     {
       "severity": "info",

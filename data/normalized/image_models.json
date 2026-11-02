@@ -1,5 +1,352 @@
 [
   {
+    "model_id": "sourceful/riverflow-v2.6-pro",
+    "canonical_slug": null,
+    "model_name": "Sourceful: Riverflow V2.6 Pro",
+    "provider": "sourceful",
+    "model_type": "image",
+    "description": "Riverflow 2.6 Pro is the flagship model of Sourceful's Riverflow 2.6 lineup, a unified text-to-image and image-to-image family that treats generation as a production workflow: an integrated reasoning model plans...",
+    "created": 1793289528,
+    "hugging_face_id": null,
+    "architecture": {
+      "modality": null,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "image"
+      ],
+      "synthesized": false
+    },
+    "input_modalities": [
+      "text",
+      "image"
+    ],
+    "output_modalities": [
+      "image"
+    ],
+    "supported_parameters": {
+      "resolution": {
+        "type": "enum",
+        "values": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      "aspect_ratio": {
+        "type": "enum",
+        "values": [
+          "1:1",
+          "4:3",
+          "3:4",
+          "3:2",
+          "2:3",
+          "5:4",
+          "4:5",
+          "16:9",
+          "9:16",
+          "21:9",
+          "auto"
+        ]
+      },
+      "output_format": {
+        "type": "enum",
+        "values": [
+          "png",
+          "jpeg",
+          "webp"
+        ]
+      },
+      "background": {
+        "type": "enum",
+        "values": [
+          "auto",
+          "transparent",
+          "opaque"
+        ]
+      },
+      "n": {
+        "type": "range",
+        "min": 1,
+        "max": 1
+      },
+      "input_references": {
+        "type": "range",
+        "min": 0,
+        "max": 10
+      },
+      "size": {
+        "type": "boolean"
+      }
+    },
+    "supports_streaming": false,
+    "endpoints_url": "/api/v1/images/models/sourceful/riverflow-v2.6-pro/endpoints",
+    "supported_resolutions": null,
+    "supported_aspect_ratios": null,
+    "supported_sizes": null,
+    "supported_durations": null,
+    "supported_frame_images": null,
+    "generate_audio": null,
+    "seed": null,
+    "upscale_factor": null,
+    "creativity": null,
+    "allowed_passthrough_parameters": null,
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_image",
+    "comparable_price": 0.13,
+    "comparable_price_basis": "plain_output_image_rate",
+    "pricing": {
+      "skus": [],
+      "raw_pricing_skus": null,
+      "sku_count": 0,
+      "resolved_sku_count": 0,
+      "unresolved_sku_keys": [],
+      "has_any_price": false,
+      "comparable_price": {
+        "unit": null,
+        "usd": null,
+        "basis": null,
+        "basis_sku": null
+      },
+      "usd_per_second_by_resolution": {},
+      "usd_per_image_by_resolution": {},
+      "unit_families": [],
+      "unit_conversions_applied": [],
+      "currency_assumptions": []
+    },
+    "endpoint_pricing": {
+      "model_id": "sourceful/riverflow-v2.6-pro",
+      "endpoint_count": 1,
+      "endpoints": [
+        {
+          "provider_name": "Sourceful",
+          "provider_slug": "sourceful",
+          "provider_tag": "sourceful",
+          "supports_streaming": false,
+          "allowed_passthrough_parameters": [
+            "font_inputs"
+          ],
+          "pricing_lines": [
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": null,
+              "raw_cost_usd": 0.13,
+              "usd_amount": 0.13,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "2k",
+              "raw_cost_usd": 0.15,
+              "usd_amount": 0.15,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "4k",
+              "raw_cost_usd": 0.17,
+              "usd_amount": 0.17,
+              "is_negative": false,
+              "is_parseable": true
+            }
+          ],
+          "has_any_price": true
+        }
+      ],
+      "pricing_line_count": 3,
+      "resolved_pricing_line_count": 3,
+      "unparseable_pricing_line_count": 0,
+      "has_any_price": true,
+      "comparable_price": {
+        "unit": "usd_per_image",
+        "usd": 0.13,
+        "basis": "plain_output_image_rate",
+        "basis_sku": "output_image/image"
+      },
+      "usd_per_image_by_variant": {
+        "default": 0.13,
+        "2k": 0.15,
+        "4k": 0.17
+      },
+      "usd_per_megapixel_by_variant": {},
+      "usd_per_token_by_variant": {},
+      "providers_without_pricing": [],
+      "raw_endpoints_payload": {
+        "id": "sourceful/riverflow-v2.6-pro",
+        "endpoints": [
+          {
+            "provider_name": "Sourceful",
+            "provider_slug": "sourceful",
+            "provider_tag": "sourceful",
+            "supported_parameters": {
+              "resolution": {
+                "type": "enum",
+                "values": [
+                  "1K",
+                  "2K",
+                  "4K"
+                ]
+              },
+              "aspect_ratio": {
+                "type": "enum",
+                "values": [
+                  "1:1",
+                  "4:3",
+                  "3:4",
+                  "3:2",
+                  "2:3",
+                  "5:4",
+                  "4:5",
+                  "16:9",
+                  "9:16",
+                  "21:9",
+                  "auto"
+                ]
+              },
+              "output_format": {
+                "type": "enum",
+                "values": [
+                  "png",
+                  "jpeg",
+                  "webp"
+                ]
+              },
+              "background": {
+                "type": "enum",
+                "values": [
+                  "auto",
+                  "transparent",
+                  "opaque"
+                ]
+              },
+              "n": {
+                "type": "range",
+                "min": 1,
+                "max": 1
+              },
+              "input_references": {
+                "type": "range",
+                "min": 0,
+                "max": 10
+              },
+              "size": {
+                "type": "boolean"
+              }
+            },
+            "allowed_passthrough_parameters": [
+              "font_inputs"
+            ],
+            "supports_streaming": false,
+            "pricing": [
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.13
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.15,
+                "variant": "2k"
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.17,
+                "variant": "4k"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "raw_source": "openrouter:/api/v1/images/models",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
+    "raw": {
+      "id": "sourceful/riverflow-v2.6-pro",
+      "name": "Sourceful: Riverflow V2.6 Pro",
+      "description": "Riverflow 2.6 Pro is the flagship model of Sourceful's Riverflow 2.6 lineup, a unified text-to-image and image-to-image family that treats generation as a production workflow: an integrated reasoning model plans...",
+      "created": 1793289528,
+      "architecture": {
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "image"
+        ]
+      },
+      "supported_parameters": {
+        "resolution": {
+          "type": "enum",
+          "values": [
+            "1K",
+            "2K",
+            "4K"
+          ]
+        },
+        "aspect_ratio": {
+          "type": "enum",
+          "values": [
+            "1:1",
+            "4:3",
+            "3:4",
+            "3:2",
+            "2:3",
+            "5:4",
+            "4:5",
+            "16:9",
+            "9:16",
+            "21:9",
+            "auto"
+          ]
+        },
+        "output_format": {
+          "type": "enum",
+          "values": [
+            "png",
+            "jpeg",
+            "webp"
+          ]
+        },
+        "background": {
+          "type": "enum",
+          "values": [
+            "auto",
+            "transparent",
+            "opaque"
+          ]
+        },
+        "n": {
+          "type": "range",
+          "min": 1,
+          "max": 1
+        },
+        "input_references": {
+          "type": "range",
+          "min": 0,
+          "max": 10
+        },
+        "size": {
+          "type": "boolean"
+        }
+      },
+      "supports_streaming": false,
+      "endpoints": "/api/v1/images/models/sourceful/riverflow-v2.6-pro/endpoints"
+    }
+  },
+  {
     "model_id": "qwen/qwen-image-2.1-turbo",
     "canonical_slug": null,
     "model_name": "Qwen: Qwen Image 2.1 Turbo",
@@ -237,7 +584,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "qwen/qwen-image-2.1-turbo",
       "name": "Qwen: Qwen Image 2.1 Turbo",
@@ -534,7 +881,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "qwen/qwen-image-2.1-pro",
       "name": "Qwen: Qwen Image 2.1 Pro",
@@ -661,11 +1008,11 @@
     "upscale_factor": null,
     "creativity": null,
     "allowed_passthrough_parameters": null,
-    "has_any_price": false,
-    "has_valid_pricing": false,
-    "pricing_unit": null,
-    "comparable_price": null,
-    "comparable_price_basis": null,
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_image",
+    "comparable_price": 0.03,
+    "comparable_price_basis": "plain_output_image_rate",
     "pricing": {
       "skus": [],
       "raw_pricing_skus": null,
@@ -699,26 +1046,78 @@
             "skip_prompt_expansion",
             "thinking_mode"
           ],
-          "pricing_lines": [],
-          "has_any_price": false
+          "pricing_lines": [
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": null,
+              "raw_cost_usd": 0.03,
+              "usd_amount": 0.03,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "2k",
+              "raw_cost_usd": 0.06,
+              "usd_amount": 0.06,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "input_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": null,
+              "raw_cost_usd": 0.02,
+              "usd_amount": 0.02,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "input_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "2k",
+              "raw_cost_usd": 0.07,
+              "usd_amount": 0.07,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "request",
+              "unit_family": "unknown",
+              "variant": "high_thinking_surcharge",
+              "raw_cost_usd": 0.02,
+              "usd_amount": 0.02,
+              "is_negative": false,
+              "is_parseable": true
+            }
+          ],
+          "has_any_price": true
         }
       ],
-      "pricing_line_count": 0,
-      "resolved_pricing_line_count": 0,
+      "pricing_line_count": 5,
+      "resolved_pricing_line_count": 5,
       "unparseable_pricing_line_count": 0,
-      "has_any_price": false,
+      "has_any_price": true,
       "comparable_price": {
-        "unit": null,
-        "usd": null,
-        "basis": null,
-        "basis_sku": null
+        "unit": "usd_per_image",
+        "usd": 0.03,
+        "basis": "plain_output_image_rate",
+        "basis_sku": "output_image/image"
       },
-      "usd_per_image_by_variant": {},
+      "usd_per_image_by_variant": {
+        "default": 0.03,
+        "2k": 0.06
+      },
       "usd_per_megapixel_by_variant": {},
       "usd_per_token_by_variant": {},
-      "providers_without_pricing": [
-        "krea"
-      ],
+      "providers_without_pricing": [],
       "raw_endpoints_payload": {
         "id": "krea/k3-edit",
         "endpoints": [
@@ -761,13 +1160,42 @@
               "thinking_mode"
             ],
             "supports_streaming": false,
-            "pricing": []
+            "pricing": [
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.03
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.06,
+                "variant": "2k"
+              },
+              {
+                "billable": "input_image",
+                "unit": "image",
+                "cost_usd": 0.02
+              },
+              {
+                "billable": "input_image",
+                "unit": "image",
+                "cost_usd": 0.07,
+                "variant": "2k"
+              },
+              {
+                "billable": "output_image",
+                "unit": "request",
+                "cost_usd": 0.02,
+                "variant": "high_thinking_surcharge"
+              }
+            ]
           }
         ]
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "krea/k3-edit",
       "name": "Krea: K3 Edit",
@@ -874,6 +1302,13 @@
           "auto"
         ]
       },
+      "output_format": {
+        "type": "enum",
+        "values": [
+          "jpeg",
+          "png"
+        ]
+      },
       "n": {
         "type": "range",
         "min": 1,
@@ -883,6 +1318,9 @@
         "type": "range",
         "min": 0,
         "max": 10
+      },
+      "seed": {
+        "type": "boolean"
       }
     },
     "supports_streaming": false,
@@ -931,7 +1369,8 @@
           "provider_tag": "black-forest-labs",
           "supports_streaming": false,
           "allowed_passthrough_parameters": [
-            "safety_tolerance"
+            "safety_tolerance",
+            "steps"
           ],
           "pricing_lines": [
             {
@@ -1047,6 +1486,13 @@
                   "auto"
                 ]
               },
+              "output_format": {
+                "type": "enum",
+                "values": [
+                  "jpeg",
+                  "png"
+                ]
+              },
               "n": {
                 "type": "range",
                 "min": 1,
@@ -1056,10 +1502,14 @@
                 "type": "range",
                 "min": 0,
                 "max": 10
+              },
+              "seed": {
+                "type": "boolean"
               }
             },
             "allowed_passthrough_parameters": [
-              "safety_tolerance"
+              "safety_tolerance",
+              "steps"
             ],
             "supports_streaming": false,
             "pricing": [
@@ -1099,7 +1549,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "black-forest-labs/flux-3-image-klein",
       "name": "Black Forest Labs: FLUX 3 Image Klein",
@@ -1146,6 +1596,13 @@
             "auto"
           ]
         },
+        "output_format": {
+          "type": "enum",
+          "values": [
+            "jpeg",
+            "png"
+          ]
+        },
         "n": {
           "type": "range",
           "min": 1,
@@ -1155,6 +1612,9 @@
           "type": "range",
           "min": 0,
           "max": 10
+        },
+        "seed": {
+          "type": "boolean"
         }
       },
       "supports_streaming": false,
@@ -1370,7 +1830,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "google/gemini-nano-banana-2.1",
       "name": "Google: Nano Banana 2.1",
@@ -1644,7 +2104,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "tencent/hy-image-v3.5-preview",
       "name": "Tencent: Hy Image 3.5 Preview",
@@ -1938,7 +2398,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "bytedance-seed/seedream-5-0-flash",
       "name": "ByteDance Seed: Seedream 5.0 Flash",
@@ -2118,7 +2578,9 @@
           "provider_tag": "black-forest-labs",
           "supports_streaming": false,
           "allowed_passthrough_parameters": [
-            "safety_tolerance"
+            "safety_tolerance",
+            "grounding",
+            "version"
           ],
           "pricing_lines": [
             {
@@ -2246,7 +2708,9 @@
               }
             },
             "allowed_passthrough_parameters": [
-              "safety_tolerance"
+              "safety_tolerance",
+              "grounding",
+              "version"
             ],
             "supports_streaming": false,
             "pricing": [
@@ -2286,7 +2750,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "black-forest-labs/flux-3-image",
       "name": "Black Forest Labs: FLUX 3 Image",
@@ -2511,7 +2975,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "recraft/recraft-v4.1-flash",
       "name": "Recraft: Recraft V4.1 Flash",
@@ -2806,7 +3270,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "openai/gpt-image-2.5-sunburst",
       "name": "OpenAI: GPT Image 2.5 Sunburst",
@@ -3134,7 +3598,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "openai/gpt-image-2.5-flare",
       "name": "OpenAI: GPT Image 2.5 Flare",
@@ -3412,7 +3876,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "microsoft/mai-image-2.6",
       "name": "Microsoft AI: MAI-Image-2.6",
@@ -3665,7 +4129,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "microsoft/mai-image-2.6-flash",
       "name": "Microsoft AI: MAI-Image-2.6 Flash",
@@ -3797,7 +4261,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "meta/muse-image",
       "name": "Meta: Muse Image",
@@ -4025,7 +4489,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "recraft/recraft-v4-styles-pro",
       "name": "Recraft: Recraft V4 Styles Pro",
@@ -4293,7 +4757,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "recraft/recraft-v4-styles-vector",
       "name": "Recraft: Recraft V4 Styles Vector",
@@ -4567,7 +5031,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "recraft/recraft-v4-styles-pro-vector",
       "name": "Recraft: Recraft V4 Styles Pro Vector",
@@ -4829,7 +5293,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "recraft/recraft-v4-styles",
       "name": "Recraft: Recraft V4 Styles",
@@ -5107,7 +5571,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "bytedance-seed/seedream-5-0-lite",
       "name": "ByteDance Seed: Seedream 5.0 Lite",
@@ -5418,7 +5882,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "bytedance-seed/seedream-5-0-pro",
       "name": "ByteDance Seed: Seedream 5.0 Pro",
@@ -5764,7 +6228,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "x-ai/grok-imagine-image-2.0",
       "name": "xAI: Grok Imagine Image 2.0",
@@ -6066,7 +6530,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "qwen/qwen-image-3-pro",
       "name": "Qwen: Qwen Image 3 Pro",
@@ -6363,7 +6827,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "qwen/qwen-image-3",
       "name": "Qwen: Qwen Image 3",
@@ -6627,7 +7091,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "microsoft/mai-image-2.5-pro",
       "name": "Microsoft AI: MAI-Image-2.5 Pro",
@@ -6738,11 +7202,11 @@
     "upscale_factor": null,
     "creativity": null,
     "allowed_passthrough_parameters": null,
-    "has_any_price": false,
-    "has_valid_pricing": false,
-    "pricing_unit": null,
-    "comparable_price": null,
-    "comparable_price_basis": null,
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_image",
+    "comparable_price": 0.06,
+    "comparable_price_basis": "plain_output_image_rate",
     "pricing": {
       "skus": [],
       "raw_pricing_skus": null,
@@ -6781,26 +7245,59 @@
             "movement",
             "strength"
           ],
-          "pricing_lines": [],
-          "has_any_price": false
+          "pricing_lines": [
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": null,
+              "raw_cost_usd": 0.06,
+              "usd_amount": 0.06,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "style_references",
+              "raw_cost_usd": 0.065,
+              "usd_amount": 0.065,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "moodboards",
+              "raw_cost_usd": 0.07,
+              "usd_amount": 0.07,
+              "is_negative": false,
+              "is_parseable": true
+            }
+          ],
+          "has_any_price": true
         }
       ],
-      "pricing_line_count": 0,
-      "resolved_pricing_line_count": 0,
+      "pricing_line_count": 3,
+      "resolved_pricing_line_count": 3,
       "unparseable_pricing_line_count": 0,
-      "has_any_price": false,
+      "has_any_price": true,
       "comparable_price": {
-        "unit": null,
-        "usd": null,
-        "basis": null,
-        "basis_sku": null
+        "unit": "usd_per_image",
+        "usd": 0.06,
+        "basis": "plain_output_image_rate",
+        "basis_sku": "output_image/image"
       },
-      "usd_per_image_by_variant": {},
+      "usd_per_image_by_variant": {
+        "default": 0.06,
+        "style_references": 0.065,
+        "moodboards": 0.07
+      },
       "usd_per_megapixel_by_variant": {},
       "usd_per_token_by_variant": {},
-      "providers_without_pricing": [
-        "krea"
-      ],
+      "providers_without_pricing": [],
       "raw_endpoints_payload": {
         "id": "krea/krea-2-large",
         "endpoints": [
@@ -6847,13 +7344,31 @@
               "strength"
             ],
             "supports_streaming": false,
-            "pricing": []
+            "pricing": [
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.06
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.065,
+                "variant": "style_references"
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.07,
+                "variant": "moodboards"
+              }
+            ]
           }
         ]
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "krea/krea-2-large",
       "name": "Krea: Krea 2 Large",
@@ -6967,11 +7482,11 @@
     "upscale_factor": null,
     "creativity": null,
     "allowed_passthrough_parameters": null,
-    "has_any_price": false,
-    "has_valid_pricing": false,
-    "pricing_unit": null,
-    "comparable_price": null,
-    "comparable_price_basis": null,
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_image",
+    "comparable_price": 0.03,
+    "comparable_price_basis": "plain_output_image_rate",
     "pricing": {
       "skus": [],
       "raw_pricing_skus": null,
@@ -7010,26 +7525,59 @@
             "movement",
             "strength"
           ],
-          "pricing_lines": [],
-          "has_any_price": false
+          "pricing_lines": [
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": null,
+              "raw_cost_usd": 0.03,
+              "usd_amount": 0.03,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "style_references",
+              "raw_cost_usd": 0.035,
+              "usd_amount": 0.035,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "moodboards",
+              "raw_cost_usd": 0.04,
+              "usd_amount": 0.04,
+              "is_negative": false,
+              "is_parseable": true
+            }
+          ],
+          "has_any_price": true
         }
       ],
-      "pricing_line_count": 0,
-      "resolved_pricing_line_count": 0,
+      "pricing_line_count": 3,
+      "resolved_pricing_line_count": 3,
       "unparseable_pricing_line_count": 0,
-      "has_any_price": false,
+      "has_any_price": true,
       "comparable_price": {
-        "unit": null,
-        "usd": null,
-        "basis": null,
-        "basis_sku": null
+        "unit": "usd_per_image",
+        "usd": 0.03,
+        "basis": "plain_output_image_rate",
+        "basis_sku": "output_image/image"
       },
-      "usd_per_image_by_variant": {},
+      "usd_per_image_by_variant": {
+        "default": 0.03,
+        "style_references": 0.035,
+        "moodboards": 0.04
+      },
       "usd_per_megapixel_by_variant": {},
       "usd_per_token_by_variant": {},
-      "providers_without_pricing": [
-        "krea"
-      ],
+      "providers_without_pricing": [],
       "raw_endpoints_payload": {
         "id": "krea/krea-2-medium",
         "endpoints": [
@@ -7076,13 +7624,31 @@
               "strength"
             ],
             "supports_streaming": false,
-            "pricing": []
+            "pricing": [
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.03
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.035,
+                "variant": "style_references"
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.04,
+                "variant": "moodboards"
+              }
+            ]
           }
         ]
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "krea/krea-2-medium",
       "name": "Krea: Krea 2 Medium",
@@ -7196,11 +7762,11 @@
     "upscale_factor": null,
     "creativity": null,
     "allowed_passthrough_parameters": null,
-    "has_any_price": false,
-    "has_valid_pricing": false,
-    "pricing_unit": null,
-    "comparable_price": null,
-    "comparable_price_basis": null,
+    "has_any_price": true,
+    "has_valid_pricing": true,
+    "pricing_unit": "usd_per_image",
+    "comparable_price": 0.015,
+    "comparable_price_basis": "plain_output_image_rate",
     "pricing": {
       "skus": [],
       "raw_pricing_skus": null,
@@ -7239,26 +7805,59 @@
             "movement",
             "strength"
           ],
-          "pricing_lines": [],
-          "has_any_price": false
+          "pricing_lines": [
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": null,
+              "raw_cost_usd": 0.015,
+              "usd_amount": 0.015,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "style_references",
+              "raw_cost_usd": 0.0175,
+              "usd_amount": 0.0175,
+              "is_negative": false,
+              "is_parseable": true
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "unit_family": "usd_per_image",
+              "variant": "moodboards",
+              "raw_cost_usd": 0.02,
+              "usd_amount": 0.02,
+              "is_negative": false,
+              "is_parseable": true
+            }
+          ],
+          "has_any_price": true
         }
       ],
-      "pricing_line_count": 0,
-      "resolved_pricing_line_count": 0,
+      "pricing_line_count": 3,
+      "resolved_pricing_line_count": 3,
       "unparseable_pricing_line_count": 0,
-      "has_any_price": false,
+      "has_any_price": true,
       "comparable_price": {
-        "unit": null,
-        "usd": null,
-        "basis": null,
-        "basis_sku": null
+        "unit": "usd_per_image",
+        "usd": 0.015,
+        "basis": "plain_output_image_rate",
+        "basis_sku": "output_image/image"
       },
-      "usd_per_image_by_variant": {},
+      "usd_per_image_by_variant": {
+        "default": 0.015,
+        "style_references": 0.0175,
+        "moodboards": 0.02
+      },
       "usd_per_megapixel_by_variant": {},
       "usd_per_token_by_variant": {},
-      "providers_without_pricing": [
-        "krea"
-      ],
+      "providers_without_pricing": [],
       "raw_endpoints_payload": {
         "id": "krea/krea-2-medium-turbo",
         "endpoints": [
@@ -7305,13 +7904,31 @@
               "strength"
             ],
             "supports_streaming": false,
-            "pricing": []
+            "pricing": [
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.015
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.0175,
+                "variant": "style_references"
+              },
+              {
+                "billable": "output_image",
+                "unit": "image",
+                "cost_usd": 0.02,
+                "variant": "moodboards"
+              }
+            ]
           }
         ]
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "krea/krea-2-medium-turbo",
       "name": "Krea: Krea 2 Medium Turbo",
@@ -7638,7 +8255,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "google/gemini-3.1-flash-lite-image",
       "name": "Google: Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
@@ -7948,7 +8565,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "openai/gpt-image-2",
       "name": "OpenAI: GPT Image 2",
@@ -8259,7 +8876,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "openai/gpt-image-1-mini",
       "name": "OpenAI: GPT Image 1 Mini",
@@ -8566,7 +9183,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "openai/gpt-image-1",
       "name": "OpenAI: GPT Image 1",
@@ -8995,7 +9612,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "google/gemini-3.1-flash-image",
       "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image)",
@@ -9358,7 +9975,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "google/gemini-3-pro-image",
       "name": "Google: Nano Banana Pro (Gemini 3 Pro Image)",
@@ -9676,7 +10293,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "sourceful/riverflow-v2.5-pro",
       "name": "Sourceful: Riverflow V2.5 Pro",
@@ -9985,7 +10602,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "sourceful/riverflow-v2.5-fast",
       "name": "Sourceful: Riverflow V2.5 Fast",
@@ -10256,7 +10873,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "microsoft/mai-image-2.5",
       "name": "Microsoft AI: MAI-Image-2.5",
@@ -10534,7 +11151,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "x-ai/grok-imagine-image-quality",
       "name": "SpaceXAI: Grok Imagine Image Quality",
@@ -10782,7 +11399,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "recraft/recraft-v4.1-pro-vector",
       "name": "Recraft: Recraft V4.1 Pro Vector",
@@ -11021,7 +11638,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "recraft/recraft-v4.1-vector",
       "name": "Recraft: Recraft V4.1 Vector",
@@ -11248,7 +11865,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "recraft/recraft-v4.1-utility-pro",
       "name": "Recraft: Recraft V4.1 Utility Pro",
@@ -11469,7 +12086,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "recraft/recraft-v4.1-utility",
       "name": "Recraft: Recraft V4.1 Utility",
@@ -11690,7 +12307,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "recraft/recraft-v4.1-pro",
       "name": "Recraft: Recraft V4.1 Pro",
@@ -11911,7 +12528,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "recraft/recraft-v4.1",
       "name": "Recraft: Recraft V4.1",
@@ -12144,7 +12761,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "recraft/recraft-v4-pro-vector",
       "name": "Recraft: Recraft V4 Pro Vector",
@@ -12383,7 +13000,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "recraft/recraft-v4-vector",
       "name": "Recraft: Recraft V4 Vector",
@@ -12610,7 +13227,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "recraft/recraft-v4-pro",
       "name": "Recraft: Recraft V4 Pro",
@@ -12831,7 +13448,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "recraft/recraft-v4",
       "name": "Recraft: Recraft V4",
@@ -13052,7 +13669,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "recraft/recraft-v3",
       "name": "Recraft: Recraft V3",
@@ -13336,7 +13953,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "openai/gpt-5.4-image-2",
       "name": "OpenAI: GPT-5.4 Image 2",
@@ -13615,7 +14232,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "google/gemini-3.1-flash-image-preview",
       "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image Preview)",
@@ -13936,7 +14553,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "sourceful/riverflow-v2-pro",
       "name": "Sourceful: Riverflow V2 Pro",
@@ -14233,7 +14850,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "sourceful/riverflow-v2-fast",
       "name": "Sourceful: Riverflow V2 Fast",
@@ -14491,7 +15108,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "black-forest-labs/flux.2-klein-4b",
       "name": "Black Forest Labs: FLUX.2 Klein 4B",
@@ -14778,7 +15395,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "bytedance-seed/seedream-4.5",
       "name": "ByteDance Seed: Seedream 4.5",
@@ -14954,7 +15571,8 @@
           "allowed_passthrough_parameters": [
             "steps",
             "guidance",
-            "safety_tolerance"
+            "safety_tolerance",
+            "disable_pup"
           ],
           "pricing_lines": [
             {
@@ -15033,7 +15651,8 @@
             "allowed_passthrough_parameters": [
               "steps",
               "guidance",
-              "safety_tolerance"
+              "safety_tolerance",
+              "disable_pup"
             ],
             "supports_streaming": false,
             "pricing": [
@@ -15048,7 +15667,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "black-forest-labs/flux.2-max",
       "name": "Black Forest Labs: FLUX.2 Max",
@@ -15214,7 +15833,8 @@
           "allowed_passthrough_parameters": [
             "steps",
             "guidance",
-            "safety_tolerance"
+            "safety_tolerance",
+            "prompt_upsampling"
           ],
           "pricing_lines": [
             {
@@ -15303,7 +15923,8 @@
             "allowed_passthrough_parameters": [
               "steps",
               "guidance",
-              "safety_tolerance"
+              "safety_tolerance",
+              "prompt_upsampling"
             ],
             "supports_streaming": false,
             "pricing": [
@@ -15323,7 +15944,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "black-forest-labs/flux.2-flex",
       "name": "Black Forest Labs: FLUX.2 Flex",
@@ -15489,7 +16110,8 @@
           "allowed_passthrough_parameters": [
             "steps",
             "guidance",
-            "safety_tolerance"
+            "safety_tolerance",
+            "disable_pup"
           ],
           "pricing_lines": [
             {
@@ -15568,7 +16190,8 @@
             "allowed_passthrough_parameters": [
               "steps",
               "guidance",
-              "safety_tolerance"
+              "safety_tolerance",
+              "disable_pup"
             ],
             "supports_streaming": false,
             "pricing": [
@@ -15583,7 +16206,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "black-forest-labs/flux.2-pro",
       "name": "Black Forest Labs: FLUX.2 Pro",
@@ -15942,7 +16565,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "google/gemini-3-pro-image-preview",
       "name": "Google: Nano Banana Pro (Gemini 3 Pro Image Preview)",
@@ -16231,7 +16854,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "openai/gpt-5-image-mini",
       "name": "OpenAI: GPT-5 Image Mini",
@@ -16529,7 +17152,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "openai/gpt-5-image",
       "name": "OpenAI: GPT-5 Image",
@@ -16793,7 +17416,7 @@
       }
     },
     "raw_source": "openrouter:/api/v1/images/models",
-    "retrieved_at": "2026-10-26T02:30:53.672567+00:00",
+    "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
     "raw": {
       "id": "google/gemini-2.5-flash-image",
       "name": "Google: Nano Banana (Gemini 2.5 Flash Image)",

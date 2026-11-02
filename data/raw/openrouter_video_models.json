@@ -1,6 +1,41 @@
 {
   "data": [
     {
+      "id": "tbc/mischief-1",
+      "canonical_slug": "tbc/mischief-1-20261023",
+      "hugging_face_id": null,
+      "name": "TBC: mischief 1",
+      "created": 1793319378,
+      "description": "TBC mischief 1 is the world's first neuron-derived video model from The Biological Computing Co. It supports image to video and is a fast and affordable way to bring ideas...",
+      "supported_resolutions": [
+        "480p",
+        "720p"
+      ],
+      "supported_aspect_ratios": [
+        "16:9"
+      ],
+      "supported_sizes": [
+        "854x480",
+        "1280x720"
+      ],
+      "supported_durations": [
+        3,
+        5
+      ],
+      "supported_frame_images": [
+        "first_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": false,
+      "seed": true,
+      "pricing_skus": {
+        "cents_per_video_output_second_480p": "0.5",
+        "cents_per_video_output_second_720p": "1"
+      },
+      "allowed_passthrough_parameters": []
+    },
+    {
       "id": "x-ai/grok-imagine-video-1.5-lite",
       "canonical_slug": "x-ai/grok-imagine-video-1.5-lite-20261001",
       "hugging_face_id": null,
@@ -591,7 +626,8 @@
       },
       "allowed_passthrough_parameters": [
         "safety_tolerance",
-        "version"
+        "version",
+        "draft"
       ]
     },
     {
@@ -1258,6 +1294,73 @@
       ]
     },
     {
+      "id": "bytedance/seedance-2.0-fast",
+      "canonical_slug": "bytedance/seedance-2.0-fast-20260414",
+      "hugging_face_id": null,
+      "name": "ByteDance: Seedance 2.0 Fast",
+      "created": 1776211362,
+      "description": "Seedance 2.0 Fast is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It prioritizes generation speed and lower cost...",
+      "supported_resolutions": [
+        "480p",
+        "720p"
+      ],
+      "supported_aspect_ratios": [
+        "1:1",
+        "3:4",
+        "9:16",
+        "4:3",
+        "16:9",
+        "21:9",
+        "9:21"
+      ],
+      "supported_sizes": [
+        "480x480",
+        "480x640",
+        "480x854",
+        "640x480",
+        "854x480",
+        "1120x480",
+        "720x720",
+        "720x960",
+        "720x1280",
+        "720x1680",
+        "960x720",
+        "1280x720",
+        "1680x720"
+      ],
+      "supported_durations": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "supported_frame_images": [
+        "first_frame",
+        "last_frame"
+      ],
+      "upscale_factor": null,
+      "creativity": null,
+      "generate_audio": true,
+      "seed": true,
+      "pricing_skus": {
+        "video_tokens": "0.0000042",
+        "video_tokens_without_audio": "0.0000042",
+        "video_tokens_with_video_input": "0.000002475"
+      },
+      "allowed_passthrough_parameters": [
+        "watermark",
+        "req_key"
+      ]
+    },
+    {
       "id": "alibaba/wan-2.7",
       "canonical_slug": "alibaba/wan-2.7-20260414",
       "hugging_face_id": null,
@@ -1399,73 +1502,6 @@
         "video_tokens_with_video_input": "0.0000043",
         "video_tokens_4k_with_video_input": "0.0000024",
         "video_tokens_1080p_with_video_input": "0.0000047"
-      },
-      "allowed_passthrough_parameters": [
-        "watermark",
-        "req_key"
-      ]
-    },
-    {
-      "id": "bytedance/seedance-2.0-fast",
-      "canonical_slug": "bytedance/seedance-2.0-fast-20260414",
-      "hugging_face_id": null,
-      "name": "ByteDance: Seedance 2.0 Fast",
-      "created": 1776211362,
-      "description": "Seedance 2.0 Fast is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It prioritizes generation speed and lower cost...",
-      "supported_resolutions": [
-        "480p",
-        "720p"
-      ],
-      "supported_aspect_ratios": [
-        "1:1",
-        "3:4",
-        "9:16",
-        "4:3",
-        "16:9",
-        "21:9",
-        "9:21"
-      ],
-      "supported_sizes": [
-        "480x480",
-        "480x640",
-        "480x854",
-        "640x480",
-        "854x480",
-        "1120x480",
-        "720x720",
-        "720x960",
-        "720x1280",
-        "720x1680",
-        "960x720",
-        "1280x720",
-        "1680x720"
-      ],
-      "supported_durations": [
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15
-      ],
-      "supported_frame_images": [
-        "first_frame",
-        "last_frame"
-      ],
-      "upscale_factor": null,
-      "creativity": null,
-      "generate_audio": true,
-      "seed": true,
-      "pricing_skus": {
-        "video_tokens": "0.0000042",
-        "video_tokens_without_audio": "0.0000042",
-        "video_tokens_with_video_input": "0.000002475"
       },
       "allowed_passthrough_parameters": [
         "watermark",

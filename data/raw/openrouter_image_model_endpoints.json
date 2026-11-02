@@ -1,4 +1,99 @@
 {
+  "sourceful/riverflow-v2.6-pro": {
+    "endpoint": "https://openrouter.ai/api/v1/images/models/sourceful/riverflow-v2.6-pro/endpoints",
+    "status_code": 200,
+    "ok": true,
+    "error": null,
+    "attempts": 1,
+    "payload": {
+      "id": "sourceful/riverflow-v2.6-pro",
+      "endpoints": [
+        {
+          "provider_name": "Sourceful",
+          "provider_slug": "sourceful",
+          "provider_tag": "sourceful",
+          "supported_parameters": {
+            "resolution": {
+              "type": "enum",
+              "values": [
+                "1K",
+                "2K",
+                "4K"
+              ]
+            },
+            "aspect_ratio": {
+              "type": "enum",
+              "values": [
+                "1:1",
+                "4:3",
+                "3:4",
+                "3:2",
+                "2:3",
+                "5:4",
+                "4:5",
+                "16:9",
+                "9:16",
+                "21:9",
+                "auto"
+              ]
+            },
+            "output_format": {
+              "type": "enum",
+              "values": [
+                "png",
+                "jpeg",
+                "webp"
+              ]
+            },
+            "background": {
+              "type": "enum",
+              "values": [
+                "auto",
+                "transparent",
+                "opaque"
+              ]
+            },
+            "n": {
+              "type": "range",
+              "min": 1,
+              "max": 1
+            },
+            "input_references": {
+              "type": "range",
+              "min": 0,
+              "max": 10
+            },
+            "size": {
+              "type": "boolean"
+            }
+          },
+          "allowed_passthrough_parameters": [
+            "font_inputs"
+          ],
+          "supports_streaming": false,
+          "pricing": [
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "cost_usd": 0.13
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "cost_usd": 0.15,
+              "variant": "2k"
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "cost_usd": 0.17,
+              "variant": "4k"
+            }
+          ]
+        }
+      ]
+    }
+  },
   "qwen/qwen-image-2.1-turbo": {
     "endpoint": "https://openrouter.ai/api/v1/images/models/qwen/qwen-image-2.1-turbo/endpoints",
     "status_code": 200,
@@ -203,7 +298,36 @@
             "thinking_mode"
           ],
           "supports_streaming": false,
-          "pricing": []
+          "pricing": [
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "cost_usd": 0.03
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "cost_usd": 0.06,
+              "variant": "2k"
+            },
+            {
+              "billable": "input_image",
+              "unit": "image",
+              "cost_usd": 0.02
+            },
+            {
+              "billable": "input_image",
+              "unit": "image",
+              "cost_usd": 0.07,
+              "variant": "2k"
+            },
+            {
+              "billable": "output_image",
+              "unit": "request",
+              "cost_usd": 0.02,
+              "variant": "high_thinking_surcharge"
+            }
+          ]
         }
       ]
     }
@@ -253,6 +377,13 @@
                 "auto"
               ]
             },
+            "output_format": {
+              "type": "enum",
+              "values": [
+                "jpeg",
+                "png"
+              ]
+            },
             "n": {
               "type": "range",
               "min": 1,
@@ -262,10 +393,14 @@
               "type": "range",
               "min": 0,
               "max": 10
+            },
+            "seed": {
+              "type": "boolean"
             }
           },
           "allowed_passthrough_parameters": [
-            "safety_tolerance"
+            "safety_tolerance",
+            "steps"
           ],
           "supports_streaming": false,
           "pricing": [
@@ -575,7 +710,9 @@
             }
           },
           "allowed_passthrough_parameters": [
-            "safety_tolerance"
+            "safety_tolerance",
+            "grounding",
+            "version"
           ],
           "supports_streaming": false,
           "pricing": [
@@ -1767,7 +1904,25 @@
             "strength"
           ],
           "supports_streaming": false,
-          "pricing": []
+          "pricing": [
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "cost_usd": 0.06
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "cost_usd": 0.065,
+              "variant": "style_references"
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "cost_usd": 0.07,
+              "variant": "moodboards"
+            }
+          ]
         }
       ]
     }
@@ -1824,7 +1979,25 @@
             "strength"
           ],
           "supports_streaming": false,
-          "pricing": []
+          "pricing": [
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "cost_usd": 0.03
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "cost_usd": 0.035,
+              "variant": "style_references"
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "cost_usd": 0.04,
+              "variant": "moodboards"
+            }
+          ]
         }
       ]
     }
@@ -1881,7 +2054,25 @@
             "strength"
           ],
           "supports_streaming": false,
-          "pricing": []
+          "pricing": [
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "cost_usd": 0.015
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "cost_usd": 0.0175,
+              "variant": "style_references"
+            },
+            {
+              "billable": "output_image",
+              "unit": "image",
+              "cost_usd": 0.02,
+              "variant": "moodboards"
+            }
+          ]
         }
       ]
     }
@@ -3974,7 +4165,8 @@
           "allowed_passthrough_parameters": [
             "steps",
             "guidance",
-            "safety_tolerance"
+            "safety_tolerance",
+            "disable_pup"
           ],
           "supports_streaming": false,
           "pricing": [
@@ -4040,7 +4232,8 @@
           "allowed_passthrough_parameters": [
             "steps",
             "guidance",
-            "safety_tolerance"
+            "safety_tolerance",
+            "prompt_upsampling"
           ],
           "supports_streaming": false,
           "pricing": [
@@ -4111,7 +4304,8 @@
           "allowed_passthrough_parameters": [
             "steps",
             "guidance",
-            "safety_tolerance"
+            "safety_tolerance",
+            "disable_pup"
           ],
           "supports_streaming": false,
           "pricing": [
