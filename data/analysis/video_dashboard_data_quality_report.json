@@ -13,14 +13,14 @@
     {
       "severity": "warning",
       "issue": "benchmark_slug_unmatched",
-      "count": 2,
-      "detail": "Benchmark slug(s) matched no catalogue model and are excluded from every per-model metric: ['google/gemini-omni-1.1-flash-20260911', 'openai/sora-2-pro-20260320']"
+      "count": 1,
+      "detail": "Benchmark slug(s) matched no catalogue model and are excluded from every per-model metric: ['openai/sora-2-pro-20260320']"
     },
     {
       "severity": "info",
       "issue": "video_models_without_benchmark_rows",
-      "count": 6,
-      "detail": "6 catalogue model(s) have no judged benchmark row and are listed as unrated: ['black-forest-labs/flux-video-edit', 'black-forest-labs/flux-video-upscale', 'heygen/avatar-iv', 'minimax/hailuo-2.3', 'runway/aleph-2', 'tbc/mischief-1']"
+      "count": 7,
+      "detail": "7 catalogue model(s) have no judged benchmark row and are listed as unrated: ['black-forest-labs/flux-video-edit', 'black-forest-labs/flux-video-upscale', 'google/gemini-omni-1.2-flash', 'heygen/avatar-iv', 'minimax/hailuo-2.3', 'runway/aleph-2', 'tbc/mischief-1']"
     },
     {
       "severity": "info",

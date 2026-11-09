@@ -1,15 +1,15 @@
 {
-  "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
+  "retrieved_at": "2026-11-09T03:52:02.784045+00:00",
   "model_inventory": {
     "image": {
-      "total_models": 62,
-      "models_with_resolved_price": 61,
+      "total_models": 63,
+      "models_with_resolved_price": 62,
       "models_without_resolved_price": 1,
-      "price_resolution_rate": 98.39,
-      "models_with_any_price_data": 61,
+      "price_resolution_rate": 98.41,
+      "models_with_any_price_data": 62,
       "models_with_price_data_but_no_comparable_rate": 0,
       "models_with_design_arena": 13,
-      "models_without_design_arena": 49,
+      "models_without_design_arena": 50,
       "unit_families_present": [],
       "comparable_price_units_used": [
         "usd_per_image",
@@ -25,19 +25,19 @@
       "comparable_price_range": {
         "min": 1.6e-06,
         "max": 0.3,
-        "count": 61
+        "count": 62
       },
       "provider_count": 12
     },
     "video": {
-      "total_models": 31,
-      "models_with_resolved_price": 25,
+      "total_models": 33,
+      "models_with_resolved_price": 27,
       "models_without_resolved_price": 6,
-      "price_resolution_rate": 80.65,
-      "models_with_any_price_data": 31,
+      "price_resolution_rate": 81.82,
+      "models_with_any_price_data": 33,
       "models_with_price_data_but_no_comparable_rate": 6,
       "models_with_design_arena": 0,
-      "models_without_design_arena": 31,
+      "models_without_design_arena": 33,
       "unit_families_present": [
         "cents_per_generation",
         "cents_per_image",
@@ -60,34 +60,35 @@
       "comparable_price_range": {
         "min": 0.01,
         "max": 0.28,
-        "count": 25
+        "count": 27
       },
       "provider_count": 10
     },
-    "total_models": 93,
-    "total_with_resolved_price": 86,
+    "total_models": 96,
+    "total_with_resolved_price": 89,
     "total_with_design_arena": 13
   },
   "image_endpoint_pricing": {
     "enabled": true,
-    "requested": 62,
-    "succeeded": 62,
+    "requested": 63,
+    "succeeded": 63,
     "failed": 0,
     "failed_model_ids": [],
-    "models_with_any_price_from_endpoints": 61,
+    "models_with_any_price_from_endpoints": 62,
     "models_with_no_price_from_endpoints": [
       "meta/muse-image"
     ],
     "delay_seconds_between_requests": 0.25
   },
   "image_inventory_cross_check": {
-    "dedicated_image_catalog": 62,
-    "filtered_generic_catalog": 64,
-    "in_both": 62,
+    "dedicated_image_catalog": 63,
+    "filtered_generic_catalog": 66,
+    "in_both": 63,
     "only_in_dedicated_catalog": [],
     "only_in_filtered_catalog": [
       "openrouter/auto",
-      "openrouter/auto-beta"
+      "openrouter/auto-beta",
+      "openrouter/auto-code"
     ]
   },
   "benchmark_coverage": [
@@ -96,28 +97,28 @@
       "benchmark_source": "Design Arena",
       "source_endpoint": "/api/v1/models?output_modalities=image",
       "number_of_models": 12,
-      "percentage_of_media_inventory": 12.9
+      "percentage_of_media_inventory": 12.5
     },
     {
       "benchmark_name": "Design Arena: models/image",
       "benchmark_source": "Design Arena",
       "source_endpoint": "/api/v1/models?output_modalities=image",
       "number_of_models": 12,
-      "percentage_of_media_inventory": 12.9
+      "percentage_of_media_inventory": 12.5
     },
     {
       "benchmark_name": "Design Arena: models/logo",
       "benchmark_source": "Design Arena",
       "source_endpoint": "/api/v1/models?output_modalities=image",
       "number_of_models": 12,
-      "percentage_of_media_inventory": 12.9
+      "percentage_of_media_inventory": 12.5
     },
     {
       "benchmark_name": "Design Arena: models/imageediting",
       "benchmark_source": "Design Arena",
       "source_endpoint": "/api/v1/models?output_modalities=image",
       "number_of_models": 8,
-      "percentage_of_media_inventory": 8.6
+      "percentage_of_media_inventory": 8.33
     }
   ],
   "prompt_benchmark_coverage": {
@@ -129,7 +130,7 @@
       {
         "page": "/benchmarks/media/images/portraits",
         "reason": "no_judged_checks",
-        "row_blocks": 228
+        "row_blocks": 236
       }
     ],
     "pages_skipped_count": 1,
@@ -168,8 +169,8 @@
     "models_matched_to_inventory": 81,
     "models_unmatched": 2,
     "unmatched_model_slugs": [
-      "google/gemini-omni-1.1-flash-20260911",
-      "openai/sora-2-pro-20260320"
+      "openai/sora-2-pro-20260320",
+      "x-ai/grok-imagine-image-quality-20260512"
     ],
     "rows_missing_cost": 0,
     "rows_missing_generation_time": 0,
@@ -210,6 +211,7 @@
       "duration_seconds_720p",
       "duration_seconds_768p",
       "duration_seconds_with_audio",
+      "duration_seconds_with_audio_360p",
       "duration_seconds_with_audio_4k",
       "duration_seconds_with_audio_720p",
       "duration_seconds_without_audio",
@@ -217,6 +219,11 @@
       "duration_seconds_without_audio_720p",
       "image_to_video_duration_seconds_1080p",
       "image_to_video_duration_seconds_720p",
+      "long_duration_seconds_1080p",
+      "long_duration_seconds_2k",
+      "long_duration_seconds_480p",
+      "long_duration_seconds_768p",
+      "reference_duration_seconds_1080p",
       "reference_duration_seconds_2k",
       "reference_duration_seconds_480p",
       "reference_duration_seconds_768p",

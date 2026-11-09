@@ -1,50 +1,50 @@
 {
   "version": 1,
-  "generated_at": "2026-11-02T03:41:21.950988+00:00",
+  "generated_at": "2026-11-09T03:52:44.098513+00:00",
   "state": "ok",
-  "duration_seconds": 56.8,
+  "duration_seconds": 42.75,
   "targets": {
     "chat": {
       "ok": true,
       "steps": [
         {
           "step": "fetch",
-          "at": "2026-11-02T03:40:26.336483+00:00",
+          "at": "2026-11-09T03:52:02.551162+00:00",
           "exit_code": 0,
           "snapshot": true
         },
         {
           "step": "weekly_picks",
-          "at": "2026-11-02T03:40:26.366044+00:00",
+          "at": "2026-11-09T03:52:02.576480+00:00",
           "summary": {
             "intelligence": "locked",
             "coding": "locked",
             "agentic": "locked"
           },
-          "week": "2026-11-02_2026-11-08"
+          "week": "2026-11-09_2026-11-15"
         },
         {
           "step": "build",
-          "at": "2026-11-02T03:40:26.449405+00:00",
+          "at": "2026-11-09T03:52:02.643951+00:00",
           "exit_code": 0
         }
       ],
-      "started_at": "2026-11-02T03:40:25.192782+00:00",
+      "started_at": "2026-11-09T03:52:01.379600+00:00",
       "dashboard": "/home/runner/work/llm-analysis/llm-analysis/dashboard/price_performance_final.html",
       "weekly": {
-        "week_key": "2026-11-02_2026-11-08",
-        "week_label": "Mon 2 Nov - Sun 8 Nov 2026",
-        "iso_week": "2026-W45",
+        "week_key": "2026-11-09_2026-11-15",
+        "week_label": "Mon 9 Nov - Sun 15 Nov 2026",
+        "iso_week": "2026-W46",
         "metrics": {
           "intelligence": "locked",
           "coding": "locked",
           "agentic": "locked"
         }
       },
-      "retrieved_at": "2026-11-02T03:40:25.314250+00:00",
-      "model_count": 452,
-      "duration_seconds": 1.3,
-      "finished_at": "2026-11-02T03:40:26.449428+00:00",
+      "retrieved_at": "2026-11-09T03:52:01.479237+00:00",
+      "model_count": 461,
+      "duration_seconds": 1.31,
+      "finished_at": "2026-11-09T03:52:02.643973+00:00",
       "target": "chat",
       "state": "ok"
     },
@@ -54,34 +54,34 @@
       "steps": [
         {
           "step": "fetch",
-          "at": "2026-11-02T03:41:15.684044+00:00",
+          "at": "2026-11-09T03:52:38.370426+00:00",
           "exit_code": 0,
           "snapshot": true
         },
         {
           "step": "weekly_pick",
-          "at": "2026-11-02T03:41:15.702303+00:00",
+          "at": "2026-11-09T03:52:38.385313+00:00",
           "state": "locked",
-          "week": "2026-11-02_2026-11-08"
+          "week": "2026-11-09_2026-11-15"
         },
         {
           "step": "build",
-          "at": "2026-11-02T03:41:15.769774+00:00",
+          "at": "2026-11-09T03:52:38.441303+00:00",
           "exit_code": 0
         },
         {
           "step": "status",
-          "at": "2026-11-02T03:41:15.770108+00:00",
+          "at": "2026-11-09T03:52:38.441662+00:00",
           "path": "/home/runner/work/llm-analysis/llm-analysis/dashboard/media_status.json"
         }
       ],
-      "started_at": "2026-11-02T03:40:26.497531+00:00",
+      "started_at": "2026-11-09T03:52:02.684722+00:00",
       "dashboard": "/home/runner/work/llm-analysis/llm-analysis/dashboard/image_model_analysis.html",
-      "retrieved_at": "2026-11-02T03:40:26.622174+00:00",
-      "model_count": 62,
+      "retrieved_at": "2026-11-09T03:52:02.784045+00:00",
+      "model_count": 63,
       "status_path": "/home/runner/work/llm-analysis/llm-analysis/dashboard/media_status.json",
-      "duration_seconds": 49.32,
-      "finished_at": "2026-11-02T03:41:15.770124+00:00",
+      "duration_seconds": 35.8,
+      "finished_at": "2026-11-09T03:52:38.441681+00:00",
       "state": "ok"
     },
     "video": {
@@ -90,34 +90,34 @@
       "steps": [
         {
           "step": "fetch",
-          "at": "2026-11-02T03:41:21.878545+00:00",
+          "at": "2026-11-09T03:52:44.033792+00:00",
           "exit_code": 0,
           "snapshot": true
         },
         {
           "step": "weekly_pick",
-          "at": "2026-11-02T03:41:21.887273+00:00",
+          "at": "2026-11-09T03:52:44.041045+00:00",
           "state": "locked",
-          "week": "2026-11-02_2026-11-08"
+          "week": "2026-11-09_2026-11-15"
         },
         {
           "step": "build",
-          "at": "2026-11-02T03:41:21.943016+00:00",
+          "at": "2026-11-09T03:52:44.086849+00:00",
           "exit_code": 0
         },
         {
           "step": "status",
-          "at": "2026-11-02T03:41:21.943470+00:00",
+          "at": "2026-11-09T03:52:44.090208+00:00",
           "path": "/home/runner/work/llm-analysis/llm-analysis/dashboard/video_status.json"
         }
       ],
-      "started_at": "2026-11-02T03:41:15.818346+00:00",
+      "started_at": "2026-11-09T03:52:38.481184+00:00",
       "dashboard": "/home/runner/work/llm-analysis/llm-analysis/dashboard/video_model_analysis.html",
-      "retrieved_at": "2026-11-02T03:41:15.948086+00:00",
-      "model_count": 31,
+      "retrieved_at": "2026-11-09T03:52:38.584519+00:00",
+      "model_count": 33,
       "status_path": "/home/runner/work/llm-analysis/llm-analysis/dashboard/video_status.json",
-      "duration_seconds": 6.17,
-      "finished_at": "2026-11-02T03:41:21.943486+00:00",
+      "duration_seconds": 5.65,
+      "finished_at": "2026-11-09T03:52:44.090219+00:00",
       "state": "ok"
     }
   }
